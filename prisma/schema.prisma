@@ -1,0 +1,378 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// Qué es: La fuente de verdad del modelo de datos.
+// Por qué Prisma: Genera los tipos TypeScript automáticamente. Si cambias el schema, los tipos cambian. Sin desincronización entre BD y código.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── ENUMS ────────────────────────────────────────────────────────────────────
+
+enum EstadoColegio {
+  ACTIVO
+  SUSPENDIDO
+  INACTIVO
+}
+
+enum PlanColegio {
+  BASICO
+  PREMIUM
+  ENTERPRISE
+}
+
+enum EstadoUsuario {
+  ACTIVO
+  INACTIVO
+  BLOQUEADO
+}
+
+enum PeriodoAcademico {
+  BIMESTRAL
+  TRIMESTRAL
+  SEMESTRAL
+}
+
+enum Turno {
+  MANANA
+  TARDE
+  NOCHE
+  COMPLETO
+}
+
+enum Genero {
+  MASCULINO
+  FEMENINO
+  OTRO
+}
+
+// ─── COLEGIOS ─────────────────────────────────────────────────────────────────
+
+model Colegio {
+  id          String        @id @default(cuid())
+  nombre      String
+  ruc         String        @unique
+  direccion   String
+  telefono    String?
+  email       String        @unique
+  estado      EstadoColegio @default(ACTIVO)
+  plan        PlanColegio   @default(BASICO)
+  planVenceEn DateTime?     @map("plan_vence_en")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  configuracion ColegioConfiguracion?
+  sedes         Sede[]
+  niveles       ColegioNivel[]
+  roles         ColegioRol[]
+  asignaciones  UsuarioAsignacion[]
+
+  @@map("colegios")
+}
+
+model ColegioConfiguracion {
+  id               String           @id @default(cuid())
+  colegioId        String           @unique @map("colegio_id")
+  logoUrl          String?          @map("logo_url")
+  colorPrimario    String?          @default("#1a73e8") @map("color_primario")
+  colorSecundario  String?          @default("#ffffff") @map("color_secundario")
+  faviconUrl       String?          @map("favicon_url")
+  periodo          PeriodoAcademico @default(BIMESTRAL)
+  idioma           String           @default("es")
+  zonaHoraria      String           @default("America/Lima") @map("zona_horaria")
+  formatoFecha     String           @default("DD/MM/YYYY") @map("formato_fecha")
+  moneda           String           @default("PEN")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+
+  colegio Colegio @relation(fields: [colegioId], references: [id], onDelete: Cascade)
+
+  @@map("colegio_configuracion")
+}
+
+// ─── NIVELES ──────────────────────────────────────────────────────────────────
+
+model ColegioNivel {
+  id             String   @id @default(cuid())
+  colegioId      String   @map("colegio_id")
+  nivelMaestroId String   @map("nivel_maestro_id")
+  activo         Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  colegio      Colegio              @relation(fields: [colegioId], references: [id], onDelete: Cascade)
+  nivelMaestro NivelMaestro         @relation(fields: [nivelMaestroId], references: [id], onDelete: Cascade)
+  turnos       ColegioNivelTurno[]
+  grados       ColegioGrado[]
+
+  @@unique([colegioId, nivelMaestroId])
+  @@map("colegio_niveles")
+}
+
+model ColegioNivelTurno {
+  id             String @id @default(cuid())
+  colegioNivelId String @map("colegio_nivel_id")
+  turno          Turno
+
+  colegioNivel ColegioNivel @relation(fields: [colegioNivelId], references: [id], onDelete: Cascade)
+
+  @@unique([colegioNivelId, turno])
+  @@map("colegio_nivel_turnos")
+}
+
+model ColegioGrado {
+  id             String   @id @default(cuid())
+  colegioNivelId String   @map("colegio_nivel_id")
+  gradoMaestroId String   @map("grado_maestro_id")
+  activo         Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  colegioNivel ColegioNivel  @relation(fields: [colegioNivelId], references: [id], onDelete: Cascade)
+  gradoMaestro GradoMaestro  @relation(fields: [gradoMaestroId], references: [id], onDelete: Cascade)
+  secciones    Seccion[]
+
+  @@unique([colegioNivelId, gradoMaestroId])
+  @@map("colegio_grados")
+}
+
+// ─── SEDES ────────────────────────────────────────────────────────────────────
+
+model Sede {
+  id        String   @id @default(cuid())
+  colegioId String   @map("colegio_id")
+  nombre    String
+  direccion String
+  telefono  String?
+  email     String?
+  activo    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  colegio       Colegio            @relation(fields: [colegioId], references: [id], onDelete: Cascade)
+  configuracion SedeConfiguracion?
+  asignaciones  UsuarioAsignacion[]
+
+  @@map("sedes")
+}
+
+model SedeConfiguracion {
+  id              String  @id @default(cuid())
+  sedeId          String  @unique @map("sede_id")
+  logoUrl         String? @map("logo_url")
+  colorPrimario   String? @map("color_primario")
+  colorSecundario String? @map("color_secundario")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  sede Sede @relation(fields: [sedeId], references: [id], onDelete: Cascade)
+
+  @@map("sede_configuracion")
+}
+
+// ─── ESTRUCTURA ACADÉMICA ─────────────────────────────────────────────────────
+
+model Seccion {
+  id             String   @id @default(cuid())
+  colegioGradoId String   @map("colegio_grado_id")
+  nombre         String
+  vacantes       Int      @default(30)
+  activo         Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  colegioGrado ColegioGrado @relation(fields: [colegioGradoId], references: [id], onDelete: Cascade)
+
+  @@unique([colegioGradoId, nombre])
+  @@map("secciones")
+}
+
+// ─── PERSONAS Y USUARIOS ──────────────────────────────────────────────────────
+
+model Persona {
+  id          String   @id @default(cuid())
+  dni         String   @unique
+  nombres     String
+  apellidos   String
+  fechaNac    DateTime @map("fecha_nac")
+  genero      Genero
+  telefono    String?
+  direccion   String?
+  avatarUrl   String?  @map("avatar_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  usuario       Usuario?
+  perfilAlumno  PerfilAlumno?
+
+  @@map("personas")
+}
+
+model PerfilAlumno {
+  id               String   @id @default(cuid())
+  personaId        String   @unique @map("persona_id")
+  codigoMatricula  String   @unique @map("codigo_matricula")
+  colegioOrigenRef String?  @map("colegio_origen_ref")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  persona Persona @relation(fields: [personaId], references: [id], onDelete: Cascade)
+
+  @@map("perfil_alumnos")
+}
+
+model Usuario {
+  id               String        @id @default(cuid())
+  personaId        String        @unique @map("persona_id")
+  email            String        @unique
+  passwordHash     String        @map("password_hash")
+  estado           EstadoUsuario @default(ACTIVO)
+  intentosFallidos Int           @default(0) @map("intentos_fallidos")
+  bloqueadoHasta   DateTime?     @map("bloqueado_hasta")
+  ultimoAcceso     DateTime?     @map("ultimo_acceso")
+  esPlatformAdmin  Boolean       @default(false) @map("es_platform_admin")
+  createdAt        DateTime      @default(now()) @map("created_at")
+  updatedAt        DateTime      @updatedAt @map("updated_at")
+
+  persona        Persona             @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  asignaciones   UsuarioAsignacion[]
+  refreshTokens  RefreshToken[]
+  passwordResets PasswordReset[]
+  auditLogs      AuditLog[]
+
+  @@map("usuarios")
+}
+
+// ─── ROLES Y PERMISOS ─────────────────────────────────────────────────────────
+
+model ColegioRol {
+  id          String   @id @default(cuid())
+  colegioId   String   @map("colegio_id")
+  nombre      String
+  descripcion String?
+  esSistema   Boolean  @default(false) @map("es_sistema")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  colegio      Colegio             @relation(fields: [colegioId], references: [id], onDelete: Cascade)
+  permisos     ColegioRolPermiso[]
+  asignaciones UsuarioAsignacion[]
+
+  @@unique([colegioId, nombre])
+  @@map("colegio_roles")
+}
+
+model ColegioRolPermiso {
+  id        String   @id @default(cuid())
+  rolId     String   @map("rol_id")
+  permiso   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  rol ColegioRol @relation(fields: [rolId], references: [id], onDelete: Cascade)
+
+  @@unique([rolId, permiso])
+  @@map("colegio_rol_permisos")
+}
+
+model UsuarioAsignacion {
+  id        String   @id @default(cuid())
+  usuarioId String   @map("usuario_id")
+  colegioId String   @map("colegio_id")
+  sedeId    String?  @map("sede_id")
+  rolId     String   @map("rol_id")
+  activo    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  usuario Usuario    @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  colegio Colegio    @relation(fields: [colegioId], references: [id], onDelete: Cascade)
+  sede    Sede?      @relation(fields: [sedeId], references: [id], onDelete: SetNull)
+  rol     ColegioRol @relation(fields: [rolId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, colegioId, sedeId, rolId])
+  @@map("usuario_asignaciones")
+}
+
+// ─── SEGURIDAD ────────────────────────────────────────────────────────────────
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  usuarioId String   @map("usuario_id")
+  expiresAt DateTime @map("expires_at")
+  revocado  Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model PasswordReset {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  usuarioId String   @map("usuario_id")
+  expiresAt DateTime @map("expires_at")
+  usado     Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("password_resets")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  usuarioId String   @map("usuario_id")
+  accion    String
+  ip        String?
+  userAgent String?  @map("user_agent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@map("audit_logs")
+}
+
+// ─── CATÁLOGO MAESTRO (gestiona PLATFORM_ADMIN) ───────────────────────────────
+
+model NivelMaestro {
+  id        String   @id @default(cuid())
+  nombre    String   @unique
+  orden     Int      @unique
+  activo    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  grados        GradoMaestro[]
+  colegioNiveles ColegioNivel[]
+
+  @@map("niveles_maestros")
+}
+
+model GradoMaestro {
+  id             String   @id @default(cuid())
+  nivelMaestroId String   @map("nivel_maestro_id")
+  nombre         String
+  orden          Int
+  activo         Boolean  @default(true)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  nivelMaestro  NivelMaestro   @relation(fields: [nivelMaestroId], references: [id], onDelete: Cascade)
+  colegioGrados ColegioGrado[]
+
+  @@unique([nivelMaestroId, nombre])
+  @@unique([nivelMaestroId, orden])
+  @@map("grados_maestros")
+}
