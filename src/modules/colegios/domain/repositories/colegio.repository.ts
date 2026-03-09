@@ -1,10 +1,26 @@
-// Qué es: Contrato del repositorio de Colegio.
-// Patrón: Repository Pattern (DDD).
-// Principio SOLID: Dependency Inversion — use cases dependen de esta interfaz, no de Prisma.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// QUÉ ES:
+//   Contrato del repositorio del agregado Colegio.
+//
+// QUÉ CAMBIÓ vs versión anterior:
+//   Antes: 20 métodos mezclando Colegio + Sede + Nivel + Config + Plan.
+//   Ahora: solo métodos del agregado Colegio.
+//   Sede → sede.repository.ts
+//   Nivel → nivel.repository.ts
+//
+// PRINCIPIO SOLID — Interface Segregation (ISP):
+//   "Los clientes no deben depender de interfaces que no usan."
+//   Un use case de Sedes no debería conocer los métodos de Niveles.
+//   Contratos pequeños y enfocados son más fáciles de testear,
+//   mockear y razonar sobre ellos.
+//
+// POR QUÉ TIPOS EN VEZ DE string:
+//   cambiarEstado y cambiarPlan antes aceptaban string.
+//   Ahora usan EstadoColegio y PlanColegio — los tipos ya definidos
+//   en la entidad. TypeScript atrapa errores de typo en compile time.
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-import { Colegio } from '../entities/colegio.entity';
-import { Sede } from '../entities/sede.entity';
-import { Nivel } from '../entities/nivel.entity';
+import { Colegio, EstadoColegio, PlanColegio } from '../entities/colegio.entity';
 
 export const COLEGIO_REPOSITORY = 'ColegioRepository';
 
@@ -23,21 +39,8 @@ export interface ActualizarConfiguracionProps {
   moneda?:          string;
 }
 
-export interface CrearSedeProps {
-  colegioId: string;
-  nombre:    string;
-  direccion: string;
-  telefono?: string;
-  email?:    string;
-}
-
-export interface ActualizarSedeProps {
-  nombre?:    string;
-  direccion?: string;
-  telefono?:  string;
-  email?:     string;
-}
-
+// ColegioConfiguracion vive aquí porque es un value object
+// del agregado Colegio — no tiene identidad propia relevante fuera de él
 export interface ColegioConfiguracion {
   id:              string;
   logoUrl:         string | null;
@@ -48,36 +51,12 @@ export interface ColegioConfiguracion {
   moneda:          string;
 }
 
-export interface PlanInfo {
-  plan:               string;
-  planVenceEn:        Date | null;
-  limitesSedes:       number;
-  sedesActivas:       number;
-  limitesSeccionesPorGrado: number | null;
-  planSugerido:       string | null;
-}
-
 export interface ColegioRepository {
-  findById(id: string):                               Promise<Colegio | null>;
-  findAll():                                          Promise<Colegio[]>;
-  actualizar(id: string, props: ActualizarColegioProps): Promise<Colegio>;
-  cambiarEstado(id: string, estado: string):          Promise<Colegio>;
-  cambiarPlan(id: string, plan: string):              Promise<Colegio>;
-
-  findConfiguracion(colegioId: string):               Promise<ColegioConfiguracion | null>;
+  buscarPorId(id: string):                                              Promise<Colegio | null>;
+  buscarTodos():                                                        Promise<Colegio[]>;
+  actualizar(id: string, props: ActualizarColegioProps):               Promise<Colegio>;
+  cambiarEstado(id: string, estado: EstadoColegio):                    Promise<Colegio>;
+  cambiarPlan(id: string, plan: PlanColegio):                          Promise<Colegio>;
+  buscarConfiguracion(colegioId: string):                              Promise<ColegioConfiguracion | null>;
   actualizarConfiguracion(colegioId: string, props: ActualizarConfiguracionProps): Promise<ColegioConfiguracion>;
-
-  findPlanInfo(colegioId: string):                    Promise<PlanInfo>;
-
-  findSedes(colegioId: string):                       Promise<Sede[]>;
-  findSedeById(id: string, colegioId: string):        Promise<Sede | null>;
-  contarSedesActivas(colegioId: string):              Promise<number>;
-  crearSede(props: CrearSedeProps):                   Promise<Sede>;
-  actualizarSede(id: string, props: ActualizarSedeProps): Promise<Sede>;
-  cambiarEstadoSede(id: string, activo: boolean):     Promise<Sede>;
-
-  findNiveles(colegioId: string):                     Promise<Nivel[]>;
-  findNivelById(id: string, colegioId: string):       Promise<Nivel | null>;
-  cambiarEstadoNivel(id: string, activo: boolean):    Promise<Nivel>;
-  activarNivel(colegioId: string, nivelMaestroId: string): Promise<Nivel>;
 }

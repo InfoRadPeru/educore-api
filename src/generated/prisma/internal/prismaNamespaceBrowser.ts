@@ -55,9 +55,9 @@ export const ModelName = {
   ColegioConfiguracion: 'ColegioConfiguracion',
   ColegioNivel: 'ColegioNivel',
   ColegioNivelTurno: 'ColegioNivelTurno',
+  ColegioGrado: 'ColegioGrado',
   Sede: 'Sede',
   SedeConfiguracion: 'SedeConfiguracion',
-  Grado: 'Grado',
   Seccion: 'Seccion',
   Persona: 'Persona',
   PerfilAlumno: 'PerfilAlumno',
@@ -67,7 +67,9 @@ export const ModelName = {
   UsuarioAsignacion: 'UsuarioAsignacion',
   RefreshToken: 'RefreshToken',
   PasswordReset: 'PasswordReset',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  NivelMaestro: 'NivelMaestro',
+  GradoMaestro: 'GradoMaestro'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -125,8 +127,7 @@ export type ColegioConfiguracionScalarFieldEnum = (typeof ColegioConfiguracionSc
 export const ColegioNivelScalarFieldEnum = {
   id: 'id',
   colegioId: 'colegioId',
-  nombre: 'nombre',
-  orden: 'orden',
+  nivelMaestroId: 'nivelMaestroId',
   activo: 'activo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -137,11 +138,23 @@ export type ColegioNivelScalarFieldEnum = (typeof ColegioNivelScalarFieldEnum)[k
 
 export const ColegioNivelTurnoScalarFieldEnum = {
   id: 'id',
-  nivelId: 'nivelId',
+  colegioNivelId: 'colegioNivelId',
   turno: 'turno'
 } as const
 
 export type ColegioNivelTurnoScalarFieldEnum = (typeof ColegioNivelTurnoScalarFieldEnum)[keyof typeof ColegioNivelTurnoScalarFieldEnum]
+
+
+export const ColegioGradoScalarFieldEnum = {
+  id: 'id',
+  colegioNivelId: 'colegioNivelId',
+  gradoMaestroId: 'gradoMaestroId',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ColegioGradoScalarFieldEnum = (typeof ColegioGradoScalarFieldEnum)[keyof typeof ColegioGradoScalarFieldEnum]
 
 
 export const SedeScalarFieldEnum = {
@@ -172,22 +185,9 @@ export const SedeConfiguracionScalarFieldEnum = {
 export type SedeConfiguracionScalarFieldEnum = (typeof SedeConfiguracionScalarFieldEnum)[keyof typeof SedeConfiguracionScalarFieldEnum]
 
 
-export const GradoScalarFieldEnum = {
-  id: 'id',
-  nivelId: 'nivelId',
-  nombre: 'nombre',
-  orden: 'orden',
-  activo: 'activo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type GradoScalarFieldEnum = (typeof GradoScalarFieldEnum)[keyof typeof GradoScalarFieldEnum]
-
-
 export const SeccionScalarFieldEnum = {
   id: 'id',
-  gradoId: 'gradoId',
+  colegioGradoId: 'colegioGradoId',
   nombre: 'nombre',
   vacantes: 'vacantes',
   activo: 'activo',
@@ -315,6 +315,31 @@ export const AuditLogScalarFieldEnum = {
 } as const
 
 export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const NivelMaestroScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type NivelMaestroScalarFieldEnum = (typeof NivelMaestroScalarFieldEnum)[keyof typeof NivelMaestroScalarFieldEnum]
+
+
+export const GradoMaestroScalarFieldEnum = {
+  id: 'id',
+  nivelMaestroId: 'nivelMaestroId',
+  nombre: 'nombre',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GradoMaestroScalarFieldEnum = (typeof GradoMaestroScalarFieldEnum)[keyof typeof GradoMaestroScalarFieldEnum]
 
 
 export const SortOrder = {

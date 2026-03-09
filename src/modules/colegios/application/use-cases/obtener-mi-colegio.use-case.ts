@@ -4,8 +4,8 @@
 
 import { Inject, Injectable } from '@nestjs/common';
 import { ok, fail, Result, NotFoundError } from '@shared/domain/result';
-import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 import { ColegioResponseDto } from '../dtos/colegio-response.dto';
+import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 
 @Injectable()
 export class ObtenerMiColegioUseCase {
@@ -15,14 +15,14 @@ export class ObtenerMiColegioUseCase {
   ) {}
 
   async execute(colegioId: string): Promise<Result<ColegioResponseDto>> {
-    const colegio = await this.colegioRepository.findById(colegioId);
+    const colegio = await this.colegioRepository.buscarPorId(colegioId);
     if (!colegio) return fail(new NotFoundError('Colegio', colegioId));
 
     return ok({
       id:          colegio.id,
       nombre:      colegio.nombre,
       ruc:         colegio.ruc,
-      direccion:   colegio.direccion,
+      direccion:   colegio.direccion, 
       telefono:    colegio.telefono,
       email:       colegio.email,
       estado:      colegio.estado,

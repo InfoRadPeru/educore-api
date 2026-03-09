@@ -8,14 +8,14 @@ import { ActualizarColegioDto } from '../dtos/actualizar-colegio.dto';
 import { ColegioResponseDto } from '../dtos/colegio-response.dto';
 
 @Injectable()
-export class ActualizarMiColegioUseCase {
+export class ActualizarMiColegioUseCase { 
   constructor(
     @Inject(COLEGIO_REPOSITORY)
     private readonly colegioRepository: ColegioRepository,
   ) {}
 
   async execute(colegioId: string, dto: ActualizarColegioDto): Promise<Result<ColegioResponseDto>> {
-    const colegio = await this.colegioRepository.findById(colegioId);
+    const colegio = await this.colegioRepository.buscarPorId(colegioId);
     if (!colegio) return fail(new NotFoundError('Colegio', colegioId));
 
     const actualizado = await this.colegioRepository.actualizar(colegioId, dto);

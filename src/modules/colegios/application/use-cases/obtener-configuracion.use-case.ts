@@ -13,13 +13,13 @@ export class ObtenerConfiguracionUseCase {
   ) {}
 
   async execute(colegioId: string): Promise<Result<ConfiguracionResponseDto>> {
-    const config = await this.colegioRepository.findConfiguracion(colegioId);
+    const config = await this.colegioRepository.buscarConfiguracion(colegioId);
     if (!config) return fail(new NotFoundError('Configuracion', colegioId));
 
     return ok({
       id:              config.id,
       logoUrl:         config.logoUrl,
-      colorPrimario:   config.colorPrimario,
+      colorPrimario:   config.colorPrimario, 
       colorSecundario: config.colorSecundario,
       periodo:         config.periodo,
       zonaHoraria:     config.zonaHoraria,

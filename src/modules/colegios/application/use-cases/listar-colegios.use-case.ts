@@ -13,14 +13,14 @@ export class ListarColegiosUseCase {
   ) {}
 
   async execute(): Promise<Result<ColegioResponseDto[]>> {
-    const colegios = await this.colegioRepository.findAll();
+    const colegios = await this.colegioRepository.buscarTodos();
     return ok(colegios.map(c => ({
       id:          c.id,
       nombre:      c.nombre,
       ruc:         c.ruc,
       direccion:   c.direccion,
       telefono:    c.telefono,
-      email:       c.email,
+      email:       c.email, 
       estado:      c.estado,
       plan:        c.plan,
       planVenceEn: c.planVenceEn,

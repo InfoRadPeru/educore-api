@@ -2,25 +2,21 @@
 
 import { Inject, Injectable } from '@nestjs/common';
 import { ok, Result } from '@shared/domain/result';
-import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 import { NivelResponseDto } from '../dtos/nivel-response.dto';
+import { NIVEL_REPOSITORY, type NivelRepository } from '@modules/colegios/domain/repositories/nivel.repository';
 
 @Injectable()
 export class ListarNivelesUseCase {
   constructor(
-    @Inject(COLEGIO_REPOSITORY)
-    private readonly colegioRepository: ColegioRepository,
+    @Inject(NIVEL_REPOSITORY)
+    private readonly nivelRepository: NivelRepository,
   ) {}
 
   async execute(colegioId: string): Promise<Result<NivelResponseDto[]>> {
-    const niveles = await this.colegioRepository.findNiveles(colegioId);
+    const niveles = await this.nivelRepository.buscarTodos(colegioId);
     return ok(niveles.map(n => ({
-      id:             n.id,
-      nivelMaestroId: n.nivelMaestroId,
-      nombre:         n.nombre,
-      orden:          n.orden,
-      activo:         n.activo,
-      turnos:         n.turnos,
+      id: n.id, nivelMaestroId: n.nivelMaestroId, nombre: n.nombre,
+      orden: n.orden, activo: n.activo, turnos: n.turnos,
     })));
   }
 }

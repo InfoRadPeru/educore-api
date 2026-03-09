@@ -2,18 +2,19 @@
 
 import { Inject, Injectable } from '@nestjs/common';
 import { ok, Result } from '@shared/domain/result';
-import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 import { SedeResponseDto } from '../dtos/sede-response.dto';
+
+import { SEDE_REPOSITORY, type SedeRepository } from '../../domain/repositories/sede.repository';
 
 @Injectable()
 export class ListarSedesUseCase {
   constructor(
-    @Inject(COLEGIO_REPOSITORY)
-    private readonly colegioRepository: ColegioRepository,
+    @Inject(SEDE_REPOSITORY)
+    private readonly sedeRepository: SedeRepository,
   ) {}
 
   async execute(colegioId: string): Promise<Result<SedeResponseDto[]>> {
-    const sedes = await this.colegioRepository.findSedes(colegioId);
+    const sedes = await this.sedeRepository.buscarPorColegio(colegioId);
     return ok(sedes.map(s => ({
       id:        s.id,
       colegioId: s.colegioId,

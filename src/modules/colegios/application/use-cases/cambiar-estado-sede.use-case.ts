@@ -2,32 +2,24 @@
 
 import { Inject, Injectable } from '@nestjs/common';
 import { ok, fail, Result, NotFoundError } from '@shared/domain/result';
-import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 import { SedeResponseDto } from '../dtos/sede-response.dto';
+import { SEDE_REPOSITORY, type SedeRepository } from '@modules/colegios/domain/repositories/sede.repository';
 
 @Injectable()
 export class CambiarEstadoSedeUseCase {
   constructor(
-    @Inject(COLEGIO_REPOSITORY)
-    private readonly colegioRepository: ColegioRepository,
+    @Inject(SEDE_REPOSITORY)
+    private readonly sedeRepository: SedeRepository,
   ) {}
 
   async execute(colegioId: string, sedeId: string, activo: boolean): Promise<Result<SedeResponseDto>> {
-    const sede = await this.colegioRepository.findSedeById(sedeId, colegioId);
+    const sede = await this.sedeRepository.buscarPorId(sedeId, colegioId);
     if (!sede) return fail(new NotFoundError('Sede', sedeId));
-
-    const actualizada = await this.colegioRepository.cambiarEstadoSede(sedeId, activo);
-
+    const actualizada = await this.sedeRepository.cambiarEstado(sedeId, activo);
     return ok({
-      id:        actualizada.id,
-      colegioId: actualizada.colegioId,
-      nombre:    actualizada.nombre,
-      direccion: actualizada.direccion,
-      telefono:  actualizada.telefono,
-      email:     actualizada.email,
-      activo:    actualizada.activo,
-      createdAt: actualizada.createdAt,
-      updatedAt: actualizada.updatedAt,
+      id: actualizada.id, colegioId: actualizada.colegioId, nombre: actualizada.nombre,
+      direccion: actualizada.direccion, telefono: actualizada.telefono, email: actualizada.email,
+      activo: actualizada.activo, createdAt: actualizada.createdAt, updatedAt: actualizada.updatedAt,
     });
   }
 }

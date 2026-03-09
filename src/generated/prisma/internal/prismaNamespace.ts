@@ -388,9 +388,9 @@ export const ModelName = {
   ColegioConfiguracion: 'ColegioConfiguracion',
   ColegioNivel: 'ColegioNivel',
   ColegioNivelTurno: 'ColegioNivelTurno',
+  ColegioGrado: 'ColegioGrado',
   Sede: 'Sede',
   SedeConfiguracion: 'SedeConfiguracion',
-  Grado: 'Grado',
   Seccion: 'Seccion',
   Persona: 'Persona',
   PerfilAlumno: 'PerfilAlumno',
@@ -400,7 +400,9 @@ export const ModelName = {
   UsuarioAsignacion: 'UsuarioAsignacion',
   RefreshToken: 'RefreshToken',
   PasswordReset: 'PasswordReset',
-  AuditLog: 'AuditLog'
+  AuditLog: 'AuditLog',
+  NivelMaestro: 'NivelMaestro',
+  GradoMaestro: 'GradoMaestro'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -416,7 +418,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "colegio" | "colegioConfiguracion" | "colegioNivel" | "colegioNivelTurno" | "sede" | "sedeConfiguracion" | "grado" | "seccion" | "persona" | "perfilAlumno" | "usuario" | "colegioRol" | "colegioRolPermiso" | "usuarioAsignacion" | "refreshToken" | "passwordReset" | "auditLog"
+    modelProps: "colegio" | "colegioConfiguracion" | "colegioNivel" | "colegioNivelTurno" | "colegioGrado" | "sede" | "sedeConfiguracion" | "seccion" | "persona" | "perfilAlumno" | "usuario" | "colegioRol" | "colegioRolPermiso" | "usuarioAsignacion" | "refreshToken" | "passwordReset" | "auditLog" | "nivelMaestro" | "gradoMaestro"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -716,6 +718,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ColegioGrado: {
+      payload: Prisma.$ColegioGradoPayload<ExtArgs>
+      fields: Prisma.ColegioGradoFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ColegioGradoFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ColegioGradoFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        findFirst: {
+          args: Prisma.ColegioGradoFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ColegioGradoFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        findMany: {
+          args: Prisma.ColegioGradoFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>[]
+        }
+        create: {
+          args: Prisma.ColegioGradoCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        createMany: {
+          args: Prisma.ColegioGradoCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ColegioGradoCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>[]
+        }
+        delete: {
+          args: Prisma.ColegioGradoDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        update: {
+          args: Prisma.ColegioGradoUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        deleteMany: {
+          args: Prisma.ColegioGradoDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ColegioGradoUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ColegioGradoUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>[]
+        }
+        upsert: {
+          args: Prisma.ColegioGradoUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ColegioGradoPayload>
+        }
+        aggregate: {
+          args: Prisma.ColegioGradoAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateColegioGrado>
+        }
+        groupBy: {
+          args: Prisma.ColegioGradoGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ColegioGradoGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ColegioGradoCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ColegioGradoCountAggregateOutputType> | number
+        }
+      }
+    }
     Sede: {
       payload: Prisma.$SedePayload<ExtArgs>
       fields: Prisma.SedeFieldRefs
@@ -861,80 +937,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.SedeConfiguracionCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.SedeConfiguracionCountAggregateOutputType> | number
-        }
-      }
-    }
-    Grado: {
-      payload: Prisma.$GradoPayload<ExtArgs>
-      fields: Prisma.GradoFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.GradoFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.GradoFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        findFirst: {
-          args: Prisma.GradoFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.GradoFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        findMany: {
-          args: Prisma.GradoFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>[]
-        }
-        create: {
-          args: Prisma.GradoCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        createMany: {
-          args: Prisma.GradoCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.GradoCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>[]
-        }
-        delete: {
-          args: Prisma.GradoDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        update: {
-          args: Prisma.GradoUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        deleteMany: {
-          args: Prisma.GradoDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.GradoUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.GradoUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>[]
-        }
-        upsert: {
-          args: Prisma.GradoUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoPayload>
-        }
-        aggregate: {
-          args: Prisma.GradoAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateGrado>
-        }
-        groupBy: {
-          args: Prisma.GradoGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.GradoGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.GradoCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.GradoCountAggregateOutputType> | number
         }
       }
     }
@@ -1678,6 +1680,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    NivelMaestro: {
+      payload: Prisma.$NivelMaestroPayload<ExtArgs>
+      fields: Prisma.NivelMaestroFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NivelMaestroFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NivelMaestroFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        findFirst: {
+          args: Prisma.NivelMaestroFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NivelMaestroFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        findMany: {
+          args: Prisma.NivelMaestroFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>[]
+        }
+        create: {
+          args: Prisma.NivelMaestroCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        createMany: {
+          args: Prisma.NivelMaestroCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.NivelMaestroCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>[]
+        }
+        delete: {
+          args: Prisma.NivelMaestroDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        update: {
+          args: Prisma.NivelMaestroUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        deleteMany: {
+          args: Prisma.NivelMaestroDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NivelMaestroUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.NivelMaestroUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>[]
+        }
+        upsert: {
+          args: Prisma.NivelMaestroUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NivelMaestroPayload>
+        }
+        aggregate: {
+          args: Prisma.NivelMaestroAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNivelMaestro>
+        }
+        groupBy: {
+          args: Prisma.NivelMaestroGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NivelMaestroGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NivelMaestroCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NivelMaestroCountAggregateOutputType> | number
+        }
+      }
+    }
+    GradoMaestro: {
+      payload: Prisma.$GradoMaestroPayload<ExtArgs>
+      fields: Prisma.GradoMaestroFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GradoMaestroFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GradoMaestroFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        findFirst: {
+          args: Prisma.GradoMaestroFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GradoMaestroFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        findMany: {
+          args: Prisma.GradoMaestroFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>[]
+        }
+        create: {
+          args: Prisma.GradoMaestroCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        createMany: {
+          args: Prisma.GradoMaestroCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GradoMaestroCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>[]
+        }
+        delete: {
+          args: Prisma.GradoMaestroDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        update: {
+          args: Prisma.GradoMaestroUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        deleteMany: {
+          args: Prisma.GradoMaestroDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GradoMaestroUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GradoMaestroUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>[]
+        }
+        upsert: {
+          args: Prisma.GradoMaestroUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GradoMaestroPayload>
+        }
+        aggregate: {
+          args: Prisma.GradoMaestroAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGradoMaestro>
+        }
+        groupBy: {
+          args: Prisma.GradoMaestroGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GradoMaestroGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GradoMaestroCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GradoMaestroCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1756,8 +1906,7 @@ export type ColegioConfiguracionScalarFieldEnum = (typeof ColegioConfiguracionSc
 export const ColegioNivelScalarFieldEnum = {
   id: 'id',
   colegioId: 'colegioId',
-  nombre: 'nombre',
-  orden: 'orden',
+  nivelMaestroId: 'nivelMaestroId',
   activo: 'activo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1768,11 +1917,23 @@ export type ColegioNivelScalarFieldEnum = (typeof ColegioNivelScalarFieldEnum)[k
 
 export const ColegioNivelTurnoScalarFieldEnum = {
   id: 'id',
-  nivelId: 'nivelId',
+  colegioNivelId: 'colegioNivelId',
   turno: 'turno'
 } as const
 
 export type ColegioNivelTurnoScalarFieldEnum = (typeof ColegioNivelTurnoScalarFieldEnum)[keyof typeof ColegioNivelTurnoScalarFieldEnum]
+
+
+export const ColegioGradoScalarFieldEnum = {
+  id: 'id',
+  colegioNivelId: 'colegioNivelId',
+  gradoMaestroId: 'gradoMaestroId',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ColegioGradoScalarFieldEnum = (typeof ColegioGradoScalarFieldEnum)[keyof typeof ColegioGradoScalarFieldEnum]
 
 
 export const SedeScalarFieldEnum = {
@@ -1803,22 +1964,9 @@ export const SedeConfiguracionScalarFieldEnum = {
 export type SedeConfiguracionScalarFieldEnum = (typeof SedeConfiguracionScalarFieldEnum)[keyof typeof SedeConfiguracionScalarFieldEnum]
 
 
-export const GradoScalarFieldEnum = {
-  id: 'id',
-  nivelId: 'nivelId',
-  nombre: 'nombre',
-  orden: 'orden',
-  activo: 'activo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type GradoScalarFieldEnum = (typeof GradoScalarFieldEnum)[keyof typeof GradoScalarFieldEnum]
-
-
 export const SeccionScalarFieldEnum = {
   id: 'id',
-  gradoId: 'gradoId',
+  colegioGradoId: 'colegioGradoId',
   nombre: 'nombre',
   vacantes: 'vacantes',
   activo: 'activo',
@@ -1948,6 +2096,31 @@ export const AuditLogScalarFieldEnum = {
 export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
+export const NivelMaestroScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type NivelMaestroScalarFieldEnum = (typeof NivelMaestroScalarFieldEnum)[keyof typeof NivelMaestroScalarFieldEnum]
+
+
+export const GradoMaestroScalarFieldEnum = {
+  id: 'id',
+  nivelMaestroId: 'nivelMaestroId',
+  nombre: 'nombre',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GradoMaestroScalarFieldEnum = (typeof GradoMaestroScalarFieldEnum)[keyof typeof GradoMaestroScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2049,20 +2222,6 @@ export type ListEnumPeriodoAcademicoFieldRefInput<$PrismaModel> = FieldRefInputT
 
 
 /**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -2080,6 +2239,20 @@ export type EnumTurnoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMode
  * Reference to a field of type 'Turno[]'
  */
 export type ListEnumTurnoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Turno[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -2223,9 +2396,9 @@ export type GlobalOmitConfig = {
   colegioConfiguracion?: Prisma.ColegioConfiguracionOmit
   colegioNivel?: Prisma.ColegioNivelOmit
   colegioNivelTurno?: Prisma.ColegioNivelTurnoOmit
+  colegioGrado?: Prisma.ColegioGradoOmit
   sede?: Prisma.SedeOmit
   sedeConfiguracion?: Prisma.SedeConfiguracionOmit
-  grado?: Prisma.GradoOmit
   seccion?: Prisma.SeccionOmit
   persona?: Prisma.PersonaOmit
   perfilAlumno?: Prisma.PerfilAlumnoOmit
@@ -2236,6 +2409,8 @@ export type GlobalOmitConfig = {
   refreshToken?: Prisma.RefreshTokenOmit
   passwordReset?: Prisma.PasswordResetOmit
   auditLog?: Prisma.AuditLogOmit
+  nivelMaestro?: Prisma.NivelMaestroOmit
+  gradoMaestro?: Prisma.GradoMaestroOmit
 }
 
 /* Types for Logging */

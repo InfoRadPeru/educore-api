@@ -36,7 +36,7 @@ export type SeccionSumAggregateOutputType = {
 
 export type SeccionMinAggregateOutputType = {
   id: string | null
-  gradoId: string | null
+  colegioGradoId: string | null
   nombre: string | null
   vacantes: number | null
   activo: boolean | null
@@ -46,7 +46,7 @@ export type SeccionMinAggregateOutputType = {
 
 export type SeccionMaxAggregateOutputType = {
   id: string | null
-  gradoId: string | null
+  colegioGradoId: string | null
   nombre: string | null
   vacantes: number | null
   activo: boolean | null
@@ -56,7 +56,7 @@ export type SeccionMaxAggregateOutputType = {
 
 export type SeccionCountAggregateOutputType = {
   id: number
-  gradoId: number
+  colegioGradoId: number
   nombre: number
   vacantes: number
   activo: number
@@ -76,7 +76,7 @@ export type SeccionSumAggregateInputType = {
 
 export type SeccionMinAggregateInputType = {
   id?: true
-  gradoId?: true
+  colegioGradoId?: true
   nombre?: true
   vacantes?: true
   activo?: true
@@ -86,7 +86,7 @@ export type SeccionMinAggregateInputType = {
 
 export type SeccionMaxAggregateInputType = {
   id?: true
-  gradoId?: true
+  colegioGradoId?: true
   nombre?: true
   vacantes?: true
   activo?: true
@@ -96,7 +96,7 @@ export type SeccionMaxAggregateInputType = {
 
 export type SeccionCountAggregateInputType = {
   id?: true
-  gradoId?: true
+  colegioGradoId?: true
   nombre?: true
   vacantes?: true
   activo?: true
@@ -193,7 +193,7 @@ export type SeccionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type SeccionGroupByOutputType = {
   id: string
-  gradoId: string
+  colegioGradoId: string
   nombre: string
   vacantes: number
   activo: boolean
@@ -226,44 +226,44 @@ export type SeccionWhereInput = {
   OR?: Prisma.SeccionWhereInput[]
   NOT?: Prisma.SeccionWhereInput | Prisma.SeccionWhereInput[]
   id?: Prisma.StringFilter<"Seccion"> | string
-  gradoId?: Prisma.StringFilter<"Seccion"> | string
+  colegioGradoId?: Prisma.StringFilter<"Seccion"> | string
   nombre?: Prisma.StringFilter<"Seccion"> | string
   vacantes?: Prisma.IntFilter<"Seccion"> | number
   activo?: Prisma.BoolFilter<"Seccion"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
-  grado?: Prisma.XOR<Prisma.GradoScalarRelationFilter, Prisma.GradoWhereInput>
+  colegioGrado?: Prisma.XOR<Prisma.ColegioGradoScalarRelationFilter, Prisma.ColegioGradoWhereInput>
 }
 
 export type SeccionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  gradoId?: Prisma.SortOrder
+  colegioGradoId?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   vacantes?: Prisma.SortOrder
   activo?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  grado?: Prisma.GradoOrderByWithRelationInput
+  colegioGrado?: Prisma.ColegioGradoOrderByWithRelationInput
 }
 
 export type SeccionWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  gradoId_nombre?: Prisma.SeccionGradoIdNombreCompoundUniqueInput
+  colegioGradoId_nombre?: Prisma.SeccionColegioGradoIdNombreCompoundUniqueInput
   AND?: Prisma.SeccionWhereInput | Prisma.SeccionWhereInput[]
   OR?: Prisma.SeccionWhereInput[]
   NOT?: Prisma.SeccionWhereInput | Prisma.SeccionWhereInput[]
-  gradoId?: Prisma.StringFilter<"Seccion"> | string
+  colegioGradoId?: Prisma.StringFilter<"Seccion"> | string
   nombre?: Prisma.StringFilter<"Seccion"> | string
   vacantes?: Prisma.IntFilter<"Seccion"> | number
   activo?: Prisma.BoolFilter<"Seccion"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
-  grado?: Prisma.XOR<Prisma.GradoScalarRelationFilter, Prisma.GradoWhereInput>
-}, "id" | "gradoId_nombre">
+  colegioGrado?: Prisma.XOR<Prisma.ColegioGradoScalarRelationFilter, Prisma.ColegioGradoWhereInput>
+}, "id" | "colegioGradoId_nombre">
 
 export type SeccionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  gradoId?: Prisma.SortOrder
+  colegioGradoId?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   vacantes?: Prisma.SortOrder
   activo?: Prisma.SortOrder
@@ -281,7 +281,7 @@ export type SeccionScalarWhereWithAggregatesInput = {
   OR?: Prisma.SeccionScalarWhereWithAggregatesInput[]
   NOT?: Prisma.SeccionScalarWhereWithAggregatesInput | Prisma.SeccionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Seccion"> | string
-  gradoId?: Prisma.StringWithAggregatesFilter<"Seccion"> | string
+  colegioGradoId?: Prisma.StringWithAggregatesFilter<"Seccion"> | string
   nombre?: Prisma.StringWithAggregatesFilter<"Seccion"> | string
   vacantes?: Prisma.IntWithAggregatesFilter<"Seccion"> | number
   activo?: Prisma.BoolWithAggregatesFilter<"Seccion"> | boolean
@@ -296,12 +296,12 @@ export type SeccionCreateInput = {
   activo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  grado: Prisma.GradoCreateNestedOneWithoutSeccionesInput
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
 }
 
 export type SeccionUncheckedCreateInput = {
   id?: string
-  gradoId: string
+  colegioGradoId: string
   nombre: string
   vacantes?: number
   activo?: boolean
@@ -316,12 +316,12 @@ export type SeccionUpdateInput = {
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  grado?: Prisma.GradoUpdateOneRequiredWithoutSeccionesNestedInput
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
 }
 
 export type SeccionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  gradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   vacantes?: Prisma.IntFieldUpdateOperationsInput | number
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -331,7 +331,7 @@ export type SeccionUncheckedUpdateInput = {
 
 export type SeccionCreateManyInput = {
   id?: string
-  gradoId: string
+  colegioGradoId: string
   nombre: string
   vacantes?: number
   activo?: boolean
@@ -350,7 +350,7 @@ export type SeccionUpdateManyMutationInput = {
 
 export type SeccionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  gradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   vacantes?: Prisma.IntFieldUpdateOperationsInput | number
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -368,14 +368,14 @@ export type SeccionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type SeccionGradoIdNombreCompoundUniqueInput = {
-  gradoId: string
+export type SeccionColegioGradoIdNombreCompoundUniqueInput = {
+  colegioGradoId: string
   nombre: string
 }
 
 export type SeccionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  gradoId?: Prisma.SortOrder
+  colegioGradoId?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   vacantes?: Prisma.SortOrder
   activo?: Prisma.SortOrder
@@ -389,7 +389,7 @@ export type SeccionAvgOrderByAggregateInput = {
 
 export type SeccionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  gradoId?: Prisma.SortOrder
+  colegioGradoId?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   vacantes?: Prisma.SortOrder
   activo?: Prisma.SortOrder
@@ -399,7 +399,7 @@ export type SeccionMaxOrderByAggregateInput = {
 
 export type SeccionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  gradoId?: Prisma.SortOrder
+  colegioGradoId?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   vacantes?: Prisma.SortOrder
   activo?: Prisma.SortOrder
@@ -411,49 +411,57 @@ export type SeccionSumOrderByAggregateInput = {
   vacantes?: Prisma.SortOrder
 }
 
-export type SeccionCreateNestedManyWithoutGradoInput = {
-  create?: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput> | Prisma.SeccionCreateWithoutGradoInput[] | Prisma.SeccionUncheckedCreateWithoutGradoInput[]
-  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutGradoInput | Prisma.SeccionCreateOrConnectWithoutGradoInput[]
-  createMany?: Prisma.SeccionCreateManyGradoInputEnvelope
+export type SeccionCreateNestedManyWithoutColegioGradoInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput> | Prisma.SeccionCreateWithoutColegioGradoInput[] | Prisma.SeccionUncheckedCreateWithoutColegioGradoInput[]
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutColegioGradoInput | Prisma.SeccionCreateOrConnectWithoutColegioGradoInput[]
+  createMany?: Prisma.SeccionCreateManyColegioGradoInputEnvelope
   connect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
 }
 
-export type SeccionUncheckedCreateNestedManyWithoutGradoInput = {
-  create?: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput> | Prisma.SeccionCreateWithoutGradoInput[] | Prisma.SeccionUncheckedCreateWithoutGradoInput[]
-  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutGradoInput | Prisma.SeccionCreateOrConnectWithoutGradoInput[]
-  createMany?: Prisma.SeccionCreateManyGradoInputEnvelope
+export type SeccionUncheckedCreateNestedManyWithoutColegioGradoInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput> | Prisma.SeccionCreateWithoutColegioGradoInput[] | Prisma.SeccionUncheckedCreateWithoutColegioGradoInput[]
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutColegioGradoInput | Prisma.SeccionCreateOrConnectWithoutColegioGradoInput[]
+  createMany?: Prisma.SeccionCreateManyColegioGradoInputEnvelope
   connect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
 }
 
-export type SeccionUpdateManyWithoutGradoNestedInput = {
-  create?: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput> | Prisma.SeccionCreateWithoutGradoInput[] | Prisma.SeccionUncheckedCreateWithoutGradoInput[]
-  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutGradoInput | Prisma.SeccionCreateOrConnectWithoutGradoInput[]
-  upsert?: Prisma.SeccionUpsertWithWhereUniqueWithoutGradoInput | Prisma.SeccionUpsertWithWhereUniqueWithoutGradoInput[]
-  createMany?: Prisma.SeccionCreateManyGradoInputEnvelope
+export type SeccionUpdateManyWithoutColegioGradoNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput> | Prisma.SeccionCreateWithoutColegioGradoInput[] | Prisma.SeccionUncheckedCreateWithoutColegioGradoInput[]
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutColegioGradoInput | Prisma.SeccionCreateOrConnectWithoutColegioGradoInput[]
+  upsert?: Prisma.SeccionUpsertWithWhereUniqueWithoutColegioGradoInput | Prisma.SeccionUpsertWithWhereUniqueWithoutColegioGradoInput[]
+  createMany?: Prisma.SeccionCreateManyColegioGradoInputEnvelope
   set?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   disconnect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   delete?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   connect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
-  update?: Prisma.SeccionUpdateWithWhereUniqueWithoutGradoInput | Prisma.SeccionUpdateWithWhereUniqueWithoutGradoInput[]
-  updateMany?: Prisma.SeccionUpdateManyWithWhereWithoutGradoInput | Prisma.SeccionUpdateManyWithWhereWithoutGradoInput[]
+  update?: Prisma.SeccionUpdateWithWhereUniqueWithoutColegioGradoInput | Prisma.SeccionUpdateWithWhereUniqueWithoutColegioGradoInput[]
+  updateMany?: Prisma.SeccionUpdateManyWithWhereWithoutColegioGradoInput | Prisma.SeccionUpdateManyWithWhereWithoutColegioGradoInput[]
   deleteMany?: Prisma.SeccionScalarWhereInput | Prisma.SeccionScalarWhereInput[]
 }
 
-export type SeccionUncheckedUpdateManyWithoutGradoNestedInput = {
-  create?: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput> | Prisma.SeccionCreateWithoutGradoInput[] | Prisma.SeccionUncheckedCreateWithoutGradoInput[]
-  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutGradoInput | Prisma.SeccionCreateOrConnectWithoutGradoInput[]
-  upsert?: Prisma.SeccionUpsertWithWhereUniqueWithoutGradoInput | Prisma.SeccionUpsertWithWhereUniqueWithoutGradoInput[]
-  createMany?: Prisma.SeccionCreateManyGradoInputEnvelope
+export type SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput> | Prisma.SeccionCreateWithoutColegioGradoInput[] | Prisma.SeccionUncheckedCreateWithoutColegioGradoInput[]
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutColegioGradoInput | Prisma.SeccionCreateOrConnectWithoutColegioGradoInput[]
+  upsert?: Prisma.SeccionUpsertWithWhereUniqueWithoutColegioGradoInput | Prisma.SeccionUpsertWithWhereUniqueWithoutColegioGradoInput[]
+  createMany?: Prisma.SeccionCreateManyColegioGradoInputEnvelope
   set?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   disconnect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   delete?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
   connect?: Prisma.SeccionWhereUniqueInput | Prisma.SeccionWhereUniqueInput[]
-  update?: Prisma.SeccionUpdateWithWhereUniqueWithoutGradoInput | Prisma.SeccionUpdateWithWhereUniqueWithoutGradoInput[]
-  updateMany?: Prisma.SeccionUpdateManyWithWhereWithoutGradoInput | Prisma.SeccionUpdateManyWithWhereWithoutGradoInput[]
+  update?: Prisma.SeccionUpdateWithWhereUniqueWithoutColegioGradoInput | Prisma.SeccionUpdateWithWhereUniqueWithoutColegioGradoInput[]
+  updateMany?: Prisma.SeccionUpdateManyWithWhereWithoutColegioGradoInput | Prisma.SeccionUpdateManyWithWhereWithoutColegioGradoInput[]
   deleteMany?: Prisma.SeccionScalarWhereInput | Prisma.SeccionScalarWhereInput[]
 }
 
-export type SeccionCreateWithoutGradoInput = {
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type SeccionCreateWithoutColegioGradoInput = {
   id?: string
   nombre: string
   vacantes?: number
@@ -462,7 +470,7 @@ export type SeccionCreateWithoutGradoInput = {
   updatedAt?: Date | string
 }
 
-export type SeccionUncheckedCreateWithoutGradoInput = {
+export type SeccionUncheckedCreateWithoutColegioGradoInput = {
   id?: string
   nombre: string
   vacantes?: number
@@ -471,30 +479,30 @@ export type SeccionUncheckedCreateWithoutGradoInput = {
   updatedAt?: Date | string
 }
 
-export type SeccionCreateOrConnectWithoutGradoInput = {
+export type SeccionCreateOrConnectWithoutColegioGradoInput = {
   where: Prisma.SeccionWhereUniqueInput
-  create: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput>
 }
 
-export type SeccionCreateManyGradoInputEnvelope = {
-  data: Prisma.SeccionCreateManyGradoInput | Prisma.SeccionCreateManyGradoInput[]
+export type SeccionCreateManyColegioGradoInputEnvelope = {
+  data: Prisma.SeccionCreateManyColegioGradoInput | Prisma.SeccionCreateManyColegioGradoInput[]
   skipDuplicates?: boolean
 }
 
-export type SeccionUpsertWithWhereUniqueWithoutGradoInput = {
+export type SeccionUpsertWithWhereUniqueWithoutColegioGradoInput = {
   where: Prisma.SeccionWhereUniqueInput
-  update: Prisma.XOR<Prisma.SeccionUpdateWithoutGradoInput, Prisma.SeccionUncheckedUpdateWithoutGradoInput>
-  create: Prisma.XOR<Prisma.SeccionCreateWithoutGradoInput, Prisma.SeccionUncheckedCreateWithoutGradoInput>
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutColegioGradoInput, Prisma.SeccionUncheckedUpdateWithoutColegioGradoInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput>
 }
 
-export type SeccionUpdateWithWhereUniqueWithoutGradoInput = {
+export type SeccionUpdateWithWhereUniqueWithoutColegioGradoInput = {
   where: Prisma.SeccionWhereUniqueInput
-  data: Prisma.XOR<Prisma.SeccionUpdateWithoutGradoInput, Prisma.SeccionUncheckedUpdateWithoutGradoInput>
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutColegioGradoInput, Prisma.SeccionUncheckedUpdateWithoutColegioGradoInput>
 }
 
-export type SeccionUpdateManyWithWhereWithoutGradoInput = {
+export type SeccionUpdateManyWithWhereWithoutColegioGradoInput = {
   where: Prisma.SeccionScalarWhereInput
-  data: Prisma.XOR<Prisma.SeccionUpdateManyMutationInput, Prisma.SeccionUncheckedUpdateManyWithoutGradoInput>
+  data: Prisma.XOR<Prisma.SeccionUpdateManyMutationInput, Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoInput>
 }
 
 export type SeccionScalarWhereInput = {
@@ -502,7 +510,7 @@ export type SeccionScalarWhereInput = {
   OR?: Prisma.SeccionScalarWhereInput[]
   NOT?: Prisma.SeccionScalarWhereInput | Prisma.SeccionScalarWhereInput[]
   id?: Prisma.StringFilter<"Seccion"> | string
-  gradoId?: Prisma.StringFilter<"Seccion"> | string
+  colegioGradoId?: Prisma.StringFilter<"Seccion"> | string
   nombre?: Prisma.StringFilter<"Seccion"> | string
   vacantes?: Prisma.IntFilter<"Seccion"> | number
   activo?: Prisma.BoolFilter<"Seccion"> | boolean
@@ -510,7 +518,7 @@ export type SeccionScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
 }
 
-export type SeccionCreateManyGradoInput = {
+export type SeccionCreateManyColegioGradoInput = {
   id?: string
   nombre: string
   vacantes?: number
@@ -519,7 +527,7 @@ export type SeccionCreateManyGradoInput = {
   updatedAt?: Date | string
 }
 
-export type SeccionUpdateWithoutGradoInput = {
+export type SeccionUpdateWithoutColegioGradoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   vacantes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -528,7 +536,7 @@ export type SeccionUpdateWithoutGradoInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SeccionUncheckedUpdateWithoutGradoInput = {
+export type SeccionUncheckedUpdateWithoutColegioGradoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   vacantes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -537,7 +545,7 @@ export type SeccionUncheckedUpdateWithoutGradoInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type SeccionUncheckedUpdateManyWithoutGradoInput = {
+export type SeccionUncheckedUpdateManyWithoutColegioGradoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   vacantes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -550,40 +558,40 @@ export type SeccionUncheckedUpdateManyWithoutGradoInput = {
 
 export type SeccionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  gradoId?: boolean
+  colegioGradoId?: boolean
   nombre?: boolean
   vacantes?: boolean
   activo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seccion"]>
 
 export type SeccionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  gradoId?: boolean
+  colegioGradoId?: boolean
   nombre?: boolean
   vacantes?: boolean
   activo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seccion"]>
 
 export type SeccionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  gradoId?: boolean
+  colegioGradoId?: boolean
   nombre?: boolean
   vacantes?: boolean
   activo?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seccion"]>
 
 export type SeccionSelectScalar = {
   id?: boolean
-  gradoId?: boolean
+  colegioGradoId?: boolean
   nombre?: boolean
   vacantes?: boolean
   activo?: boolean
@@ -591,25 +599,25 @@ export type SeccionSelectScalar = {
   updatedAt?: boolean
 }
 
-export type SeccionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "gradoId" | "nombre" | "vacantes" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["seccion"]>
+export type SeccionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "colegioGradoId" | "nombre" | "vacantes" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["seccion"]>
 export type SeccionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }
 export type SeccionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }
 export type SeccionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  grado?: boolean | Prisma.GradoDefaultArgs<ExtArgs>
+  colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
 }
 
 export type $SeccionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Seccion"
   objects: {
-    grado: Prisma.$GradoPayload<ExtArgs>
+    colegioGrado: Prisma.$ColegioGradoPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    gradoId: string
+    colegioGradoId: string
     nombre: string
     vacantes: number
     activo: boolean
@@ -1009,7 +1017,7 @@ readonly fields: SeccionFieldRefs;
  */
 export interface Prisma__SeccionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  grado<T extends Prisma.GradoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GradoDefaultArgs<ExtArgs>>): Prisma.Prisma__GradoClient<runtime.Types.Result.GetResult<Prisma.$GradoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  colegioGrado<T extends Prisma.ColegioGradoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioGradoDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioGradoClient<runtime.Types.Result.GetResult<Prisma.$ColegioGradoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1040,7 +1048,7 @@ export interface Prisma__SeccionClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface SeccionFieldRefs {
   readonly id: Prisma.FieldRef<"Seccion", 'String'>
-  readonly gradoId: Prisma.FieldRef<"Seccion", 'String'>
+  readonly colegioGradoId: Prisma.FieldRef<"Seccion", 'String'>
   readonly nombre: Prisma.FieldRef<"Seccion", 'String'>
   readonly vacantes: Prisma.FieldRef<"Seccion", 'Int'>
   readonly activo: Prisma.FieldRef<"Seccion", 'Boolean'>

@@ -4,6 +4,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ok, fail, Result, NotFoundError } from '@shared/domain/result';
 import { COLEGIO_REPOSITORY, type ColegioRepository } from '../../domain/repositories/colegio.repository';
 import { ColegioResponseDto } from '../dtos/colegio-response.dto';
+import type { EstadoColegio } from 'src/generated/prisma/enums';
 
 @Injectable()
 export class CambiarEstadoColegioUseCase {
@@ -12,24 +13,15 @@ export class CambiarEstadoColegioUseCase {
     private readonly colegioRepository: ColegioRepository,
   ) {}
 
-  async execute(colegioId: string, estado: string): Promise<Result<ColegioResponseDto>> {
-    const colegio = await this.colegioRepository.findById(colegioId);
+  async execute(colegioId: string, estado: EstadoColegio): Promise<Result<ColegioResponseDto>> {
+    const colegio = await this.colegioRepository.buscarPorId(colegioId);
     if (!colegio) return fail(new NotFoundError('Colegio', colegioId));
-
     const actualizado = await this.colegioRepository.cambiarEstado(colegioId, estado);
-
     return ok({
-      id:          actualizado.id,
-      nombre:      actualizado.nombre,
-      ruc:         actualizado.ruc,
-      direccion:   actualizado.direccion,
-      telefono:    actualizado.telefono,
-      email:       actualizado.email,
-      estado:      actualizado.estado,
-      plan:        actualizado.plan,
-      planVenceEn: actualizado.planVenceEn,
-      createdAt:   actualizado.createdAt,
-      updatedAt:   actualizado.updatedAt,
+      id: actualizado.id, nombre: actualizado.nombre, ruc: actualizado.ruc,
+      direccion: actualizado.direccion, telefono: actualizado.telefono,
+      email: actualizado.email, estado: actualizado.estado, plan: actualizado.plan,
+      planVenceEn: actualizado.planVenceEn, createdAt: actualizado.createdAt, updatedAt: actualizado.updatedAt,
     });
   }
 }

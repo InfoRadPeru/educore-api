@@ -26,19 +26,19 @@ export type AggregateColegioNivelTurno = {
 
 export type ColegioNivelTurnoMinAggregateOutputType = {
   id: string | null
-  nivelId: string | null
+  colegioNivelId: string | null
   turno: $Enums.Turno | null
 }
 
 export type ColegioNivelTurnoMaxAggregateOutputType = {
   id: string | null
-  nivelId: string | null
+  colegioNivelId: string | null
   turno: $Enums.Turno | null
 }
 
 export type ColegioNivelTurnoCountAggregateOutputType = {
   id: number
-  nivelId: number
+  colegioNivelId: number
   turno: number
   _all: number
 }
@@ -46,19 +46,19 @@ export type ColegioNivelTurnoCountAggregateOutputType = {
 
 export type ColegioNivelTurnoMinAggregateInputType = {
   id?: true
-  nivelId?: true
+  colegioNivelId?: true
   turno?: true
 }
 
 export type ColegioNivelTurnoMaxAggregateInputType = {
   id?: true
-  nivelId?: true
+  colegioNivelId?: true
   turno?: true
 }
 
 export type ColegioNivelTurnoCountAggregateInputType = {
   id?: true
-  nivelId?: true
+  colegioNivelId?: true
   turno?: true
   _all?: true
 }
@@ -137,7 +137,7 @@ export type ColegioNivelTurnoGroupByArgs<ExtArgs extends runtime.Types.Extension
 
 export type ColegioNivelTurnoGroupByOutputType = {
   id: string
-  nivelId: string
+  colegioNivelId: string
   turno: $Enums.Turno
   _count: ColegioNivelTurnoCountAggregateOutputType | null
   _min: ColegioNivelTurnoMinAggregateOutputType | null
@@ -164,32 +164,32 @@ export type ColegioNivelTurnoWhereInput = {
   OR?: Prisma.ColegioNivelTurnoWhereInput[]
   NOT?: Prisma.ColegioNivelTurnoWhereInput | Prisma.ColegioNivelTurnoWhereInput[]
   id?: Prisma.StringFilter<"ColegioNivelTurno"> | string
-  nivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
+  colegioNivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
   turno?: Prisma.EnumTurnoFilter<"ColegioNivelTurno"> | $Enums.Turno
-  nivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
+  colegioNivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
 }
 
 export type ColegioNivelTurnoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  nivelId?: Prisma.SortOrder
+  colegioNivelId?: Prisma.SortOrder
   turno?: Prisma.SortOrder
-  nivel?: Prisma.ColegioNivelOrderByWithRelationInput
+  colegioNivel?: Prisma.ColegioNivelOrderByWithRelationInput
 }
 
 export type ColegioNivelTurnoWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  nivelId_turno?: Prisma.ColegioNivelTurnoNivelIdTurnoCompoundUniqueInput
+  colegioNivelId_turno?: Prisma.ColegioNivelTurnoColegioNivelIdTurnoCompoundUniqueInput
   AND?: Prisma.ColegioNivelTurnoWhereInput | Prisma.ColegioNivelTurnoWhereInput[]
   OR?: Prisma.ColegioNivelTurnoWhereInput[]
   NOT?: Prisma.ColegioNivelTurnoWhereInput | Prisma.ColegioNivelTurnoWhereInput[]
-  nivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
+  colegioNivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
   turno?: Prisma.EnumTurnoFilter<"ColegioNivelTurno"> | $Enums.Turno
-  nivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
-}, "id" | "nivelId_turno">
+  colegioNivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
+}, "id" | "colegioNivelId_turno">
 
 export type ColegioNivelTurnoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  nivelId?: Prisma.SortOrder
+  colegioNivelId?: Prisma.SortOrder
   turno?: Prisma.SortOrder
   _count?: Prisma.ColegioNivelTurnoCountOrderByAggregateInput
   _max?: Prisma.ColegioNivelTurnoMaxOrderByAggregateInput
@@ -201,37 +201,37 @@ export type ColegioNivelTurnoScalarWhereWithAggregatesInput = {
   OR?: Prisma.ColegioNivelTurnoScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ColegioNivelTurnoScalarWhereWithAggregatesInput | Prisma.ColegioNivelTurnoScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"ColegioNivelTurno"> | string
-  nivelId?: Prisma.StringWithAggregatesFilter<"ColegioNivelTurno"> | string
+  colegioNivelId?: Prisma.StringWithAggregatesFilter<"ColegioNivelTurno"> | string
   turno?: Prisma.EnumTurnoWithAggregatesFilter<"ColegioNivelTurno"> | $Enums.Turno
 }
 
 export type ColegioNivelTurnoCreateInput = {
   id?: string
   turno: $Enums.Turno
-  nivel: Prisma.ColegioNivelCreateNestedOneWithoutTurnosInput
+  colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutTurnosInput
 }
 
 export type ColegioNivelTurnoUncheckedCreateInput = {
   id?: string
-  nivelId: string
+  colegioNivelId: string
   turno: $Enums.Turno
 }
 
 export type ColegioNivelTurnoUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
-  nivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutTurnosNestedInput
+  colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutTurnosNestedInput
 }
 
 export type ColegioNivelTurnoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  nivelId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioNivelId?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
 }
 
 export type ColegioNivelTurnoCreateManyInput = {
   id?: string
-  nivelId: string
+  colegioNivelId: string
   turno: $Enums.Turno
 }
 
@@ -242,7 +242,7 @@ export type ColegioNivelTurnoUpdateManyMutationInput = {
 
 export type ColegioNivelTurnoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  nivelId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioNivelId?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
 }
 
@@ -256,68 +256,68 @@ export type ColegioNivelTurnoOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type ColegioNivelTurnoNivelIdTurnoCompoundUniqueInput = {
-  nivelId: string
+export type ColegioNivelTurnoColegioNivelIdTurnoCompoundUniqueInput = {
+  colegioNivelId: string
   turno: $Enums.Turno
 }
 
 export type ColegioNivelTurnoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  nivelId?: Prisma.SortOrder
+  colegioNivelId?: Prisma.SortOrder
   turno?: Prisma.SortOrder
 }
 
 export type ColegioNivelTurnoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  nivelId?: Prisma.SortOrder
+  colegioNivelId?: Prisma.SortOrder
   turno?: Prisma.SortOrder
 }
 
 export type ColegioNivelTurnoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  nivelId?: Prisma.SortOrder
+  colegioNivelId?: Prisma.SortOrder
   turno?: Prisma.SortOrder
 }
 
-export type ColegioNivelTurnoCreateNestedManyWithoutNivelInput = {
-  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput[]
-  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput[]
-  createMany?: Prisma.ColegioNivelTurnoCreateManyNivelInputEnvelope
+export type ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput[]
+  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput[]
+  createMany?: Prisma.ColegioNivelTurnoCreateManyColegioNivelInputEnvelope
   connect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
 }
 
-export type ColegioNivelTurnoUncheckedCreateNestedManyWithoutNivelInput = {
-  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput[]
-  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput[]
-  createMany?: Prisma.ColegioNivelTurnoCreateManyNivelInputEnvelope
+export type ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput[]
+  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput[]
+  createMany?: Prisma.ColegioNivelTurnoCreateManyColegioNivelInputEnvelope
   connect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
 }
 
-export type ColegioNivelTurnoUpdateManyWithoutNivelNestedInput = {
-  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput[]
-  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput[]
-  upsert?: Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutNivelInput | Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutNivelInput[]
-  createMany?: Prisma.ColegioNivelTurnoCreateManyNivelInputEnvelope
+export type ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput[]
+  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput[]
+  upsert?: Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutColegioNivelInput[]
+  createMany?: Prisma.ColegioNivelTurnoCreateManyColegioNivelInputEnvelope
   set?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   disconnect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   delete?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   connect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
-  update?: Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutNivelInput | Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutNivelInput[]
-  updateMany?: Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutNivelInput | Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutNivelInput[]
+  update?: Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutColegioNivelInput[]
+  updateMany?: Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutColegioNivelInput[]
   deleteMany?: Prisma.ColegioNivelTurnoScalarWhereInput | Prisma.ColegioNivelTurnoScalarWhereInput[]
 }
 
-export type ColegioNivelTurnoUncheckedUpdateManyWithoutNivelNestedInput = {
-  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput[]
-  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutNivelInput[]
-  upsert?: Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutNivelInput | Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutNivelInput[]
-  createMany?: Prisma.ColegioNivelTurnoCreateManyNivelInputEnvelope
+export type ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput> | Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput[] | Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput[]
+  connectOrCreate?: Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput | Prisma.ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput[]
+  upsert?: Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpsertWithWhereUniqueWithoutColegioNivelInput[]
+  createMany?: Prisma.ColegioNivelTurnoCreateManyColegioNivelInputEnvelope
   set?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   disconnect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   delete?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
   connect?: Prisma.ColegioNivelTurnoWhereUniqueInput | Prisma.ColegioNivelTurnoWhereUniqueInput[]
-  update?: Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutNivelInput | Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutNivelInput[]
-  updateMany?: Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutNivelInput | Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutNivelInput[]
+  update?: Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpdateWithWhereUniqueWithoutColegioNivelInput[]
+  updateMany?: Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutColegioNivelInput | Prisma.ColegioNivelTurnoUpdateManyWithWhereWithoutColegioNivelInput[]
   deleteMany?: Prisma.ColegioNivelTurnoScalarWhereInput | Prisma.ColegioNivelTurnoScalarWhereInput[]
 }
 
@@ -325,40 +325,40 @@ export type EnumTurnoFieldUpdateOperationsInput = {
   set?: $Enums.Turno
 }
 
-export type ColegioNivelTurnoCreateWithoutNivelInput = {
+export type ColegioNivelTurnoCreateWithoutColegioNivelInput = {
   id?: string
   turno: $Enums.Turno
 }
 
-export type ColegioNivelTurnoUncheckedCreateWithoutNivelInput = {
+export type ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput = {
   id?: string
   turno: $Enums.Turno
 }
 
-export type ColegioNivelTurnoCreateOrConnectWithoutNivelInput = {
+export type ColegioNivelTurnoCreateOrConnectWithoutColegioNivelInput = {
   where: Prisma.ColegioNivelTurnoWhereUniqueInput
-  create: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput>
+  create: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput>
 }
 
-export type ColegioNivelTurnoCreateManyNivelInputEnvelope = {
-  data: Prisma.ColegioNivelTurnoCreateManyNivelInput | Prisma.ColegioNivelTurnoCreateManyNivelInput[]
+export type ColegioNivelTurnoCreateManyColegioNivelInputEnvelope = {
+  data: Prisma.ColegioNivelTurnoCreateManyColegioNivelInput | Prisma.ColegioNivelTurnoCreateManyColegioNivelInput[]
   skipDuplicates?: boolean
 }
 
-export type ColegioNivelTurnoUpsertWithWhereUniqueWithoutNivelInput = {
+export type ColegioNivelTurnoUpsertWithWhereUniqueWithoutColegioNivelInput = {
   where: Prisma.ColegioNivelTurnoWhereUniqueInput
-  update: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedUpdateWithoutNivelInput>
-  create: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutNivelInput>
+  update: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedUpdateWithoutColegioNivelInput>
+  create: Prisma.XOR<Prisma.ColegioNivelTurnoCreateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedCreateWithoutColegioNivelInput>
 }
 
-export type ColegioNivelTurnoUpdateWithWhereUniqueWithoutNivelInput = {
+export type ColegioNivelTurnoUpdateWithWhereUniqueWithoutColegioNivelInput = {
   where: Prisma.ColegioNivelTurnoWhereUniqueInput
-  data: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateWithoutNivelInput, Prisma.ColegioNivelTurnoUncheckedUpdateWithoutNivelInput>
+  data: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateWithoutColegioNivelInput, Prisma.ColegioNivelTurnoUncheckedUpdateWithoutColegioNivelInput>
 }
 
-export type ColegioNivelTurnoUpdateManyWithWhereWithoutNivelInput = {
+export type ColegioNivelTurnoUpdateManyWithWhereWithoutColegioNivelInput = {
   where: Prisma.ColegioNivelTurnoScalarWhereInput
-  data: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateManyMutationInput, Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutNivelInput>
+  data: Prisma.XOR<Prisma.ColegioNivelTurnoUpdateManyMutationInput, Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelInput>
 }
 
 export type ColegioNivelTurnoScalarWhereInput = {
@@ -366,26 +366,26 @@ export type ColegioNivelTurnoScalarWhereInput = {
   OR?: Prisma.ColegioNivelTurnoScalarWhereInput[]
   NOT?: Prisma.ColegioNivelTurnoScalarWhereInput | Prisma.ColegioNivelTurnoScalarWhereInput[]
   id?: Prisma.StringFilter<"ColegioNivelTurno"> | string
-  nivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
+  colegioNivelId?: Prisma.StringFilter<"ColegioNivelTurno"> | string
   turno?: Prisma.EnumTurnoFilter<"ColegioNivelTurno"> | $Enums.Turno
 }
 
-export type ColegioNivelTurnoCreateManyNivelInput = {
+export type ColegioNivelTurnoCreateManyColegioNivelInput = {
   id?: string
   turno: $Enums.Turno
 }
 
-export type ColegioNivelTurnoUpdateWithoutNivelInput = {
+export type ColegioNivelTurnoUpdateWithoutColegioNivelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
 }
 
-export type ColegioNivelTurnoUncheckedUpdateWithoutNivelInput = {
+export type ColegioNivelTurnoUncheckedUpdateWithoutColegioNivelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
 }
 
-export type ColegioNivelTurnoUncheckedUpdateManyWithoutNivelInput = {
+export type ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
 }
@@ -394,50 +394,50 @@ export type ColegioNivelTurnoUncheckedUpdateManyWithoutNivelInput = {
 
 export type ColegioNivelTurnoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  nivelId?: boolean
+  colegioNivelId?: boolean
   turno?: boolean
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegioNivelTurno"]>
 
 export type ColegioNivelTurnoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  nivelId?: boolean
+  colegioNivelId?: boolean
   turno?: boolean
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegioNivelTurno"]>
 
 export type ColegioNivelTurnoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  nivelId?: boolean
+  colegioNivelId?: boolean
   turno?: boolean
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegioNivelTurno"]>
 
 export type ColegioNivelTurnoSelectScalar = {
   id?: boolean
-  nivelId?: boolean
+  colegioNivelId?: boolean
   turno?: boolean
 }
 
-export type ColegioNivelTurnoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nivelId" | "turno", ExtArgs["result"]["colegioNivelTurno"]>
+export type ColegioNivelTurnoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "colegioNivelId" | "turno", ExtArgs["result"]["colegioNivelTurno"]>
 export type ColegioNivelTurnoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }
 export type ColegioNivelTurnoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }
 export type ColegioNivelTurnoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  nivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
+  colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
 }
 
 export type $ColegioNivelTurnoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ColegioNivelTurno"
   objects: {
-    nivel: Prisma.$ColegioNivelPayload<ExtArgs>
+    colegioNivel: Prisma.$ColegioNivelPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    nivelId: string
+    colegioNivelId: string
     turno: $Enums.Turno
   }, ExtArgs["result"]["colegioNivelTurno"]>
   composites: {}
@@ -833,7 +833,7 @@ readonly fields: ColegioNivelTurnoFieldRefs;
  */
 export interface Prisma__ColegioNivelTurnoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  nivel<T extends Prisma.ColegioNivelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivelDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioNivelClient<runtime.Types.Result.GetResult<Prisma.$ColegioNivelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  colegioNivel<T extends Prisma.ColegioNivelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivelDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioNivelClient<runtime.Types.Result.GetResult<Prisma.$ColegioNivelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -864,7 +864,7 @@ export interface Prisma__ColegioNivelTurnoClient<T, Null = never, ExtArgs extend
  */
 export interface ColegioNivelTurnoFieldRefs {
   readonly id: Prisma.FieldRef<"ColegioNivelTurno", 'String'>
-  readonly nivelId: Prisma.FieldRef<"ColegioNivelTurno", 'String'>
+  readonly colegioNivelId: Prisma.FieldRef<"ColegioNivelTurno", 'String'>
   readonly turno: Prisma.FieldRef<"ColegioNivelTurno", 'Turno'>
 }
     

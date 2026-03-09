@@ -60,6 +60,11 @@ export type ColegioNivel = Prisma.ColegioNivelModel
  */
 export type ColegioNivelTurno = Prisma.ColegioNivelTurnoModel
 /**
+ * Model ColegioGrado
+ * 
+ */
+export type ColegioGrado = Prisma.ColegioGradoModel
+/**
  * Model Sede
  * 
  */
@@ -69,11 +74,6 @@ export type Sede = Prisma.SedeModel
  * 
  */
 export type SedeConfiguracion = Prisma.SedeConfiguracionModel
-/**
- * Model Grado
- * 
- */
-export type Grado = Prisma.GradoModel
 /**
  * Model Seccion
  * 
@@ -124,3 +124,13 @@ export type PasswordReset = Prisma.PasswordResetModel
  * 
  */
 export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model NivelMaestro
+ * 
+ */
+export type NivelMaestro = Prisma.NivelMaestroModel
+/**
+ * Model GradoMaestro
+ * 
+ */
+export type GradoMaestro = Prisma.GradoMaestroModel
