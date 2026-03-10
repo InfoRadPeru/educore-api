@@ -35,7 +35,7 @@ export class UsuarioMapper {
       bloqueadoHasta:   raw.bloqueadoHasta,
       ultimoAcceso:     raw.ultimoAcceso,
       esPlatformAdmin:  raw.esPlatformAdmin,
-      creadoEn:         raw.createdAt,
+      createdAt:         raw.createdAt,
     });
   }
 }

@@ -20,7 +20,7 @@ export interface UsuarioProps {
   bloqueadoHasta:   Date | null;
   ultimoAcceso:     Date | null;
   esPlatformAdmin:  boolean;
-  creadoEn:         Date;
+  createdAt:         Date;
 }
 
 const MAX_INTENTOS_FALLIDOS = 5;
@@ -45,7 +45,7 @@ export class Usuario {
   get bloqueadoHasta():   Date | null   { return this.props.bloqueadoHasta; }
   get ultimoAcceso():     Date | null   { return this.props.ultimoAcceso; }
   get esPlatformAdmin():  boolean       { return this.props.esPlatformAdmin; }
-  get creadoEn():         Date          { return this.props.creadoEn; }
+  get createdAt():         Date          { return this.props.createdAt; }
 
   estaActivo(): boolean {
     return this.props.estado === EstadoUsuario.ACTIVO;
