@@ -16,7 +16,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@shared/infrastructure/prisma/prisma.service';
-import { Nivel } from '@modules/colegios/domain/entities/nivel.entity';
+import { Nivel, type NivelActivado, type NivelDisponible } from '@modules/colegios/domain/entities/nivel.entity';
 import { NivelRepository } from '@modules/colegios/domain/repositories/nivel.repository';
 import { NivelMapper } from './nivel.mapper';
 
@@ -27,7 +27,6 @@ const INCLUDE_NIVEL = {
 
 @Injectable()
 export class PrismaNivelRepository implements NivelRepository {
-
   constructor(private readonly prisma: PrismaService) {}
 
   async buscarTodos(colegioId: string): Promise<Nivel[]> {
@@ -38,26 +37,35 @@ export class PrismaNivelRepository implements NivelRepository {
         colegioNiveles: {
           where:   { colegioId },
           include: INCLUDE_NIVEL,
-        }, 
+        },
       },
     });
 
     return maestros.map(maestro => {
       const colegioNivel = maestro.colegioNiveles[0];
 
-      // Nivel disponible pero no activado por el colegio aún
       if (!colegioNivel) {
-        return Nivel.reconstitute({
-          id:             '',
+        // Nivel disponible — aún no activado por este colegio
+        const disponible: NivelDisponible = {
+          tipo:           'disponible',
           nivelMaestroId: maestro.id,
           nombre:         maestro.nombre,
           orden:          maestro.orden,
-          activo:         false,
-          turnos:         [],
-        });
+        };
+        return disponible;
       }
 
-      return NivelMapper.toDomain(colegioNivel as any);
+      // Nivel ya activado por el colegio
+      const activado: NivelActivado = {
+        tipo:           'activado',
+        id:             colegioNivel.id,
+        nivelMaestroId: maestro.id,
+        nombre:         maestro.nombre,
+        orden:          maestro.orden,
+        activo:         colegioNivel.activo,
+        turnos:         colegioNivel.turnos.map((t: any) => t.turno),
+      };
+      return activado;
     });
   }
 
@@ -66,7 +74,18 @@ export class PrismaNivelRepository implements NivelRepository {
       where:   { colegioId_nivelMaestroId: { colegioId, nivelMaestroId } },
       include: INCLUDE_NIVEL,
     });
-    return raw ? NivelMapper.toDomain(raw as any) : null;
+    if (!raw) return null;
+
+    const activado: NivelActivado = {
+      tipo:           'activado',
+      id:             raw.id,
+      nivelMaestroId: raw.nivelMaestroId,
+      nombre:         (raw as any).nivelMaestro.nombre,
+      orden:          (raw as any).nivelMaestro.orden,
+      activo:         raw.activo,
+      turnos:         (raw as any).turnos.map((t: any) => t.turno),
+    };
+    return activado;
   }
 
   async activar(colegioId: string, nivelMaestroId: string): Promise<Nivel> {
@@ -74,7 +93,17 @@ export class PrismaNivelRepository implements NivelRepository {
       data:    { colegioId, nivelMaestroId, activo: true },
       include: INCLUDE_NIVEL,
     });
-    return NivelMapper.toDomain(raw as any);
+
+    const activado: NivelActivado = {
+      tipo:           'activado',
+      id:             raw.id,
+      nivelMaestroId: raw.nivelMaestroId,
+      nombre:         (raw as any).nivelMaestro.nombre,
+      orden:          (raw as any).nivelMaestro.orden,
+      activo:         raw.activo,
+      turnos:         (raw as any).turnos.map((t: any) => t.turno),
+    };
+    return activado;
   }
 
   async cambiarEstado(nivelId: string, activo: boolean): Promise<Nivel> {
@@ -83,6 +112,16 @@ export class PrismaNivelRepository implements NivelRepository {
       data:    { activo },
       include: INCLUDE_NIVEL,
     });
-    return NivelMapper.toDomain(raw as any);
+
+    const activado: NivelActivado = {
+      tipo:           'activado',
+      id:             raw.id,
+      nivelMaestroId: raw.nivelMaestroId,
+      nombre:         (raw as any).nivelMaestro.nombre,
+      orden:          (raw as any).nivelMaestro.orden,
+      activo:         raw.activo,
+      turnos:         (raw as any).turnos.map((t: any) => t.turno),
+    };
+    return activado;
   }
 }

@@ -1,29 +1,27 @@
-// Qué es: Entidad de dominio que representa un nivel activado por el colegio.
-// Combina datos del NivelMaestro con el estado de activación del ColegioNivel.
-// Principio SOLID: Single Responsibility — solo conoce las reglas de un Nivel.
+// Tipo discriminado — dos estados posibles para un nivel:
+// - NivelDisponible: existe en el catálogo pero el colegio aún no lo activó
+// - NivelActivado: el colegio ya lo activó, tiene id propio de ColegioNivel
+//
+// Por qué tipo discriminado y no id vacío:
+// Con id: '' TypeScript no puede ayudarte — cualquier código puede llamar .id
+// y obtener un string vacío sin error. Con el discriminado, TypeScript te obliga
+// a verificar el tipo antes de acceder a propiedades exclusivas de cada estado.
 
-export interface NivelProps {
-  id:             string; // id del ColegioNivel
+export interface NivelDisponible {
+  tipo:           'disponible';
   nivelMaestroId: string;
-  nombre:         string; // viene del NivelMaestro
+  nombre:         string;
+  orden:          number;
+}
+
+export interface NivelActivado {
+  tipo:           'activado';
+  id:             string;
+  nivelMaestroId: string;
+  nombre:         string;
   orden:          number;
   activo:         boolean;
   turnos:         string[];
 }
 
-export class Nivel {
-  private constructor(private readonly props: NivelProps) {}
-
-  static reconstitute(props: NivelProps): Nivel {
-    return new Nivel(props);
-  }
-
-  get id():             string   { return this.props.id; }
-  get nivelMaestroId(): string   { return this.props.nivelMaestroId; }
-  get nombre():         string   { return this.props.nombre; }
-  get orden():          number   { return this.props.orden; }
-  get activo():         boolean  { return this.props.activo; }
-  get turnos():         string[] { return this.props.turnos; }
-
-  estaActivo(): boolean { return this.props.activo; }
-}
+export type Nivel = NivelDisponible | NivelActivado;

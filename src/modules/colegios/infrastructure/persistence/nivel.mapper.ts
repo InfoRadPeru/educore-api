@@ -9,7 +9,7 @@
 //   El mapper maneja esa combinación de forma explícita.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-import { Nivel } from '@modules/colegios/domain/entities/nivel.entity';
+import { Nivel, type NivelActivado } from '@modules/colegios/domain/entities/nivel.entity';
 
 export interface NivelPrismaRaw {
   id:             string;
@@ -23,14 +23,15 @@ export interface NivelPrismaRaw {
 }
 
 export class NivelMapper {
-  static toDomain(raw: NivelPrismaRaw): Nivel {
-    return Nivel.reconstitute({
+  static toDomain(raw: NivelPrismaRaw): NivelActivado {
+    return {
+      tipo:           'activado',
       id:             raw.id,
       nivelMaestroId: raw.nivelMaestroId,
       nombre:         raw.nivelMaestro.nombre,
       orden:          raw.nivelMaestro.orden,
       activo:         raw.activo,
       turnos:         raw.turnos.map(t => t.turno),
-    });
+    };
   }
 }

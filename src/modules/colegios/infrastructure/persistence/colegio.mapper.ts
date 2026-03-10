@@ -4,7 +4,7 @@
 // Por qué aquí y no en el repositorio: El repositorio orquesta, el mapper transforma. Responsabilidades separadas.
 
 import { Colegio } from '@modules/colegios/domain/entities/colegio.entity';
-import { Nivel } from '@modules/colegios/domain/entities/nivel.entity';
+import { Nivel, type NivelActivado } from '@modules/colegios/domain/entities/nivel.entity';
 import { Sede } from '@modules/colegios/domain/entities/sede.entity';
 import { PrismaClient } from 'src/generated/prisma/client';
 
@@ -47,14 +47,15 @@ export class ColegioMapper {
     });
   }
 
-  static nivelToDomain(raw: ColegioNivelRaw): Nivel {
-    return Nivel.reconstitute({
-      id:             raw.id,
-      nivelMaestroId: raw.nivelMaestroId,
-      nombre:         raw.nivelMaestro.nombre,
-      orden:          raw.nivelMaestro.orden,
-      activo:         raw.activo,
-      turnos:         raw.turnos.map(t => t.turno),
-    });
-  }
+  static nivelToDomain(raw: ColegioNivelRaw): NivelActivado {
+  return {
+    tipo:           'activado',
+    id:             raw.id,
+    nivelMaestroId: raw.nivelMaestroId,
+    nombre:         raw.nivelMaestro.nombre,
+    orden:          raw.nivelMaestro.orden,
+    activo:         raw.activo,
+    turnos:         raw.turnos.map(t => t.turno),
+  };
+}
 }
