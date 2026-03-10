@@ -4,7 +4,7 @@
 // Por qué el mapper está aquí: La conversión de modelo Prisma a entidad de dominio es responsabilidad de Infrastructure. Domain no sabe que Prisma existe.
 
 import { Usuario } from "@modules/auth/domain/entities/usuario.entity";
-import { CreateUsuarioProps, UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
+import { CrearUsuarioProps, UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
 import { Email } from "@modules/auth/domain/value-objects/email.vo";
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "@shared/infrastructure/prisma/prisma.service";
@@ -17,7 +17,7 @@ const INCLUDE_PERSONA = { persona: { select: { nombres: true, apellidos: true, t
 export class PrismaUsuarioRepository implements UsuarioRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findByEmail(email: Email): Promise<Usuario | null> {
+  async buscarPorEmail(email: Email): Promise<Usuario | null> {
     const raw = await this.prisma.usuario.findUnique({
       where:   { email: email.value },
       include: INCLUDE_PERSONA,
@@ -25,7 +25,7 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
     return raw ? UsuarioMapper.toDomain(raw) : null;
   }
 
-  async findById(id: string): Promise<Usuario | null> {
+  async buscarPorId(id: string): Promise<Usuario | null> {
     const raw = await this.prisma.usuario.findUnique({
       where:   { id },
       include: INCLUDE_PERSONA,
@@ -33,12 +33,12 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
     return raw ? UsuarioMapper.toDomain(raw) : null;
   }
 
-  async existsByEmail(email: Email): Promise<boolean> {
+  async existePorEmail(email: Email): Promise<boolean> {
     const count = await this.prisma.usuario.count({ where: { email: email.value } });
     return count > 0;
   }
 
-  async create(props: CreateUsuarioProps): Promise<Usuario> {
+  async crear(props: CrearUsuarioProps): Promise<Usuario> {
     // Usuario en Prisma requiere crear la Persona primero (relación 1:1 obligatoria)
     const raw = await this.prisma.usuario.create({
       data: {

@@ -14,7 +14,7 @@ export class ChangePasswordUseCase {
   ) {}
 
   async execute(dto: ChangePasswordDto): Promise<Result<void, UnauthorizedError>> {
-    const usuario = await this.usuarioRepository.findById(dto.usuarioId);
+    const usuario = await this.usuarioRepository.buscarPorId(dto.usuarioId);
     if (!usuario) {
       return fail(new UnauthorizedError());
     }

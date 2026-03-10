@@ -7,7 +7,7 @@ import { Email } from "../value-objects/email.vo";
 
 export const USUARIO_REPOSITORY = 'UsuarioRepository';
 
-export interface CreateUsuarioProps {
+export interface CrearUsuarioProps {
   email:        Email;
   passwordHash: string;
   nombres:      string;
@@ -16,10 +16,10 @@ export interface CreateUsuarioProps {
 }
 
 export interface UsuarioRepository {
-  findByEmail(email: Email):                Promise<Usuario | null>;
-  findById(id: string):                     Promise<Usuario | null>;
-  existsByEmail(email: Email):              Promise<boolean>;
-  create(props: CreateUsuarioProps):        Promise<Usuario>;
+  buscarPorEmail(email: Email):                Promise<Usuario | null>;
+  buscarPorId(id: string):                     Promise<Usuario | null>;
+  existePorEmail(email: Email):              Promise<boolean>; 
+  crear(props: CrearUsuarioProps):        Promise<Usuario>;
   incrementarIntentosFallidos(id: string):  Promise<void>;
   bloquearCuenta(id: string, hasta: Date):  Promise<void>;
   resetearIntentosFallidos(id: string):     Promise<void>;

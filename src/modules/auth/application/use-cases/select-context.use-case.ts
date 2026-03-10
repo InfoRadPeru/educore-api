@@ -25,7 +25,7 @@ export class SelectContextUseCase {
   ) {}
 
   async execute(usuarioId: string, dto: SelectContextDto): Promise<Result<AuthResponseDto, UnauthorizedError>> {
-    const usuario = await this.usuarioRepository.findById(usuarioId);
+    const usuario = await this.usuarioRepository.buscarPorId(usuarioId);
     if (!usuario || !usuario.estaActivo()) return fail(new UnauthorizedError());
 
     const asignacion = await this.asignacionRepository.findById(dto.asignacionId);

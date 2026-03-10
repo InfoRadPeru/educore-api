@@ -28,7 +28,7 @@ export class RefreshUseCase {
       return fail(new UnauthorizedError('Refresh token inválido o expirado'));
     }
 
-    const usuario = await this.usuarioRepository.findById(tokenData.usuarioId);
+    const usuario = await this.usuarioRepository.buscarPorId(tokenData.usuarioId);
     if (!usuario || !usuario.estaActivo()) return fail(new UnauthorizedError());
 
     // Decodificar el access token anterior para replicar su payload de contexto

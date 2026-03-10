@@ -33,7 +33,7 @@ export class LoginUseCase {
     const emailResult = Email.create(dto.email);
     if (!emailResult.ok) return fail(new UnauthorizedError());
 
-    const usuario = await this.usuarioRepository.findByEmail(emailResult.value);
+    const usuario = await this.usuarioRepository.buscarPorEmail(emailResult.value);
     if (!usuario || !usuario.estaActivo()) return fail(new UnauthorizedError());
 
     if (usuario.estaBloqueado()) {

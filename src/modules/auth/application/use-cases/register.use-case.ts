@@ -71,7 +71,7 @@ export class RegisterUseCase {
     if (!emailResult.ok) return fail(new ValidationError('Email inválido'));
 
     // 2. Verificar unicidad de email
-    const emailEnUso = await this.usuarioRepository.existsByEmail(emailResult.value);
+    const emailEnUso = await this.usuarioRepository.existePorEmail(emailResult.value);
     if (emailEnUso) {
       return fail(new ConflictError(`El email '${emailResult.value.value}' ya está registrado`));
     }
@@ -84,7 +84,7 @@ export class RegisterUseCase {
 
     // 4. Crear usuario con contraseña hasheada
     const passwordHash = await bcrypt.hash(dto.password, BCRYPT_SALT_ROUNDS);
-    const usuario = await this.usuarioRepository.create({
+    const usuario = await this.usuarioRepository.crear({
       email:        emailResult.value,
       passwordHash,
       nombres:      dto.nombres,

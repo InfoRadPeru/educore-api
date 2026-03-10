@@ -21,7 +21,7 @@ export class MeUseCase {
   ) {}
 
   async execute(payload: MePayload): Promise<Result<MeResponseDto, UnauthorizedError>> {
-    const usuario = await this.usuarioRepository.findById(payload.usuarioId);
+    const usuario = await this.usuarioRepository.buscarPorId(payload.usuarioId);
     if (!usuario) return fail(new UnauthorizedError());
 
     let contextoActual: ContextoActualDto | null = null;

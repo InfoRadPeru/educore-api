@@ -23,7 +23,7 @@ export class ForgotPasswordUseCase {
       return ok({ message: 'Si el email existe, recibirás instrucciones.' });
     }
 
-    const usuario = await this.usuarioRepository.findByEmail(emailResult.value);
+    const usuario = await this.usuarioRepository.buscarPorEmail(emailResult.value);
     if (!usuario) {
       return ok({ message: 'Si el email existe, recibirás instrucciones.' });
     }
