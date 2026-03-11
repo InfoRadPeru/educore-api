@@ -23,7 +23,7 @@ export class ResetPasswordUseCase {
 
     const passwordHash = await bcrypt.hash(dto.newPassword, 10);
 
-    await this.usuarioRepository.updatePassword(resetData.usuarioId, passwordHash);
+    await this.usuarioRepository.actualizarPassword(resetData.usuarioId, passwordHash);
     await this.passwordResetRepository.marcarUsado(dto.token);
 
     return ok(undefined);

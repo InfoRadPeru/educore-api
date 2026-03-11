@@ -50,6 +50,8 @@ import { ForgotPasswordUseCase } from './application/use-cases/forgot-password.u
 import { ResetPasswordUseCase } from './application/use-cases/reset-password.use-case';
 import { ChangePasswordUseCase } from './application/use-cases/change-password.use-case';
 import { MeUseCase } from './application/use-cases/me.use-case';
+import { EMAIL_PORT } from './domain/ports/email.port';
+import { EmailAdapter } from './infrastructure/adapters/email.adapter';
 
 @Module({
   imports: [
@@ -76,6 +78,7 @@ import { MeUseCase } from './application/use-cases/me.use-case';
     { provide: ASIGNACION_REPOSITORY,   useClass: PrismaAsignacionRepository },
     { provide: REFRESH_TOKEN_REPOSITORY, useClass: PrismaRefreshTokenRepository },
     { provide: PASSWORD_RESET_REPOSITORY, useClass: PrismaPasswordResetRepository },
+    { provide: EMAIL_PORT, useClass: EmailAdapter },
 
     // ── Infraestructura ───────────────────────────────────────
     JwtStrategy,

@@ -1,11 +1,15 @@
-import { USUARIO_REPOSITORY, type UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
-import { Inject, Injectable } from "@nestjs/common";
-import { ForgotPasswordDto } from "../dtos/forgot-password.dto";
-import { ok, Result } from "@shared/domain/result";
-import { ForgotPasswordResponseDto } from "../dtos/forgot-password-response.dto";
-import { Email } from "@modules/auth/domain/value-objects/email.vo";
+import { Inject, Injectable } from '@nestjs/common';
+import { ok, Result } from '@shared/domain/result';
 import * as crypto from 'crypto';
-import { PASSWORD_RESET_REPOSITORY, type PasswordResetRepository } from "@modules/auth/domain/repositories/password-reset.repository";
+import { USUARIO_REPOSITORY, type UsuarioRepository } from '@modules/auth/domain/repositories/usuario.repository';
+import { PASSWORD_RESET_REPOSITORY, type PasswordResetRepository } from '@modules/auth/domain/repositories/password-reset.repository';
+import { EMAIL_PORT, type EmailPort } from '@modules/auth/domain/ports/email.port';
+import { Email } from '@modules/auth/domain/value-objects/email.vo';
+import { ForgotPasswordDto } from '../dtos/forgot-password.dto';
+import { ForgotPasswordResponseDto } from '../dtos/forgot-password-response.dto';
+
+// Respuesta siempre igual — no revelar si el email existe o no
+const RESPUESTA_GENERICA = { message: 'Si el email existe, recibirás instrucciones.' };
 
 @Injectable()
 export class ForgotPasswordUseCase {
@@ -14,31 +18,28 @@ export class ForgotPasswordUseCase {
     private readonly usuarioRepository: UsuarioRepository,
     @Inject(PASSWORD_RESET_REPOSITORY)
     private readonly passwordResetRepository: PasswordResetRepository,
+    @Inject(EMAIL_PORT)
+    private readonly emailPort: EmailPort,
   ) {}
 
   async execute(dto: ForgotPasswordDto): Promise<Result<ForgotPasswordResponseDto, never>> {
-    // Siempre retorna éxito — no revelar si el email existe
     const emailResult = Email.create(dto.email);
-    if (!emailResult.ok) {
-      return ok({ message: 'Si el email existe, recibirás instrucciones.' });
-    }
+    if (!emailResult.ok) return ok(RESPUESTA_GENERICA);
 
     const usuario = await this.usuarioRepository.buscarPorEmail(emailResult.value);
-    if (!usuario) {
-      return ok({ message: 'Si el email existe, recibirás instrucciones.' });
-    }
+    if (!usuario) return ok(RESPUESTA_GENERICA);
 
-    const token = crypto.randomBytes(32).toString('hex');
+    const token     = crypto.randomBytes(32).toString('hex');
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hora
 
-    await this.passwordResetRepository.create({
+    await this.passwordResetRepository.create({ token, usuarioId: usuario.id, expiresAt });
+
+    await this.emailPort.enviarRecuperacionPassword({
+      destinatario: usuario.email.value,
+      nombres:      usuario.nombres,
       token,
-      usuarioId: usuario.id,
-      expiresAt,
     });
 
-    // TODO: enviar email con token
-    // Por ahora retornamos el token en desarrollo
-    return ok({ message: 'Si el email existe, recibirás instrucciones.' });
+    return ok(RESPUESTA_GENERICA);
   }
 }

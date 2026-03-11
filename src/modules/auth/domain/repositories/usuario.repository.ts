@@ -24,5 +24,5 @@ export interface UsuarioRepository {
   bloquearCuenta(id: string, hasta: Date):  Promise<void>;
   resetearIntentosFallidos(id: string):     Promise<void>;
   actualizarUltimoAcceso(id: string):       Promise<void>;
-  updatePassword(id: string, hash: string): Promise<void>;
+  actualizarPassword(id: string, hash: string): Promise<void>;
 }

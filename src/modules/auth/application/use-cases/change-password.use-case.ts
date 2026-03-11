@@ -25,7 +25,7 @@ export class ChangePasswordUseCase {
     }
 
     const passwordHash = await bcrypt.hash(dto.newPassword, 10);
-    await this.usuarioRepository.updatePassword(dto.usuarioId, passwordHash);
+    await this.usuarioRepository.actualizarPassword(dto.usuarioId, passwordHash);
 
     return ok(undefined);
   }

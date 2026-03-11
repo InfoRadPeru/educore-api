@@ -77,7 +77,7 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
     await this.prisma.usuario.update({ where: { id }, data: { ultimoAcceso: new Date() } });
   }
 
-  async updatePassword(id: string, passwordHash: string): Promise<void> {
+  async actualizarPassword(id: string, passwordHash: string): Promise<void> {
     await this.prisma.usuario.update({ where: { id }, data: { passwordHash } });
   }
 }
