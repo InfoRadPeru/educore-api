@@ -65,8 +65,8 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
     await this.prisma.usuario.update({ where: { id }, data: { intentosFallidos: { increment: 1 } } });
   }
 
-  async bloquearCuenta(id: string, hasta: Date): Promise<void> {
-    await this.prisma.usuario.update({ where: { id }, data: { bloqueadoHasta: hasta, intentosFallidos: 0 } });
+  async bloquearCuenta(id: string, bloqueadoHasta: Date): Promise<void> {
+    await this.prisma.usuario.update({ where: { id }, data: { bloqueadoHasta: bloqueadoHasta, intentosFallidos: 0 } });
   }
 
   async resetearIntentosFallidos(id: string): Promise<void> {

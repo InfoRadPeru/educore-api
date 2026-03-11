@@ -46,8 +46,8 @@ export class LoginUseCase {
     if (!passwordValido) {
       await this.usuarioRepository.incrementarIntentosFallidos(usuario.id);
       if (usuario.intentosFallidos + 1 >= Usuario.MAX_INTENTOS_FALLIDOS) {
-        const hasta = new Date(Date.now() + Usuario.MINUTOS_BLOQUEO * 60 * 1000);
-        await this.usuarioRepository.bloquearCuenta(usuario.id, hasta);
+        const bloqueadoHasta = new Date(Date.now() + Usuario.MINUTOS_BLOQUEO * 60 * 1000);
+        await this.usuarioRepository.bloquearCuenta(usuario.id, bloqueadoHasta);
         return fail(new UnauthorizedError(
           `Demasiados intentos. Cuenta bloqueada por ${Usuario.MINUTOS_BLOQUEO} minutos`,
         ));
@@ -69,7 +69,7 @@ export class LoginUseCase {
     if (activas.length === 0) return fail(new UnauthorizedError('Sin asignaciones activas'));
 
     if (activas.length === 1) {
-      return this.generarRespuestaCompleta(usuario, activas[0]);
+      return this.generarTokenParaAsignacion(usuario, activas[0]);
     }
 
     // Múltiples asignaciones — tempToken de 5 minutos solo para /select-context
@@ -111,7 +111,7 @@ export class LoginUseCase {
     return token;
   }
 
-  async generarRespuestaCompleta(
+  private async generarTokenParaAsignacion(
     usuario: Usuario,
     asignacion: Asignacion,
   ): Promise<Result<AuthResponseDto, never>> {

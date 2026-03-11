@@ -21,7 +21,7 @@ export interface UsuarioRepository {
   existePorEmail(email: Email):              Promise<boolean>; 
   crear(props: CrearUsuarioProps):        Promise<Usuario>;
   incrementarIntentosFallidos(id: string):  Promise<void>;
-  bloquearCuenta(id: string, hasta: Date):  Promise<void>;
+  bloquearCuenta(id: string, bloqueadoHasta: Date):  Promise<void>;
   resetearIntentosFallidos(id: string):     Promise<void>;
   actualizarUltimoAcceso(id: string):       Promise<void>;
   actualizarPassword(id: string, hash: string): Promise<void>;
