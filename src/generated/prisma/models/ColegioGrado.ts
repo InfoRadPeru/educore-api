@@ -193,6 +193,8 @@ export type ColegioGradoWhereInput = {
   colegioNivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
   gradoMaestro?: Prisma.XOR<Prisma.GradoMaestroScalarRelationFilter, Prisma.GradoMaestroWhereInput>
   secciones?: Prisma.SeccionListRelationFilter
+  gradoAsignaturas?: Prisma.GradoAsignaturaListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
 }
 
 export type ColegioGradoOrderByWithRelationInput = {
@@ -205,6 +207,8 @@ export type ColegioGradoOrderByWithRelationInput = {
   colegioNivel?: Prisma.ColegioNivelOrderByWithRelationInput
   gradoMaestro?: Prisma.GradoMaestroOrderByWithRelationInput
   secciones?: Prisma.SeccionOrderByRelationAggregateInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaOrderByRelationAggregateInput
+  comunicados?: Prisma.ComunicadoOrderByRelationAggregateInput
 }
 
 export type ColegioGradoWhereUniqueInput = Prisma.AtLeast<{
@@ -221,6 +225,8 @@ export type ColegioGradoWhereUniqueInput = Prisma.AtLeast<{
   colegioNivel?: Prisma.XOR<Prisma.ColegioNivelScalarRelationFilter, Prisma.ColegioNivelWhereInput>
   gradoMaestro?: Prisma.XOR<Prisma.GradoMaestroScalarRelationFilter, Prisma.GradoMaestroWhereInput>
   secciones?: Prisma.SeccionListRelationFilter
+  gradoAsignaturas?: Prisma.GradoAsignaturaListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
 }, "id" | "colegioNivelId_gradoMaestroId">
 
 export type ColegioGradoOrderByWithAggregationInput = {
@@ -255,6 +261,8 @@ export type ColegioGradoCreateInput = {
   colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutGradosInput
   gradoMaestro: Prisma.GradoMaestroCreateNestedOneWithoutColegioGradosInput
   secciones?: Prisma.SeccionCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoUncheckedCreateInput = {
@@ -265,6 +273,8 @@ export type ColegioGradoUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   secciones?: Prisma.SeccionUncheckedCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoUpdateInput = {
@@ -275,6 +285,8 @@ export type ColegioGradoUpdateInput = {
   colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutGradosNestedInput
   gradoMaestro?: Prisma.GradoMaestroUpdateOneRequiredWithoutColegioGradosNestedInput
   secciones?: Prisma.SeccionUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateInput = {
@@ -285,6 +297,8 @@ export type ColegioGradoUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   secciones?: Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoCreateManyInput = {
@@ -357,6 +371,11 @@ export type ColegioGradoMinOrderByAggregateInput = {
 export type ColegioGradoScalarRelationFilter = {
   is?: Prisma.ColegioGradoWhereInput
   isNot?: Prisma.ColegioGradoWhereInput
+}
+
+export type ColegioGradoNullableScalarRelationFilter = {
+  is?: Prisma.ColegioGradoWhereInput | null
+  isNot?: Prisma.ColegioGradoWhereInput | null
 }
 
 export type ColegioGradoCreateNestedManyWithoutColegioNivelInput = {
@@ -457,6 +476,36 @@ export type ColegioGradoUncheckedUpdateManyWithoutGradoMaestroNestedInput = {
   deleteMany?: Prisma.ColegioGradoScalarWhereInput | Prisma.ColegioGradoScalarWhereInput[]
 }
 
+export type ColegioGradoCreateNestedOneWithoutGradoAsignaturasInput = {
+  create?: Prisma.XOR<Prisma.ColegioGradoCreateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedCreateWithoutGradoAsignaturasInput>
+  connectOrCreate?: Prisma.ColegioGradoCreateOrConnectWithoutGradoAsignaturasInput
+  connect?: Prisma.ColegioGradoWhereUniqueInput
+}
+
+export type ColegioGradoUpdateOneRequiredWithoutGradoAsignaturasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioGradoCreateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedCreateWithoutGradoAsignaturasInput>
+  connectOrCreate?: Prisma.ColegioGradoCreateOrConnectWithoutGradoAsignaturasInput
+  upsert?: Prisma.ColegioGradoUpsertWithoutGradoAsignaturasInput
+  connect?: Prisma.ColegioGradoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioGradoUpdateToOneWithWhereWithoutGradoAsignaturasInput, Prisma.ColegioGradoUpdateWithoutGradoAsignaturasInput>, Prisma.ColegioGradoUncheckedUpdateWithoutGradoAsignaturasInput>
+}
+
+export type ColegioGradoCreateNestedOneWithoutComunicadosInput = {
+  create?: Prisma.XOR<Prisma.ColegioGradoCreateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioGradoCreateOrConnectWithoutComunicadosInput
+  connect?: Prisma.ColegioGradoWhereUniqueInput
+}
+
+export type ColegioGradoUpdateOneWithoutComunicadosNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioGradoCreateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioGradoCreateOrConnectWithoutComunicadosInput
+  upsert?: Prisma.ColegioGradoUpsertWithoutComunicadosInput
+  disconnect?: Prisma.ColegioGradoWhereInput | boolean
+  delete?: Prisma.ColegioGradoWhereInput | boolean
+  connect?: Prisma.ColegioGradoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioGradoUpdateToOneWithWhereWithoutComunicadosInput, Prisma.ColegioGradoUpdateWithoutComunicadosInput>, Prisma.ColegioGradoUncheckedUpdateWithoutComunicadosInput>
+}
+
 export type ColegioGradoCreateWithoutColegioNivelInput = {
   id?: string
   activo?: boolean
@@ -464,6 +513,8 @@ export type ColegioGradoCreateWithoutColegioNivelInput = {
   updatedAt?: Date | string
   gradoMaestro: Prisma.GradoMaestroCreateNestedOneWithoutColegioGradosInput
   secciones?: Prisma.SeccionCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoUncheckedCreateWithoutColegioNivelInput = {
@@ -473,6 +524,8 @@ export type ColegioGradoUncheckedCreateWithoutColegioNivelInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   secciones?: Prisma.SeccionUncheckedCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoCreateOrConnectWithoutColegioNivelInput = {
@@ -520,6 +573,8 @@ export type ColegioGradoCreateWithoutSeccionesInput = {
   updatedAt?: Date | string
   colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutGradosInput
   gradoMaestro: Prisma.GradoMaestroCreateNestedOneWithoutColegioGradosInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoUncheckedCreateWithoutSeccionesInput = {
@@ -529,6 +584,8 @@ export type ColegioGradoUncheckedCreateWithoutSeccionesInput = {
   activo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoCreateOrConnectWithoutSeccionesInput = {
@@ -554,6 +611,8 @@ export type ColegioGradoUpdateWithoutSeccionesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutGradosNestedInput
   gradoMaestro?: Prisma.GradoMaestroUpdateOneRequiredWithoutColegioGradosNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateWithoutSeccionesInput = {
@@ -563,6 +622,8 @@ export type ColegioGradoUncheckedUpdateWithoutSeccionesInput = {
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoCreateWithoutGradoMaestroInput = {
@@ -572,6 +633,8 @@ export type ColegioGradoCreateWithoutGradoMaestroInput = {
   updatedAt?: Date | string
   colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutGradosInput
   secciones?: Prisma.SeccionCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoUncheckedCreateWithoutGradoMaestroInput = {
@@ -581,6 +644,8 @@ export type ColegioGradoUncheckedCreateWithoutGradoMaestroInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   secciones?: Prisma.SeccionUncheckedCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioGradoInput
 }
 
 export type ColegioGradoCreateOrConnectWithoutGradoMaestroInput = {
@@ -609,6 +674,126 @@ export type ColegioGradoUpdateManyWithWhereWithoutGradoMaestroInput = {
   data: Prisma.XOR<Prisma.ColegioGradoUpdateManyMutationInput, Prisma.ColegioGradoUncheckedUpdateManyWithoutGradoMaestroInput>
 }
 
+export type ColegioGradoCreateWithoutGradoAsignaturasInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutGradosInput
+  gradoMaestro: Prisma.GradoMaestroCreateNestedOneWithoutColegioGradosInput
+  secciones?: Prisma.SeccionCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioGradoInput
+}
+
+export type ColegioGradoUncheckedCreateWithoutGradoAsignaturasInput = {
+  id?: string
+  colegioNivelId: string
+  gradoMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  secciones?: Prisma.SeccionUncheckedCreateNestedManyWithoutColegioGradoInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioGradoInput
+}
+
+export type ColegioGradoCreateOrConnectWithoutGradoAsignaturasInput = {
+  where: Prisma.ColegioGradoWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioGradoCreateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedCreateWithoutGradoAsignaturasInput>
+}
+
+export type ColegioGradoUpsertWithoutGradoAsignaturasInput = {
+  update: Prisma.XOR<Prisma.ColegioGradoUpdateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedUpdateWithoutGradoAsignaturasInput>
+  create: Prisma.XOR<Prisma.ColegioGradoCreateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedCreateWithoutGradoAsignaturasInput>
+  where?: Prisma.ColegioGradoWhereInput
+}
+
+export type ColegioGradoUpdateToOneWithWhereWithoutGradoAsignaturasInput = {
+  where?: Prisma.ColegioGradoWhereInput
+  data: Prisma.XOR<Prisma.ColegioGradoUpdateWithoutGradoAsignaturasInput, Prisma.ColegioGradoUncheckedUpdateWithoutGradoAsignaturasInput>
+}
+
+export type ColegioGradoUpdateWithoutGradoAsignaturasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutGradosNestedInput
+  gradoMaestro?: Prisma.GradoMaestroUpdateOneRequiredWithoutColegioGradosNestedInput
+  secciones?: Prisma.SeccionUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioGradoNestedInput
+}
+
+export type ColegioGradoUncheckedUpdateWithoutGradoAsignaturasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioNivelId?: Prisma.StringFieldUpdateOperationsInput | string
+  gradoMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  secciones?: Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioGradoNestedInput
+}
+
+export type ColegioGradoCreateWithoutComunicadosInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioNivel: Prisma.ColegioNivelCreateNestedOneWithoutGradosInput
+  gradoMaestro: Prisma.GradoMaestroCreateNestedOneWithoutColegioGradosInput
+  secciones?: Prisma.SeccionCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaCreateNestedManyWithoutColegioGradoInput
+}
+
+export type ColegioGradoUncheckedCreateWithoutComunicadosInput = {
+  id?: string
+  colegioNivelId: string
+  gradoMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  secciones?: Prisma.SeccionUncheckedCreateNestedManyWithoutColegioGradoInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedCreateNestedManyWithoutColegioGradoInput
+}
+
+export type ColegioGradoCreateOrConnectWithoutComunicadosInput = {
+  where: Prisma.ColegioGradoWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioGradoCreateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedCreateWithoutComunicadosInput>
+}
+
+export type ColegioGradoUpsertWithoutComunicadosInput = {
+  update: Prisma.XOR<Prisma.ColegioGradoUpdateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedUpdateWithoutComunicadosInput>
+  create: Prisma.XOR<Prisma.ColegioGradoCreateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedCreateWithoutComunicadosInput>
+  where?: Prisma.ColegioGradoWhereInput
+}
+
+export type ColegioGradoUpdateToOneWithWhereWithoutComunicadosInput = {
+  where?: Prisma.ColegioGradoWhereInput
+  data: Prisma.XOR<Prisma.ColegioGradoUpdateWithoutComunicadosInput, Prisma.ColegioGradoUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type ColegioGradoUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutGradosNestedInput
+  gradoMaestro?: Prisma.GradoMaestroUpdateOneRequiredWithoutColegioGradosNestedInput
+  secciones?: Prisma.SeccionUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUpdateManyWithoutColegioGradoNestedInput
+}
+
+export type ColegioGradoUncheckedUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioNivelId?: Prisma.StringFieldUpdateOperationsInput | string
+  gradoMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  secciones?: Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedUpdateManyWithoutColegioGradoNestedInput
+}
+
 export type ColegioGradoCreateManyColegioNivelInput = {
   id?: string
   gradoMaestroId: string
@@ -624,6 +809,8 @@ export type ColegioGradoUpdateWithoutColegioNivelInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   gradoMaestro?: Prisma.GradoMaestroUpdateOneRequiredWithoutColegioGradosNestedInput
   secciones?: Prisma.SeccionUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateWithoutColegioNivelInput = {
@@ -633,6 +820,8 @@ export type ColegioGradoUncheckedUpdateWithoutColegioNivelInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   secciones?: Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateManyWithoutColegioNivelInput = {
@@ -658,6 +847,8 @@ export type ColegioGradoUpdateWithoutGradoMaestroInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegioNivel?: Prisma.ColegioNivelUpdateOneRequiredWithoutGradosNestedInput
   secciones?: Prisma.SeccionUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateWithoutGradoMaestroInput = {
@@ -667,6 +858,8 @@ export type ColegioGradoUncheckedUpdateWithoutGradoMaestroInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   secciones?: Prisma.SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput
+  gradoAsignaturas?: Prisma.GradoAsignaturaUncheckedUpdateManyWithoutColegioGradoNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioGradoNestedInput
 }
 
 export type ColegioGradoUncheckedUpdateManyWithoutGradoMaestroInput = {
@@ -684,10 +877,14 @@ export type ColegioGradoUncheckedUpdateManyWithoutGradoMaestroInput = {
 
 export type ColegioGradoCountOutputType = {
   secciones: number
+  gradoAsignaturas: number
+  comunicados: number
 }
 
 export type ColegioGradoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   secciones?: boolean | ColegioGradoCountOutputTypeCountSeccionesArgs
+  gradoAsignaturas?: boolean | ColegioGradoCountOutputTypeCountGradoAsignaturasArgs
+  comunicados?: boolean | ColegioGradoCountOutputTypeCountComunicadosArgs
 }
 
 /**
@@ -707,6 +904,20 @@ export type ColegioGradoCountOutputTypeCountSeccionesArgs<ExtArgs extends runtim
   where?: Prisma.SeccionWhereInput
 }
 
+/**
+ * ColegioGradoCountOutputType without action
+ */
+export type ColegioGradoCountOutputTypeCountGradoAsignaturasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GradoAsignaturaWhereInput
+}
+
+/**
+ * ColegioGradoCountOutputType without action
+ */
+export type ColegioGradoCountOutputTypeCountComunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComunicadoWhereInput
+}
+
 
 export type ColegioGradoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -718,6 +929,8 @@ export type ColegioGradoSelect<ExtArgs extends runtime.Types.Extensions.Internal
   colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
   gradoMaestro?: boolean | Prisma.GradoMaestroDefaultArgs<ExtArgs>
   secciones?: boolean | Prisma.ColegioGrado$seccionesArgs<ExtArgs>
+  gradoAsignaturas?: boolean | Prisma.ColegioGrado$gradoAsignaturasArgs<ExtArgs>
+  comunicados?: boolean | Prisma.ColegioGrado$comunicadosArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioGradoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegioGrado"]>
 
@@ -757,6 +970,8 @@ export type ColegioGradoInclude<ExtArgs extends runtime.Types.Extensions.Interna
   colegioNivel?: boolean | Prisma.ColegioNivelDefaultArgs<ExtArgs>
   gradoMaestro?: boolean | Prisma.GradoMaestroDefaultArgs<ExtArgs>
   secciones?: boolean | Prisma.ColegioGrado$seccionesArgs<ExtArgs>
+  gradoAsignaturas?: boolean | Prisma.ColegioGrado$gradoAsignaturasArgs<ExtArgs>
+  comunicados?: boolean | Prisma.ColegioGrado$comunicadosArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioGradoCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ColegioGradoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -774,6 +989,8 @@ export type $ColegioGradoPayload<ExtArgs extends runtime.Types.Extensions.Intern
     colegioNivel: Prisma.$ColegioNivelPayload<ExtArgs>
     gradoMaestro: Prisma.$GradoMaestroPayload<ExtArgs>
     secciones: Prisma.$SeccionPayload<ExtArgs>[]
+    gradoAsignaturas: Prisma.$GradoAsignaturaPayload<ExtArgs>[]
+    comunicados: Prisma.$ComunicadoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1179,6 +1396,8 @@ export interface Prisma__ColegioGradoClient<T, Null = never, ExtArgs extends run
   colegioNivel<T extends Prisma.ColegioNivelDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivelDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioNivelClient<runtime.Types.Result.GetResult<Prisma.$ColegioNivelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   gradoMaestro<T extends Prisma.GradoMaestroDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.GradoMaestroDefaultArgs<ExtArgs>>): Prisma.Prisma__GradoMaestroClient<runtime.Types.Result.GetResult<Prisma.$GradoMaestroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   secciones<T extends Prisma.ColegioGrado$seccionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioGrado$seccionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SeccionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  gradoAsignaturas<T extends Prisma.ColegioGrado$gradoAsignaturasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioGrado$gradoAsignaturasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GradoAsignaturaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comunicados<T extends Prisma.ColegioGrado$comunicadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioGrado$comunicadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1631,6 +1850,54 @@ export type ColegioGrado$seccionesArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.SeccionScalarFieldEnum | Prisma.SeccionScalarFieldEnum[]
+}
+
+/**
+ * ColegioGrado.gradoAsignaturas
+ */
+export type ColegioGrado$gradoAsignaturasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GradoAsignatura
+   */
+  select?: Prisma.GradoAsignaturaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GradoAsignatura
+   */
+  omit?: Prisma.GradoAsignaturaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GradoAsignaturaInclude<ExtArgs> | null
+  where?: Prisma.GradoAsignaturaWhereInput
+  orderBy?: Prisma.GradoAsignaturaOrderByWithRelationInput | Prisma.GradoAsignaturaOrderByWithRelationInput[]
+  cursor?: Prisma.GradoAsignaturaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GradoAsignaturaScalarFieldEnum | Prisma.GradoAsignaturaScalarFieldEnum[]
+}
+
+/**
+ * ColegioGrado.comunicados
+ */
+export type ColegioGrado$comunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comunicado
+   */
+  select?: Prisma.ComunicadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comunicado
+   */
+  omit?: Prisma.ComunicadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComunicadoInclude<ExtArgs> | null
+  where?: Prisma.ComunicadoWhereInput
+  orderBy?: Prisma.ComunicadoOrderByWithRelationInput | Prisma.ComunicadoOrderByWithRelationInput[]
+  cursor?: Prisma.ComunicadoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComunicadoScalarFieldEnum | Prisma.ComunicadoScalarFieldEnum[]
 }
 
 /**

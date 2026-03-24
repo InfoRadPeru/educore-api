@@ -2,6 +2,7 @@
 // Patrón: AAA (Arrange, Act, Assert) — cada test tiene tres secciones claras.
 // Por qué mocks: El use case depende de UsuarioRepository (interfaz). En el test inyectamos un mock que controla exactamente qué retorna el repositorio. Así testeamos el use case en aislamiento total, sin base de datos.
 
+import { Asignacion } from '@modules/auth/domain/entities/asignacion.entity';
 import { Usuario } from '@modules/auth/domain/entities/usuario.entity';
 import { EstadoUsuario } from '@modules/auth/domain/enums/estado-usuario.enum';
 import { UsuarioRepository } from '@modules/auth/domain/repositories/usuario.repository';
@@ -22,6 +23,7 @@ const buildUsuario = async (estado: EstadoUsuario = EstadoUsuario.ACTIVO): Promi
   const passwordHash = await bcrypt.hash('Admin123!', 10);
   return Usuario.reconstitute({
     id:               'user-1',
+    username:         '12345678',
     email:            emailResult.value,
     passwordHash,
     nombres:          'Admin',
@@ -42,8 +44,10 @@ const buildUsuario = async (estado: EstadoUsuario = EstadoUsuario.ACTIVO): Promi
 const mockUsuarioRepository: jest.Mocked<UsuarioRepository> = {
   buscarPorEmail:              jest.fn(),
   buscarPorId:                 jest.fn(),
+  buscarPorIdentifier:         jest.fn(),
   existePorEmail:              jest.fn(),
   crear:                       jest.fn(),
+  crearParaPersona:            jest.fn(),
   incrementarIntentosFallidos: jest.fn(),
   bloquearCuenta:              jest.fn(),
   resetearIntentosFallidos:    jest.fn(),
@@ -82,16 +86,26 @@ describe('LoginUseCase', () => {
     );
   });
 
-  it('retorna token cuando las credenciales son correctas', async () => {
+  it('retorna token con identifier=username', async () => {
     const usuario = await buildUsuario();
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(usuario);
-    mockAsignacionRepository.findByUsuario.mockResolvedValue([]);
+    const asignacion = Asignacion.reconstitute({
+      id:            'asig-1',
+      usuarioId:     'user-1',
+      colegioId:     'colegio-1',
+      colegioNombre: 'Colegio Test',
+      sedeId:        null,
+      sedeNombre:    null,
+      rolId:         'rol-1',
+      rolNombre:     'SUPER_ADMIN',
+      esSistema:     true,
+      permisos:      [],
+      activo:        true,
+    });
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(usuario);
+    mockAsignacionRepository.findByUsuario.mockResolvedValue([asignacion]);
     mockRefreshTokenRepository.create.mockResolvedValue({} as any);
 
-    const result = await useCase.execute({
-      email:    'admin@educore.pe',
-      password: 'Admin123!',
-    });
+    const result = await useCase.execute({ identifier: '12345678', password: 'Admin123!' });
 
     expect(result.ok).toBe(true);
     if (result.ok && 'accessToken' in result.value) {
@@ -100,12 +114,9 @@ describe('LoginUseCase', () => {
   });
 
   it('falla cuando el usuario no existe', async () => {
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(null);
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(null);
 
-    const result = await useCase.execute({
-      email:    'noexiste@educore.pe',
-      password: 'cualquiera',
-    });
+    const result = await useCase.execute({ identifier: '99999999', password: 'cualquiera' });
 
     expect(result.ok).toBe(false);
     if (!result.ok) expect(result.error.code).toBe('UNAUTHORIZED');
@@ -113,13 +124,10 @@ describe('LoginUseCase', () => {
 
   it('falla cuando la contraseña es incorrecta', async () => {
     const usuario = await buildUsuario();
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(usuario);
-    mockUsuarioRepository.incrementarIntentosFallidos.mockResolvedValue();
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(usuario);
+    mockUsuarioRepository.incrementarIntentosFallidos.mockResolvedValue(1);
 
-    const result = await useCase.execute({
-      email:    'admin@educore.pe',
-      password: 'incorrecta',
-    });
+    const result = await useCase.execute({ identifier: '12345678', password: 'incorrecta' });
 
     expect(result.ok).toBe(false);
     if (!result.ok) expect(result.error.code).toBe('UNAUTHORIZED');
@@ -127,25 +135,22 @@ describe('LoginUseCase', () => {
 
   it('falla cuando el usuario está inactivo', async () => {
     const inactivo = await buildUsuario(EstadoUsuario.INACTIVO);
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(inactivo);
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(inactivo);
 
-    const result = await useCase.execute({
-      email:    'admin@educore.pe',
-      password: 'Admin123!',
-    });
+    const result = await useCase.execute({ identifier: '12345678', password: 'Admin123!' });
 
     expect(result.ok).toBe(false);
     if (!result.ok) expect(result.error.code).toBe('UNAUTHORIZED');
   });
 
   it('retorna el mismo error para usuario inexistente y contraseña incorrecta', async () => {
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(null);
-    const r1 = await useCase.execute({ email: 'no@existe.pe', password: 'x' });
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(null);
+    const r1 = await useCase.execute({ identifier: '99999999', password: 'x' });
 
     const usuario = await buildUsuario();
-    mockUsuarioRepository.buscarPorEmail.mockResolvedValue(usuario);
-    mockUsuarioRepository.incrementarIntentosFallidos.mockResolvedValue();
-    const r2 = await useCase.execute({ email: 'admin@educore.pe', password: 'mal' });
+    mockUsuarioRepository.buscarPorIdentifier.mockResolvedValue(usuario);
+    mockUsuarioRepository.incrementarIntentosFallidos.mockResolvedValue(1);
+    const r2 = await useCase.execute({ identifier: '12345678', password: 'mal' });
 
     expect(!r1.ok && !r2.ok && r1.error.code).toBe(r2.ok ? '' : r2.error.code);
   });

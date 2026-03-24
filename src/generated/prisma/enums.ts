@@ -62,3 +62,158 @@ export const Genero = {
 } as const
 
 export type Genero = (typeof Genero)[keyof typeof Genero]
+
+
+export const EstadoAlumno = {
+  ACTIVO: 'ACTIVO',
+  INACTIVO: 'INACTIVO',
+  RETIRADO: 'RETIRADO'
+} as const
+
+export type EstadoAlumno = (typeof EstadoAlumno)[keyof typeof EstadoAlumno]
+
+
+export const EstadoPostulacion = {
+  PENDIENTE: 'PENDIENTE',
+  APROBADA: 'APROBADA',
+  RECHAZADA: 'RECHAZADA',
+  EXPIRADA: 'EXPIRADA'
+} as const
+
+export type EstadoPostulacion = (typeof EstadoPostulacion)[keyof typeof EstadoPostulacion]
+
+
+export const EstadoPrematricula = {
+  PENDIENTE: 'PENDIENTE',
+  CONFIRMADA: 'CONFIRMADA',
+  CANCELADA: 'CANCELADA'
+} as const
+
+export type EstadoPrematricula = (typeof EstadoPrematricula)[keyof typeof EstadoPrematricula]
+
+
+export const EstadoMatricula = {
+  NUEVA_MATRICULA: 'NUEVA_MATRICULA',
+  MATRICULADO: 'MATRICULADO',
+  REPITENTE: 'REPITENTE',
+  PROMOVIDO: 'PROMOVIDO',
+  EXPULSADO: 'EXPULSADO',
+  CAMBIO_DE_COLEGIO: 'CAMBIO_DE_COLEGIO'
+} as const
+
+export type EstadoMatricula = (typeof EstadoMatricula)[keyof typeof EstadoMatricula]
+
+
+export const EstadoAsistencia = {
+  PRESENTE: 'PRESENTE',
+  AUSENTE: 'AUSENTE',
+  TARDANZA: 'TARDANZA',
+  JUSTIFICADO: 'JUSTIFICADO'
+} as const
+
+export type EstadoAsistencia = (typeof EstadoAsistencia)[keyof typeof EstadoAsistencia]
+
+
+export const DiaSemana = {
+  LUNES: 'LUNES',
+  MARTES: 'MARTES',
+  MIERCOLES: 'MIERCOLES',
+  JUEVES: 'JUEVES',
+  VIERNES: 'VIERNES',
+  SABADO: 'SABADO'
+} as const
+
+export type DiaSemana = (typeof DiaSemana)[keyof typeof DiaSemana]
+
+
+export const EstadoHorario = {
+  BORRADOR: 'BORRADOR',
+  PUBLICADO: 'PUBLICADO'
+} as const
+
+export type EstadoHorario = (typeof EstadoHorario)[keyof typeof EstadoHorario]
+
+
+export const EstadoComunicado = {
+  BORRADOR: 'BORRADOR',
+  PUBLICADO: 'PUBLICADO',
+  ARCHIVADO: 'ARCHIVADO'
+} as const
+
+export type EstadoComunicado = (typeof EstadoComunicado)[keyof typeof EstadoComunicado]
+
+
+export const TipoConceptoPago = {
+  MATRICULA: 'MATRICULA',
+  PENSION: 'PENSION',
+  OTRO: 'OTRO'
+} as const
+
+export type TipoConceptoPago = (typeof TipoConceptoPago)[keyof typeof TipoConceptoPago]
+
+
+export const EstadoCuota = {
+  PENDIENTE: 'PENDIENTE',
+  PAGADA: 'PAGADA',
+  VENCIDA: 'VENCIDA',
+  ANULADA: 'ANULADA'
+} as const
+
+export type EstadoCuota = (typeof EstadoCuota)[keyof typeof EstadoCuota]
+
+
+export const EstadoPago = {
+  REGISTRADO: 'REGISTRADO',
+  ANULADO: 'ANULADO'
+} as const
+
+export type EstadoPago = (typeof EstadoPago)[keyof typeof EstadoPago]
+
+
+export const MetodoPago = {
+  EFECTIVO: 'EFECTIVO',
+  TRANSFERENCIA: 'TRANSFERENCIA',
+  TARJETA: 'TARJETA',
+  DEPOSITO: 'DEPOSITO'
+} as const
+
+export type MetodoPago = (typeof MetodoPago)[keyof typeof MetodoPago]
+
+
+export const AudienciaComunicado = {
+  COLEGIO: 'COLEGIO',
+  NIVEL: 'NIVEL',
+  GRADO: 'GRADO',
+  SECCION: 'SECCION',
+  INDIVIDUAL: 'INDIVIDUAL'
+} as const
+
+export type AudienciaComunicado = (typeof AudienciaComunicado)[keyof typeof AudienciaComunicado]
+
+
+export const TipoParentesco = {
+  PADRE: 'PADRE',
+  MADRE: 'MADRE',
+  TUTOR: 'TUTOR'
+} as const
+
+export type TipoParentesco = (typeof TipoParentesco)[keyof typeof TipoParentesco]
+
+
+export const EstadoDocente = {
+  ACTIVO: 'ACTIVO',
+  INACTIVO: 'INACTIVO',
+  LICENCIA: 'LICENCIA'
+} as const
+
+export type EstadoDocente = (typeof EstadoDocente)[keyof typeof EstadoDocente]
+
+
+export const TipoNotificacion = {
+  COMUNICADO: 'COMUNICADO',
+  BOLETIN: 'BOLETIN',
+  PAGO: 'PAGO',
+  SISTEMA: 'SISTEMA'
+} as const
+
+export type TipoNotificacion = (typeof TipoNotificacion)[keyof typeof TipoNotificacion]

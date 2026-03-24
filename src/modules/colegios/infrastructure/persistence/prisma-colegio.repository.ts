@@ -72,6 +72,10 @@ export class PrismaColegioRepository implements ColegioRepository {
       periodo:         raw.periodo,
       zonaHoraria:     raw.zonaHoraria,
       moneda:          raw.moneda,
+      notaMinima:      raw.notaMinima,
+      notaMaxima:      raw.notaMaxima,
+      notaAprobatoria: raw.notaAprobatoria,
+      decimalesNota:   raw.decimalesNota,
     };
   }
 
@@ -104,6 +108,10 @@ export class PrismaColegioRepository implements ColegioRepository {
       periodo:         raw.periodo,
       zonaHoraria:     raw.zonaHoraria,
       moneda:          raw.moneda,
+      notaMinima:      raw.notaMinima,
+      notaMaxima:      raw.notaMaxima,
+      notaAprobatoria: raw.notaAprobatoria,
+      decimalesNota:   raw.decimalesNota,
     };
   }
 }

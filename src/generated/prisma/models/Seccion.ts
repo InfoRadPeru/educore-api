@@ -233,6 +233,12 @@ export type SeccionWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   colegioGrado?: Prisma.XOR<Prisma.ColegioGradoScalarRelationFilter, Prisma.ColegioGradoWhereInput>
+  matriculas?: Prisma.MatriculaListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  docenteAsignaciones?: Prisma.DocenteAsignacionListRelationFilter
+  publicacionesBoletin?: Prisma.PublicacionBoletinListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  horariosSeccion?: Prisma.HorarioSeccionListRelationFilter
 }
 
 export type SeccionOrderByWithRelationInput = {
@@ -244,6 +250,12 @@ export type SeccionOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   colegioGrado?: Prisma.ColegioGradoOrderByWithRelationInput
+  matriculas?: Prisma.MatriculaOrderByRelationAggregateInput
+  prematriculas?: Prisma.PrematriculaOrderByRelationAggregateInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionOrderByRelationAggregateInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinOrderByRelationAggregateInput
+  comunicados?: Prisma.ComunicadoOrderByRelationAggregateInput
+  horariosSeccion?: Prisma.HorarioSeccionOrderByRelationAggregateInput
 }
 
 export type SeccionWhereUniqueInput = Prisma.AtLeast<{
@@ -259,6 +271,12 @@ export type SeccionWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
   colegioGrado?: Prisma.XOR<Prisma.ColegioGradoScalarRelationFilter, Prisma.ColegioGradoWhereInput>
+  matriculas?: Prisma.MatriculaListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  docenteAsignaciones?: Prisma.DocenteAsignacionListRelationFilter
+  publicacionesBoletin?: Prisma.PublicacionBoletinListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  horariosSeccion?: Prisma.HorarioSeccionListRelationFilter
 }, "id" | "colegioGradoId_nombre">
 
 export type SeccionOrderByWithAggregationInput = {
@@ -297,6 +315,12 @@ export type SeccionCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
 }
 
 export type SeccionUncheckedCreateInput = {
@@ -307,6 +331,12 @@ export type SeccionUncheckedCreateInput = {
   activo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
 }
 
 export type SeccionUpdateInput = {
@@ -317,6 +347,12 @@ export type SeccionUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
 }
 
 export type SeccionUncheckedUpdateInput = {
@@ -327,6 +363,12 @@ export type SeccionUncheckedUpdateInput = {
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
 }
 
 export type SeccionCreateManyInput = {
@@ -411,6 +453,16 @@ export type SeccionSumOrderByAggregateInput = {
   vacantes?: Prisma.SortOrder
 }
 
+export type SeccionNullableScalarRelationFilter = {
+  is?: Prisma.SeccionWhereInput | null
+  isNot?: Prisma.SeccionWhereInput | null
+}
+
+export type SeccionScalarRelationFilter = {
+  is?: Prisma.SeccionWhereInput
+  isNot?: Prisma.SeccionWhereInput
+}
+
 export type SeccionCreateNestedManyWithoutColegioGradoInput = {
   create?: Prisma.XOR<Prisma.SeccionCreateWithoutColegioGradoInput, Prisma.SeccionUncheckedCreateWithoutColegioGradoInput> | Prisma.SeccionCreateWithoutColegioGradoInput[] | Prisma.SeccionUncheckedCreateWithoutColegioGradoInput[]
   connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutColegioGradoInput | Prisma.SeccionCreateOrConnectWithoutColegioGradoInput[]
@@ -453,12 +505,92 @@ export type SeccionUncheckedUpdateManyWithoutColegioGradoNestedInput = {
   deleteMany?: Prisma.SeccionScalarWhereInput | Prisma.SeccionScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type SeccionCreateNestedOneWithoutPrematriculasInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutPrematriculasInput, Prisma.SeccionUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutPrematriculasInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneWithoutPrematriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutPrematriculasInput, Prisma.SeccionUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutPrematriculasInput
+  upsert?: Prisma.SeccionUpsertWithoutPrematriculasInput
+  disconnect?: Prisma.SeccionWhereInput | boolean
+  delete?: Prisma.SeccionWhereInput | boolean
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutPrematriculasInput, Prisma.SeccionUpdateWithoutPrematriculasInput>, Prisma.SeccionUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type SeccionCreateNestedOneWithoutMatriculasInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutMatriculasInput, Prisma.SeccionUncheckedCreateWithoutMatriculasInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutMatriculasInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneRequiredWithoutMatriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutMatriculasInput, Prisma.SeccionUncheckedCreateWithoutMatriculasInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutMatriculasInput
+  upsert?: Prisma.SeccionUpsertWithoutMatriculasInput
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutMatriculasInput, Prisma.SeccionUpdateWithoutMatriculasInput>, Prisma.SeccionUncheckedUpdateWithoutMatriculasInput>
+}
+
+export type SeccionCreateNestedOneWithoutDocenteAsignacionesInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedCreateWithoutDocenteAsignacionesInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutDocenteAsignacionesInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneRequiredWithoutDocenteAsignacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedCreateWithoutDocenteAsignacionesInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutDocenteAsignacionesInput
+  upsert?: Prisma.SeccionUpsertWithoutDocenteAsignacionesInput
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutDocenteAsignacionesInput, Prisma.SeccionUpdateWithoutDocenteAsignacionesInput>, Prisma.SeccionUncheckedUpdateWithoutDocenteAsignacionesInput>
+}
+
+export type SeccionCreateNestedOneWithoutPublicacionesBoletinInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedCreateWithoutPublicacionesBoletinInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutPublicacionesBoletinInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneRequiredWithoutPublicacionesBoletinNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedCreateWithoutPublicacionesBoletinInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutPublicacionesBoletinInput
+  upsert?: Prisma.SeccionUpsertWithoutPublicacionesBoletinInput
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutPublicacionesBoletinInput, Prisma.SeccionUpdateWithoutPublicacionesBoletinInput>, Prisma.SeccionUncheckedUpdateWithoutPublicacionesBoletinInput>
+}
+
+export type SeccionCreateNestedOneWithoutComunicadosInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutComunicadosInput, Prisma.SeccionUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutComunicadosInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneWithoutComunicadosNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutComunicadosInput, Prisma.SeccionUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutComunicadosInput
+  upsert?: Prisma.SeccionUpsertWithoutComunicadosInput
+  disconnect?: Prisma.SeccionWhereInput | boolean
+  delete?: Prisma.SeccionWhereInput | boolean
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutComunicadosInput, Prisma.SeccionUpdateWithoutComunicadosInput>, Prisma.SeccionUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type SeccionCreateNestedOneWithoutHorariosSeccionInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedCreateWithoutHorariosSeccionInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutHorariosSeccionInput
+  connect?: Prisma.SeccionWhereUniqueInput
+}
+
+export type SeccionUpdateOneRequiredWithoutHorariosSeccionNestedInput = {
+  create?: Prisma.XOR<Prisma.SeccionCreateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedCreateWithoutHorariosSeccionInput>
+  connectOrCreate?: Prisma.SeccionCreateOrConnectWithoutHorariosSeccionInput
+  upsert?: Prisma.SeccionUpsertWithoutHorariosSeccionInput
+  connect?: Prisma.SeccionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SeccionUpdateToOneWithWhereWithoutHorariosSeccionInput, Prisma.SeccionUpdateWithoutHorariosSeccionInput>, Prisma.SeccionUncheckedUpdateWithoutHorariosSeccionInput>
 }
 
 export type SeccionCreateWithoutColegioGradoInput = {
@@ -468,6 +600,12 @@ export type SeccionCreateWithoutColegioGradoInput = {
   activo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
 }
 
 export type SeccionUncheckedCreateWithoutColegioGradoInput = {
@@ -477,6 +615,12 @@ export type SeccionUncheckedCreateWithoutColegioGradoInput = {
   activo?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
 }
 
 export type SeccionCreateOrConnectWithoutColegioGradoInput = {
@@ -518,6 +662,462 @@ export type SeccionScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Seccion"> | Date | string
 }
 
+export type SeccionCreateWithoutPrematriculasInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutPrematriculasInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutPrematriculasInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutPrematriculasInput, Prisma.SeccionUncheckedCreateWithoutPrematriculasInput>
+}
+
+export type SeccionUpsertWithoutPrematriculasInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutPrematriculasInput, Prisma.SeccionUncheckedUpdateWithoutPrematriculasInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutPrematriculasInput, Prisma.SeccionUncheckedCreateWithoutPrematriculasInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutPrematriculasInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutPrematriculasInput, Prisma.SeccionUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type SeccionUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionCreateWithoutMatriculasInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutMatriculasInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutMatriculasInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutMatriculasInput, Prisma.SeccionUncheckedCreateWithoutMatriculasInput>
+}
+
+export type SeccionUpsertWithoutMatriculasInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutMatriculasInput, Prisma.SeccionUncheckedUpdateWithoutMatriculasInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutMatriculasInput, Prisma.SeccionUncheckedCreateWithoutMatriculasInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutMatriculasInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutMatriculasInput, Prisma.SeccionUncheckedUpdateWithoutMatriculasInput>
+}
+
+export type SeccionUpdateWithoutMatriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutMatriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionCreateWithoutDocenteAsignacionesInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutDocenteAsignacionesInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutDocenteAsignacionesInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedCreateWithoutDocenteAsignacionesInput>
+}
+
+export type SeccionUpsertWithoutDocenteAsignacionesInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedUpdateWithoutDocenteAsignacionesInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedCreateWithoutDocenteAsignacionesInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutDocenteAsignacionesInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutDocenteAsignacionesInput, Prisma.SeccionUncheckedUpdateWithoutDocenteAsignacionesInput>
+}
+
+export type SeccionUpdateWithoutDocenteAsignacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutDocenteAsignacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionCreateWithoutPublicacionesBoletinInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutPublicacionesBoletinInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutPublicacionesBoletinInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedCreateWithoutPublicacionesBoletinInput>
+}
+
+export type SeccionUpsertWithoutPublicacionesBoletinInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedUpdateWithoutPublicacionesBoletinInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedCreateWithoutPublicacionesBoletinInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutPublicacionesBoletinInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutPublicacionesBoletinInput, Prisma.SeccionUncheckedUpdateWithoutPublicacionesBoletinInput>
+}
+
+export type SeccionUpdateWithoutPublicacionesBoletinInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutPublicacionesBoletinInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionCreateWithoutComunicadosInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutComunicadosInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutComunicadosInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutComunicadosInput, Prisma.SeccionUncheckedCreateWithoutComunicadosInput>
+}
+
+export type SeccionUpsertWithoutComunicadosInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutComunicadosInput, Prisma.SeccionUncheckedUpdateWithoutComunicadosInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutComunicadosInput, Prisma.SeccionUncheckedCreateWithoutComunicadosInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutComunicadosInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutComunicadosInput, Prisma.SeccionUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type SeccionUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionCreateWithoutHorariosSeccionInput = {
+  id?: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegioGrado: Prisma.ColegioGradoCreateNestedOneWithoutSeccionesInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionUncheckedCreateWithoutHorariosSeccionInput = {
+  id?: string
+  colegioGradoId: string
+  nombre: string
+  vacantes?: number
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutSeccionInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutSeccionInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedCreateNestedManyWithoutSeccionInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedCreateNestedManyWithoutSeccionInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutSeccionInput
+}
+
+export type SeccionCreateOrConnectWithoutHorariosSeccionInput = {
+  where: Prisma.SeccionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedCreateWithoutHorariosSeccionInput>
+}
+
+export type SeccionUpsertWithoutHorariosSeccionInput = {
+  update: Prisma.XOR<Prisma.SeccionUpdateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedUpdateWithoutHorariosSeccionInput>
+  create: Prisma.XOR<Prisma.SeccionCreateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedCreateWithoutHorariosSeccionInput>
+  where?: Prisma.SeccionWhereInput
+}
+
+export type SeccionUpdateToOneWithWhereWithoutHorariosSeccionInput = {
+  where?: Prisma.SeccionWhereInput
+  data: Prisma.XOR<Prisma.SeccionUpdateWithoutHorariosSeccionInput, Prisma.SeccionUncheckedUpdateWithoutHorariosSeccionInput>
+}
+
+export type SeccionUpdateWithoutHorariosSeccionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegioGrado?: Prisma.ColegioGradoUpdateOneRequiredWithoutSeccionesNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+}
+
+export type SeccionUncheckedUpdateWithoutHorariosSeccionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioGradoId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  vacantes?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+}
+
 export type SeccionCreateManyColegioGradoInput = {
   id?: string
   nombre: string
@@ -534,6 +1134,12 @@ export type SeccionUpdateWithoutColegioGradoInput = {
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUpdateManyWithoutSeccionNestedInput
 }
 
 export type SeccionUncheckedUpdateWithoutColegioGradoInput = {
@@ -543,6 +1149,12 @@ export type SeccionUncheckedUpdateWithoutColegioGradoInput = {
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutSeccionNestedInput
+  docenteAsignaciones?: Prisma.DocenteAsignacionUncheckedUpdateManyWithoutSeccionNestedInput
+  publicacionesBoletin?: Prisma.PublicacionBoletinUncheckedUpdateManyWithoutSeccionNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutSeccionNestedInput
+  horariosSeccion?: Prisma.HorarioSeccionUncheckedUpdateManyWithoutSeccionNestedInput
 }
 
 export type SeccionUncheckedUpdateManyWithoutColegioGradoInput = {
@@ -555,6 +1167,80 @@ export type SeccionUncheckedUpdateManyWithoutColegioGradoInput = {
 }
 
 
+/**
+ * Count Type SeccionCountOutputType
+ */
+
+export type SeccionCountOutputType = {
+  matriculas: number
+  prematriculas: number
+  docenteAsignaciones: number
+  publicacionesBoletin: number
+  comunicados: number
+  horariosSeccion: number
+}
+
+export type SeccionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  matriculas?: boolean | SeccionCountOutputTypeCountMatriculasArgs
+  prematriculas?: boolean | SeccionCountOutputTypeCountPrematriculasArgs
+  docenteAsignaciones?: boolean | SeccionCountOutputTypeCountDocenteAsignacionesArgs
+  publicacionesBoletin?: boolean | SeccionCountOutputTypeCountPublicacionesBoletinArgs
+  comunicados?: boolean | SeccionCountOutputTypeCountComunicadosArgs
+  horariosSeccion?: boolean | SeccionCountOutputTypeCountHorariosSeccionArgs
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SeccionCountOutputType
+   */
+  select?: Prisma.SeccionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountMatriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatriculaWhereInput
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountPrematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrematriculaWhereInput
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountDocenteAsignacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DocenteAsignacionWhereInput
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountPublicacionesBoletinArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PublicacionBoletinWhereInput
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountComunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComunicadoWhereInput
+}
+
+/**
+ * SeccionCountOutputType without action
+ */
+export type SeccionCountOutputTypeCountHorariosSeccionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.HorarioSeccionWhereInput
+}
+
 
 export type SeccionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -565,6 +1251,13 @@ export type SeccionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   createdAt?: boolean
   updatedAt?: boolean
   colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
+  matriculas?: boolean | Prisma.Seccion$matriculasArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.Seccion$prematriculasArgs<ExtArgs>
+  docenteAsignaciones?: boolean | Prisma.Seccion$docenteAsignacionesArgs<ExtArgs>
+  publicacionesBoletin?: boolean | Prisma.Seccion$publicacionesBoletinArgs<ExtArgs>
+  comunicados?: boolean | Prisma.Seccion$comunicadosArgs<ExtArgs>
+  horariosSeccion?: boolean | Prisma.Seccion$horariosSeccionArgs<ExtArgs>
+  _count?: boolean | Prisma.SeccionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["seccion"]>
 
 export type SeccionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -602,6 +1295,13 @@ export type SeccionSelectScalar = {
 export type SeccionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "colegioGradoId" | "nombre" | "vacantes" | "activo" | "createdAt" | "updatedAt", ExtArgs["result"]["seccion"]>
 export type SeccionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
+  matriculas?: boolean | Prisma.Seccion$matriculasArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.Seccion$prematriculasArgs<ExtArgs>
+  docenteAsignaciones?: boolean | Prisma.Seccion$docenteAsignacionesArgs<ExtArgs>
+  publicacionesBoletin?: boolean | Prisma.Seccion$publicacionesBoletinArgs<ExtArgs>
+  comunicados?: boolean | Prisma.Seccion$comunicadosArgs<ExtArgs>
+  horariosSeccion?: boolean | Prisma.Seccion$horariosSeccionArgs<ExtArgs>
+  _count?: boolean | Prisma.SeccionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SeccionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   colegioGrado?: boolean | Prisma.ColegioGradoDefaultArgs<ExtArgs>
@@ -614,6 +1314,12 @@ export type $SeccionPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "Seccion"
   objects: {
     colegioGrado: Prisma.$ColegioGradoPayload<ExtArgs>
+    matriculas: Prisma.$MatriculaPayload<ExtArgs>[]
+    prematriculas: Prisma.$PrematriculaPayload<ExtArgs>[]
+    docenteAsignaciones: Prisma.$DocenteAsignacionPayload<ExtArgs>[]
+    publicacionesBoletin: Prisma.$PublicacionBoletinPayload<ExtArgs>[]
+    comunicados: Prisma.$ComunicadoPayload<ExtArgs>[]
+    horariosSeccion: Prisma.$HorarioSeccionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1018,6 +1724,12 @@ readonly fields: SeccionFieldRefs;
 export interface Prisma__SeccionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   colegioGrado<T extends Prisma.ColegioGradoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioGradoDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioGradoClient<runtime.Types.Result.GetResult<Prisma.$ColegioGradoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  matriculas<T extends Prisma.Seccion$matriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$matriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  prematriculas<T extends Prisma.Seccion$prematriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$prematriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrematriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  docenteAsignaciones<T extends Prisma.Seccion$docenteAsignacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$docenteAsignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DocenteAsignacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  publicacionesBoletin<T extends Prisma.Seccion$publicacionesBoletinArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$publicacionesBoletinArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PublicacionBoletinPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comunicados<T extends Prisma.Seccion$comunicadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$comunicadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  horariosSeccion<T extends Prisma.Seccion$horariosSeccionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Seccion$horariosSeccionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$HorarioSeccionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1447,6 +2159,150 @@ export type SeccionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Limit how many Seccions to delete.
    */
   limit?: number
+}
+
+/**
+ * Seccion.matriculas
+ */
+export type Seccion$matriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Matricula
+   */
+  select?: Prisma.MatriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Matricula
+   */
+  omit?: Prisma.MatriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatriculaInclude<ExtArgs> | null
+  where?: Prisma.MatriculaWhereInput
+  orderBy?: Prisma.MatriculaOrderByWithRelationInput | Prisma.MatriculaOrderByWithRelationInput[]
+  cursor?: Prisma.MatriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatriculaScalarFieldEnum | Prisma.MatriculaScalarFieldEnum[]
+}
+
+/**
+ * Seccion.prematriculas
+ */
+export type Seccion$prematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prematricula
+   */
+  select?: Prisma.PrematriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prematricula
+   */
+  omit?: Prisma.PrematriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrematriculaInclude<ExtArgs> | null
+  where?: Prisma.PrematriculaWhereInput
+  orderBy?: Prisma.PrematriculaOrderByWithRelationInput | Prisma.PrematriculaOrderByWithRelationInput[]
+  cursor?: Prisma.PrematriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrematriculaScalarFieldEnum | Prisma.PrematriculaScalarFieldEnum[]
+}
+
+/**
+ * Seccion.docenteAsignaciones
+ */
+export type Seccion$docenteAsignacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DocenteAsignacion
+   */
+  select?: Prisma.DocenteAsignacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DocenteAsignacion
+   */
+  omit?: Prisma.DocenteAsignacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DocenteAsignacionInclude<ExtArgs> | null
+  where?: Prisma.DocenteAsignacionWhereInput
+  orderBy?: Prisma.DocenteAsignacionOrderByWithRelationInput | Prisma.DocenteAsignacionOrderByWithRelationInput[]
+  cursor?: Prisma.DocenteAsignacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DocenteAsignacionScalarFieldEnum | Prisma.DocenteAsignacionScalarFieldEnum[]
+}
+
+/**
+ * Seccion.publicacionesBoletin
+ */
+export type Seccion$publicacionesBoletinArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PublicacionBoletin
+   */
+  select?: Prisma.PublicacionBoletinSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PublicacionBoletin
+   */
+  omit?: Prisma.PublicacionBoletinOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PublicacionBoletinInclude<ExtArgs> | null
+  where?: Prisma.PublicacionBoletinWhereInput
+  orderBy?: Prisma.PublicacionBoletinOrderByWithRelationInput | Prisma.PublicacionBoletinOrderByWithRelationInput[]
+  cursor?: Prisma.PublicacionBoletinWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PublicacionBoletinScalarFieldEnum | Prisma.PublicacionBoletinScalarFieldEnum[]
+}
+
+/**
+ * Seccion.comunicados
+ */
+export type Seccion$comunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comunicado
+   */
+  select?: Prisma.ComunicadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comunicado
+   */
+  omit?: Prisma.ComunicadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComunicadoInclude<ExtArgs> | null
+  where?: Prisma.ComunicadoWhereInput
+  orderBy?: Prisma.ComunicadoOrderByWithRelationInput | Prisma.ComunicadoOrderByWithRelationInput[]
+  cursor?: Prisma.ComunicadoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComunicadoScalarFieldEnum | Prisma.ComunicadoScalarFieldEnum[]
+}
+
+/**
+ * Seccion.horariosSeccion
+ */
+export type Seccion$horariosSeccionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the HorarioSeccion
+   */
+  select?: Prisma.HorarioSeccionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the HorarioSeccion
+   */
+  omit?: Prisma.HorarioSeccionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.HorarioSeccionInclude<ExtArgs> | null
+  where?: Prisma.HorarioSeccionWhereInput
+  orderBy?: Prisma.HorarioSeccionOrderByWithRelationInput | Prisma.HorarioSeccionOrderByWithRelationInput[]
+  cursor?: Prisma.HorarioSeccionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.HorarioSeccionScalarFieldEnum | Prisma.HorarioSeccionScalarFieldEnum[]
 }
 
 /**

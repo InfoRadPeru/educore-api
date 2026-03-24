@@ -27,7 +27,9 @@ export type AggregatePerfilAlumno = {
 export type PerfilAlumnoMinAggregateOutputType = {
   id: string | null
   personaId: string | null
+  colegioId: string | null
   codigoMatricula: string | null
+  estado: $Enums.EstadoAlumno | null
   colegioOrigenRef: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -36,7 +38,9 @@ export type PerfilAlumnoMinAggregateOutputType = {
 export type PerfilAlumnoMaxAggregateOutputType = {
   id: string | null
   personaId: string | null
+  colegioId: string | null
   codigoMatricula: string | null
+  estado: $Enums.EstadoAlumno | null
   colegioOrigenRef: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -45,7 +49,9 @@ export type PerfilAlumnoMaxAggregateOutputType = {
 export type PerfilAlumnoCountAggregateOutputType = {
   id: number
   personaId: number
+  colegioId: number
   codigoMatricula: number
+  estado: number
   colegioOrigenRef: number
   createdAt: number
   updatedAt: number
@@ -56,7 +62,9 @@ export type PerfilAlumnoCountAggregateOutputType = {
 export type PerfilAlumnoMinAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   codigoMatricula?: true
+  estado?: true
   colegioOrigenRef?: true
   createdAt?: true
   updatedAt?: true
@@ -65,7 +73,9 @@ export type PerfilAlumnoMinAggregateInputType = {
 export type PerfilAlumnoMaxAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   codigoMatricula?: true
+  estado?: true
   colegioOrigenRef?: true
   createdAt?: true
   updatedAt?: true
@@ -74,7 +84,9 @@ export type PerfilAlumnoMaxAggregateInputType = {
 export type PerfilAlumnoCountAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   codigoMatricula?: true
+  estado?: true
   colegioOrigenRef?: true
   createdAt?: true
   updatedAt?: true
@@ -156,7 +168,9 @@ export type PerfilAlumnoGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type PerfilAlumnoGroupByOutputType = {
   id: string
   personaId: string
+  colegioId: string
   codigoMatricula: string
+  estado: $Enums.EstadoAlumno
   colegioOrigenRef: string | null
   createdAt: Date
   updatedAt: Date
@@ -186,21 +200,45 @@ export type PerfilAlumnoWhereInput = {
   NOT?: Prisma.PerfilAlumnoWhereInput | Prisma.PerfilAlumnoWhereInput[]
   id?: Prisma.StringFilter<"PerfilAlumno"> | string
   personaId?: Prisma.StringFilter<"PerfilAlumno"> | string
+  colegioId?: Prisma.StringFilter<"PerfilAlumno"> | string
   codigoMatricula?: Prisma.StringFilter<"PerfilAlumno"> | string
+  estado?: Prisma.EnumEstadoAlumnoFilter<"PerfilAlumno"> | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.StringNullableFilter<"PerfilAlumno"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
   persona?: Prisma.XOR<Prisma.PersonaScalarRelationFilter, Prisma.PersonaWhereInput>
+  colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
+  matriculas?: Prisma.MatriculaListRelationFilter
+  postulacion?: Prisma.XOR<Prisma.PostulacionNullableScalarRelationFilter, Prisma.PostulacionWhereInput> | null
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  apoderados?: Prisma.ApoderadoAlumnoListRelationFilter
+  notasActividades?: Prisma.NotaActividadListRelationFilter
+  notasPeriodo?: Prisma.NotaPeriodoListRelationFilter
+  asistencias?: Prisma.AsistenciaListRelationFilter
+  cuotas?: Prisma.CuotaAlumnoListRelationFilter
+  pagos?: Prisma.PagoListRelationFilter
 }
 
 export type PerfilAlumnoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   codigoMatricula?: Prisma.SortOrder
+  estado?: Prisma.SortOrder
   colegioOrigenRef?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   persona?: Prisma.PersonaOrderByWithRelationInput
+  colegio?: Prisma.ColegioOrderByWithRelationInput
+  matriculas?: Prisma.MatriculaOrderByRelationAggregateInput
+  postulacion?: Prisma.PostulacionOrderByWithRelationInput
+  prematriculas?: Prisma.PrematriculaOrderByRelationAggregateInput
+  apoderados?: Prisma.ApoderadoAlumnoOrderByRelationAggregateInput
+  notasActividades?: Prisma.NotaActividadOrderByRelationAggregateInput
+  notasPeriodo?: Prisma.NotaPeriodoOrderByRelationAggregateInput
+  asistencias?: Prisma.AsistenciaOrderByRelationAggregateInput
+  cuotas?: Prisma.CuotaAlumnoOrderByRelationAggregateInput
+  pagos?: Prisma.PagoOrderByRelationAggregateInput
 }
 
 export type PerfilAlumnoWhereUniqueInput = Prisma.AtLeast<{
@@ -210,16 +248,30 @@ export type PerfilAlumnoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PerfilAlumnoWhereInput | Prisma.PerfilAlumnoWhereInput[]
   OR?: Prisma.PerfilAlumnoWhereInput[]
   NOT?: Prisma.PerfilAlumnoWhereInput | Prisma.PerfilAlumnoWhereInput[]
+  colegioId?: Prisma.StringFilter<"PerfilAlumno"> | string
+  estado?: Prisma.EnumEstadoAlumnoFilter<"PerfilAlumno"> | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.StringNullableFilter<"PerfilAlumno"> | string | null
   createdAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
   persona?: Prisma.XOR<Prisma.PersonaScalarRelationFilter, Prisma.PersonaWhereInput>
+  colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
+  matriculas?: Prisma.MatriculaListRelationFilter
+  postulacion?: Prisma.XOR<Prisma.PostulacionNullableScalarRelationFilter, Prisma.PostulacionWhereInput> | null
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  apoderados?: Prisma.ApoderadoAlumnoListRelationFilter
+  notasActividades?: Prisma.NotaActividadListRelationFilter
+  notasPeriodo?: Prisma.NotaPeriodoListRelationFilter
+  asistencias?: Prisma.AsistenciaListRelationFilter
+  cuotas?: Prisma.CuotaAlumnoListRelationFilter
+  pagos?: Prisma.PagoListRelationFilter
 }, "id" | "personaId" | "codigoMatricula">
 
 export type PerfilAlumnoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   codigoMatricula?: Prisma.SortOrder
+  estado?: Prisma.SortOrder
   colegioOrigenRef?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -234,7 +286,9 @@ export type PerfilAlumnoScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PerfilAlumnoScalarWhereWithAggregatesInput | Prisma.PerfilAlumnoScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PerfilAlumno"> | string
   personaId?: Prisma.StringWithAggregatesFilter<"PerfilAlumno"> | string
+  colegioId?: Prisma.StringWithAggregatesFilter<"PerfilAlumno"> | string
   codigoMatricula?: Prisma.StringWithAggregatesFilter<"PerfilAlumno"> | string
+  estado?: Prisma.EnumEstadoAlumnoWithAggregatesFilter<"PerfilAlumno"> | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.StringNullableWithAggregatesFilter<"PerfilAlumno"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PerfilAlumno"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PerfilAlumno"> | Date | string
@@ -243,43 +297,89 @@ export type PerfilAlumnoScalarWhereWithAggregatesInput = {
 export type PerfilAlumnoCreateInput = {
   id?: string
   codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
   colegioOrigenRef?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
 }
 
 export type PerfilAlumnoUncheckedCreateInput = {
   id?: string
   personaId: string
+  colegioId: string
   codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
   colegioOrigenRef?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
 }
 
 export type PerfilAlumnoUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
 }
 
 export type PerfilAlumnoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
 }
 
 export type PerfilAlumnoCreateManyInput = {
   id?: string
   personaId: string
+  colegioId: string
   codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
   colegioOrigenRef?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -288,6 +388,7 @@ export type PerfilAlumnoCreateManyInput = {
 export type PerfilAlumnoUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -296,10 +397,22 @@ export type PerfilAlumnoUpdateManyMutationInput = {
 export type PerfilAlumnoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PerfilAlumnoListRelationFilter = {
+  every?: Prisma.PerfilAlumnoWhereInput
+  some?: Prisma.PerfilAlumnoWhereInput
+  none?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type PerfilAlumnoNullableScalarRelationFilter = {
@@ -307,10 +420,17 @@ export type PerfilAlumnoNullableScalarRelationFilter = {
   isNot?: Prisma.PerfilAlumnoWhereInput | null
 }
 
+export type PerfilAlumnoScalarRelationFilter = {
+  is?: Prisma.PerfilAlumnoWhereInput
+  isNot?: Prisma.PerfilAlumnoWhereInput
+}
+
 export type PerfilAlumnoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   codigoMatricula?: Prisma.SortOrder
+  estado?: Prisma.SortOrder
   colegioOrigenRef?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -319,7 +439,9 @@ export type PerfilAlumnoCountOrderByAggregateInput = {
 export type PerfilAlumnoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   codigoMatricula?: Prisma.SortOrder
+  estado?: Prisma.SortOrder
   colegioOrigenRef?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -328,10 +450,98 @@ export type PerfilAlumnoMaxOrderByAggregateInput = {
 export type PerfilAlumnoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   codigoMatricula?: Prisma.SortOrder
+  estado?: Prisma.SortOrder
   colegioOrigenRef?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type PerfilAlumnoCreateNestedManyWithoutColegioInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput> | Prisma.PerfilAlumnoCreateWithoutColegioInput[] | Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput | Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput[]
+  createMany?: Prisma.PerfilAlumnoCreateManyColegioInputEnvelope
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+}
+
+export type PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput> | Prisma.PerfilAlumnoCreateWithoutColegioInput[] | Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput | Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput[]
+  createMany?: Prisma.PerfilAlumnoCreateManyColegioInputEnvelope
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+}
+
+export type PerfilAlumnoUpdateManyWithoutColegioNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput> | Prisma.PerfilAlumnoCreateWithoutColegioInput[] | Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput | Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput[]
+  upsert?: Prisma.PerfilAlumnoUpsertWithWhereUniqueWithoutColegioInput | Prisma.PerfilAlumnoUpsertWithWhereUniqueWithoutColegioInput[]
+  createMany?: Prisma.PerfilAlumnoCreateManyColegioInputEnvelope
+  set?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  disconnect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  delete?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  update?: Prisma.PerfilAlumnoUpdateWithWhereUniqueWithoutColegioInput | Prisma.PerfilAlumnoUpdateWithWhereUniqueWithoutColegioInput[]
+  updateMany?: Prisma.PerfilAlumnoUpdateManyWithWhereWithoutColegioInput | Prisma.PerfilAlumnoUpdateManyWithWhereWithoutColegioInput[]
+  deleteMany?: Prisma.PerfilAlumnoScalarWhereInput | Prisma.PerfilAlumnoScalarWhereInput[]
+}
+
+export type PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput> | Prisma.PerfilAlumnoCreateWithoutColegioInput[] | Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput | Prisma.PerfilAlumnoCreateOrConnectWithoutColegioInput[]
+  upsert?: Prisma.PerfilAlumnoUpsertWithWhereUniqueWithoutColegioInput | Prisma.PerfilAlumnoUpsertWithWhereUniqueWithoutColegioInput[]
+  createMany?: Prisma.PerfilAlumnoCreateManyColegioInputEnvelope
+  set?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  disconnect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  delete?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput | Prisma.PerfilAlumnoWhereUniqueInput[]
+  update?: Prisma.PerfilAlumnoUpdateWithWhereUniqueWithoutColegioInput | Prisma.PerfilAlumnoUpdateWithWhereUniqueWithoutColegioInput[]
+  updateMany?: Prisma.PerfilAlumnoUpdateManyWithWhereWithoutColegioInput | Prisma.PerfilAlumnoUpdateManyWithWhereWithoutColegioInput[]
+  deleteMany?: Prisma.PerfilAlumnoScalarWhereInput | Prisma.PerfilAlumnoScalarWhereInput[]
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutPostulacionInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPostulacionInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPostulacionInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneWithoutPostulacionNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPostulacionInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPostulacionInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutPostulacionInput
+  disconnect?: Prisma.PerfilAlumnoWhereInput | boolean
+  delete?: Prisma.PerfilAlumnoWhereInput | boolean
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutPostulacionInput, Prisma.PerfilAlumnoUpdateWithoutPostulacionInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutPostulacionInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutPrematriculasInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPrematriculasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutPrematriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPrematriculasInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutPrematriculasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutPrematriculasInput, Prisma.PerfilAlumnoUpdateWithoutPrematriculasInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutMatriculasInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutMatriculasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutMatriculasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutMatriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutMatriculasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutMatriculasInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutMatriculasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutMatriculasInput, Prisma.PerfilAlumnoUpdateWithoutMatriculasInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutMatriculasInput>
 }
 
 export type PerfilAlumnoCreateNestedOneWithoutPersonaInput = {
@@ -366,20 +576,484 @@ export type PerfilAlumnoUncheckedUpdateOneWithoutPersonaNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutPersonaInput, Prisma.PerfilAlumnoUpdateWithoutPersonaInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutPersonaInput>
 }
 
-export type PerfilAlumnoCreateWithoutPersonaInput = {
+export type EnumEstadoAlumnoFieldUpdateOperationsInput = {
+  set?: $Enums.EstadoAlumno
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutApoderadosInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutApoderadosInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutApoderadosInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutApoderadosNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutApoderadosInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutApoderadosInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutApoderadosInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutApoderadosInput, Prisma.PerfilAlumnoUpdateWithoutApoderadosInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutApoderadosInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutNotasActividadesInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasActividadesInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutNotasActividadesInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutNotasActividadesNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasActividadesInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutNotasActividadesInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutNotasActividadesInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutNotasActividadesInput, Prisma.PerfilAlumnoUpdateWithoutNotasActividadesInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasActividadesInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutNotasPeriodoInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasPeriodoInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutNotasPeriodoInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutNotasPeriodoNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasPeriodoInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutNotasPeriodoInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutNotasPeriodoInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUpdateWithoutNotasPeriodoInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasPeriodoInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutAsistenciasInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutAsistenciasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutAsistenciasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutAsistenciasNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutAsistenciasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutAsistenciasInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutAsistenciasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutAsistenciasInput, Prisma.PerfilAlumnoUpdateWithoutAsistenciasInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutAsistenciasInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutCuotasInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutCuotasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutCuotasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutCuotasNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutCuotasInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutCuotasInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutCuotasInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutCuotasInput, Prisma.PerfilAlumnoUpdateWithoutCuotasInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutCuotasInput>
+}
+
+export type PerfilAlumnoCreateNestedOneWithoutPagosInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPagosInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPagosInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+}
+
+export type PerfilAlumnoUpdateOneRequiredWithoutPagosNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPagosInput>
+  connectOrCreate?: Prisma.PerfilAlumnoCreateOrConnectWithoutPagosInput
+  upsert?: Prisma.PerfilAlumnoUpsertWithoutPagosInput
+  connect?: Prisma.PerfilAlumnoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilAlumnoUpdateToOneWithWhereWithoutPagosInput, Prisma.PerfilAlumnoUpdateWithoutPagosInput>, Prisma.PerfilAlumnoUncheckedUpdateWithoutPagosInput>
+}
+
+export type PerfilAlumnoCreateWithoutColegioInput = {
   id?: string
   codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
   colegioOrigenRef?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutColegioInput = {
+  id?: string
+  personaId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutColegioInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput>
+}
+
+export type PerfilAlumnoCreateManyColegioInputEnvelope = {
+  data: Prisma.PerfilAlumnoCreateManyColegioInput | Prisma.PerfilAlumnoCreateManyColegioInput[]
+  skipDuplicates?: boolean
+}
+
+export type PerfilAlumnoUpsertWithWhereUniqueWithoutColegioInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutColegioInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedCreateWithoutColegioInput>
+}
+
+export type PerfilAlumnoUpdateWithWhereUniqueWithoutColegioInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutColegioInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutColegioInput>
+}
+
+export type PerfilAlumnoUpdateManyWithWhereWithoutColegioInput = {
+  where: Prisma.PerfilAlumnoScalarWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateManyMutationInput, Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioInput>
+}
+
+export type PerfilAlumnoScalarWhereInput = {
+  AND?: Prisma.PerfilAlumnoScalarWhereInput | Prisma.PerfilAlumnoScalarWhereInput[]
+  OR?: Prisma.PerfilAlumnoScalarWhereInput[]
+  NOT?: Prisma.PerfilAlumnoScalarWhereInput | Prisma.PerfilAlumnoScalarWhereInput[]
+  id?: Prisma.StringFilter<"PerfilAlumno"> | string
+  personaId?: Prisma.StringFilter<"PerfilAlumno"> | string
+  colegioId?: Prisma.StringFilter<"PerfilAlumno"> | string
+  codigoMatricula?: Prisma.StringFilter<"PerfilAlumno"> | string
+  estado?: Prisma.EnumEstadoAlumnoFilter<"PerfilAlumno"> | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.StringNullableFilter<"PerfilAlumno"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"PerfilAlumno"> | Date | string
+}
+
+export type PerfilAlumnoCreateWithoutPostulacionInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutPostulacionInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutPostulacionInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPostulacionInput>
+}
+
+export type PerfilAlumnoUpsertWithoutPostulacionInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPostulacionInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPostulacionInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutPostulacionInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPostulacionInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPostulacionInput>
+}
+
+export type PerfilAlumnoUpdateWithoutPostulacionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutPostulacionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutPrematriculasInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutPrematriculasInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutPrematriculasInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPrematriculasInput>
+}
+
+export type PerfilAlumnoUpsertWithoutPrematriculasInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPrematriculasInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPrematriculasInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutPrematriculasInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPrematriculasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type PerfilAlumnoUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutMatriculasInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutMatriculasInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutMatriculasInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutMatriculasInput>
+}
+
+export type PerfilAlumnoUpsertWithoutMatriculasInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutMatriculasInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutMatriculasInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutMatriculasInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutMatriculasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutMatriculasInput>
+}
+
+export type PerfilAlumnoUpdateWithoutMatriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutMatriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutPersonaInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
 }
 
 export type PerfilAlumnoUncheckedCreateWithoutPersonaInput = {
   id?: string
+  colegioId: string
   codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
   colegioOrigenRef?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
 }
 
 export type PerfilAlumnoCreateOrConnectWithoutPersonaInput = {
@@ -401,80 +1075,850 @@ export type PerfilAlumnoUpdateToOneWithWhereWithoutPersonaInput = {
 export type PerfilAlumnoUpdateWithoutPersonaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
 }
 
 export type PerfilAlumnoUncheckedUpdateWithoutPersonaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutApoderadosInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutApoderadosInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutApoderadosInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutApoderadosInput>
+}
+
+export type PerfilAlumnoUpsertWithoutApoderadosInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutApoderadosInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutApoderadosInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutApoderadosInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutApoderadosInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutApoderadosInput>
+}
+
+export type PerfilAlumnoUpdateWithoutApoderadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutApoderadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutNotasActividadesInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutNotasActividadesInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutNotasActividadesInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasActividadesInput>
+}
+
+export type PerfilAlumnoUpsertWithoutNotasActividadesInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasActividadesInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasActividadesInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutNotasActividadesInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutNotasActividadesInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasActividadesInput>
+}
+
+export type PerfilAlumnoUpdateWithoutNotasActividadesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutNotasActividadesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutNotasPeriodoInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutNotasPeriodoInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutNotasPeriodoInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasPeriodoInput>
+}
+
+export type PerfilAlumnoUpsertWithoutNotasPeriodoInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasPeriodoInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedCreateWithoutNotasPeriodoInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutNotasPeriodoInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutNotasPeriodoInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutNotasPeriodoInput>
+}
+
+export type PerfilAlumnoUpdateWithoutNotasPeriodoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutNotasPeriodoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutAsistenciasInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutAsistenciasInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutAsistenciasInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutAsistenciasInput>
+}
+
+export type PerfilAlumnoUpsertWithoutAsistenciasInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutAsistenciasInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutAsistenciasInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutAsistenciasInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutAsistenciasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutAsistenciasInput>
+}
+
+export type PerfilAlumnoUpdateWithoutAsistenciasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutAsistenciasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutCuotasInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutCuotasInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutCuotasInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutCuotasInput>
+}
+
+export type PerfilAlumnoUpsertWithoutCuotasInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutCuotasInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedCreateWithoutCuotasInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutCuotasInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutCuotasInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutCuotasInput>
+}
+
+export type PerfilAlumnoUpdateWithoutCuotasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutCuotasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateWithoutPagosInput = {
+  id?: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilAlumnoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutPerfilesAlumnoInput
+  matriculas?: Prisma.MatriculaCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoUncheckedCreateWithoutPagosInput = {
+  id?: string
+  personaId: string
+  colegioId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  matriculas?: Prisma.MatriculaUncheckedCreateNestedManyWithoutPerfilAlumnoInput
+  postulacion?: Prisma.PostulacionUncheckedCreateNestedOneWithoutPerfilAlumnoInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutAlumnoInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+  notasActividades?: Prisma.NotaActividadUncheckedCreateNestedManyWithoutAlumnoInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedCreateNestedManyWithoutAlumnoInput
+  asistencias?: Prisma.AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedCreateNestedManyWithoutAlumnoInput
+}
+
+export type PerfilAlumnoCreateOrConnectWithoutPagosInput = {
+  where: Prisma.PerfilAlumnoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPagosInput>
+}
+
+export type PerfilAlumnoUpsertWithoutPagosInput = {
+  update: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPagosInput>
+  create: Prisma.XOR<Prisma.PerfilAlumnoCreateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedCreateWithoutPagosInput>
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+export type PerfilAlumnoUpdateToOneWithWhereWithoutPagosInput = {
+  where?: Prisma.PerfilAlumnoWhereInput
+  data: Prisma.XOR<Prisma.PerfilAlumnoUpdateWithoutPagosInput, Prisma.PerfilAlumnoUncheckedUpdateWithoutPagosInput>
+}
+
+export type PerfilAlumnoUpdateWithoutPagosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutPagosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoCreateManyColegioInput = {
+  id?: string
+  personaId: string
+  codigoMatricula: string
+  estado?: $Enums.EstadoAlumno
+  colegioOrigenRef?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PerfilAlumnoUpdateWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilAlumnoNestedInput
+  matriculas?: Prisma.MatriculaUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
+  colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  matriculas?: Prisma.MatriculaUncheckedUpdateManyWithoutPerfilAlumnoNestedInput
+  postulacion?: Prisma.PostulacionUncheckedUpdateOneWithoutPerfilAlumnoNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutAlumnoNestedInput
+  apoderados?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasActividades?: Prisma.NotaActividadUncheckedUpdateManyWithoutAlumnoNestedInput
+  notasPeriodo?: Prisma.NotaPeriodoUncheckedUpdateManyWithoutAlumnoNestedInput
+  asistencias?: Prisma.AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+  cuotas?: Prisma.CuotaAlumnoUncheckedUpdateManyWithoutAlumnoNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutAlumnoNestedInput
+}
+
+export type PerfilAlumnoUncheckedUpdateManyWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  codigoMatricula?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoAlumnoFieldUpdateOperationsInput | $Enums.EstadoAlumno
   colegioOrigenRef?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type PerfilAlumnoCountOutputType
+ */
+
+export type PerfilAlumnoCountOutputType = {
+  matriculas: number
+  prematriculas: number
+  apoderados: number
+  notasActividades: number
+  notasPeriodo: number
+  asistencias: number
+  cuotas: number
+  pagos: number
+}
+
+export type PerfilAlumnoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  matriculas?: boolean | PerfilAlumnoCountOutputTypeCountMatriculasArgs
+  prematriculas?: boolean | PerfilAlumnoCountOutputTypeCountPrematriculasArgs
+  apoderados?: boolean | PerfilAlumnoCountOutputTypeCountApoderadosArgs
+  notasActividades?: boolean | PerfilAlumnoCountOutputTypeCountNotasActividadesArgs
+  notasPeriodo?: boolean | PerfilAlumnoCountOutputTypeCountNotasPeriodoArgs
+  asistencias?: boolean | PerfilAlumnoCountOutputTypeCountAsistenciasArgs
+  cuotas?: boolean | PerfilAlumnoCountOutputTypeCountCuotasArgs
+  pagos?: boolean | PerfilAlumnoCountOutputTypeCountPagosArgs
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilAlumnoCountOutputType
+   */
+  select?: Prisma.PerfilAlumnoCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountMatriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MatriculaWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountPrematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrematriculaWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountApoderadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ApoderadoAlumnoWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountNotasActividadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotaActividadWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountNotasPeriodoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotaPeriodoWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountAsistenciasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AsistenciaWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountCuotasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CuotaAlumnoWhereInput
+}
+
+/**
+ * PerfilAlumnoCountOutputType without action
+ */
+export type PerfilAlumnoCountOutputTypeCountPagosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PagoWhereInput
+}
 
 
 export type PerfilAlumnoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   codigoMatricula?: boolean
+  estado?: boolean
   colegioOrigenRef?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
+  matriculas?: boolean | Prisma.PerfilAlumno$matriculasArgs<ExtArgs>
+  postulacion?: boolean | Prisma.PerfilAlumno$postulacionArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.PerfilAlumno$prematriculasArgs<ExtArgs>
+  apoderados?: boolean | Prisma.PerfilAlumno$apoderadosArgs<ExtArgs>
+  notasActividades?: boolean | Prisma.PerfilAlumno$notasActividadesArgs<ExtArgs>
+  notasPeriodo?: boolean | Prisma.PerfilAlumno$notasPeriodoArgs<ExtArgs>
+  asistencias?: boolean | Prisma.PerfilAlumno$asistenciasArgs<ExtArgs>
+  cuotas?: boolean | Prisma.PerfilAlumno$cuotasArgs<ExtArgs>
+  pagos?: boolean | Prisma.PerfilAlumno$pagosArgs<ExtArgs>
+  _count?: boolean | Prisma.PerfilAlumnoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["perfilAlumno"]>
 
 export type PerfilAlumnoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   codigoMatricula?: boolean
+  estado?: boolean
   colegioOrigenRef?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["perfilAlumno"]>
 
 export type PerfilAlumnoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   codigoMatricula?: boolean
+  estado?: boolean
   colegioOrigenRef?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["perfilAlumno"]>
 
 export type PerfilAlumnoSelectScalar = {
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   codigoMatricula?: boolean
+  estado?: boolean
   colegioOrigenRef?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PerfilAlumnoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "personaId" | "codigoMatricula" | "colegioOrigenRef" | "createdAt" | "updatedAt", ExtArgs["result"]["perfilAlumno"]>
+export type PerfilAlumnoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "personaId" | "colegioId" | "codigoMatricula" | "estado" | "colegioOrigenRef" | "createdAt" | "updatedAt", ExtArgs["result"]["perfilAlumno"]>
 export type PerfilAlumnoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
+  matriculas?: boolean | Prisma.PerfilAlumno$matriculasArgs<ExtArgs>
+  postulacion?: boolean | Prisma.PerfilAlumno$postulacionArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.PerfilAlumno$prematriculasArgs<ExtArgs>
+  apoderados?: boolean | Prisma.PerfilAlumno$apoderadosArgs<ExtArgs>
+  notasActividades?: boolean | Prisma.PerfilAlumno$notasActividadesArgs<ExtArgs>
+  notasPeriodo?: boolean | Prisma.PerfilAlumno$notasPeriodoArgs<ExtArgs>
+  asistencias?: boolean | Prisma.PerfilAlumno$asistenciasArgs<ExtArgs>
+  cuotas?: boolean | Prisma.PerfilAlumno$cuotasArgs<ExtArgs>
+  pagos?: boolean | Prisma.PerfilAlumno$pagosArgs<ExtArgs>
+  _count?: boolean | Prisma.PerfilAlumnoCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PerfilAlumnoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }
 export type PerfilAlumnoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }
 
 export type $PerfilAlumnoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PerfilAlumno"
   objects: {
     persona: Prisma.$PersonaPayload<ExtArgs>
+    colegio: Prisma.$ColegioPayload<ExtArgs>
+    matriculas: Prisma.$MatriculaPayload<ExtArgs>[]
+    postulacion: Prisma.$PostulacionPayload<ExtArgs> | null
+    prematriculas: Prisma.$PrematriculaPayload<ExtArgs>[]
+    apoderados: Prisma.$ApoderadoAlumnoPayload<ExtArgs>[]
+    notasActividades: Prisma.$NotaActividadPayload<ExtArgs>[]
+    notasPeriodo: Prisma.$NotaPeriodoPayload<ExtArgs>[]
+    asistencias: Prisma.$AsistenciaPayload<ExtArgs>[]
+    cuotas: Prisma.$CuotaAlumnoPayload<ExtArgs>[]
+    pagos: Prisma.$PagoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     personaId: string
+    colegioId: string
     codigoMatricula: string
+    estado: $Enums.EstadoAlumno
     colegioOrigenRef: string | null
     createdAt: Date
     updatedAt: Date
@@ -873,6 +2317,16 @@ readonly fields: PerfilAlumnoFieldRefs;
 export interface Prisma__PerfilAlumnoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   persona<T extends Prisma.PersonaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PersonaDefaultArgs<ExtArgs>>): Prisma.Prisma__PersonaClient<runtime.Types.Result.GetResult<Prisma.$PersonaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  colegio<T extends Prisma.ColegioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioClient<runtime.Types.Result.GetResult<Prisma.$ColegioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  matriculas<T extends Prisma.PerfilAlumno$matriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$matriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MatriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postulacion<T extends Prisma.PerfilAlumno$postulacionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$postulacionArgs<ExtArgs>>): Prisma.Prisma__PostulacionClient<runtime.Types.Result.GetResult<Prisma.$PostulacionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  prematriculas<T extends Prisma.PerfilAlumno$prematriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$prematriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrematriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  apoderados<T extends Prisma.PerfilAlumno$apoderadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$apoderadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApoderadoAlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notasActividades<T extends Prisma.PerfilAlumno$notasActividadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$notasActividadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotaActividadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notasPeriodo<T extends Prisma.PerfilAlumno$notasPeriodoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$notasPeriodoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotaPeriodoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  asistencias<T extends Prisma.PerfilAlumno$asistenciasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$asistenciasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cuotas<T extends Prisma.PerfilAlumno$cuotasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$cuotasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CuotaAlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pagos<T extends Prisma.PerfilAlumno$pagosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilAlumno$pagosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PagoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -904,7 +2358,9 @@ export interface Prisma__PerfilAlumnoClient<T, Null = never, ExtArgs extends run
 export interface PerfilAlumnoFieldRefs {
   readonly id: Prisma.FieldRef<"PerfilAlumno", 'String'>
   readonly personaId: Prisma.FieldRef<"PerfilAlumno", 'String'>
+  readonly colegioId: Prisma.FieldRef<"PerfilAlumno", 'String'>
   readonly codigoMatricula: Prisma.FieldRef<"PerfilAlumno", 'String'>
+  readonly estado: Prisma.FieldRef<"PerfilAlumno", 'EstadoAlumno'>
   readonly colegioOrigenRef: Prisma.FieldRef<"PerfilAlumno", 'String'>
   readonly createdAt: Prisma.FieldRef<"PerfilAlumno", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PerfilAlumno", 'DateTime'>
@@ -1301,6 +2757,217 @@ export type PerfilAlumnoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Limit how many PerfilAlumnos to delete.
    */
   limit?: number
+}
+
+/**
+ * PerfilAlumno.matriculas
+ */
+export type PerfilAlumno$matriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Matricula
+   */
+  select?: Prisma.MatriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Matricula
+   */
+  omit?: Prisma.MatriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MatriculaInclude<ExtArgs> | null
+  where?: Prisma.MatriculaWhereInput
+  orderBy?: Prisma.MatriculaOrderByWithRelationInput | Prisma.MatriculaOrderByWithRelationInput[]
+  cursor?: Prisma.MatriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MatriculaScalarFieldEnum | Prisma.MatriculaScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.postulacion
+ */
+export type PerfilAlumno$postulacionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Postulacion
+   */
+  select?: Prisma.PostulacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Postulacion
+   */
+  omit?: Prisma.PostulacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostulacionInclude<ExtArgs> | null
+  where?: Prisma.PostulacionWhereInput
+}
+
+/**
+ * PerfilAlumno.prematriculas
+ */
+export type PerfilAlumno$prematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prematricula
+   */
+  select?: Prisma.PrematriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prematricula
+   */
+  omit?: Prisma.PrematriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrematriculaInclude<ExtArgs> | null
+  where?: Prisma.PrematriculaWhereInput
+  orderBy?: Prisma.PrematriculaOrderByWithRelationInput | Prisma.PrematriculaOrderByWithRelationInput[]
+  cursor?: Prisma.PrematriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrematriculaScalarFieldEnum | Prisma.PrematriculaScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.apoderados
+ */
+export type PerfilAlumno$apoderadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApoderadoAlumno
+   */
+  select?: Prisma.ApoderadoAlumnoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ApoderadoAlumno
+   */
+  omit?: Prisma.ApoderadoAlumnoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ApoderadoAlumnoInclude<ExtArgs> | null
+  where?: Prisma.ApoderadoAlumnoWhereInput
+  orderBy?: Prisma.ApoderadoAlumnoOrderByWithRelationInput | Prisma.ApoderadoAlumnoOrderByWithRelationInput[]
+  cursor?: Prisma.ApoderadoAlumnoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApoderadoAlumnoScalarFieldEnum | Prisma.ApoderadoAlumnoScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.notasActividades
+ */
+export type PerfilAlumno$notasActividadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the NotaActividad
+   */
+  select?: Prisma.NotaActividadSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the NotaActividad
+   */
+  omit?: Prisma.NotaActividadOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaActividadInclude<ExtArgs> | null
+  where?: Prisma.NotaActividadWhereInput
+  orderBy?: Prisma.NotaActividadOrderByWithRelationInput | Prisma.NotaActividadOrderByWithRelationInput[]
+  cursor?: Prisma.NotaActividadWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotaActividadScalarFieldEnum | Prisma.NotaActividadScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.notasPeriodo
+ */
+export type PerfilAlumno$notasPeriodoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the NotaPeriodo
+   */
+  select?: Prisma.NotaPeriodoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the NotaPeriodo
+   */
+  omit?: Prisma.NotaPeriodoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotaPeriodoInclude<ExtArgs> | null
+  where?: Prisma.NotaPeriodoWhereInput
+  orderBy?: Prisma.NotaPeriodoOrderByWithRelationInput | Prisma.NotaPeriodoOrderByWithRelationInput[]
+  cursor?: Prisma.NotaPeriodoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotaPeriodoScalarFieldEnum | Prisma.NotaPeriodoScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.asistencias
+ */
+export type PerfilAlumno$asistenciasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Asistencia
+   */
+  select?: Prisma.AsistenciaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Asistencia
+   */
+  omit?: Prisma.AsistenciaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AsistenciaInclude<ExtArgs> | null
+  where?: Prisma.AsistenciaWhereInput
+  orderBy?: Prisma.AsistenciaOrderByWithRelationInput | Prisma.AsistenciaOrderByWithRelationInput[]
+  cursor?: Prisma.AsistenciaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AsistenciaScalarFieldEnum | Prisma.AsistenciaScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.cuotas
+ */
+export type PerfilAlumno$cuotasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CuotaAlumno
+   */
+  select?: Prisma.CuotaAlumnoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CuotaAlumno
+   */
+  omit?: Prisma.CuotaAlumnoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CuotaAlumnoInclude<ExtArgs> | null
+  where?: Prisma.CuotaAlumnoWhereInput
+  orderBy?: Prisma.CuotaAlumnoOrderByWithRelationInput | Prisma.CuotaAlumnoOrderByWithRelationInput[]
+  cursor?: Prisma.CuotaAlumnoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CuotaAlumnoScalarFieldEnum | Prisma.CuotaAlumnoScalarFieldEnum[]
+}
+
+/**
+ * PerfilAlumno.pagos
+ */
+export type PerfilAlumno$pagosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Pago
+   */
+  select?: Prisma.PagoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Pago
+   */
+  omit?: Prisma.PagoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PagoInclude<ExtArgs> | null
+  where?: Prisma.PagoWhereInput
+  orderBy?: Prisma.PagoOrderByWithRelationInput | Prisma.PagoOrderByWithRelationInput[]
+  cursor?: Prisma.PagoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PagoScalarFieldEnum | Prisma.PagoScalarFieldEnum[]
 }
 
 /**

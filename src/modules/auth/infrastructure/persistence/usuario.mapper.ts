@@ -1,11 +1,10 @@
 import { Usuario } from "@modules/auth/domain/entities/usuario.entity";
 import { EstadoUsuario } from "@modules/auth/domain/enums/estado-usuario.enum";
 import { Email } from "@modules/auth/domain/value-objects/email.vo";
-import { PrismaClient } from '@prisma/client';
 
 // Tipo inferido de Prisma para no acoplar al import directo de PrismaClient
 type UsuarioPrisma = {
-  id: string; email: string; passwordHash: string;
+  id: string; username: string | null; email: string; passwordHash: string;
   estado: string; intentosFallidos: number;
   bloqueadoHasta: Date | null; ultimoAcceso: Date | null;
   esPlatformAdmin: boolean; createdAt: Date;
@@ -24,6 +23,7 @@ export class UsuarioMapper {
 
     return Usuario.reconstitute({
       id:               raw.id,
+      username:         raw.username,
       email:            emailResult.value,
       passwordHash:     raw.passwordHash,
       nombres:          raw.persona.nombres,

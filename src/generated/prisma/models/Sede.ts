@@ -217,6 +217,8 @@ export type SedeWhereInput = {
   colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
   configuracion?: Prisma.XOR<Prisma.SedeConfiguracionNullableScalarRelationFilter, Prisma.SedeConfiguracionWhereInput> | null
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  docentes?: Prisma.PerfilDocenteListRelationFilter
 }
 
 export type SedeOrderByWithRelationInput = {
@@ -232,6 +234,8 @@ export type SedeOrderByWithRelationInput = {
   colegio?: Prisma.ColegioOrderByWithRelationInput
   configuracion?: Prisma.SedeConfiguracionOrderByWithRelationInput
   asignaciones?: Prisma.UsuarioAsignacionOrderByRelationAggregateInput
+  postulaciones?: Prisma.PostulacionOrderByRelationAggregateInput
+  docentes?: Prisma.PerfilDocenteOrderByRelationAggregateInput
 }
 
 export type SedeWhereUniqueInput = Prisma.AtLeast<{
@@ -250,6 +254,8 @@ export type SedeWhereUniqueInput = Prisma.AtLeast<{
   colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
   configuracion?: Prisma.XOR<Prisma.SedeConfiguracionNullableScalarRelationFilter, Prisma.SedeConfiguracionWhereInput> | null
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  docentes?: Prisma.PerfilDocenteListRelationFilter
 }, "id">
 
 export type SedeOrderByWithAggregationInput = {
@@ -294,6 +300,8 @@ export type SedeCreateInput = {
   colegio: Prisma.ColegioCreateNestedOneWithoutSedesInput
   configuracion?: Prisma.SedeConfiguracionCreateNestedOneWithoutSedeInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutSedeInput
 }
 
 export type SedeUncheckedCreateInput = {
@@ -308,6 +316,8 @@ export type SedeUncheckedCreateInput = {
   updatedAt?: Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedCreateNestedOneWithoutSedeInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutSedeInput
 }
 
 export type SedeUpdateInput = {
@@ -322,6 +332,8 @@ export type SedeUpdateInput = {
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutSedesNestedInput
   configuracion?: Prisma.SedeConfiguracionUpdateOneWithoutSedeNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeUncheckedUpdateInput = {
@@ -336,6 +348,8 @@ export type SedeUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedUpdateOneWithoutSedeNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeCreateManyInput = {
@@ -485,6 +499,22 @@ export type SedeUpdateOneRequiredWithoutConfiguracionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SedeUpdateToOneWithWhereWithoutConfiguracionInput, Prisma.SedeUpdateWithoutConfiguracionInput>, Prisma.SedeUncheckedUpdateWithoutConfiguracionInput>
 }
 
+export type SedeCreateNestedOneWithoutPostulacionesInput = {
+  create?: Prisma.XOR<Prisma.SedeCreateWithoutPostulacionesInput, Prisma.SedeUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.SedeCreateOrConnectWithoutPostulacionesInput
+  connect?: Prisma.SedeWhereUniqueInput
+}
+
+export type SedeUpdateOneWithoutPostulacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.SedeCreateWithoutPostulacionesInput, Prisma.SedeUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.SedeCreateOrConnectWithoutPostulacionesInput
+  upsert?: Prisma.SedeUpsertWithoutPostulacionesInput
+  disconnect?: Prisma.SedeWhereInput | boolean
+  delete?: Prisma.SedeWhereInput | boolean
+  connect?: Prisma.SedeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SedeUpdateToOneWithWhereWithoutPostulacionesInput, Prisma.SedeUpdateWithoutPostulacionesInput>, Prisma.SedeUncheckedUpdateWithoutPostulacionesInput>
+}
+
 export type SedeCreateNestedOneWithoutAsignacionesInput = {
   create?: Prisma.XOR<Prisma.SedeCreateWithoutAsignacionesInput, Prisma.SedeUncheckedCreateWithoutAsignacionesInput>
   connectOrCreate?: Prisma.SedeCreateOrConnectWithoutAsignacionesInput
@@ -501,6 +531,22 @@ export type SedeUpdateOneWithoutAsignacionesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SedeUpdateToOneWithWhereWithoutAsignacionesInput, Prisma.SedeUpdateWithoutAsignacionesInput>, Prisma.SedeUncheckedUpdateWithoutAsignacionesInput>
 }
 
+export type SedeCreateNestedOneWithoutDocentesInput = {
+  create?: Prisma.XOR<Prisma.SedeCreateWithoutDocentesInput, Prisma.SedeUncheckedCreateWithoutDocentesInput>
+  connectOrCreate?: Prisma.SedeCreateOrConnectWithoutDocentesInput
+  connect?: Prisma.SedeWhereUniqueInput
+}
+
+export type SedeUpdateOneWithoutDocentesNestedInput = {
+  create?: Prisma.XOR<Prisma.SedeCreateWithoutDocentesInput, Prisma.SedeUncheckedCreateWithoutDocentesInput>
+  connectOrCreate?: Prisma.SedeCreateOrConnectWithoutDocentesInput
+  upsert?: Prisma.SedeUpsertWithoutDocentesInput
+  disconnect?: Prisma.SedeWhereInput | boolean
+  delete?: Prisma.SedeWhereInput | boolean
+  connect?: Prisma.SedeWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SedeUpdateToOneWithWhereWithoutDocentesInput, Prisma.SedeUpdateWithoutDocentesInput>, Prisma.SedeUncheckedUpdateWithoutDocentesInput>
+}
+
 export type SedeCreateWithoutColegioInput = {
   id?: string
   nombre: string
@@ -512,6 +558,8 @@ export type SedeCreateWithoutColegioInput = {
   updatedAt?: Date | string
   configuracion?: Prisma.SedeConfiguracionCreateNestedOneWithoutSedeInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutSedeInput
 }
 
 export type SedeUncheckedCreateWithoutColegioInput = {
@@ -525,6 +573,8 @@ export type SedeUncheckedCreateWithoutColegioInput = {
   updatedAt?: Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedCreateNestedOneWithoutSedeInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutSedeInput
 }
 
 export type SedeCreateOrConnectWithoutColegioInput = {
@@ -579,6 +629,8 @@ export type SedeCreateWithoutConfiguracionInput = {
   updatedAt?: Date | string
   colegio: Prisma.ColegioCreateNestedOneWithoutSedesInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutSedeInput
 }
 
 export type SedeUncheckedCreateWithoutConfiguracionInput = {
@@ -592,6 +644,8 @@ export type SedeUncheckedCreateWithoutConfiguracionInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutSedeInput
 }
 
 export type SedeCreateOrConnectWithoutConfiguracionInput = {
@@ -621,6 +675,8 @@ export type SedeUpdateWithoutConfiguracionInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutSedesNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeUncheckedUpdateWithoutConfiguracionInput = {
@@ -634,6 +690,84 @@ export type SedeUncheckedUpdateWithoutConfiguracionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutSedeNestedInput
+}
+
+export type SedeCreateWithoutPostulacionesInput = {
+  id?: string
+  nombre: string
+  direccion: string
+  telefono?: string | null
+  email?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutSedesInput
+  configuracion?: Prisma.SedeConfiguracionCreateNestedOneWithoutSedeInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutSedeInput
+}
+
+export type SedeUncheckedCreateWithoutPostulacionesInput = {
+  id?: string
+  colegioId: string
+  nombre: string
+  direccion: string
+  telefono?: string | null
+  email?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.SedeConfiguracionUncheckedCreateNestedOneWithoutSedeInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutSedeInput
+}
+
+export type SedeCreateOrConnectWithoutPostulacionesInput = {
+  where: Prisma.SedeWhereUniqueInput
+  create: Prisma.XOR<Prisma.SedeCreateWithoutPostulacionesInput, Prisma.SedeUncheckedCreateWithoutPostulacionesInput>
+}
+
+export type SedeUpsertWithoutPostulacionesInput = {
+  update: Prisma.XOR<Prisma.SedeUpdateWithoutPostulacionesInput, Prisma.SedeUncheckedUpdateWithoutPostulacionesInput>
+  create: Prisma.XOR<Prisma.SedeCreateWithoutPostulacionesInput, Prisma.SedeUncheckedCreateWithoutPostulacionesInput>
+  where?: Prisma.SedeWhereInput
+}
+
+export type SedeUpdateToOneWithWhereWithoutPostulacionesInput = {
+  where?: Prisma.SedeWhereInput
+  data: Prisma.XOR<Prisma.SedeUpdateWithoutPostulacionesInput, Prisma.SedeUncheckedUpdateWithoutPostulacionesInput>
+}
+
+export type SedeUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutSedesNestedInput
+  configuracion?: Prisma.SedeConfiguracionUpdateOneWithoutSedeNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutSedeNestedInput
+}
+
+export type SedeUncheckedUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.SedeConfiguracionUncheckedUpdateOneWithoutSedeNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeCreateWithoutAsignacionesInput = {
@@ -647,6 +781,8 @@ export type SedeCreateWithoutAsignacionesInput = {
   updatedAt?: Date | string
   colegio: Prisma.ColegioCreateNestedOneWithoutSedesInput
   configuracion?: Prisma.SedeConfiguracionCreateNestedOneWithoutSedeInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutSedeInput
 }
 
 export type SedeUncheckedCreateWithoutAsignacionesInput = {
@@ -660,6 +796,8 @@ export type SedeUncheckedCreateWithoutAsignacionesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedCreateNestedOneWithoutSedeInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutSedeInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutSedeInput
 }
 
 export type SedeCreateOrConnectWithoutAsignacionesInput = {
@@ -689,6 +827,8 @@ export type SedeUpdateWithoutAsignacionesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutSedesNestedInput
   configuracion?: Prisma.SedeConfiguracionUpdateOneWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeUncheckedUpdateWithoutAsignacionesInput = {
@@ -702,6 +842,84 @@ export type SedeUncheckedUpdateWithoutAsignacionesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedUpdateOneWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutSedeNestedInput
+}
+
+export type SedeCreateWithoutDocentesInput = {
+  id?: string
+  nombre: string
+  direccion: string
+  telefono?: string | null
+  email?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutSedesInput
+  configuracion?: Prisma.SedeConfiguracionCreateNestedOneWithoutSedeInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutSedeInput
+}
+
+export type SedeUncheckedCreateWithoutDocentesInput = {
+  id?: string
+  colegioId: string
+  nombre: string
+  direccion: string
+  telefono?: string | null
+  email?: string | null
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.SedeConfiguracionUncheckedCreateNestedOneWithoutSedeInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutSedeInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutSedeInput
+}
+
+export type SedeCreateOrConnectWithoutDocentesInput = {
+  where: Prisma.SedeWhereUniqueInput
+  create: Prisma.XOR<Prisma.SedeCreateWithoutDocentesInput, Prisma.SedeUncheckedCreateWithoutDocentesInput>
+}
+
+export type SedeUpsertWithoutDocentesInput = {
+  update: Prisma.XOR<Prisma.SedeUpdateWithoutDocentesInput, Prisma.SedeUncheckedUpdateWithoutDocentesInput>
+  create: Prisma.XOR<Prisma.SedeCreateWithoutDocentesInput, Prisma.SedeUncheckedCreateWithoutDocentesInput>
+  where?: Prisma.SedeWhereInput
+}
+
+export type SedeUpdateToOneWithWhereWithoutDocentesInput = {
+  where?: Prisma.SedeWhereInput
+  data: Prisma.XOR<Prisma.SedeUpdateWithoutDocentesInput, Prisma.SedeUncheckedUpdateWithoutDocentesInput>
+}
+
+export type SedeUpdateWithoutDocentesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutSedesNestedInput
+  configuracion?: Prisma.SedeConfiguracionUpdateOneWithoutSedeNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutSedeNestedInput
+}
+
+export type SedeUncheckedUpdateWithoutDocentesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.SedeConfiguracionUncheckedUpdateOneWithoutSedeNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeCreateManyColegioInput = {
@@ -726,6 +944,8 @@ export type SedeUpdateWithoutColegioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   configuracion?: Prisma.SedeConfiguracionUpdateOneWithoutSedeNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeUncheckedUpdateWithoutColegioInput = {
@@ -739,6 +959,8 @@ export type SedeUncheckedUpdateWithoutColegioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   configuracion?: Prisma.SedeConfiguracionUncheckedUpdateOneWithoutSedeNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutSedeNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutSedeNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutSedeNestedInput
 }
 
 export type SedeUncheckedUpdateManyWithoutColegioInput = {
@@ -759,10 +981,14 @@ export type SedeUncheckedUpdateManyWithoutColegioInput = {
 
 export type SedeCountOutputType = {
   asignaciones: number
+  postulaciones: number
+  docentes: number
 }
 
 export type SedeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   asignaciones?: boolean | SedeCountOutputTypeCountAsignacionesArgs
+  postulaciones?: boolean | SedeCountOutputTypeCountPostulacionesArgs
+  docentes?: boolean | SedeCountOutputTypeCountDocentesArgs
 }
 
 /**
@@ -782,6 +1008,20 @@ export type SedeCountOutputTypeCountAsignacionesArgs<ExtArgs extends runtime.Typ
   where?: Prisma.UsuarioAsignacionWhereInput
 }
 
+/**
+ * SedeCountOutputType without action
+ */
+export type SedeCountOutputTypeCountPostulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostulacionWhereInput
+}
+
+/**
+ * SedeCountOutputType without action
+ */
+export type SedeCountOutputTypeCountDocentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PerfilDocenteWhereInput
+}
+
 
 export type SedeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -796,6 +1036,8 @@ export type SedeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
   configuracion?: boolean | Prisma.Sede$configuracionArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Sede$asignacionesArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.Sede$postulacionesArgs<ExtArgs>
+  docentes?: boolean | Prisma.Sede$docentesArgs<ExtArgs>
   _count?: boolean | Prisma.SedeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sede"]>
 
@@ -842,6 +1084,8 @@ export type SedeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
   configuracion?: boolean | Prisma.Sede$configuracionArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Sede$asignacionesArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.Sede$postulacionesArgs<ExtArgs>
+  docentes?: boolean | Prisma.Sede$docentesArgs<ExtArgs>
   _count?: boolean | Prisma.SedeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type SedeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -857,6 +1101,8 @@ export type $SedePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     colegio: Prisma.$ColegioPayload<ExtArgs>
     configuracion: Prisma.$SedeConfiguracionPayload<ExtArgs> | null
     asignaciones: Prisma.$UsuarioAsignacionPayload<ExtArgs>[]
+    postulaciones: Prisma.$PostulacionPayload<ExtArgs>[]
+    docentes: Prisma.$PerfilDocentePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1265,6 +1511,8 @@ export interface Prisma__SedeClient<T, Null = never, ExtArgs extends runtime.Typ
   colegio<T extends Prisma.ColegioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioClient<runtime.Types.Result.GetResult<Prisma.$ColegioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   configuracion<T extends Prisma.Sede$configuracionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sede$configuracionArgs<ExtArgs>>): Prisma.Prisma__SedeConfiguracionClient<runtime.Types.Result.GetResult<Prisma.$SedeConfiguracionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   asignaciones<T extends Prisma.Sede$asignacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sede$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioAsignacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postulaciones<T extends Prisma.Sede$postulacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sede$postulacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostulacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  docentes<T extends Prisma.Sede$docentesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Sede$docentesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilDocentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1739,6 +1987,54 @@ export type Sede$asignacionesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.UsuarioAsignacionScalarFieldEnum | Prisma.UsuarioAsignacionScalarFieldEnum[]
+}
+
+/**
+ * Sede.postulaciones
+ */
+export type Sede$postulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Postulacion
+   */
+  select?: Prisma.PostulacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Postulacion
+   */
+  omit?: Prisma.PostulacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostulacionInclude<ExtArgs> | null
+  where?: Prisma.PostulacionWhereInput
+  orderBy?: Prisma.PostulacionOrderByWithRelationInput | Prisma.PostulacionOrderByWithRelationInput[]
+  cursor?: Prisma.PostulacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostulacionScalarFieldEnum | Prisma.PostulacionScalarFieldEnum[]
+}
+
+/**
+ * Sede.docentes
+ */
+export type Sede$docentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilDocente
+   */
+  select?: Prisma.PerfilDocenteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilDocente
+   */
+  omit?: Prisma.PerfilDocenteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilDocenteInclude<ExtArgs> | null
+  where?: Prisma.PerfilDocenteWhereInput
+  orderBy?: Prisma.PerfilDocenteOrderByWithRelationInput | Prisma.PerfilDocenteOrderByWithRelationInput[]
+  cursor?: Prisma.PerfilDocenteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PerfilDocenteScalarFieldEnum | Prisma.PerfilDocenteScalarFieldEnum[]
 }
 
 /**

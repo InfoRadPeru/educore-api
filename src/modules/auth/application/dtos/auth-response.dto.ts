@@ -11,9 +11,9 @@ export class AuthResponseDto {
   @ApiProperty() accessToken:  string;
   @ApiProperty() refreshToken: string;
   @ApiProperty({ type: UsuarioResponseDto }) usuario: UsuarioResponseDto;
-  @ApiProperty() colegioId:    string;
-  @ApiProperty() sedeId:       string | null;
-  @ApiProperty() rolId:        string;
+  @ApiProperty({ nullable: true }) colegioId:    string | null;
+  @ApiProperty({ nullable: true }) sedeId:       string | null;
+  @ApiProperty({ nullable: true }) rolId:        string | null;
   @ApiProperty() rolNombre:    string;
   @ApiProperty() esSistema:    boolean;
   @ApiProperty({ type: [String] }) permisos: string[];

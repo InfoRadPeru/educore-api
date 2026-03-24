@@ -9,6 +9,7 @@ import { EstadoUsuario }  from '../enums/estado-usuario.enum';
 
 export interface UsuarioProps {
   id:               string;
+  username:         string | null;
   email:            Email;
   passwordHash:     string;
   nombres:          string;
@@ -34,6 +35,7 @@ export class Usuario {
   }
 
   get id():               string        { return this.props.id; }
+  get username():         string | null { return this.props.username; }
   get email():            Email         { return this.props.email; }
   get passwordHash():     string        { return this.props.passwordHash; }
   get nombres():          string        { return this.props.nombres; }

@@ -20,8 +20,24 @@ export type ColegioConfiguracionModel = runtime.Types.Result.DefaultSelection<Pr
 
 export type AggregateColegioConfiguracion = {
   _count: ColegioConfiguracionCountAggregateOutputType | null
+  _avg: ColegioConfiguracionAvgAggregateOutputType | null
+  _sum: ColegioConfiguracionSumAggregateOutputType | null
   _min: ColegioConfiguracionMinAggregateOutputType | null
   _max: ColegioConfiguracionMaxAggregateOutputType | null
+}
+
+export type ColegioConfiguracionAvgAggregateOutputType = {
+  notaMinima: number | null
+  notaMaxima: number | null
+  notaAprobatoria: number | null
+  decimalesNota: number | null
+}
+
+export type ColegioConfiguracionSumAggregateOutputType = {
+  notaMinima: number | null
+  notaMaxima: number | null
+  notaAprobatoria: number | null
+  decimalesNota: number | null
 }
 
 export type ColegioConfiguracionMinAggregateOutputType = {
@@ -36,6 +52,10 @@ export type ColegioConfiguracionMinAggregateOutputType = {
   zonaHoraria: string | null
   formatoFecha: string | null
   moneda: string | null
+  notaMinima: number | null
+  notaMaxima: number | null
+  notaAprobatoria: number | null
+  decimalesNota: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -52,6 +72,10 @@ export type ColegioConfiguracionMaxAggregateOutputType = {
   zonaHoraria: string | null
   formatoFecha: string | null
   moneda: string | null
+  notaMinima: number | null
+  notaMaxima: number | null
+  notaAprobatoria: number | null
+  decimalesNota: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,11 +92,29 @@ export type ColegioConfiguracionCountAggregateOutputType = {
   zonaHoraria: number
   formatoFecha: number
   moneda: number
+  notaMinima: number
+  notaMaxima: number
+  notaAprobatoria: number
+  decimalesNota: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type ColegioConfiguracionAvgAggregateInputType = {
+  notaMinima?: true
+  notaMaxima?: true
+  notaAprobatoria?: true
+  decimalesNota?: true
+}
+
+export type ColegioConfiguracionSumAggregateInputType = {
+  notaMinima?: true
+  notaMaxima?: true
+  notaAprobatoria?: true
+  decimalesNota?: true
+}
 
 export type ColegioConfiguracionMinAggregateInputType = {
   id?: true
@@ -86,6 +128,10 @@ export type ColegioConfiguracionMinAggregateInputType = {
   zonaHoraria?: true
   formatoFecha?: true
   moneda?: true
+  notaMinima?: true
+  notaMaxima?: true
+  notaAprobatoria?: true
+  decimalesNota?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -102,6 +148,10 @@ export type ColegioConfiguracionMaxAggregateInputType = {
   zonaHoraria?: true
   formatoFecha?: true
   moneda?: true
+  notaMinima?: true
+  notaMaxima?: true
+  notaAprobatoria?: true
+  decimalesNota?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -118,6 +168,10 @@ export type ColegioConfiguracionCountAggregateInputType = {
   zonaHoraria?: true
   formatoFecha?: true
   moneda?: true
+  notaMinima?: true
+  notaMaxima?: true
+  notaAprobatoria?: true
+  decimalesNota?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -161,6 +215,18 @@ export type ColegioConfiguracionAggregateArgs<ExtArgs extends runtime.Types.Exte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: ColegioConfiguracionAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: ColegioConfiguracionSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: ColegioConfiguracionMinAggregateInputType
@@ -191,6 +257,8 @@ export type ColegioConfiguracionGroupByArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   _count?: ColegioConfiguracionCountAggregateInputType | true
+  _avg?: ColegioConfiguracionAvgAggregateInputType
+  _sum?: ColegioConfiguracionSumAggregateInputType
   _min?: ColegioConfiguracionMinAggregateInputType
   _max?: ColegioConfiguracionMaxAggregateInputType
 }
@@ -207,9 +275,15 @@ export type ColegioConfiguracionGroupByOutputType = {
   zonaHoraria: string
   formatoFecha: string
   moneda: string
+  notaMinima: number
+  notaMaxima: number
+  notaAprobatoria: number
+  decimalesNota: number
   createdAt: Date
   updatedAt: Date
   _count: ColegioConfiguracionCountAggregateOutputType | null
+  _avg: ColegioConfiguracionAvgAggregateOutputType | null
+  _sum: ColegioConfiguracionSumAggregateOutputType | null
   _min: ColegioConfiguracionMinAggregateOutputType | null
   _max: ColegioConfiguracionMaxAggregateOutputType | null
 }
@@ -244,6 +318,10 @@ export type ColegioConfiguracionWhereInput = {
   zonaHoraria?: Prisma.StringFilter<"ColegioConfiguracion"> | string
   formatoFecha?: Prisma.StringFilter<"ColegioConfiguracion"> | string
   moneda?: Prisma.StringFilter<"ColegioConfiguracion"> | string
+  notaMinima?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  notaMaxima?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  notaAprobatoria?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  decimalesNota?: Prisma.IntFilter<"ColegioConfiguracion"> | number
   createdAt?: Prisma.DateTimeFilter<"ColegioConfiguracion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ColegioConfiguracion"> | Date | string
   colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
@@ -261,6 +339,10 @@ export type ColegioConfiguracionOrderByWithRelationInput = {
   zonaHoraria?: Prisma.SortOrder
   formatoFecha?: Prisma.SortOrder
   moneda?: Prisma.SortOrder
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   colegio?: Prisma.ColegioOrderByWithRelationInput
@@ -281,6 +363,10 @@ export type ColegioConfiguracionWhereUniqueInput = Prisma.AtLeast<{
   zonaHoraria?: Prisma.StringFilter<"ColegioConfiguracion"> | string
   formatoFecha?: Prisma.StringFilter<"ColegioConfiguracion"> | string
   moneda?: Prisma.StringFilter<"ColegioConfiguracion"> | string
+  notaMinima?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  notaMaxima?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  notaAprobatoria?: Prisma.FloatFilter<"ColegioConfiguracion"> | number
+  decimalesNota?: Prisma.IntFilter<"ColegioConfiguracion"> | number
   createdAt?: Prisma.DateTimeFilter<"ColegioConfiguracion"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ColegioConfiguracion"> | Date | string
   colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
@@ -298,11 +384,17 @@ export type ColegioConfiguracionOrderByWithAggregationInput = {
   zonaHoraria?: Prisma.SortOrder
   formatoFecha?: Prisma.SortOrder
   moneda?: Prisma.SortOrder
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ColegioConfiguracionCountOrderByAggregateInput
+  _avg?: Prisma.ColegioConfiguracionAvgOrderByAggregateInput
   _max?: Prisma.ColegioConfiguracionMaxOrderByAggregateInput
   _min?: Prisma.ColegioConfiguracionMinOrderByAggregateInput
+  _sum?: Prisma.ColegioConfiguracionSumOrderByAggregateInput
 }
 
 export type ColegioConfiguracionScalarWhereWithAggregatesInput = {
@@ -320,6 +412,10 @@ export type ColegioConfiguracionScalarWhereWithAggregatesInput = {
   zonaHoraria?: Prisma.StringWithAggregatesFilter<"ColegioConfiguracion"> | string
   formatoFecha?: Prisma.StringWithAggregatesFilter<"ColegioConfiguracion"> | string
   moneda?: Prisma.StringWithAggregatesFilter<"ColegioConfiguracion"> | string
+  notaMinima?: Prisma.FloatWithAggregatesFilter<"ColegioConfiguracion"> | number
+  notaMaxima?: Prisma.FloatWithAggregatesFilter<"ColegioConfiguracion"> | number
+  notaAprobatoria?: Prisma.FloatWithAggregatesFilter<"ColegioConfiguracion"> | number
+  decimalesNota?: Prisma.IntWithAggregatesFilter<"ColegioConfiguracion"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ColegioConfiguracion"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ColegioConfiguracion"> | Date | string
 }
@@ -335,6 +431,10 @@ export type ColegioConfiguracionCreateInput = {
   zonaHoraria?: string
   formatoFecha?: string
   moneda?: string
+  notaMinima?: number
+  notaMaxima?: number
+  notaAprobatoria?: number
+  decimalesNota?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   colegio: Prisma.ColegioCreateNestedOneWithoutConfiguracionInput
@@ -352,6 +452,10 @@ export type ColegioConfiguracionUncheckedCreateInput = {
   zonaHoraria?: string
   formatoFecha?: string
   moneda?: string
+  notaMinima?: number
+  notaMaxima?: number
+  notaAprobatoria?: number
+  decimalesNota?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -367,6 +471,10 @@ export type ColegioConfiguracionUpdateInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutConfiguracionNestedInput
@@ -384,6 +492,10 @@ export type ColegioConfiguracionUncheckedUpdateInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -400,6 +512,10 @@ export type ColegioConfiguracionCreateManyInput = {
   zonaHoraria?: string
   formatoFecha?: string
   moneda?: string
+  notaMinima?: number
+  notaMaxima?: number
+  notaAprobatoria?: number
+  decimalesNota?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -415,6 +531,10 @@ export type ColegioConfiguracionUpdateManyMutationInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -431,6 +551,10 @@ export type ColegioConfiguracionUncheckedUpdateManyInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -452,8 +576,19 @@ export type ColegioConfiguracionCountOrderByAggregateInput = {
   zonaHoraria?: Prisma.SortOrder
   formatoFecha?: Prisma.SortOrder
   moneda?: Prisma.SortOrder
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type ColegioConfiguracionAvgOrderByAggregateInput = {
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
 }
 
 export type ColegioConfiguracionMaxOrderByAggregateInput = {
@@ -468,6 +603,10 @@ export type ColegioConfiguracionMaxOrderByAggregateInput = {
   zonaHoraria?: Prisma.SortOrder
   formatoFecha?: Prisma.SortOrder
   moneda?: Prisma.SortOrder
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -484,8 +623,19 @@ export type ColegioConfiguracionMinOrderByAggregateInput = {
   zonaHoraria?: Prisma.SortOrder
   formatoFecha?: Prisma.SortOrder
   moneda?: Prisma.SortOrder
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type ColegioConfiguracionSumOrderByAggregateInput = {
+  notaMinima?: Prisma.SortOrder
+  notaMaxima?: Prisma.SortOrder
+  notaAprobatoria?: Prisma.SortOrder
+  decimalesNota?: Prisma.SortOrder
 }
 
 export type ColegioConfiguracionCreateNestedOneWithoutColegioInput = {
@@ -524,6 +674,22 @@ export type EnumPeriodoAcademicoFieldUpdateOperationsInput = {
   set?: $Enums.PeriodoAcademico
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type ColegioConfiguracionCreateWithoutColegioInput = {
   id?: string
   logoUrl?: string | null
@@ -535,6 +701,10 @@ export type ColegioConfiguracionCreateWithoutColegioInput = {
   zonaHoraria?: string
   formatoFecha?: string
   moneda?: string
+  notaMinima?: number
+  notaMaxima?: number
+  notaAprobatoria?: number
+  decimalesNota?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -550,6 +720,10 @@ export type ColegioConfiguracionUncheckedCreateWithoutColegioInput = {
   zonaHoraria?: string
   formatoFecha?: string
   moneda?: string
+  notaMinima?: number
+  notaMaxima?: number
+  notaAprobatoria?: number
+  decimalesNota?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -581,6 +755,10 @@ export type ColegioConfiguracionUpdateWithoutColegioInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -596,6 +774,10 @@ export type ColegioConfiguracionUncheckedUpdateWithoutColegioInput = {
   zonaHoraria?: Prisma.StringFieldUpdateOperationsInput | string
   formatoFecha?: Prisma.StringFieldUpdateOperationsInput | string
   moneda?: Prisma.StringFieldUpdateOperationsInput | string
+  notaMinima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaMaxima?: Prisma.FloatFieldUpdateOperationsInput | number
+  notaAprobatoria?: Prisma.FloatFieldUpdateOperationsInput | number
+  decimalesNota?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -614,6 +796,10 @@ export type ColegioConfiguracionSelect<ExtArgs extends runtime.Types.Extensions.
   zonaHoraria?: boolean
   formatoFecha?: boolean
   moneda?: boolean
+  notaMinima?: boolean
+  notaMaxima?: boolean
+  notaAprobatoria?: boolean
+  decimalesNota?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
@@ -631,6 +817,10 @@ export type ColegioConfiguracionSelectCreateManyAndReturn<ExtArgs extends runtim
   zonaHoraria?: boolean
   formatoFecha?: boolean
   moneda?: boolean
+  notaMinima?: boolean
+  notaMaxima?: boolean
+  notaAprobatoria?: boolean
+  decimalesNota?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
@@ -648,6 +838,10 @@ export type ColegioConfiguracionSelectUpdateManyAndReturn<ExtArgs extends runtim
   zonaHoraria?: boolean
   formatoFecha?: boolean
   moneda?: boolean
+  notaMinima?: boolean
+  notaMaxima?: boolean
+  notaAprobatoria?: boolean
+  decimalesNota?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
@@ -665,11 +859,15 @@ export type ColegioConfiguracionSelectScalar = {
   zonaHoraria?: boolean
   formatoFecha?: boolean
   moneda?: boolean
+  notaMinima?: boolean
+  notaMaxima?: boolean
+  notaAprobatoria?: boolean
+  decimalesNota?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ColegioConfiguracionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "colegioId" | "logoUrl" | "colorPrimario" | "colorSecundario" | "faviconUrl" | "periodo" | "idioma" | "zonaHoraria" | "formatoFecha" | "moneda" | "createdAt" | "updatedAt", ExtArgs["result"]["colegioConfiguracion"]>
+export type ColegioConfiguracionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "colegioId" | "logoUrl" | "colorPrimario" | "colorSecundario" | "faviconUrl" | "periodo" | "idioma" | "zonaHoraria" | "formatoFecha" | "moneda" | "notaMinima" | "notaMaxima" | "notaAprobatoria" | "decimalesNota" | "createdAt" | "updatedAt", ExtArgs["result"]["colegioConfiguracion"]>
 export type ColegioConfiguracionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }
@@ -697,6 +895,10 @@ export type $ColegioConfiguracionPayload<ExtArgs extends runtime.Types.Extension
     zonaHoraria: string
     formatoFecha: string
     moneda: string
+    notaMinima: number
+    notaMaxima: number
+    notaAprobatoria: number
+    decimalesNota: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["colegioConfiguracion"]>
@@ -1134,6 +1336,10 @@ export interface ColegioConfiguracionFieldRefs {
   readonly zonaHoraria: Prisma.FieldRef<"ColegioConfiguracion", 'String'>
   readonly formatoFecha: Prisma.FieldRef<"ColegioConfiguracion", 'String'>
   readonly moneda: Prisma.FieldRef<"ColegioConfiguracion", 'String'>
+  readonly notaMinima: Prisma.FieldRef<"ColegioConfiguracion", 'Float'>
+  readonly notaMaxima: Prisma.FieldRef<"ColegioConfiguracion", 'Float'>
+  readonly notaAprobatoria: Prisma.FieldRef<"ColegioConfiguracion", 'Float'>
+  readonly decimalesNota: Prisma.FieldRef<"ColegioConfiguracion", 'Int'>
   readonly createdAt: Prisma.FieldRef<"ColegioConfiguracion", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ColegioConfiguracion", 'DateTime'>
 }
