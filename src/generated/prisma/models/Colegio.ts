@@ -235,6 +235,16 @@ export type ColegioWhereInput = {
   niveles?: Prisma.ColegioNivelListRelationFilter
   roles?: Prisma.ColegioRolListRelationFilter
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
+  perfilesAlumno?: Prisma.PerfilAlumnoListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  docentes?: Prisma.PerfilDocenteListRelationFilter
+  colegioAsignaturas?: Prisma.ColegioAsignaturaListRelationFilter
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  franjasHorarias?: Prisma.FranjaHorariaListRelationFilter
+  conceptosPago?: Prisma.ConceptoPagoListRelationFilter
+  pagos?: Prisma.PagoListRelationFilter
 }
 
 export type ColegioOrderByWithRelationInput = {
@@ -254,6 +264,16 @@ export type ColegioOrderByWithRelationInput = {
   niveles?: Prisma.ColegioNivelOrderByRelationAggregateInput
   roles?: Prisma.ColegioRolOrderByRelationAggregateInput
   asignaciones?: Prisma.UsuarioAsignacionOrderByRelationAggregateInput
+  perfilesAlumno?: Prisma.PerfilAlumnoOrderByRelationAggregateInput
+  postulaciones?: Prisma.PostulacionOrderByRelationAggregateInput
+  prematriculas?: Prisma.PrematriculaOrderByRelationAggregateInput
+  docentes?: Prisma.PerfilDocenteOrderByRelationAggregateInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaOrderByRelationAggregateInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionOrderByRelationAggregateInput
+  comunicados?: Prisma.ComunicadoOrderByRelationAggregateInput
+  franjasHorarias?: Prisma.FranjaHorariaOrderByRelationAggregateInput
+  conceptosPago?: Prisma.ConceptoPagoOrderByRelationAggregateInput
+  pagos?: Prisma.PagoOrderByRelationAggregateInput
 }
 
 export type ColegioWhereUniqueInput = Prisma.AtLeast<{
@@ -276,6 +296,16 @@ export type ColegioWhereUniqueInput = Prisma.AtLeast<{
   niveles?: Prisma.ColegioNivelListRelationFilter
   roles?: Prisma.ColegioRolListRelationFilter
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
+  perfilesAlumno?: Prisma.PerfilAlumnoListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  docentes?: Prisma.PerfilDocenteListRelationFilter
+  colegioAsignaturas?: Prisma.ColegioAsignaturaListRelationFilter
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  franjasHorarias?: Prisma.FranjaHorariaListRelationFilter
+  conceptosPago?: Prisma.ConceptoPagoListRelationFilter
+  pagos?: Prisma.PagoListRelationFilter
 }, "id" | "ruc" | "email">
 
 export type ColegioOrderByWithAggregationInput = {
@@ -329,6 +359,16 @@ export type ColegioCreateInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateInput = {
@@ -348,6 +388,16 @@ export type ColegioUncheckedCreateInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUpdateInput = {
@@ -367,6 +417,16 @@ export type ColegioUpdateInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateInput = {
@@ -386,6 +446,16 @@ export type ColegioUncheckedUpdateInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioCreateManyInput = {
@@ -543,6 +613,48 @@ export type ColegioUpdateOneRequiredWithoutSedesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutSedesInput, Prisma.ColegioUpdateWithoutSedesInput>, Prisma.ColegioUncheckedUpdateWithoutSedesInput>
 }
 
+export type ColegioCreateNestedOneWithoutPostulacionesInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPostulacionesInput, Prisma.ColegioUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPostulacionesInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutPostulacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPostulacionesInput, Prisma.ColegioUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPostulacionesInput
+  upsert?: Prisma.ColegioUpsertWithoutPostulacionesInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutPostulacionesInput, Prisma.ColegioUpdateWithoutPostulacionesInput>, Prisma.ColegioUncheckedUpdateWithoutPostulacionesInput>
+}
+
+export type ColegioCreateNestedOneWithoutPrematriculasInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPrematriculasInput, Prisma.ColegioUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPrematriculasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutPrematriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPrematriculasInput, Prisma.ColegioUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPrematriculasInput
+  upsert?: Prisma.ColegioUpsertWithoutPrematriculasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutPrematriculasInput, Prisma.ColegioUpdateWithoutPrematriculasInput>, Prisma.ColegioUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type ColegioCreateNestedOneWithoutPerfilesAlumnoInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedCreateWithoutPerfilesAlumnoInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPerfilesAlumnoInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutPerfilesAlumnoNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedCreateWithoutPerfilesAlumnoInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPerfilesAlumnoInput
+  upsert?: Prisma.ColegioUpsertWithoutPerfilesAlumnoInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutPerfilesAlumnoInput, Prisma.ColegioUpdateWithoutPerfilesAlumnoInput>, Prisma.ColegioUncheckedUpdateWithoutPerfilesAlumnoInput>
+}
+
 export type ColegioCreateNestedOneWithoutRolesInput = {
   create?: Prisma.XOR<Prisma.ColegioCreateWithoutRolesInput, Prisma.ColegioUncheckedCreateWithoutRolesInput>
   connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutRolesInput
@@ -571,6 +683,104 @@ export type ColegioUpdateOneRequiredWithoutAsignacionesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutAsignacionesInput, Prisma.ColegioUpdateWithoutAsignacionesInput>, Prisma.ColegioUncheckedUpdateWithoutAsignacionesInput>
 }
 
+export type ColegioCreateNestedOneWithoutDocentesInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutDocentesInput, Prisma.ColegioUncheckedCreateWithoutDocentesInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutDocentesInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutDocentesNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutDocentesInput, Prisma.ColegioUncheckedCreateWithoutDocentesInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutDocentesInput
+  upsert?: Prisma.ColegioUpsertWithoutDocentesInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutDocentesInput, Prisma.ColegioUpdateWithoutDocentesInput>, Prisma.ColegioUncheckedUpdateWithoutDocentesInput>
+}
+
+export type ColegioCreateNestedOneWithoutColegioAsignaturasInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedCreateWithoutColegioAsignaturasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutColegioAsignaturasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutColegioAsignaturasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedCreateWithoutColegioAsignaturasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutColegioAsignaturasInput
+  upsert?: Prisma.ColegioUpsertWithoutColegioAsignaturasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutColegioAsignaturasInput, Prisma.ColegioUpdateWithoutColegioAsignaturasInput>, Prisma.ColegioUncheckedUpdateWithoutColegioAsignaturasInput>
+}
+
+export type ColegioCreateNestedOneWithoutPeriodosEvaluacionInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedCreateWithoutPeriodosEvaluacionInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPeriodosEvaluacionInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutPeriodosEvaluacionNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedCreateWithoutPeriodosEvaluacionInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPeriodosEvaluacionInput
+  upsert?: Prisma.ColegioUpsertWithoutPeriodosEvaluacionInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutPeriodosEvaluacionInput, Prisma.ColegioUpdateWithoutPeriodosEvaluacionInput>, Prisma.ColegioUncheckedUpdateWithoutPeriodosEvaluacionInput>
+}
+
+export type ColegioCreateNestedOneWithoutComunicadosInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutComunicadosInput, Prisma.ColegioUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutComunicadosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutComunicadosNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutComunicadosInput, Prisma.ColegioUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutComunicadosInput
+  upsert?: Prisma.ColegioUpsertWithoutComunicadosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutComunicadosInput, Prisma.ColegioUpdateWithoutComunicadosInput>, Prisma.ColegioUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type ColegioCreateNestedOneWithoutFranjasHorariasInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedCreateWithoutFranjasHorariasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutFranjasHorariasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutFranjasHorariasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedCreateWithoutFranjasHorariasInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutFranjasHorariasInput
+  upsert?: Prisma.ColegioUpsertWithoutFranjasHorariasInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutFranjasHorariasInput, Prisma.ColegioUpdateWithoutFranjasHorariasInput>, Prisma.ColegioUncheckedUpdateWithoutFranjasHorariasInput>
+}
+
+export type ColegioCreateNestedOneWithoutConceptosPagoInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutConceptosPagoInput, Prisma.ColegioUncheckedCreateWithoutConceptosPagoInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutConceptosPagoInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutConceptosPagoNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutConceptosPagoInput, Prisma.ColegioUncheckedCreateWithoutConceptosPagoInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutConceptosPagoInput
+  upsert?: Prisma.ColegioUpsertWithoutConceptosPagoInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutConceptosPagoInput, Prisma.ColegioUpdateWithoutConceptosPagoInput>, Prisma.ColegioUncheckedUpdateWithoutConceptosPagoInput>
+}
+
+export type ColegioCreateNestedOneWithoutPagosInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPagosInput, Prisma.ColegioUncheckedCreateWithoutPagosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPagosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutPagosNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutPagosInput, Prisma.ColegioUncheckedCreateWithoutPagosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPagosInput
+  upsert?: Prisma.ColegioUpsertWithoutPagosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutPagosInput, Prisma.ColegioUpdateWithoutPagosInput>, Prisma.ColegioUncheckedUpdateWithoutPagosInput>
+}
+
 export type ColegioCreateWithoutConfiguracionInput = {
   id?: string
   nombre: string
@@ -587,6 +797,16 @@ export type ColegioCreateWithoutConfiguracionInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateWithoutConfiguracionInput = {
@@ -605,6 +825,16 @@ export type ColegioUncheckedCreateWithoutConfiguracionInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioCreateOrConnectWithoutConfiguracionInput = {
@@ -639,6 +869,16 @@ export type ColegioUpdateWithoutConfiguracionInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateWithoutConfiguracionInput = {
@@ -657,6 +897,16 @@ export type ColegioUncheckedUpdateWithoutConfiguracionInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioCreateWithoutNivelesInput = {
@@ -675,6 +925,16 @@ export type ColegioCreateWithoutNivelesInput = {
   sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateWithoutNivelesInput = {
@@ -693,6 +953,16 @@ export type ColegioUncheckedCreateWithoutNivelesInput = {
   sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioCreateOrConnectWithoutNivelesInput = {
@@ -727,6 +997,16 @@ export type ColegioUpdateWithoutNivelesInput = {
   sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateWithoutNivelesInput = {
@@ -745,6 +1025,16 @@ export type ColegioUncheckedUpdateWithoutNivelesInput = {
   sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioCreateWithoutSedesInput = {
@@ -763,6 +1053,16 @@ export type ColegioCreateWithoutSedesInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateWithoutSedesInput = {
@@ -781,6 +1081,16 @@ export type ColegioUncheckedCreateWithoutSedesInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioCreateOrConnectWithoutSedesInput = {
@@ -815,6 +1125,16 @@ export type ColegioUpdateWithoutSedesInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateWithoutSedesInput = {
@@ -833,6 +1153,400 @@ export type ColegioUncheckedUpdateWithoutSedesInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutPostulacionesInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutPostulacionesInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutPostulacionesInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPostulacionesInput, Prisma.ColegioUncheckedCreateWithoutPostulacionesInput>
+}
+
+export type ColegioUpsertWithoutPostulacionesInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutPostulacionesInput, Prisma.ColegioUncheckedUpdateWithoutPostulacionesInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPostulacionesInput, Prisma.ColegioUncheckedCreateWithoutPostulacionesInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutPostulacionesInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutPostulacionesInput, Prisma.ColegioUncheckedUpdateWithoutPostulacionesInput>
+}
+
+export type ColegioUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutPrematriculasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutPrematriculasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutPrematriculasInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPrematriculasInput, Prisma.ColegioUncheckedCreateWithoutPrematriculasInput>
+}
+
+export type ColegioUpsertWithoutPrematriculasInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutPrematriculasInput, Prisma.ColegioUncheckedUpdateWithoutPrematriculasInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPrematriculasInput, Prisma.ColegioUncheckedCreateWithoutPrematriculasInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutPrematriculasInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutPrematriculasInput, Prisma.ColegioUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type ColegioUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutPerfilesAlumnoInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutPerfilesAlumnoInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutPerfilesAlumnoInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedCreateWithoutPerfilesAlumnoInput>
+}
+
+export type ColegioUpsertWithoutPerfilesAlumnoInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedUpdateWithoutPerfilesAlumnoInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedCreateWithoutPerfilesAlumnoInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutPerfilesAlumnoInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutPerfilesAlumnoInput, Prisma.ColegioUncheckedUpdateWithoutPerfilesAlumnoInput>
+}
+
+export type ColegioUpdateWithoutPerfilesAlumnoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutPerfilesAlumnoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioCreateWithoutRolesInput = {
@@ -851,6 +1565,16 @@ export type ColegioCreateWithoutRolesInput = {
   sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateWithoutRolesInput = {
@@ -869,6 +1593,16 @@ export type ColegioUncheckedCreateWithoutRolesInput = {
   sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioCreateOrConnectWithoutRolesInput = {
@@ -903,6 +1637,16 @@ export type ColegioUpdateWithoutRolesInput = {
   sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateWithoutRolesInput = {
@@ -921,6 +1665,16 @@ export type ColegioUncheckedUpdateWithoutRolesInput = {
   sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioCreateWithoutAsignacionesInput = {
@@ -939,6 +1693,16 @@ export type ColegioCreateWithoutAsignacionesInput = {
   sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioUncheckedCreateWithoutAsignacionesInput = {
@@ -957,6 +1721,16 @@ export type ColegioUncheckedCreateWithoutAsignacionesInput = {
   sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
 }
 
 export type ColegioCreateOrConnectWithoutAsignacionesInput = {
@@ -991,6 +1765,16 @@ export type ColegioUpdateWithoutAsignacionesInput = {
   sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
 }
 
 export type ColegioUncheckedUpdateWithoutAsignacionesInput = {
@@ -1009,6 +1793,912 @@ export type ColegioUncheckedUpdateWithoutAsignacionesInput = {
   sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutDocentesInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutDocentesInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutDocentesInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutDocentesInput, Prisma.ColegioUncheckedCreateWithoutDocentesInput>
+}
+
+export type ColegioUpsertWithoutDocentesInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutDocentesInput, Prisma.ColegioUncheckedUpdateWithoutDocentesInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutDocentesInput, Prisma.ColegioUncheckedCreateWithoutDocentesInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutDocentesInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutDocentesInput, Prisma.ColegioUncheckedUpdateWithoutDocentesInput>
+}
+
+export type ColegioUpdateWithoutDocentesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutDocentesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutColegioAsignaturasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutColegioAsignaturasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutColegioAsignaturasInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedCreateWithoutColegioAsignaturasInput>
+}
+
+export type ColegioUpsertWithoutColegioAsignaturasInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedUpdateWithoutColegioAsignaturasInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedCreateWithoutColegioAsignaturasInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutColegioAsignaturasInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutColegioAsignaturasInput, Prisma.ColegioUncheckedUpdateWithoutColegioAsignaturasInput>
+}
+
+export type ColegioUpdateWithoutColegioAsignaturasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutColegioAsignaturasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutPeriodosEvaluacionInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutPeriodosEvaluacionInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutPeriodosEvaluacionInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedCreateWithoutPeriodosEvaluacionInput>
+}
+
+export type ColegioUpsertWithoutPeriodosEvaluacionInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedUpdateWithoutPeriodosEvaluacionInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedCreateWithoutPeriodosEvaluacionInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutPeriodosEvaluacionInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedUpdateWithoutPeriodosEvaluacionInput>
+}
+
+export type ColegioUpdateWithoutPeriodosEvaluacionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutPeriodosEvaluacionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutComunicadosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutComunicadosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutComunicadosInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutComunicadosInput, Prisma.ColegioUncheckedCreateWithoutComunicadosInput>
+}
+
+export type ColegioUpsertWithoutComunicadosInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutComunicadosInput, Prisma.ColegioUncheckedUpdateWithoutComunicadosInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutComunicadosInput, Prisma.ColegioUncheckedCreateWithoutComunicadosInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutComunicadosInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutComunicadosInput, Prisma.ColegioUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type ColegioUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutFranjasHorariasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutFranjasHorariasInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutFranjasHorariasInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedCreateWithoutFranjasHorariasInput>
+}
+
+export type ColegioUpsertWithoutFranjasHorariasInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedUpdateWithoutFranjasHorariasInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedCreateWithoutFranjasHorariasInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutFranjasHorariasInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutFranjasHorariasInput, Prisma.ColegioUncheckedUpdateWithoutFranjasHorariasInput>
+}
+
+export type ColegioUpdateWithoutFranjasHorariasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutFranjasHorariasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutConceptosPagoInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutConceptosPagoInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutConceptosPagoInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutConceptosPagoInput, Prisma.ColegioUncheckedCreateWithoutConceptosPagoInput>
+}
+
+export type ColegioUpsertWithoutConceptosPagoInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutConceptosPagoInput, Prisma.ColegioUncheckedUpdateWithoutConceptosPagoInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutConceptosPagoInput, Prisma.ColegioUncheckedCreateWithoutConceptosPagoInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutConceptosPagoInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutConceptosPagoInput, Prisma.ColegioUncheckedUpdateWithoutConceptosPagoInput>
+}
+
+export type ColegioUpdateWithoutConceptosPagoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutConceptosPagoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutPagosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutPagosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutPagosInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPagosInput, Prisma.ColegioUncheckedCreateWithoutPagosInput>
+}
+
+export type ColegioUpsertWithoutPagosInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutPagosInput, Prisma.ColegioUncheckedUpdateWithoutPagosInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutPagosInput, Prisma.ColegioUncheckedCreateWithoutPagosInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutPagosInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutPagosInput, Prisma.ColegioUncheckedUpdateWithoutPagosInput>
+}
+
+export type ColegioUpdateWithoutPagosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutPagosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
 }
 
 
@@ -1021,6 +2711,16 @@ export type ColegioCountOutputType = {
   niveles: number
   roles: number
   asignaciones: number
+  perfilesAlumno: number
+  postulaciones: number
+  prematriculas: number
+  docentes: number
+  colegioAsignaturas: number
+  periodosEvaluacion: number
+  comunicados: number
+  franjasHorarias: number
+  conceptosPago: number
+  pagos: number
 }
 
 export type ColegioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1028,6 +2728,16 @@ export type ColegioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   niveles?: boolean | ColegioCountOutputTypeCountNivelesArgs
   roles?: boolean | ColegioCountOutputTypeCountRolesArgs
   asignaciones?: boolean | ColegioCountOutputTypeCountAsignacionesArgs
+  perfilesAlumno?: boolean | ColegioCountOutputTypeCountPerfilesAlumnoArgs
+  postulaciones?: boolean | ColegioCountOutputTypeCountPostulacionesArgs
+  prematriculas?: boolean | ColegioCountOutputTypeCountPrematriculasArgs
+  docentes?: boolean | ColegioCountOutputTypeCountDocentesArgs
+  colegioAsignaturas?: boolean | ColegioCountOutputTypeCountColegioAsignaturasArgs
+  periodosEvaluacion?: boolean | ColegioCountOutputTypeCountPeriodosEvaluacionArgs
+  comunicados?: boolean | ColegioCountOutputTypeCountComunicadosArgs
+  franjasHorarias?: boolean | ColegioCountOutputTypeCountFranjasHorariasArgs
+  conceptosPago?: boolean | ColegioCountOutputTypeCountConceptosPagoArgs
+  pagos?: boolean | ColegioCountOutputTypeCountPagosArgs
 }
 
 /**
@@ -1068,6 +2778,76 @@ export type ColegioCountOutputTypeCountAsignacionesArgs<ExtArgs extends runtime.
   where?: Prisma.UsuarioAsignacionWhereInput
 }
 
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountPerfilesAlumnoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PerfilAlumnoWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountPostulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostulacionWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountPrematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrematriculaWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountDocentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PerfilDocenteWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountColegioAsignaturasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ColegioAsignaturaWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountPeriodosEvaluacionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PeriodoEvaluacionWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountComunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComunicadoWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountFranjasHorariasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.FranjaHorariaWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountConceptosPagoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ConceptoPagoWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountPagosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PagoWhereInput
+}
+
 
 export type ColegioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1086,6 +2866,16 @@ export type ColegioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   niveles?: boolean | Prisma.Colegio$nivelesArgs<ExtArgs>
   roles?: boolean | Prisma.Colegio$rolesArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Colegio$asignacionesArgs<ExtArgs>
+  perfilesAlumno?: boolean | Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.Colegio$postulacionesArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.Colegio$prematriculasArgs<ExtArgs>
+  docentes?: boolean | Prisma.Colegio$docentesArgs<ExtArgs>
+  colegioAsignaturas?: boolean | Prisma.Colegio$colegioAsignaturasArgs<ExtArgs>
+  periodosEvaluacion?: boolean | Prisma.Colegio$periodosEvaluacionArgs<ExtArgs>
+  comunicados?: boolean | Prisma.Colegio$comunicadosArgs<ExtArgs>
+  franjasHorarias?: boolean | Prisma.Colegio$franjasHorariasArgs<ExtArgs>
+  conceptosPago?: boolean | Prisma.Colegio$conceptosPagoArgs<ExtArgs>
+  pagos?: boolean | Prisma.Colegio$pagosArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegio"]>
 
@@ -1138,6 +2928,16 @@ export type ColegioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   niveles?: boolean | Prisma.Colegio$nivelesArgs<ExtArgs>
   roles?: boolean | Prisma.Colegio$rolesArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Colegio$asignacionesArgs<ExtArgs>
+  perfilesAlumno?: boolean | Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.Colegio$postulacionesArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.Colegio$prematriculasArgs<ExtArgs>
+  docentes?: boolean | Prisma.Colegio$docentesArgs<ExtArgs>
+  colegioAsignaturas?: boolean | Prisma.Colegio$colegioAsignaturasArgs<ExtArgs>
+  periodosEvaluacion?: boolean | Prisma.Colegio$periodosEvaluacionArgs<ExtArgs>
+  comunicados?: boolean | Prisma.Colegio$comunicadosArgs<ExtArgs>
+  franjasHorarias?: boolean | Prisma.Colegio$franjasHorariasArgs<ExtArgs>
+  conceptosPago?: boolean | Prisma.Colegio$conceptosPagoArgs<ExtArgs>
+  pagos?: boolean | Prisma.Colegio$pagosArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ColegioIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1151,6 +2951,16 @@ export type $ColegioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     niveles: Prisma.$ColegioNivelPayload<ExtArgs>[]
     roles: Prisma.$ColegioRolPayload<ExtArgs>[]
     asignaciones: Prisma.$UsuarioAsignacionPayload<ExtArgs>[]
+    perfilesAlumno: Prisma.$PerfilAlumnoPayload<ExtArgs>[]
+    postulaciones: Prisma.$PostulacionPayload<ExtArgs>[]
+    prematriculas: Prisma.$PrematriculaPayload<ExtArgs>[]
+    docentes: Prisma.$PerfilDocentePayload<ExtArgs>[]
+    colegioAsignaturas: Prisma.$ColegioAsignaturaPayload<ExtArgs>[]
+    periodosEvaluacion: Prisma.$PeriodoEvaluacionPayload<ExtArgs>[]
+    comunicados: Prisma.$ComunicadoPayload<ExtArgs>[]
+    franjasHorarias: Prisma.$FranjaHorariaPayload<ExtArgs>[]
+    conceptosPago: Prisma.$ConceptoPagoPayload<ExtArgs>[]
+    pagos: Prisma.$PagoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1563,6 +3373,16 @@ export interface Prisma__ColegioClient<T, Null = never, ExtArgs extends runtime.
   niveles<T extends Prisma.Colegio$nivelesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$nivelesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioNivelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   roles<T extends Prisma.Colegio$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioRolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   asignaciones<T extends Prisma.Colegio$asignacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioAsignacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  perfilesAlumno<T extends Prisma.Colegio$perfilesAlumnoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilAlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postulaciones<T extends Prisma.Colegio$postulacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$postulacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostulacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  prematriculas<T extends Prisma.Colegio$prematriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$prematriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrematriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  docentes<T extends Prisma.Colegio$docentesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$docentesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilDocentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  colegioAsignaturas<T extends Prisma.Colegio$colegioAsignaturasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$colegioAsignaturasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioAsignaturaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  periodosEvaluacion<T extends Prisma.Colegio$periodosEvaluacionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$periodosEvaluacionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PeriodoEvaluacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comunicados<T extends Prisma.Colegio$comunicadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$comunicadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  franjasHorarias<T extends Prisma.Colegio$franjasHorariasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$franjasHorariasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FranjaHorariaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  conceptosPago<T extends Prisma.Colegio$conceptosPagoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$conceptosPagoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConceptoPagoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pagos<T extends Prisma.Colegio$pagosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$pagosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PagoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2103,6 +3923,246 @@ export type Colegio$asignacionesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.UsuarioAsignacionScalarFieldEnum | Prisma.UsuarioAsignacionScalarFieldEnum[]
+}
+
+/**
+ * Colegio.perfilesAlumno
+ */
+export type Colegio$perfilesAlumnoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilAlumno
+   */
+  select?: Prisma.PerfilAlumnoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilAlumno
+   */
+  omit?: Prisma.PerfilAlumnoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilAlumnoInclude<ExtArgs> | null
+  where?: Prisma.PerfilAlumnoWhereInput
+  orderBy?: Prisma.PerfilAlumnoOrderByWithRelationInput | Prisma.PerfilAlumnoOrderByWithRelationInput[]
+  cursor?: Prisma.PerfilAlumnoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PerfilAlumnoScalarFieldEnum | Prisma.PerfilAlumnoScalarFieldEnum[]
+}
+
+/**
+ * Colegio.postulaciones
+ */
+export type Colegio$postulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Postulacion
+   */
+  select?: Prisma.PostulacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Postulacion
+   */
+  omit?: Prisma.PostulacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostulacionInclude<ExtArgs> | null
+  where?: Prisma.PostulacionWhereInput
+  orderBy?: Prisma.PostulacionOrderByWithRelationInput | Prisma.PostulacionOrderByWithRelationInput[]
+  cursor?: Prisma.PostulacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostulacionScalarFieldEnum | Prisma.PostulacionScalarFieldEnum[]
+}
+
+/**
+ * Colegio.prematriculas
+ */
+export type Colegio$prematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prematricula
+   */
+  select?: Prisma.PrematriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prematricula
+   */
+  omit?: Prisma.PrematriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrematriculaInclude<ExtArgs> | null
+  where?: Prisma.PrematriculaWhereInput
+  orderBy?: Prisma.PrematriculaOrderByWithRelationInput | Prisma.PrematriculaOrderByWithRelationInput[]
+  cursor?: Prisma.PrematriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrematriculaScalarFieldEnum | Prisma.PrematriculaScalarFieldEnum[]
+}
+
+/**
+ * Colegio.docentes
+ */
+export type Colegio$docentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilDocente
+   */
+  select?: Prisma.PerfilDocenteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilDocente
+   */
+  omit?: Prisma.PerfilDocenteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilDocenteInclude<ExtArgs> | null
+  where?: Prisma.PerfilDocenteWhereInput
+  orderBy?: Prisma.PerfilDocenteOrderByWithRelationInput | Prisma.PerfilDocenteOrderByWithRelationInput[]
+  cursor?: Prisma.PerfilDocenteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PerfilDocenteScalarFieldEnum | Prisma.PerfilDocenteScalarFieldEnum[]
+}
+
+/**
+ * Colegio.colegioAsignaturas
+ */
+export type Colegio$colegioAsignaturasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ColegioAsignatura
+   */
+  select?: Prisma.ColegioAsignaturaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ColegioAsignatura
+   */
+  omit?: Prisma.ColegioAsignaturaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ColegioAsignaturaInclude<ExtArgs> | null
+  where?: Prisma.ColegioAsignaturaWhereInput
+  orderBy?: Prisma.ColegioAsignaturaOrderByWithRelationInput | Prisma.ColegioAsignaturaOrderByWithRelationInput[]
+  cursor?: Prisma.ColegioAsignaturaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ColegioAsignaturaScalarFieldEnum | Prisma.ColegioAsignaturaScalarFieldEnum[]
+}
+
+/**
+ * Colegio.periodosEvaluacion
+ */
+export type Colegio$periodosEvaluacionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PeriodoEvaluacion
+   */
+  select?: Prisma.PeriodoEvaluacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PeriodoEvaluacion
+   */
+  omit?: Prisma.PeriodoEvaluacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PeriodoEvaluacionInclude<ExtArgs> | null
+  where?: Prisma.PeriodoEvaluacionWhereInput
+  orderBy?: Prisma.PeriodoEvaluacionOrderByWithRelationInput | Prisma.PeriodoEvaluacionOrderByWithRelationInput[]
+  cursor?: Prisma.PeriodoEvaluacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PeriodoEvaluacionScalarFieldEnum | Prisma.PeriodoEvaluacionScalarFieldEnum[]
+}
+
+/**
+ * Colegio.comunicados
+ */
+export type Colegio$comunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comunicado
+   */
+  select?: Prisma.ComunicadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comunicado
+   */
+  omit?: Prisma.ComunicadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComunicadoInclude<ExtArgs> | null
+  where?: Prisma.ComunicadoWhereInput
+  orderBy?: Prisma.ComunicadoOrderByWithRelationInput | Prisma.ComunicadoOrderByWithRelationInput[]
+  cursor?: Prisma.ComunicadoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComunicadoScalarFieldEnum | Prisma.ComunicadoScalarFieldEnum[]
+}
+
+/**
+ * Colegio.franjasHorarias
+ */
+export type Colegio$franjasHorariasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the FranjaHoraria
+   */
+  select?: Prisma.FranjaHorariaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the FranjaHoraria
+   */
+  omit?: Prisma.FranjaHorariaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.FranjaHorariaInclude<ExtArgs> | null
+  where?: Prisma.FranjaHorariaWhereInput
+  orderBy?: Prisma.FranjaHorariaOrderByWithRelationInput | Prisma.FranjaHorariaOrderByWithRelationInput[]
+  cursor?: Prisma.FranjaHorariaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.FranjaHorariaScalarFieldEnum | Prisma.FranjaHorariaScalarFieldEnum[]
+}
+
+/**
+ * Colegio.conceptosPago
+ */
+export type Colegio$conceptosPagoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ConceptoPago
+   */
+  select?: Prisma.ConceptoPagoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ConceptoPago
+   */
+  omit?: Prisma.ConceptoPagoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ConceptoPagoInclude<ExtArgs> | null
+  where?: Prisma.ConceptoPagoWhereInput
+  orderBy?: Prisma.ConceptoPagoOrderByWithRelationInput | Prisma.ConceptoPagoOrderByWithRelationInput[]
+  cursor?: Prisma.ConceptoPagoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ConceptoPagoScalarFieldEnum | Prisma.ConceptoPagoScalarFieldEnum[]
+}
+
+/**
+ * Colegio.pagos
+ */
+export type Colegio$pagosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Pago
+   */
+  select?: Prisma.PagoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Pago
+   */
+  omit?: Prisma.PagoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PagoInclude<ExtArgs> | null
+  where?: Prisma.PagoWhereInput
+  orderBy?: Prisma.PagoOrderByWithRelationInput | Prisma.PagoOrderByWithRelationInput[]
+  cursor?: Prisma.PagoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PagoScalarFieldEnum | Prisma.PagoScalarFieldEnum[]
 }
 
 /**

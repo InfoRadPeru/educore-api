@@ -232,6 +232,8 @@ export type PersonaWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Persona"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
   perfilAlumno?: Prisma.XOR<Prisma.PerfilAlumnoNullableScalarRelationFilter, Prisma.PerfilAlumnoWhereInput> | null
+  perfilApoderado?: Prisma.XOR<Prisma.PerfilApoderadoNullableScalarRelationFilter, Prisma.PerfilApoderadoWhereInput> | null
+  perfilesDocente?: Prisma.PerfilDocenteListRelationFilter
 }
 
 export type PersonaOrderByWithRelationInput = {
@@ -248,6 +250,8 @@ export type PersonaOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   usuario?: Prisma.UsuarioOrderByWithRelationInput
   perfilAlumno?: Prisma.PerfilAlumnoOrderByWithRelationInput
+  perfilApoderado?: Prisma.PerfilApoderadoOrderByWithRelationInput
+  perfilesDocente?: Prisma.PerfilDocenteOrderByRelationAggregateInput
 }
 
 export type PersonaWhereUniqueInput = Prisma.AtLeast<{
@@ -267,6 +271,8 @@ export type PersonaWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Persona"> | Date | string
   usuario?: Prisma.XOR<Prisma.UsuarioNullableScalarRelationFilter, Prisma.UsuarioWhereInput> | null
   perfilAlumno?: Prisma.XOR<Prisma.PerfilAlumnoNullableScalarRelationFilter, Prisma.PerfilAlumnoWhereInput> | null
+  perfilApoderado?: Prisma.XOR<Prisma.PerfilApoderadoNullableScalarRelationFilter, Prisma.PerfilApoderadoWhereInput> | null
+  perfilesDocente?: Prisma.PerfilDocenteListRelationFilter
 }, "id" | "dni">
 
 export type PersonaOrderByWithAggregationInput = {
@@ -317,6 +323,8 @@ export type PersonaCreateInput = {
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioCreateNestedOneWithoutPersonaInput
   perfilAlumno?: Prisma.PerfilAlumnoCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaUncheckedCreateInput = {
@@ -333,6 +341,8 @@ export type PersonaUncheckedCreateInput = {
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutPersonaInput
   perfilAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaUpdateInput = {
@@ -349,6 +359,8 @@ export type PersonaUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneWithoutPersonaNestedInput
   perfilAlumno?: Prisma.PerfilAlumnoUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUpdateManyWithoutPersonaNestedInput
 }
 
 export type PersonaUncheckedUpdateInput = {
@@ -365,6 +377,8 @@ export type PersonaUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutPersonaNestedInput
   perfilAlumno?: Prisma.PerfilAlumnoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutPersonaNestedInput
 }
 
 export type PersonaCreateManyInput = {
@@ -456,10 +470,6 @@ export type PersonaScalarRelationFilter = {
   isNot?: Prisma.PersonaWhereInput
 }
 
-export type EnumGeneroFieldUpdateOperationsInput = {
-  set?: $Enums.Genero
-}
-
 export type PersonaCreateNestedOneWithoutPerfilAlumnoInput = {
   create?: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilAlumnoInput, Prisma.PersonaUncheckedCreateWithoutPerfilAlumnoInput>
   connectOrCreate?: Prisma.PersonaCreateOrConnectWithoutPerfilAlumnoInput
@@ -488,6 +498,34 @@ export type PersonaUpdateOneRequiredWithoutUsuarioNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PersonaUpdateToOneWithWhereWithoutUsuarioInput, Prisma.PersonaUpdateWithoutUsuarioInput>, Prisma.PersonaUncheckedUpdateWithoutUsuarioInput>
 }
 
+export type PersonaCreateNestedOneWithoutPerfilesDocenteInput = {
+  create?: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedCreateWithoutPerfilesDocenteInput>
+  connectOrCreate?: Prisma.PersonaCreateOrConnectWithoutPerfilesDocenteInput
+  connect?: Prisma.PersonaWhereUniqueInput
+}
+
+export type PersonaUpdateOneRequiredWithoutPerfilesDocenteNestedInput = {
+  create?: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedCreateWithoutPerfilesDocenteInput>
+  connectOrCreate?: Prisma.PersonaCreateOrConnectWithoutPerfilesDocenteInput
+  upsert?: Prisma.PersonaUpsertWithoutPerfilesDocenteInput
+  connect?: Prisma.PersonaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PersonaUpdateToOneWithWhereWithoutPerfilesDocenteInput, Prisma.PersonaUpdateWithoutPerfilesDocenteInput>, Prisma.PersonaUncheckedUpdateWithoutPerfilesDocenteInput>
+}
+
+export type PersonaCreateNestedOneWithoutPerfilApoderadoInput = {
+  create?: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedCreateWithoutPerfilApoderadoInput>
+  connectOrCreate?: Prisma.PersonaCreateOrConnectWithoutPerfilApoderadoInput
+  connect?: Prisma.PersonaWhereUniqueInput
+}
+
+export type PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput = {
+  create?: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedCreateWithoutPerfilApoderadoInput>
+  connectOrCreate?: Prisma.PersonaCreateOrConnectWithoutPerfilApoderadoInput
+  upsert?: Prisma.PersonaUpsertWithoutPerfilApoderadoInput
+  connect?: Prisma.PersonaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PersonaUpdateToOneWithWhereWithoutPerfilApoderadoInput, Prisma.PersonaUpdateWithoutPerfilApoderadoInput>, Prisma.PersonaUncheckedUpdateWithoutPerfilApoderadoInput>
+}
+
 export type PersonaCreateWithoutPerfilAlumnoInput = {
   id?: string
   dni: string
@@ -501,6 +539,8 @@ export type PersonaCreateWithoutPerfilAlumnoInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaUncheckedCreateWithoutPerfilAlumnoInput = {
@@ -516,6 +556,8 @@ export type PersonaUncheckedCreateWithoutPerfilAlumnoInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaCreateOrConnectWithoutPerfilAlumnoInput = {
@@ -547,6 +589,8 @@ export type PersonaUpdateWithoutPerfilAlumnoInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUpdateManyWithoutPersonaNestedInput
 }
 
 export type PersonaUncheckedUpdateWithoutPerfilAlumnoInput = {
@@ -562,6 +606,8 @@ export type PersonaUncheckedUpdateWithoutPerfilAlumnoInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutPersonaNestedInput
 }
 
 export type PersonaCreateWithoutUsuarioInput = {
@@ -577,6 +623,8 @@ export type PersonaCreateWithoutUsuarioInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   perfilAlumno?: Prisma.PerfilAlumnoCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaUncheckedCreateWithoutUsuarioInput = {
@@ -592,6 +640,8 @@ export type PersonaUncheckedCreateWithoutUsuarioInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   perfilAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutPersonaInput
 }
 
 export type PersonaCreateOrConnectWithoutUsuarioInput = {
@@ -623,6 +673,8 @@ export type PersonaUpdateWithoutUsuarioInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   perfilAlumno?: Prisma.PerfilAlumnoUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUpdateManyWithoutPersonaNestedInput
 }
 
 export type PersonaUncheckedUpdateWithoutUsuarioInput = {
@@ -638,8 +690,207 @@ export type PersonaUncheckedUpdateWithoutUsuarioInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   perfilAlumno?: Prisma.PerfilAlumnoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutPersonaNestedInput
 }
 
+export type PersonaCreateWithoutPerfilesDocenteInput = {
+  id?: string
+  dni: string
+  nombres: string
+  apellidos: string
+  fechaNac: Date | string
+  genero: $Enums.Genero
+  telefono?: string | null
+  direccion?: string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioCreateNestedOneWithoutPersonaInput
+  perfilAlumno?: Prisma.PerfilAlumnoCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoCreateNestedOneWithoutPersonaInput
+}
+
+export type PersonaUncheckedCreateWithoutPerfilesDocenteInput = {
+  id?: string
+  dni: string
+  nombres: string
+  apellidos: string
+  fechaNac: Date | string
+  genero: $Enums.Genero
+  telefono?: string | null
+  direccion?: string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutPersonaInput
+  perfilAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedCreateNestedOneWithoutPersonaInput
+}
+
+export type PersonaCreateOrConnectWithoutPerfilesDocenteInput = {
+  where: Prisma.PersonaWhereUniqueInput
+  create: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedCreateWithoutPerfilesDocenteInput>
+}
+
+export type PersonaUpsertWithoutPerfilesDocenteInput = {
+  update: Prisma.XOR<Prisma.PersonaUpdateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedUpdateWithoutPerfilesDocenteInput>
+  create: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedCreateWithoutPerfilesDocenteInput>
+  where?: Prisma.PersonaWhereInput
+}
+
+export type PersonaUpdateToOneWithWhereWithoutPerfilesDocenteInput = {
+  where?: Prisma.PersonaWhereInput
+  data: Prisma.XOR<Prisma.PersonaUpdateWithoutPerfilesDocenteInput, Prisma.PersonaUncheckedUpdateWithoutPerfilesDocenteInput>
+}
+
+export type PersonaUpdateWithoutPerfilesDocenteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  dni?: Prisma.StringFieldUpdateOperationsInput | string
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  genero?: Prisma.EnumGeneroFieldUpdateOperationsInput | $Enums.Genero
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUpdateOneWithoutPersonaNestedInput
+  perfilAlumno?: Prisma.PerfilAlumnoUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUpdateOneWithoutPersonaNestedInput
+}
+
+export type PersonaUncheckedUpdateWithoutPerfilesDocenteInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  dni?: Prisma.StringFieldUpdateOperationsInput | string
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  genero?: Prisma.EnumGeneroFieldUpdateOperationsInput | $Enums.Genero
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilAlumno?: Prisma.PerfilAlumnoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilApoderado?: Prisma.PerfilApoderadoUncheckedUpdateOneWithoutPersonaNestedInput
+}
+
+export type PersonaCreateWithoutPerfilApoderadoInput = {
+  id?: string
+  dni: string
+  nombres: string
+  apellidos: string
+  fechaNac: Date | string
+  genero: $Enums.Genero
+  telefono?: string | null
+  direccion?: string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioCreateNestedOneWithoutPersonaInput
+  perfilAlumno?: Prisma.PerfilAlumnoCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteCreateNestedManyWithoutPersonaInput
+}
+
+export type PersonaUncheckedCreateWithoutPerfilApoderadoInput = {
+  id?: string
+  dni: string
+  nombres: string
+  apellidos: string
+  fechaNac: Date | string
+  genero: $Enums.Genero
+  telefono?: string | null
+  direccion?: string | null
+  avatarUrl?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  usuario?: Prisma.UsuarioUncheckedCreateNestedOneWithoutPersonaInput
+  perfilAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedOneWithoutPersonaInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutPersonaInput
+}
+
+export type PersonaCreateOrConnectWithoutPerfilApoderadoInput = {
+  where: Prisma.PersonaWhereUniqueInput
+  create: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedCreateWithoutPerfilApoderadoInput>
+}
+
+export type PersonaUpsertWithoutPerfilApoderadoInput = {
+  update: Prisma.XOR<Prisma.PersonaUpdateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedUpdateWithoutPerfilApoderadoInput>
+  create: Prisma.XOR<Prisma.PersonaCreateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedCreateWithoutPerfilApoderadoInput>
+  where?: Prisma.PersonaWhereInput
+}
+
+export type PersonaUpdateToOneWithWhereWithoutPerfilApoderadoInput = {
+  where?: Prisma.PersonaWhereInput
+  data: Prisma.XOR<Prisma.PersonaUpdateWithoutPerfilApoderadoInput, Prisma.PersonaUncheckedUpdateWithoutPerfilApoderadoInput>
+}
+
+export type PersonaUpdateWithoutPerfilApoderadoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  dni?: Prisma.StringFieldUpdateOperationsInput | string
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  genero?: Prisma.EnumGeneroFieldUpdateOperationsInput | $Enums.Genero
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUpdateOneWithoutPersonaNestedInput
+  perfilAlumno?: Prisma.PerfilAlumnoUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUpdateManyWithoutPersonaNestedInput
+}
+
+export type PersonaUncheckedUpdateWithoutPerfilApoderadoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  dni?: Prisma.StringFieldUpdateOperationsInput | string
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaNac?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  genero?: Prisma.EnumGeneroFieldUpdateOperationsInput | $Enums.Genero
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  usuario?: Prisma.UsuarioUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilAlumno?: Prisma.PerfilAlumnoUncheckedUpdateOneWithoutPersonaNestedInput
+  perfilesDocente?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutPersonaNestedInput
+}
+
+
+/**
+ * Count Type PersonaCountOutputType
+ */
+
+export type PersonaCountOutputType = {
+  perfilesDocente: number
+}
+
+export type PersonaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  perfilesDocente?: boolean | PersonaCountOutputTypeCountPerfilesDocenteArgs
+}
+
+/**
+ * PersonaCountOutputType without action
+ */
+export type PersonaCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PersonaCountOutputType
+   */
+  select?: Prisma.PersonaCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PersonaCountOutputType without action
+ */
+export type PersonaCountOutputTypeCountPerfilesDocenteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PerfilDocenteWhereInput
+}
 
 
 export type PersonaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -656,6 +907,9 @@ export type PersonaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   updatedAt?: boolean
   usuario?: boolean | Prisma.Persona$usuarioArgs<ExtArgs>
   perfilAlumno?: boolean | Prisma.Persona$perfilAlumnoArgs<ExtArgs>
+  perfilApoderado?: boolean | Prisma.Persona$perfilApoderadoArgs<ExtArgs>
+  perfilesDocente?: boolean | Prisma.Persona$perfilesDocenteArgs<ExtArgs>
+  _count?: boolean | Prisma.PersonaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["persona"]>
 
 export type PersonaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -704,6 +958,9 @@ export type PersonaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type PersonaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.Persona$usuarioArgs<ExtArgs>
   perfilAlumno?: boolean | Prisma.Persona$perfilAlumnoArgs<ExtArgs>
+  perfilApoderado?: boolean | Prisma.Persona$perfilApoderadoArgs<ExtArgs>
+  perfilesDocente?: boolean | Prisma.Persona$perfilesDocenteArgs<ExtArgs>
+  _count?: boolean | Prisma.PersonaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PersonaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 export type PersonaIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -713,6 +970,8 @@ export type $PersonaPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     usuario: Prisma.$UsuarioPayload<ExtArgs> | null
     perfilAlumno: Prisma.$PerfilAlumnoPayload<ExtArgs> | null
+    perfilApoderado: Prisma.$PerfilApoderadoPayload<ExtArgs> | null
+    perfilesDocente: Prisma.$PerfilDocentePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1122,6 +1381,8 @@ export interface Prisma__PersonaClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   usuario<T extends Prisma.Persona$usuarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Persona$usuarioArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   perfilAlumno<T extends Prisma.Persona$perfilAlumnoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Persona$perfilAlumnoArgs<ExtArgs>>): Prisma.Prisma__PerfilAlumnoClient<runtime.Types.Result.GetResult<Prisma.$PerfilAlumnoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  perfilApoderado<T extends Prisma.Persona$perfilApoderadoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Persona$perfilApoderadoArgs<ExtArgs>>): Prisma.Prisma__PerfilApoderadoClient<runtime.Types.Result.GetResult<Prisma.$PerfilApoderadoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  perfilesDocente<T extends Prisma.Persona$perfilesDocenteArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Persona$perfilesDocenteArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilDocentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1585,6 +1846,49 @@ export type Persona$perfilAlumnoArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   include?: Prisma.PerfilAlumnoInclude<ExtArgs> | null
   where?: Prisma.PerfilAlumnoWhereInput
+}
+
+/**
+ * Persona.perfilApoderado
+ */
+export type Persona$perfilApoderadoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilApoderado
+   */
+  select?: Prisma.PerfilApoderadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilApoderado
+   */
+  omit?: Prisma.PerfilApoderadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilApoderadoInclude<ExtArgs> | null
+  where?: Prisma.PerfilApoderadoWhereInput
+}
+
+/**
+ * Persona.perfilesDocente
+ */
+export type Persona$perfilesDocenteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilDocente
+   */
+  select?: Prisma.PerfilDocenteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilDocente
+   */
+  omit?: Prisma.PerfilDocenteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilDocenteInclude<ExtArgs> | null
+  where?: Prisma.PerfilDocenteWhereInput
+  orderBy?: Prisma.PerfilDocenteOrderByWithRelationInput | Prisma.PerfilDocenteOrderByWithRelationInput[]
+  cursor?: Prisma.PerfilDocenteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PerfilDocenteScalarFieldEnum | Prisma.PerfilDocenteScalarFieldEnum[]
 }
 
 /**

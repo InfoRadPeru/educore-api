@@ -94,6 +94,6 @@ import { EmailAdapter } from './infrastructure/adapters/email.adapter';
     ChangePasswordUseCase,
     MeUseCase,
   ],
-  exports: [JwtModule, PassportModule],
+  exports: [JwtModule, PassportModule, USUARIO_REPOSITORY],
 })
 export class AuthModule {}

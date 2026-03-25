@@ -194,6 +194,10 @@ export type ColegioNivelWhereInput = {
   nivelMaestro?: Prisma.XOR<Prisma.NivelMaestroScalarRelationFilter, Prisma.NivelMaestroWhereInput>
   turnos?: Prisma.ColegioNivelTurnoListRelationFilter
   grados?: Prisma.ColegioGradoListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  tarifas?: Prisma.TarifaConceptoListRelationFilter
 }
 
 export type ColegioNivelOrderByWithRelationInput = {
@@ -207,6 +211,10 @@ export type ColegioNivelOrderByWithRelationInput = {
   nivelMaestro?: Prisma.NivelMaestroOrderByWithRelationInput
   turnos?: Prisma.ColegioNivelTurnoOrderByRelationAggregateInput
   grados?: Prisma.ColegioGradoOrderByRelationAggregateInput
+  postulaciones?: Prisma.PostulacionOrderByRelationAggregateInput
+  prematriculas?: Prisma.PrematriculaOrderByRelationAggregateInput
+  comunicados?: Prisma.ComunicadoOrderByRelationAggregateInput
+  tarifas?: Prisma.TarifaConceptoOrderByRelationAggregateInput
 }
 
 export type ColegioNivelWhereUniqueInput = Prisma.AtLeast<{
@@ -224,6 +232,10 @@ export type ColegioNivelWhereUniqueInput = Prisma.AtLeast<{
   nivelMaestro?: Prisma.XOR<Prisma.NivelMaestroScalarRelationFilter, Prisma.NivelMaestroWhereInput>
   turnos?: Prisma.ColegioNivelTurnoListRelationFilter
   grados?: Prisma.ColegioGradoListRelationFilter
+  postulaciones?: Prisma.PostulacionListRelationFilter
+  prematriculas?: Prisma.PrematriculaListRelationFilter
+  comunicados?: Prisma.ComunicadoListRelationFilter
+  tarifas?: Prisma.TarifaConceptoListRelationFilter
 }, "id" | "colegioId_nivelMaestroId">
 
 export type ColegioNivelOrderByWithAggregationInput = {
@@ -259,6 +271,10 @@ export type ColegioNivelCreateInput = {
   nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
   turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUncheckedCreateInput = {
@@ -270,6 +286,10 @@ export type ColegioNivelUncheckedCreateInput = {
   updatedAt?: Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUpdateInput = {
@@ -281,6 +301,10 @@ export type ColegioNivelUpdateInput = {
   nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
   turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateInput = {
@@ -292,6 +316,10 @@ export type ColegioNivelUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelCreateManyInput = {
@@ -364,6 +392,11 @@ export type ColegioNivelMinOrderByAggregateInput = {
 export type ColegioNivelScalarRelationFilter = {
   is?: Prisma.ColegioNivelWhereInput
   isNot?: Prisma.ColegioNivelWhereInput
+}
+
+export type ColegioNivelNullableScalarRelationFilter = {
+  is?: Prisma.ColegioNivelWhereInput | null
+  isNot?: Prisma.ColegioNivelWhereInput | null
 }
 
 export type ColegioNivelCreateNestedManyWithoutColegioInput = {
@@ -440,6 +473,34 @@ export type ColegioNivelUpdateOneRequiredWithoutGradosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioNivelUpdateToOneWithWhereWithoutGradosInput, Prisma.ColegioNivelUpdateWithoutGradosInput>, Prisma.ColegioNivelUncheckedUpdateWithoutGradosInput>
 }
 
+export type ColegioNivelCreateNestedOneWithoutPostulacionesInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutPostulacionesInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+}
+
+export type ColegioNivelUpdateOneRequiredWithoutPostulacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedCreateWithoutPostulacionesInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutPostulacionesInput
+  upsert?: Prisma.ColegioNivelUpsertWithoutPostulacionesInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioNivelUpdateToOneWithWhereWithoutPostulacionesInput, Prisma.ColegioNivelUpdateWithoutPostulacionesInput>, Prisma.ColegioNivelUncheckedUpdateWithoutPostulacionesInput>
+}
+
+export type ColegioNivelCreateNestedOneWithoutPrematriculasInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutPrematriculasInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+}
+
+export type ColegioNivelUpdateOneRequiredWithoutPrematriculasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedCreateWithoutPrematriculasInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutPrematriculasInput
+  upsert?: Prisma.ColegioNivelUpsertWithoutPrematriculasInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioNivelUpdateToOneWithWhereWithoutPrematriculasInput, Prisma.ColegioNivelUpdateWithoutPrematriculasInput>, Prisma.ColegioNivelUncheckedUpdateWithoutPrematriculasInput>
+}
+
 export type ColegioNivelCreateNestedManyWithoutNivelMaestroInput = {
   create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutNivelMaestroInput, Prisma.ColegioNivelUncheckedCreateWithoutNivelMaestroInput> | Prisma.ColegioNivelCreateWithoutNivelMaestroInput[] | Prisma.ColegioNivelUncheckedCreateWithoutNivelMaestroInput[]
   connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutNivelMaestroInput | Prisma.ColegioNivelCreateOrConnectWithoutNivelMaestroInput[]
@@ -482,6 +543,38 @@ export type ColegioNivelUncheckedUpdateManyWithoutNivelMaestroNestedInput = {
   deleteMany?: Prisma.ColegioNivelScalarWhereInput | Prisma.ColegioNivelScalarWhereInput[]
 }
 
+export type ColegioNivelCreateNestedOneWithoutComunicadosInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutComunicadosInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+}
+
+export type ColegioNivelUpdateOneWithoutComunicadosNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedCreateWithoutComunicadosInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutComunicadosInput
+  upsert?: Prisma.ColegioNivelUpsertWithoutComunicadosInput
+  disconnect?: Prisma.ColegioNivelWhereInput | boolean
+  delete?: Prisma.ColegioNivelWhereInput | boolean
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioNivelUpdateToOneWithWhereWithoutComunicadosInput, Prisma.ColegioNivelUpdateWithoutComunicadosInput>, Prisma.ColegioNivelUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type ColegioNivelCreateNestedOneWithoutTarifasInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutTarifasInput, Prisma.ColegioNivelUncheckedCreateWithoutTarifasInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutTarifasInput
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+}
+
+export type ColegioNivelUpdateOneWithoutTarifasNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioNivelCreateWithoutTarifasInput, Prisma.ColegioNivelUncheckedCreateWithoutTarifasInput>
+  connectOrCreate?: Prisma.ColegioNivelCreateOrConnectWithoutTarifasInput
+  upsert?: Prisma.ColegioNivelUpsertWithoutTarifasInput
+  disconnect?: Prisma.ColegioNivelWhereInput | boolean
+  delete?: Prisma.ColegioNivelWhereInput | boolean
+  connect?: Prisma.ColegioNivelWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioNivelUpdateToOneWithWhereWithoutTarifasInput, Prisma.ColegioNivelUpdateWithoutTarifasInput>, Prisma.ColegioNivelUncheckedUpdateWithoutTarifasInput>
+}
+
 export type ColegioNivelCreateWithoutColegioInput = {
   id?: string
   activo?: boolean
@@ -490,6 +583,10 @@ export type ColegioNivelCreateWithoutColegioInput = {
   nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
   turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUncheckedCreateWithoutColegioInput = {
@@ -500,6 +597,10 @@ export type ColegioNivelUncheckedCreateWithoutColegioInput = {
   updatedAt?: Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelCreateOrConnectWithoutColegioInput = {
@@ -548,6 +649,10 @@ export type ColegioNivelCreateWithoutTurnosInput = {
   colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
   nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
   grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUncheckedCreateWithoutTurnosInput = {
@@ -558,6 +663,10 @@ export type ColegioNivelUncheckedCreateWithoutTurnosInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelCreateOrConnectWithoutTurnosInput = {
@@ -584,6 +693,10 @@ export type ColegioNivelUpdateWithoutTurnosInput = {
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
   nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
   grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateWithoutTurnosInput = {
@@ -594,6 +707,10 @@ export type ColegioNivelUncheckedUpdateWithoutTurnosInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelCreateWithoutGradosInput = {
@@ -604,6 +721,10 @@ export type ColegioNivelCreateWithoutGradosInput = {
   colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
   nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
   turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUncheckedCreateWithoutGradosInput = {
@@ -614,6 +735,10 @@ export type ColegioNivelUncheckedCreateWithoutGradosInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelCreateOrConnectWithoutGradosInput = {
@@ -640,6 +765,10 @@ export type ColegioNivelUpdateWithoutGradosInput = {
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
   nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
   turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateWithoutGradosInput = {
@@ -650,6 +779,154 @@ export type ColegioNivelUncheckedUpdateWithoutGradosInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelCreateWithoutPostulacionesInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
+  nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
+  turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelUncheckedCreateWithoutPostulacionesInput = {
+  id?: string
+  colegioId: string
+  nivelMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelCreateOrConnectWithoutPostulacionesInput = {
+  where: Prisma.ColegioNivelWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedCreateWithoutPostulacionesInput>
+}
+
+export type ColegioNivelUpsertWithoutPostulacionesInput = {
+  update: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedUpdateWithoutPostulacionesInput>
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedCreateWithoutPostulacionesInput>
+  where?: Prisma.ColegioNivelWhereInput
+}
+
+export type ColegioNivelUpdateToOneWithWhereWithoutPostulacionesInput = {
+  where?: Prisma.ColegioNivelWhereInput
+  data: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutPostulacionesInput, Prisma.ColegioNivelUncheckedUpdateWithoutPostulacionesInput>
+}
+
+export type ColegioNivelUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
+  nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
+  turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelUncheckedUpdateWithoutPostulacionesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nivelMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelCreateWithoutPrematriculasInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
+  nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
+  turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelUncheckedCreateWithoutPrematriculasInput = {
+  id?: string
+  colegioId: string
+  nivelMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelCreateOrConnectWithoutPrematriculasInput = {
+  where: Prisma.ColegioNivelWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedCreateWithoutPrematriculasInput>
+}
+
+export type ColegioNivelUpsertWithoutPrematriculasInput = {
+  update: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedUpdateWithoutPrematriculasInput>
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedCreateWithoutPrematriculasInput>
+  where?: Prisma.ColegioNivelWhereInput
+}
+
+export type ColegioNivelUpdateToOneWithWhereWithoutPrematriculasInput = {
+  where?: Prisma.ColegioNivelWhereInput
+  data: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutPrematriculasInput, Prisma.ColegioNivelUncheckedUpdateWithoutPrematriculasInput>
+}
+
+export type ColegioNivelUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
+  nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
+  turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelUncheckedUpdateWithoutPrematriculasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nivelMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelCreateWithoutNivelMaestroInput = {
@@ -660,6 +937,10 @@ export type ColegioNivelCreateWithoutNivelMaestroInput = {
   colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
   turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelUncheckedCreateWithoutNivelMaestroInput = {
@@ -670,6 +951,10 @@ export type ColegioNivelUncheckedCreateWithoutNivelMaestroInput = {
   updatedAt?: Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
   grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
 }
 
 export type ColegioNivelCreateOrConnectWithoutNivelMaestroInput = {
@@ -698,6 +983,150 @@ export type ColegioNivelUpdateManyWithWhereWithoutNivelMaestroInput = {
   data: Prisma.XOR<Prisma.ColegioNivelUpdateManyMutationInput, Prisma.ColegioNivelUncheckedUpdateManyWithoutNivelMaestroInput>
 }
 
+export type ColegioNivelCreateWithoutComunicadosInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
+  nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
+  turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelUncheckedCreateWithoutComunicadosInput = {
+  id?: string
+  colegioId: string
+  nivelMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  tarifas?: Prisma.TarifaConceptoUncheckedCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelCreateOrConnectWithoutComunicadosInput = {
+  where: Prisma.ColegioNivelWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedCreateWithoutComunicadosInput>
+}
+
+export type ColegioNivelUpsertWithoutComunicadosInput = {
+  update: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedUpdateWithoutComunicadosInput>
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedCreateWithoutComunicadosInput>
+  where?: Prisma.ColegioNivelWhereInput
+}
+
+export type ColegioNivelUpdateToOneWithWhereWithoutComunicadosInput = {
+  where?: Prisma.ColegioNivelWhereInput
+  data: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutComunicadosInput, Prisma.ColegioNivelUncheckedUpdateWithoutComunicadosInput>
+}
+
+export type ColegioNivelUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
+  nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
+  turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelUncheckedUpdateWithoutComunicadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nivelMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelCreateWithoutTarifasInput = {
+  id?: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutNivelesInput
+  nivelMaestro: Prisma.NivelMaestroCreateNestedOneWithoutColegioNivelesInput
+  turnos?: Prisma.ColegioNivelTurnoCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelUncheckedCreateWithoutTarifasInput = {
+  id?: string
+  colegioId: string
+  nivelMaestroId: string
+  activo?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedCreateNestedManyWithoutColegioNivelInput
+  grados?: Prisma.ColegioGradoUncheckedCreateNestedManyWithoutColegioNivelInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioNivelInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioNivelInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioNivelInput
+}
+
+export type ColegioNivelCreateOrConnectWithoutTarifasInput = {
+  where: Prisma.ColegioNivelWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutTarifasInput, Prisma.ColegioNivelUncheckedCreateWithoutTarifasInput>
+}
+
+export type ColegioNivelUpsertWithoutTarifasInput = {
+  update: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutTarifasInput, Prisma.ColegioNivelUncheckedUpdateWithoutTarifasInput>
+  create: Prisma.XOR<Prisma.ColegioNivelCreateWithoutTarifasInput, Prisma.ColegioNivelUncheckedCreateWithoutTarifasInput>
+  where?: Prisma.ColegioNivelWhereInput
+}
+
+export type ColegioNivelUpdateToOneWithWhereWithoutTarifasInput = {
+  where?: Prisma.ColegioNivelWhereInput
+  data: Prisma.XOR<Prisma.ColegioNivelUpdateWithoutTarifasInput, Prisma.ColegioNivelUncheckedUpdateWithoutTarifasInput>
+}
+
+export type ColegioNivelUpdateWithoutTarifasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
+  nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
+  turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+}
+
+export type ColegioNivelUncheckedUpdateWithoutTarifasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
+  nivelMaestroId?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+}
+
 export type ColegioNivelCreateManyColegioInput = {
   id?: string
   nivelMaestroId: string
@@ -714,6 +1143,10 @@ export type ColegioNivelUpdateWithoutColegioInput = {
   nivelMaestro?: Prisma.NivelMaestroUpdateOneRequiredWithoutColegioNivelesNestedInput
   turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateWithoutColegioInput = {
@@ -724,6 +1157,10 @@ export type ColegioNivelUncheckedUpdateWithoutColegioInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateManyWithoutColegioInput = {
@@ -750,6 +1187,10 @@ export type ColegioNivelUpdateWithoutNivelMaestroInput = {
   colegio?: Prisma.ColegioUpdateOneRequiredWithoutNivelesNestedInput
   turnos?: Prisma.ColegioNivelTurnoUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateWithoutNivelMaestroInput = {
@@ -760,6 +1201,10 @@ export type ColegioNivelUncheckedUpdateWithoutNivelMaestroInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   turnos?: Prisma.ColegioNivelTurnoUncheckedUpdateManyWithoutColegioNivelNestedInput
   grados?: Prisma.ColegioGradoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNivelNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNivelNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNivelNestedInput
+  tarifas?: Prisma.TarifaConceptoUncheckedUpdateManyWithoutColegioNivelNestedInput
 }
 
 export type ColegioNivelUncheckedUpdateManyWithoutNivelMaestroInput = {
@@ -778,11 +1223,19 @@ export type ColegioNivelUncheckedUpdateManyWithoutNivelMaestroInput = {
 export type ColegioNivelCountOutputType = {
   turnos: number
   grados: number
+  postulaciones: number
+  prematriculas: number
+  comunicados: number
+  tarifas: number
 }
 
 export type ColegioNivelCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   turnos?: boolean | ColegioNivelCountOutputTypeCountTurnosArgs
   grados?: boolean | ColegioNivelCountOutputTypeCountGradosArgs
+  postulaciones?: boolean | ColegioNivelCountOutputTypeCountPostulacionesArgs
+  prematriculas?: boolean | ColegioNivelCountOutputTypeCountPrematriculasArgs
+  comunicados?: boolean | ColegioNivelCountOutputTypeCountComunicadosArgs
+  tarifas?: boolean | ColegioNivelCountOutputTypeCountTarifasArgs
 }
 
 /**
@@ -809,6 +1262,34 @@ export type ColegioNivelCountOutputTypeCountGradosArgs<ExtArgs extends runtime.T
   where?: Prisma.ColegioGradoWhereInput
 }
 
+/**
+ * ColegioNivelCountOutputType without action
+ */
+export type ColegioNivelCountOutputTypeCountPostulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PostulacionWhereInput
+}
+
+/**
+ * ColegioNivelCountOutputType without action
+ */
+export type ColegioNivelCountOutputTypeCountPrematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrematriculaWhereInput
+}
+
+/**
+ * ColegioNivelCountOutputType without action
+ */
+export type ColegioNivelCountOutputTypeCountComunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComunicadoWhereInput
+}
+
+/**
+ * ColegioNivelCountOutputType without action
+ */
+export type ColegioNivelCountOutputTypeCountTarifasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TarifaConceptoWhereInput
+}
+
 
 export type ColegioNivelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -821,6 +1302,10 @@ export type ColegioNivelSelect<ExtArgs extends runtime.Types.Extensions.Internal
   nivelMaestro?: boolean | Prisma.NivelMaestroDefaultArgs<ExtArgs>
   turnos?: boolean | Prisma.ColegioNivel$turnosArgs<ExtArgs>
   grados?: boolean | Prisma.ColegioNivel$gradosArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.ColegioNivel$postulacionesArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.ColegioNivel$prematriculasArgs<ExtArgs>
+  comunicados?: boolean | Prisma.ColegioNivel$comunicadosArgs<ExtArgs>
+  tarifas?: boolean | Prisma.ColegioNivel$tarifasArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioNivelCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["colegioNivel"]>
 
@@ -861,6 +1346,10 @@ export type ColegioNivelInclude<ExtArgs extends runtime.Types.Extensions.Interna
   nivelMaestro?: boolean | Prisma.NivelMaestroDefaultArgs<ExtArgs>
   turnos?: boolean | Prisma.ColegioNivel$turnosArgs<ExtArgs>
   grados?: boolean | Prisma.ColegioNivel$gradosArgs<ExtArgs>
+  postulaciones?: boolean | Prisma.ColegioNivel$postulacionesArgs<ExtArgs>
+  prematriculas?: boolean | Prisma.ColegioNivel$prematriculasArgs<ExtArgs>
+  comunicados?: boolean | Prisma.ColegioNivel$comunicadosArgs<ExtArgs>
+  tarifas?: boolean | Prisma.ColegioNivel$tarifasArgs<ExtArgs>
   _count?: boolean | Prisma.ColegioNivelCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ColegioNivelIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -879,6 +1368,10 @@ export type $ColegioNivelPayload<ExtArgs extends runtime.Types.Extensions.Intern
     nivelMaestro: Prisma.$NivelMaestroPayload<ExtArgs>
     turnos: Prisma.$ColegioNivelTurnoPayload<ExtArgs>[]
     grados: Prisma.$ColegioGradoPayload<ExtArgs>[]
+    postulaciones: Prisma.$PostulacionPayload<ExtArgs>[]
+    prematriculas: Prisma.$PrematriculaPayload<ExtArgs>[]
+    comunicados: Prisma.$ComunicadoPayload<ExtArgs>[]
+    tarifas: Prisma.$TarifaConceptoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1285,6 +1778,10 @@ export interface Prisma__ColegioNivelClient<T, Null = never, ExtArgs extends run
   nivelMaestro<T extends Prisma.NivelMaestroDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.NivelMaestroDefaultArgs<ExtArgs>>): Prisma.Prisma__NivelMaestroClient<runtime.Types.Result.GetResult<Prisma.$NivelMaestroPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   turnos<T extends Prisma.ColegioNivel$turnosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$turnosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioNivelTurnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   grados<T extends Prisma.ColegioNivel$gradosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$gradosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioGradoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  postulaciones<T extends Prisma.ColegioNivel$postulacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$postulacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostulacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  prematriculas<T extends Prisma.ColegioNivel$prematriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$prematriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrematriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  comunicados<T extends Prisma.ColegioNivel$comunicadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$comunicadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tarifas<T extends Prisma.ColegioNivel$tarifasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioNivel$tarifasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TarifaConceptoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1761,6 +2258,102 @@ export type ColegioNivel$gradosArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   distinct?: Prisma.ColegioGradoScalarFieldEnum | Prisma.ColegioGradoScalarFieldEnum[]
+}
+
+/**
+ * ColegioNivel.postulaciones
+ */
+export type ColegioNivel$postulacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Postulacion
+   */
+  select?: Prisma.PostulacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Postulacion
+   */
+  omit?: Prisma.PostulacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PostulacionInclude<ExtArgs> | null
+  where?: Prisma.PostulacionWhereInput
+  orderBy?: Prisma.PostulacionOrderByWithRelationInput | Prisma.PostulacionOrderByWithRelationInput[]
+  cursor?: Prisma.PostulacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PostulacionScalarFieldEnum | Prisma.PostulacionScalarFieldEnum[]
+}
+
+/**
+ * ColegioNivel.prematriculas
+ */
+export type ColegioNivel$prematriculasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Prematricula
+   */
+  select?: Prisma.PrematriculaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Prematricula
+   */
+  omit?: Prisma.PrematriculaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrematriculaInclude<ExtArgs> | null
+  where?: Prisma.PrematriculaWhereInput
+  orderBy?: Prisma.PrematriculaOrderByWithRelationInput | Prisma.PrematriculaOrderByWithRelationInput[]
+  cursor?: Prisma.PrematriculaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrematriculaScalarFieldEnum | Prisma.PrematriculaScalarFieldEnum[]
+}
+
+/**
+ * ColegioNivel.comunicados
+ */
+export type ColegioNivel$comunicadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Comunicado
+   */
+  select?: Prisma.ComunicadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Comunicado
+   */
+  omit?: Prisma.ComunicadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComunicadoInclude<ExtArgs> | null
+  where?: Prisma.ComunicadoWhereInput
+  orderBy?: Prisma.ComunicadoOrderByWithRelationInput | Prisma.ComunicadoOrderByWithRelationInput[]
+  cursor?: Prisma.ComunicadoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComunicadoScalarFieldEnum | Prisma.ComunicadoScalarFieldEnum[]
+}
+
+/**
+ * ColegioNivel.tarifas
+ */
+export type ColegioNivel$tarifasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TarifaConcepto
+   */
+  select?: Prisma.TarifaConceptoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TarifaConcepto
+   */
+  omit?: Prisma.TarifaConceptoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TarifaConceptoInclude<ExtArgs> | null
+  where?: Prisma.TarifaConceptoWhereInput
+  orderBy?: Prisma.TarifaConceptoOrderByWithRelationInput | Prisma.TarifaConceptoOrderByWithRelationInput[]
+  cursor?: Prisma.TarifaConceptoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TarifaConceptoScalarFieldEnum | Prisma.TarifaConceptoScalarFieldEnum[]
 }
 
 /**

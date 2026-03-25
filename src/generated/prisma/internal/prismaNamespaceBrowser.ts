@@ -59,6 +59,9 @@ export const ModelName = {
   Sede: 'Sede',
   SedeConfiguracion: 'SedeConfiguracion',
   Seccion: 'Seccion',
+  Postulacion: 'Postulacion',
+  Prematricula: 'Prematricula',
+  Matricula: 'Matricula',
   Persona: 'Persona',
   PerfilAlumno: 'PerfilAlumno',
   Usuario: 'Usuario',
@@ -68,8 +71,33 @@ export const ModelName = {
   RefreshToken: 'RefreshToken',
   PasswordReset: 'PasswordReset',
   AuditLog: 'AuditLog',
+  PerfilDocente: 'PerfilDocente',
+  DocenteAsignacion: 'DocenteAsignacion',
   NivelMaestro: 'NivelMaestro',
-  GradoMaestro: 'GradoMaestro'
+  GradoMaestro: 'GradoMaestro',
+  AsignaturaMaestra: 'AsignaturaMaestra',
+  ColegioAsignatura: 'ColegioAsignatura',
+  GradoAsignatura: 'GradoAsignatura',
+  PerfilApoderado: 'PerfilApoderado',
+  ApoderadoAlumno: 'ApoderadoAlumno',
+  PeriodoEvaluacion: 'PeriodoEvaluacion',
+  CategoriaEvaluacion: 'CategoriaEvaluacion',
+  Actividad: 'Actividad',
+  NotaActividad: 'NotaActividad',
+  AuditoriaNota: 'AuditoriaNota',
+  NotaPeriodo: 'NotaPeriodo',
+  Asistencia: 'Asistencia',
+  PublicacionBoletin: 'PublicacionBoletin',
+  Comunicado: 'Comunicado',
+  ComunicadoLectura: 'ComunicadoLectura',
+  FranjaHoraria: 'FranjaHoraria',
+  HorarioSeccion: 'HorarioSeccion',
+  HorarioBloque: 'HorarioBloque',
+  ConceptoPago: 'ConceptoPago',
+  TarifaConcepto: 'TarifaConcepto',
+  CuotaAlumno: 'CuotaAlumno',
+  Pago: 'Pago',
+  Notificacion: 'Notificacion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -117,6 +145,10 @@ export const ColegioConfiguracionScalarFieldEnum = {
   zonaHoraria: 'zonaHoraria',
   formatoFecha: 'formatoFecha',
   moneda: 'moneda',
+  notaMinima: 'notaMinima',
+  notaMaxima: 'notaMaxima',
+  notaAprobatoria: 'notaAprobatoria',
+  decimalesNota: 'decimalesNota',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -198,6 +230,58 @@ export const SeccionScalarFieldEnum = {
 export type SeccionScalarFieldEnum = (typeof SeccionScalarFieldEnum)[keyof typeof SeccionScalarFieldEnum]
 
 
+export const PostulacionScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  sedeId: 'sedeId',
+  nombres: 'nombres',
+  apellidos: 'apellidos',
+  dni: 'dni',
+  fechaNac: 'fechaNac',
+  genero: 'genero',
+  colegioNivelId: 'colegioNivelId',
+  añoAcademico: 'añoAcademico',
+  estado: 'estado',
+  observaciones: 'observaciones',
+  perfilAlumnoId: 'perfilAlumnoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PostulacionScalarFieldEnum = (typeof PostulacionScalarFieldEnum)[keyof typeof PostulacionScalarFieldEnum]
+
+
+export const PrematriculaScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  alumnoId: 'alumnoId',
+  colegioNivelId: 'colegioNivelId',
+  seccionId: 'seccionId',
+  añoAcademico: 'añoAcademico',
+  estado: 'estado',
+  observaciones: 'observaciones',
+  matriculaId: 'matriculaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrematriculaScalarFieldEnum = (typeof PrematriculaScalarFieldEnum)[keyof typeof PrematriculaScalarFieldEnum]
+
+
+export const MatriculaScalarFieldEnum = {
+  id: 'id',
+  perfilAlumnoId: 'perfilAlumnoId',
+  seccionId: 'seccionId',
+  añoAcademico: 'añoAcademico',
+  estado: 'estado',
+  observaciones: 'observaciones',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type MatriculaScalarFieldEnum = (typeof MatriculaScalarFieldEnum)[keyof typeof MatriculaScalarFieldEnum]
+
+
 export const PersonaScalarFieldEnum = {
   id: 'id',
   dni: 'dni',
@@ -218,7 +302,9 @@ export type PersonaScalarFieldEnum = (typeof PersonaScalarFieldEnum)[keyof typeo
 export const PerfilAlumnoScalarFieldEnum = {
   id: 'id',
   personaId: 'personaId',
+  colegioId: 'colegioId',
   codigoMatricula: 'codigoMatricula',
+  estado: 'estado',
   colegioOrigenRef: 'colegioOrigenRef',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -230,6 +316,7 @@ export type PerfilAlumnoScalarFieldEnum = (typeof PerfilAlumnoScalarFieldEnum)[k
 export const UsuarioScalarFieldEnum = {
   id: 'id',
   personaId: 'personaId',
+  username: 'username',
   email: 'email',
   passwordHash: 'passwordHash',
   estado: 'estado',
@@ -317,6 +404,33 @@ export const AuditLogScalarFieldEnum = {
 export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
 
 
+export const PerfilDocenteScalarFieldEnum = {
+  id: 'id',
+  personaId: 'personaId',
+  colegioId: 'colegioId',
+  sedeId: 'sedeId',
+  especialidad: 'especialidad',
+  estado: 'estado',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PerfilDocenteScalarFieldEnum = (typeof PerfilDocenteScalarFieldEnum)[keyof typeof PerfilDocenteScalarFieldEnum]
+
+
+export const DocenteAsignacionScalarFieldEnum = {
+  id: 'id',
+  docenteId: 'docenteId',
+  seccionId: 'seccionId',
+  colegioAsignaturaId: 'colegioAsignaturaId',
+  añoAcademico: 'añoAcademico',
+  esTutor: 'esTutor',
+  createdAt: 'createdAt'
+} as const
+
+export type DocenteAsignacionScalarFieldEnum = (typeof DocenteAsignacionScalarFieldEnum)[keyof typeof DocenteAsignacionScalarFieldEnum]
+
+
 export const NivelMaestroScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
@@ -340,6 +454,330 @@ export const GradoMaestroScalarFieldEnum = {
 } as const
 
 export type GradoMaestroScalarFieldEnum = (typeof GradoMaestroScalarFieldEnum)[keyof typeof GradoMaestroScalarFieldEnum]
+
+
+export const AsignaturaMaestraScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  descripcion: 'descripcion',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AsignaturaMaestraScalarFieldEnum = (typeof AsignaturaMaestraScalarFieldEnum)[keyof typeof AsignaturaMaestraScalarFieldEnum]
+
+
+export const ColegioAsignaturaScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  asignaturaMaestraId: 'asignaturaMaestraId',
+  nombre: 'nombre',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ColegioAsignaturaScalarFieldEnum = (typeof ColegioAsignaturaScalarFieldEnum)[keyof typeof ColegioAsignaturaScalarFieldEnum]
+
+
+export const GradoAsignaturaScalarFieldEnum = {
+  id: 'id',
+  colegioGradoId: 'colegioGradoId',
+  colegioAsignaturaId: 'colegioAsignaturaId',
+  horasSemanales: 'horasSemanales',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GradoAsignaturaScalarFieldEnum = (typeof GradoAsignaturaScalarFieldEnum)[keyof typeof GradoAsignaturaScalarFieldEnum]
+
+
+export const PerfilApoderadoScalarFieldEnum = {
+  id: 'id',
+  personaId: 'personaId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PerfilApoderadoScalarFieldEnum = (typeof PerfilApoderadoScalarFieldEnum)[keyof typeof PerfilApoderadoScalarFieldEnum]
+
+
+export const ApoderadoAlumnoScalarFieldEnum = {
+  id: 'id',
+  apoderadoId: 'apoderadoId',
+  alumnoId: 'alumnoId',
+  parentesco: 'parentesco',
+  createdAt: 'createdAt'
+} as const
+
+export type ApoderadoAlumnoScalarFieldEnum = (typeof ApoderadoAlumnoScalarFieldEnum)[keyof typeof ApoderadoAlumnoScalarFieldEnum]
+
+
+export const PeriodoEvaluacionScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  añoAcademico: 'añoAcademico',
+  nombre: 'nombre',
+  numero: 'numero',
+  fechaInicio: 'fechaInicio',
+  fechaFin: 'fechaFin',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PeriodoEvaluacionScalarFieldEnum = (typeof PeriodoEvaluacionScalarFieldEnum)[keyof typeof PeriodoEvaluacionScalarFieldEnum]
+
+
+export const CategoriaEvaluacionScalarFieldEnum = {
+  id: 'id',
+  docenteAsignacionId: 'docenteAsignacionId',
+  nombre: 'nombre',
+  peso: 'peso',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoriaEvaluacionScalarFieldEnum = (typeof CategoriaEvaluacionScalarFieldEnum)[keyof typeof CategoriaEvaluacionScalarFieldEnum]
+
+
+export const ActividadScalarFieldEnum = {
+  id: 'id',
+  docenteAsignacionId: 'docenteAsignacionId',
+  periodoId: 'periodoId',
+  categoriaId: 'categoriaId',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  fechaLimite: 'fechaLimite',
+  puntajeMaximo: 'puntajeMaximo',
+  pesoEnCategoria: 'pesoEnCategoria',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ActividadScalarFieldEnum = (typeof ActividadScalarFieldEnum)[keyof typeof ActividadScalarFieldEnum]
+
+
+export const NotaActividadScalarFieldEnum = {
+  id: 'id',
+  actividadId: 'actividadId',
+  alumnoId: 'alumnoId',
+  puntaje: 'puntaje',
+  observacion: 'observacion',
+  calificadoPorId: 'calificadoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type NotaActividadScalarFieldEnum = (typeof NotaActividadScalarFieldEnum)[keyof typeof NotaActividadScalarFieldEnum]
+
+
+export const AuditoriaNotaScalarFieldEnum = {
+  id: 'id',
+  notaActividadId: 'notaActividadId',
+  puntajeAnterior: 'puntajeAnterior',
+  puntajeNuevo: 'puntajeNuevo',
+  modificadoPorId: 'modificadoPorId',
+  motivo: 'motivo',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditoriaNotaScalarFieldEnum = (typeof AuditoriaNotaScalarFieldEnum)[keyof typeof AuditoriaNotaScalarFieldEnum]
+
+
+export const NotaPeriodoScalarFieldEnum = {
+  id: 'id',
+  alumnoId: 'alumnoId',
+  docenteAsignacionId: 'docenteAsignacionId',
+  periodoId: 'periodoId',
+  notaFinal: 'notaFinal',
+  esManual: 'esManual',
+  calculadaEn: 'calculadaEn',
+  calculadaPorId: 'calculadaPorId'
+} as const
+
+export type NotaPeriodoScalarFieldEnum = (typeof NotaPeriodoScalarFieldEnum)[keyof typeof NotaPeriodoScalarFieldEnum]
+
+
+export const AsistenciaScalarFieldEnum = {
+  id: 'id',
+  docenteAsignacionId: 'docenteAsignacionId',
+  alumnoId: 'alumnoId',
+  fecha: 'fecha',
+  estado: 'estado',
+  observacion: 'observacion',
+  registradoPorId: 'registradoPorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AsistenciaScalarFieldEnum = (typeof AsistenciaScalarFieldEnum)[keyof typeof AsistenciaScalarFieldEnum]
+
+
+export const PublicacionBoletinScalarFieldEnum = {
+  id: 'id',
+  periodoId: 'periodoId',
+  seccionId: 'seccionId',
+  publicadoEn: 'publicadoEn',
+  publicadoPorId: 'publicadoPorId'
+} as const
+
+export type PublicacionBoletinScalarFieldEnum = (typeof PublicacionBoletinScalarFieldEnum)[keyof typeof PublicacionBoletinScalarFieldEnum]
+
+
+export const ComunicadoScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  titulo: 'titulo',
+  contenido: 'contenido',
+  autorId: 'autorId',
+  estado: 'estado',
+  audiencia: 'audiencia',
+  colegioNivelId: 'colegioNivelId',
+  colegioGradoId: 'colegioGradoId',
+  seccionId: 'seccionId',
+  destinatarioId: 'destinatarioId',
+  añoAcademico: 'añoAcademico',
+  publicadoEn: 'publicadoEn',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComunicadoScalarFieldEnum = (typeof ComunicadoScalarFieldEnum)[keyof typeof ComunicadoScalarFieldEnum]
+
+
+export const ComunicadoLecturaScalarFieldEnum = {
+  id: 'id',
+  comunicadoId: 'comunicadoId',
+  apoderadoId: 'apoderadoId',
+  leidoEn: 'leidoEn'
+} as const
+
+export type ComunicadoLecturaScalarFieldEnum = (typeof ComunicadoLecturaScalarFieldEnum)[keyof typeof ComunicadoLecturaScalarFieldEnum]
+
+
+export const FranjaHorariaScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  nombre: 'nombre',
+  horaInicio: 'horaInicio',
+  horaFin: 'horaFin',
+  orden: 'orden',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FranjaHorariaScalarFieldEnum = (typeof FranjaHorariaScalarFieldEnum)[keyof typeof FranjaHorariaScalarFieldEnum]
+
+
+export const HorarioSeccionScalarFieldEnum = {
+  id: 'id',
+  seccionId: 'seccionId',
+  añoAcademico: 'añoAcademico',
+  estado: 'estado',
+  generadoAuto: 'generadoAuto',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type HorarioSeccionScalarFieldEnum = (typeof HorarioSeccionScalarFieldEnum)[keyof typeof HorarioSeccionScalarFieldEnum]
+
+
+export const HorarioBloqueScalarFieldEnum = {
+  id: 'id',
+  horarioSeccionId: 'horarioSeccionId',
+  docenteAsignacionId: 'docenteAsignacionId',
+  franjaHorariaId: 'franjaHorariaId',
+  diaSemana: 'diaSemana',
+  aula: 'aula',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type HorarioBloqueScalarFieldEnum = (typeof HorarioBloqueScalarFieldEnum)[keyof typeof HorarioBloqueScalarFieldEnum]
+
+
+export const ConceptoPagoScalarFieldEnum = {
+  id: 'id',
+  colegioId: 'colegioId',
+  nombre: 'nombre',
+  tipo: 'tipo',
+  activo: 'activo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConceptoPagoScalarFieldEnum = (typeof ConceptoPagoScalarFieldEnum)[keyof typeof ConceptoPagoScalarFieldEnum]
+
+
+export const TarifaConceptoScalarFieldEnum = {
+  id: 'id',
+  conceptoPagoId: 'conceptoPagoId',
+  añoAcademico: 'añoAcademico',
+  colegioNivelId: 'colegioNivelId',
+  monto: 'monto',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TarifaConceptoScalarFieldEnum = (typeof TarifaConceptoScalarFieldEnum)[keyof typeof TarifaConceptoScalarFieldEnum]
+
+
+export const CuotaAlumnoScalarFieldEnum = {
+  id: 'id',
+  alumnoId: 'alumnoId',
+  conceptoPagoId: 'conceptoPagoId',
+  añoAcademico: 'añoAcademico',
+  mes: 'mes',
+  descripcion: 'descripcion',
+  monto: 'monto',
+  montoPagado: 'montoPagado',
+  fechaVencimiento: 'fechaVencimiento',
+  estado: 'estado',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CuotaAlumnoScalarFieldEnum = (typeof CuotaAlumnoScalarFieldEnum)[keyof typeof CuotaAlumnoScalarFieldEnum]
+
+
+export const PagoScalarFieldEnum = {
+  id: 'id',
+  cuotaId: 'cuotaId',
+  colegioId: 'colegioId',
+  alumnoId: 'alumnoId',
+  registradoPorId: 'registradoPorId',
+  monto: 'monto',
+  metodoPago: 'metodoPago',
+  referencia: 'referencia',
+  observacion: 'observacion',
+  estado: 'estado',
+  motivoAnulacion: 'motivoAnulacion',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PagoScalarFieldEnum = (typeof PagoScalarFieldEnum)[keyof typeof PagoScalarFieldEnum]
+
+
+export const NotificacionScalarFieldEnum = {
+  id: 'id',
+  usuarioId: 'usuarioId',
+  tipo: 'tipo',
+  titulo: 'titulo',
+  mensaje: 'mensaje',
+  entidadTipo: 'entidadTipo',
+  entidadId: 'entidadId',
+  leida: 'leida',
+  createdAt: 'createdAt'
+} as const
+
+export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
 
 
 export const SortOrder = {

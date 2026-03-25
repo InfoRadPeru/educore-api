@@ -22,10 +22,20 @@ import { CambiarEstadoNivelUseCase }      from './application/use-cases/cambiar-
 import { ListarColegiosUseCase }          from './application/use-cases/listar-colegios.use-case';
 import { CambiarPlanUseCase }             from './application/use-cases/cambiar-plan.use-case';
 import { CambiarEstadoColegioUseCase }    from './application/use-cases/cambiar-estado-colegio.use-case';
-import { SEDE_REPOSITORY } from './domain/repositories/sede.repository';
-import { PrismaSedeRepository } from './infrastructure/persistence/prisma-sede.repository';
+import { SEDE_REPOSITORY }       from './domain/repositories/sede.repository';
+import { PrismaSedeRepository }  from './infrastructure/persistence/prisma-sede.repository';
 import { PrismaNivelRepository } from './infrastructure/persistence/prisma-nivel.repository';
-import { NIVEL_REPOSITORY } from './domain/repositories/nivel.repository';
+import { NIVEL_REPOSITORY }      from './domain/repositories/nivel.repository';
+import { ROL_REPOSITORY }        from './domain/repositories/rol.repository';
+import { PrismaRolRepository }   from './infrastructure/persistence/prisma-rol-repository';
+import { ListarRolesUseCase }               from './application/use-cases/listar-roles.use-case';
+import { CrearRolUseCase }              from './application/use-cases/crear-rol.use-case';
+import { ActualizarRolUseCase }         from './application/use-cases/actualizar-rol.use-case';
+import { EliminarRolUseCase }           from './application/use-cases/eliminar-rol.use-case';
+import { ListarPermisosRolUseCase }     from './application/use-cases/listar-permisos-rol.use-case';
+import { AsignarPermisoRolUseCase }     from './application/use-cases/asignar-permiso-rol.use-case';
+import { ActualizarPermisosRolUseCase } from './application/use-cases/actualizar-permiso-rol.use-case';
+import { EliminarPermisoRolUseCase }    from './application/use-cases/eliminar-permiso-rol.use-case';
 
 @Module({
   imports: [AuthModule],
@@ -34,8 +44,9 @@ import { NIVEL_REPOSITORY } from './domain/repositories/nivel.repository';
   controllers: [ColegiosController, AdminColegiosController],
   providers: [
     { provide: COLEGIO_REPOSITORY, useClass: PrismaColegioRepository },
-    { provide: SEDE_REPOSITORY,  useClass: PrismaSedeRepository  },
-    { provide: NIVEL_REPOSITORY, useClass: PrismaNivelRepository },
+    { provide: SEDE_REPOSITORY,    useClass: PrismaSedeRepository  },
+    { provide: NIVEL_REPOSITORY,   useClass: PrismaNivelRepository },
+    { provide: ROL_REPOSITORY,                  useClass: PrismaRolRepository                  },
 
     // Use cases — SUPER_ADMIN
     ObtenerMiColegioUseCase,
@@ -54,6 +65,19 @@ import { NIVEL_REPOSITORY } from './domain/repositories/nivel.repository';
     ListarColegiosUseCase,
     CambiarPlanUseCase,
     CambiarEstadoColegioUseCase,
+
+    // Use cases — Roles y permisos (SUPER_ADMIN)
+    ListarRolesUseCase,
+    CrearRolUseCase,
+    ActualizarRolUseCase,
+    EliminarRolUseCase,
+    ListarPermisosRolUseCase,
+    AsignarPermisoRolUseCase,
+    ActualizarPermisosRolUseCase,
+    EliminarPermisoRolUseCase,
+  ],
+  exports: [
+    { provide: COLEGIO_REPOSITORY, useClass: PrismaColegioRepository },
   ],
 })
 export class ColegiosModule {}

@@ -6,7 +6,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { ok, fail, Result, UnauthorizedError } from "@shared/domain/result";
-import { Email } from "@modules/auth/domain/value-objects/email.vo";
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { USUARIO_REPOSITORY, type UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
@@ -30,10 +29,7 @@ export class LoginUseCase {
   ) {}
 
   async execute(dto: LoginDto): Promise<Result<AuthResponseDto | MultiContextResponseDto, UnauthorizedError>> {
-    const emailResult = Email.create(dto.email);
-    if (!emailResult.ok) return fail(new UnauthorizedError());
-
-    const usuario = await this.usuarioRepository.buscarPorEmail(emailResult.value);
+    const usuario = await this.usuarioRepository.buscarPorIdentifier(dto.identifier);
     if (!usuario || !usuario.estaActivo()) return fail(new UnauthorizedError());
 
     if (usuario.estaBloqueado()) {
@@ -44,8 +40,8 @@ export class LoginUseCase {
 
     const passwordValido = await bcrypt.compare(dto.password, usuario.passwordHash);
     if (!passwordValido) {
-      await this.usuarioRepository.incrementarIntentosFallidos(usuario.id);
-      if (usuario.intentosFallidos + 1 >= Usuario.MAX_INTENTOS_FALLIDOS) {
+      const intentos = await this.usuarioRepository.incrementarIntentosFallidos(usuario.id);
+      if (intentos >= Usuario.MAX_INTENTOS_FALLIDOS) {
         const bloqueadoHasta = new Date(Date.now() + Usuario.MINUTOS_BLOQUEO * 60 * 1000);
         await this.usuarioRepository.bloquearCuenta(usuario.id, bloqueadoHasta);
         return fail(new UnauthorizedError(
@@ -155,9 +151,9 @@ export class LoginUseCase {
       accessToken,
       refreshToken,
       usuario:   this.usuarioDto(usuario),
-      colegioId: '',
+      colegioId: null,
       sedeId:    null,
-      rolId:     '',
+      rolId:     null,
       rolNombre: 'PLATFORM_ADMIN',
       esSistema: true,
       permisos:  ['*'],

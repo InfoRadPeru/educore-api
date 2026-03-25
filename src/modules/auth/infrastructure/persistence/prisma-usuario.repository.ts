@@ -4,14 +4,23 @@
 // Por qué el mapper está aquí: La conversión de modelo Prisma a entidad de dominio es responsabilidad de Infrastructure. Domain no sabe que Prisma existe.
 
 import { Usuario } from "@modules/auth/domain/entities/usuario.entity";
-import { CrearUsuarioProps, UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
+import { CrearUsuarioConPersonaExistenteProps, CrearUsuarioProps, UsuarioRepository } from "@modules/auth/domain/repositories/usuario.repository";
 import { Email } from "@modules/auth/domain/value-objects/email.vo";
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "@shared/infrastructure/prisma/prisma.service";
 import { UsuarioMapper } from "./usuario.mapper";
 
 // Include requerido en todas las queries — persona tiene nombres/apellidos
-const INCLUDE_PERSONA = { persona: { select: { nombres: true, apellidos: true, telefono: true, avatarUrl: true } } } as const;
+const INCLUDE_PERSONA = {
+  persona: { select: { nombres: true, apellidos: true, telefono: true, avatarUrl: true } },
+} as const;
+
+// Select de campos propios del usuario (username se incorporó con la migración)
+const SELECT_USUARIO = {
+  id: true, username: true, email: true, passwordHash: true,
+  estado: true, intentosFallidos: true, bloqueadoHasta: true,
+  ultimoAcceso: true, esPlatformAdmin: true, createdAt: true,
+} as const;
 
 @Injectable()
 export class PrismaUsuarioRepository implements UsuarioRepository {
@@ -28,6 +37,19 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
   async buscarPorId(id: string): Promise<Usuario | null> {
     const raw = await this.prisma.usuario.findUnique({
       where:   { id },
+      include: INCLUDE_PERSONA,
+    });
+    return raw ? UsuarioMapper.toDomain(raw) : null;
+  }
+
+  async buscarPorIdentifier(identifier: string): Promise<Usuario | null> {
+    const raw = await this.prisma.usuario.findFirst({
+      where: {
+        OR: [
+          { username: identifier },
+          { persona: { dni: identifier } },
+        ],
+      },
       include: INCLUDE_PERSONA,
     });
     return raw ? UsuarioMapper.toDomain(raw) : null;
@@ -61,8 +83,9 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
     return UsuarioMapper.toDomain(raw);
   }
 
-  async incrementarIntentosFallidos(id: string): Promise<void> {
-    await this.prisma.usuario.update({ where: { id }, data: { intentosFallidos: { increment: 1 } } });
+  async incrementarIntentosFallidos(id: string): Promise<number> {
+    const updated = await this.prisma.usuario.update({ where: { id }, data: { intentosFallidos: { increment: 1 } } });
+    return updated.intentosFallidos;
   }
 
   async bloquearCuenta(id: string, bloqueadoHasta: Date): Promise<void> {
@@ -75,6 +98,19 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
 
   async actualizarUltimoAcceso(id: string): Promise<void> {
     await this.prisma.usuario.update({ where: { id }, data: { ultimoAcceso: new Date() } });
+  }
+
+  async crearParaPersona(props: CrearUsuarioConPersonaExistenteProps): Promise<Usuario> {
+    const raw = await this.prisma.usuario.create({
+      data: {
+        personaId:    props.personaId,
+        username:     props.username,
+        email:        props.email,
+        passwordHash: props.passwordHash,
+      },
+      include: INCLUDE_PERSONA,
+    });
+    return UsuarioMapper.toDomain(raw);
   }
 
   async actualizarPassword(id: string, passwordHash: string): Promise<void> {

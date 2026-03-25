@@ -49,6 +49,10 @@ export interface ColegioConfiguracion {
   periodo:         string;
   zonaHoraria:     string;
   moneda:          string;
+  notaMinima:      number;
+  notaMaxima:      number;
+  notaAprobatoria: number;
+  decimalesNota:   number;
 }
 
 export interface ColegioRepository {

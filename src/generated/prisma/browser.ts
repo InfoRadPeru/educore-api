@@ -58,6 +58,21 @@ export type SedeConfiguracion = Prisma.SedeConfiguracionModel
  */
 export type Seccion = Prisma.SeccionModel
 /**
+ * Model Postulacion
+ * 
+ */
+export type Postulacion = Prisma.PostulacionModel
+/**
+ * Model Prematricula
+ * 
+ */
+export type Prematricula = Prisma.PrematriculaModel
+/**
+ * Model Matricula
+ * 
+ */
+export type Matricula = Prisma.MatriculaModel
+/**
  * Model Persona
  * 
  */
@@ -103,6 +118,16 @@ export type PasswordReset = Prisma.PasswordResetModel
  */
 export type AuditLog = Prisma.AuditLogModel
 /**
+ * Model PerfilDocente
+ * 
+ */
+export type PerfilDocente = Prisma.PerfilDocenteModel
+/**
+ * Model DocenteAsignacion
+ * 
+ */
+export type DocenteAsignacion = Prisma.DocenteAsignacionModel
+/**
  * Model NivelMaestro
  * 
  */
@@ -112,3 +137,118 @@ export type NivelMaestro = Prisma.NivelMaestroModel
  * 
  */
 export type GradoMaestro = Prisma.GradoMaestroModel
+/**
+ * Model AsignaturaMaestra
+ * 
+ */
+export type AsignaturaMaestra = Prisma.AsignaturaMaestraModel
+/**
+ * Model ColegioAsignatura
+ * 
+ */
+export type ColegioAsignatura = Prisma.ColegioAsignaturaModel
+/**
+ * Model GradoAsignatura
+ * 
+ */
+export type GradoAsignatura = Prisma.GradoAsignaturaModel
+/**
+ * Model PerfilApoderado
+ * 
+ */
+export type PerfilApoderado = Prisma.PerfilApoderadoModel
+/**
+ * Model ApoderadoAlumno
+ * 
+ */
+export type ApoderadoAlumno = Prisma.ApoderadoAlumnoModel
+/**
+ * Model PeriodoEvaluacion
+ * 
+ */
+export type PeriodoEvaluacion = Prisma.PeriodoEvaluacionModel
+/**
+ * Model CategoriaEvaluacion
+ * 
+ */
+export type CategoriaEvaluacion = Prisma.CategoriaEvaluacionModel
+/**
+ * Model Actividad
+ * 
+ */
+export type Actividad = Prisma.ActividadModel
+/**
+ * Model NotaActividad
+ * 
+ */
+export type NotaActividad = Prisma.NotaActividadModel
+/**
+ * Model AuditoriaNota
+ * 
+ */
+export type AuditoriaNota = Prisma.AuditoriaNotaModel
+/**
+ * Model NotaPeriodo
+ * 
+ */
+export type NotaPeriodo = Prisma.NotaPeriodoModel
+/**
+ * Model Asistencia
+ * 
+ */
+export type Asistencia = Prisma.AsistenciaModel
+/**
+ * Model PublicacionBoletin
+ * 
+ */
+export type PublicacionBoletin = Prisma.PublicacionBoletinModel
+/**
+ * Model Comunicado
+ * 
+ */
+export type Comunicado = Prisma.ComunicadoModel
+/**
+ * Model ComunicadoLectura
+ * 
+ */
+export type ComunicadoLectura = Prisma.ComunicadoLecturaModel
+/**
+ * Model FranjaHoraria
+ * 
+ */
+export type FranjaHoraria = Prisma.FranjaHorariaModel
+/**
+ * Model HorarioSeccion
+ * 
+ */
+export type HorarioSeccion = Prisma.HorarioSeccionModel
+/**
+ * Model HorarioBloque
+ * 
+ */
+export type HorarioBloque = Prisma.HorarioBloqueModel
+/**
+ * Model ConceptoPago
+ * 
+ */
+export type ConceptoPago = Prisma.ConceptoPagoModel
+/**
+ * Model TarifaConcepto
+ * 
+ */
+export type TarifaConcepto = Prisma.TarifaConceptoModel
+/**
+ * Model CuotaAlumno
+ * 
+ */
+export type CuotaAlumno = Prisma.CuotaAlumnoModel
+/**
+ * Model Pago
+ * 
+ */
+export type Pago = Prisma.PagoModel
+/**
+ * Model Notificacion
+ * 
+ */
+export type Notificacion = Prisma.NotificacionModel
