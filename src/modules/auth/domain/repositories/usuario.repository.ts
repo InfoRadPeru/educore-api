@@ -12,6 +12,7 @@ export interface CrearUsuarioProps {
   passwordHash: string;
   nombres:      string;
   apellidos:    string;
+  dni:          string;
   telefono?:    string;
 }
 

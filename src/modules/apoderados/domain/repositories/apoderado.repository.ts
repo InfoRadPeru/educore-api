@@ -4,9 +4,11 @@ export const APODERADO_REPOSITORY = 'ApoderadoRepository';
 
 export interface CrearApoderadoProps {
   personaId: string;
+  colegioId: string;
 }
 
 export interface CrearApoderadoConPersonaProps {
+  colegioId: string;
   dni:       string;
   nombres:   string;
   apellidos: string;
@@ -15,9 +17,20 @@ export interface CrearApoderadoConPersonaProps {
   genero:    'MASCULINO' | 'FEMENINO' | 'OTRO';
 }
 
+export interface CrearApoderadoConAccesoProps extends CrearApoderadoConPersonaProps {
+  passwordHash: string;
+}
+
+export interface CrearApoderadoResult {
+  apoderado:        Apoderado;
+  usuarioCreado:    boolean; // false si ya tenía acceso previo (docente/admin)
+}
+
 export interface ApoderadoRepository {
-  crear(props: CrearApoderadoProps):                              Promise<Apoderado>;
-  crearConPersona(props: CrearApoderadoConPersonaProps):          Promise<Apoderado>;
+  crear(props: CrearApoderadoProps):                                          Promise<Apoderado>;
+  crearConPersona(props: CrearApoderadoConPersonaProps):                     Promise<Apoderado>;
+  // Atómico: crea Persona (o vincula existente) + PerfilApoderado + Usuario en una transacción
+  crearConPersonaYAcceso(props: CrearApoderadoConAccesoProps):               Promise<CrearApoderadoResult>;
   buscarPorId(id: string):                                        Promise<Apoderado | null>;
   buscarPorDni(dni: string):                                      Promise<Apoderado | null>;
   buscarPorPersonaId(personaId: string):                          Promise<Apoderado | null>;

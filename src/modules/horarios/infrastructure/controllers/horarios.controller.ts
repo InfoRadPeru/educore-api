@@ -1,8 +1,57 @@
 import {
-  Body, Controller, Delete, Get, HttpCode, HttpStatus,
+  BadRequestException, Body, Controller, Delete, Get, HttpCode, HttpStatus,
   Param, Patch, Post, Query, Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+
+const FRANJA_EXAMPLE = {
+  id:         'uuid-franja',
+  nombre:     'Hora 1',
+  horaInicio: '07:30',
+  horaFin:    '08:15',
+  orden:      1,
+  activo:     true,
+};
+
+const HORARIO_EXAMPLE = {
+  id:           'uuid-horario',
+  seccionId:    'uuid-seccion',
+  añoAcademico: 2026,
+  estado:       'BORRADOR',
+  generadoAuto: false,
+};
+
+const HORARIO_CON_BLOQUES_EXAMPLE = {
+  ...{
+    id:           'uuid-horario',
+    seccionId:    'uuid-seccion',
+    añoAcademico: 2026,
+    estado:       'PUBLICADO',
+    generadoAuto: true,
+  },
+  bloques: [
+    {
+      id:             'uuid-bloque',
+      dia:            'LUNES',
+      franjaId:       'uuid-franja',
+      franjaNombre:   'Hora 1',
+      horaInicio:     '07:30',
+      horaFin:        '08:15',
+      asignatura:     'Matemáticas',
+      docente:        'Juan Pérez',
+      docenteAsignId: 'uuid-asig-docente',
+      aula:           'A-101',
+    },
+  ],
+};
+
+const BLOQUE_EXAMPLE = {
+  id:             'uuid-bloque',
+  dia:            'LUNES',
+  franjaId:       'uuid-franja',
+  docenteAsignId: 'uuid-asig-docente',
+  aula:           'A-101',
+};
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 
@@ -52,6 +101,7 @@ export class HorariosController {
   @Get('franjas')
   @Auth()
   @ApiOperation({ summary: 'Listar franjas horarias del colegio' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: FRANJA_EXAMPLE } } })
   async listarFranjas(@Request() req: { user: JwtPayload }) {
     const franjas = await this.listarFranjasUseCase.execute(req.user.colegioId!);
     return franjas.map(f => ({
@@ -63,6 +113,7 @@ export class HorariosController {
   @Post('franjas')
   @Auth()
   @ApiOperation({ summary: 'Crear franja horaria' })
+  @ApiCreatedResponse({ schema: { example: FRANJA_EXAMPLE } })
   async crearFranja(
     @Body() dto: CrearFranjaDto,
     @Request() req: { user: JwtPayload },
@@ -76,6 +127,7 @@ export class HorariosController {
   @Patch('franjas/:id')
   @Auth()
   @ApiOperation({ summary: 'Actualizar franja horaria' })
+  @ApiOkResponse({ schema: { example: FRANJA_EXAMPLE } })
   async actualizarFranja(
     @Param('id') id: string,
     @Body() dto: ActualizarFranjaDto,
@@ -91,6 +143,7 @@ export class HorariosController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Auth()
   @ApiOperation({ summary: 'Eliminar franja horaria (si no tiene bloques)' })
+  @ApiNoContentResponse({ description: 'Franja eliminada' })
   async eliminarFranja(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },
@@ -105,10 +158,12 @@ export class HorariosController {
   @Auth()
   @ApiOperation({ summary: 'Listar todos los horarios del colegio por año' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: HORARIO_EXAMPLE } } })
   async listarHorariosColegio(
     @Request() req: { user: JwtPayload },
     @Query('año') año: string,
   ) {
+    if (!año) throw new BadRequestException('El parámetro año es requerido');
     const horarios = await this.listarHorariosColegioUseCase.execute(
       req.user.colegioId!,
       parseInt(año, 10),
@@ -122,6 +177,7 @@ export class HorariosController {
   @Post('generar-colegio')
   @Auth()
   @ApiOperation({ summary: 'Auto-generar horarios para todas las secciones del colegio' })
+  @ApiOkResponse({ schema: { example: { generados: 8, omitidos: 2 } } })
   async generarHorarioColegio(
     @Body() dto: GenerarHorarioColegioDto,
     @Request() req: { user: JwtPayload },
@@ -139,6 +195,7 @@ export class HorariosController {
   @Auth()
   @ApiOperation({ summary: 'Ver horario semanal publicado de un docente' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { example: HORARIO_CON_BLOQUES_EXAMPLE } })
   async obtenerHorarioDocente(
     @Param('docenteId') docenteId: string,
     @Query('año') año: string,
@@ -157,6 +214,7 @@ export class HorariosController {
   @Auth()
   @ApiOperation({ summary: 'Obtener horario de una sección con sus bloques' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { example: HORARIO_CON_BLOQUES_EXAMPLE } })
   async obtenerHorarioSeccion(
     @Param('seccionId') seccionId: string,
     @Query('año') año: string,
@@ -191,6 +249,7 @@ export class HorariosController {
   @Post('seccion/:seccionId')
   @Auth()
   @ApiOperation({ summary: 'Crear horario vacío (BORRADOR) para una sección' })
+  @ApiCreatedResponse({ schema: { example: HORARIO_EXAMPLE } })
   async crearHorarioSeccion(
     @Param('seccionId') seccionId: string,
     @Body() dto: CrearHorarioDto,
@@ -204,6 +263,7 @@ export class HorariosController {
   @Post('seccion/:seccionId/generar')
   @Auth()
   @ApiOperation({ summary: 'Auto-generar horario para una sección' })
+  @ApiOkResponse({ schema: { example: HORARIO_CON_BLOQUES_EXAMPLE } })
   async generarHorarioSeccion(
     @Param('seccionId') seccionId: string,
     @Body() dto: GenerarHorarioDto,
@@ -222,6 +282,7 @@ export class HorariosController {
   @Post('seccion/:seccionId/publicar')
   @Auth()
   @ApiOperation({ summary: 'Publicar horario de una sección' })
+  @ApiOkResponse({ schema: { example: { id: 'uuid-horario', estado: 'PUBLICADO' } } })
   async publicarHorario(
     @Param('seccionId') seccionId: string,
     @Query('año') año: string,
@@ -237,6 +298,7 @@ export class HorariosController {
   @Post('seccion/:seccionId/bloques')
   @Auth()
   @ApiOperation({ summary: 'Agregar bloque manual al horario de una sección' })
+  @ApiCreatedResponse({ schema: { example: BLOQUE_EXAMPLE } })
   async agregarBloque(
     @Param('seccionId') seccionId: string,
     @Body() dto: AgregarBloqueDto,
@@ -258,6 +320,7 @@ export class HorariosController {
   @Patch('bloques/:bloqueId')
   @Auth()
   @ApiOperation({ summary: 'Actualizar bloque del horario' })
+  @ApiOkResponse({ schema: { example: BLOQUE_EXAMPLE } })
   async actualizarBloque(
     @Param('bloqueId') bloqueId: string,
     @Body() dto: ActualizarBloqueDto,
@@ -277,6 +340,7 @@ export class HorariosController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Auth()
   @ApiOperation({ summary: 'Eliminar bloque del horario' })
+  @ApiNoContentResponse({ description: 'Bloque eliminado' })
   async eliminarBloque(@Param('bloqueId') bloqueId: string) {
     const result = await this.eliminarBloqueUseCase.execute(bloqueId);
     if (!result.ok) throw result.error;

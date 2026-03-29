@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ok, Result } from '@shared/domain/result';
+import { ok, fail, Result, ValidationError } from '@shared/domain/result';
 import { PrismaService } from '@shared/infrastructure/prisma/prisma.service';
 import { DiaSemana } from '../../domain/entities/horario-bloque.entity';
 
@@ -23,7 +23,8 @@ export class ObtenerHorarioDocenteUseCase {
   async execute(
     docenteId: string,
     añoAcademico: number,
-  ): Promise<Result<BloqueDocenteDto[]>> {
+  ): Promise<Result<BloqueDocenteDto[], ValidationError>> {
+    if (!añoAcademico || isNaN(añoAcademico)) return fail(new ValidationError('El parámetro año es requerido'));
     const bloques = await this.prisma.horarioBloque.findMany({
       where: {
         docenteAsignacion: { docenteId, añoAcademico },

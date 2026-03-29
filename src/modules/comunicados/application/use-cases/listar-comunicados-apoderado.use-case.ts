@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ok, fail, Result, ForbiddenError } from '@shared/domain/result';
+import { ok, fail, Result, ForbiddenError, ValidationError } from '@shared/domain/result';
 import { PrismaService } from '@shared/infrastructure/prisma/prisma.service';
 import {
   COMUNICADO_REPOSITORY,
@@ -18,7 +18,8 @@ export class ListarComunicadosApoderadoUseCase {
   async execute(
     usuarioId: string,
     año: number,
-  ): Promise<Result<Comunicado[], ForbiddenError>> {
+  ): Promise<Result<Comunicado[], ForbiddenError | ValidationError>> {
+    if (!año || isNaN(año)) return fail(new ValidationError('El parámetro año es requerido'));
     // Resolver perfil de apoderado
     const apoderado = await this.prisma.perfilApoderado.findFirst({
       where: { persona: { usuario: { id: usuarioId } } },

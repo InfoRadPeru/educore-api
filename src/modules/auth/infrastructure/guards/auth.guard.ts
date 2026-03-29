@@ -79,6 +79,11 @@ export class PermisosGuard implements CanActivate {
       return true;
     }
 
+    // ── Rutas de colegio: el token debe tener colegioId ──────────────────────
+    if (!user?.esPlatformAdmin && !user?.colegioId) {
+      throw new ForbiddenException('Token sin contexto de colegio. Selecciona un contexto primero.');
+    }
+
     // ── Verificar permisos granulares ─────────────────────────────────────────
     const permisos = this.reflector.getAllAndOverride<string[]>(
       PERMISOS_KEY,

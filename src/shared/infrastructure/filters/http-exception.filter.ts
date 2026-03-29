@@ -55,6 +55,18 @@ export class HttpExceptionFilter implements ExceptionFilter {
       return { status: exception.getStatus(), message };
     }
 
+    // Errores Prisma (safety net — captura KnownRequestError, ValidationError y similares)
+    if (isPrismaError(exception)) {
+      const code = (exception as { code?: unknown }).code;
+      if (code === 'P2002') {
+        return { status: HttpStatus.CONFLICT, message: 'Ya existe un registro con esos datos' };
+      }
+      if (code === 'P2025') {
+        return { status: HttpStatus.NOT_FOUND, message: 'Registro no encontrado' };
+      }
+      return { status: HttpStatus.INTERNAL_SERVER_ERROR, message: 'Error interno del servidor' };
+    }
+
     // Errores de dominio → HTTP
     if (exception instanceof AppError) {
       return {
@@ -63,12 +75,23 @@ export class HttpExceptionFilter implements ExceptionFilter {
       };
     }
 
-    // Error no controlado
+    // Error no controlado — nunca exponer detalles al cliente
     return {
       status:  HttpStatus.INTERNAL_SERVER_ERROR,
-      message: process.env.NODE_ENV === 'production'
-        ? 'Error interno del servidor'
-        : String(exception),
+      message: 'Error interno del servidor',
     };
   }
+}
+
+function isPrismaError(error: unknown): boolean {
+  if (error instanceof Error) {
+    return error.constructor.name.startsWith('PrismaClient');
+  }
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'code' in error &&
+    typeof (error as { code: unknown }).code === 'string' &&
+    (error as { code: string }).code.startsWith('P')
+  );
 }

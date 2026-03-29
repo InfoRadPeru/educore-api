@@ -55,16 +55,25 @@ export class RegistrarDocenteUseCase {
     });
 
     let passwordGenerado: string | null = null;
-    if (dto.crearAcceso && !docente.usuarioId) {
+    let usuarioId = docente.usuarioId;
+
+    if (dto.crearAcceso && !usuarioId) {
       const rawPassword = dto.password ?? (Math.random().toString(36).slice(-8) + 'A1!');
       if (!dto.password) passwordGenerado = rawPassword;
       const hash = await bcrypt.hash(rawPassword, 10);
-      await this.usuarioRepo.crearParaPersona({
+      const usuario = await this.usuarioRepo.crearParaPersona({
         personaId:    docente.personaId,
         username:     dto.dni,
         email:        `${dto.dni}@docente.local`,
         passwordHash: hash,
       });
+      usuarioId = usuario.id;
+    }
+
+    // Si la persona ya tenía usuario (ej: también es SUPER_ADMIN) o se acaba de crear,
+    // crear la UsuarioAsignacion con rol DOCENTE para que aparezca en multi-context login
+    if (usuarioId) {
+      await this.docenteRepo.crearAsignacionUsuario(usuarioId, colegioId);
     }
 
     return ok({ docente, passwordGenerado });

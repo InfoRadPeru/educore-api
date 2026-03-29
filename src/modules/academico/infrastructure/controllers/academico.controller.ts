@@ -2,7 +2,56 @@ import {
   Body, Controller, Delete, Get, HttpCode, HttpStatus,
   Param, Patch, Post, Query, Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+
+const PERIODO_EXAMPLE = {
+  id:           'uuid-periodo',
+  colegioId:    'uuid-colegio',
+  añoAcademico: 2026,
+  nombre:       'Bimestre 1',
+  numero:       1,
+  fechaInicio:  '2026-03-01T00:00:00.000Z',
+  fechaFin:     '2026-05-31T00:00:00.000Z',
+  activo:       true,
+};
+
+const CATEGORIA_EXAMPLE = {
+  id:                  'uuid-categoria',
+  docenteAsignacionId: 'uuid-asignacion',
+  nombre:              'Trabajos',
+  peso:                30,
+};
+
+const ACTIVIDAD_EXAMPLE = {
+  id:                  'uuid-actividad',
+  docenteAsignacionId: 'uuid-asignacion',
+  periodoId:           'uuid-periodo',
+  categoriaId:         'uuid-categoria',
+  titulo:              'Examen Parcial',
+  descripcion:         'Capítulos 1 al 3',
+  fechaLimite:         '2026-04-15T00:00:00.000Z',
+  puntajeMaximo:       20,
+  pesoEnCategoria:     100,
+  createdAt:           '2026-01-01T00:00:00.000Z',
+};
+
+const NOTA_EXAMPLE = {
+  id:          'uuid-nota',
+  actividadId: 'uuid-actividad',
+  alumnoId:    'uuid-alumno',
+  puntaje:     18,
+  observacion: null,
+  createdAt:   '2026-01-01T00:00:00.000Z',
+};
+
+const ASISTENCIA_EXAMPLE = {
+  id:                  'uuid-asistencia',
+  docenteAsignacionId: 'uuid-asignacion',
+  alumnoId:            'uuid-alumno',
+  fecha:               '2026-03-15',
+  estado:              'PRESENTE',
+  observacion:         null,
+};
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 
@@ -67,6 +116,8 @@ export class AcademicoController {
   @Get('periodos')
   @Auth()
   @ApiOperation({ summary: 'Listar periodos de evaluación del colegio' })
+  @ApiQuery({ name: 'año', type: Number, required: false, example: 2026 })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: PERIODO_EXAMPLE } } })
   async listarPeriodos(
     @Request() req: { user: JwtPayload },
     @Query('año') año?: string,
@@ -80,6 +131,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear periodo de evaluación' })
+  @ApiCreatedResponse({ schema: { example: PERIODO_EXAMPLE } })
   async crearPeriodo(
     @Request() req: { user: JwtPayload },
     @Body() dto: CrearPeriodoDto,
@@ -100,6 +152,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Actualizar periodo de evaluación' })
+  @ApiOkResponse({ schema: { example: PERIODO_EXAMPLE } })
   async actualizarPeriodo(
     @Request() req: { user: JwtPayload },
     @Param('id') id: string,
@@ -118,6 +171,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar o desactivar periodo' })
+  @ApiOkResponse({ schema: { example: PERIODO_EXAMPLE } })
   async cambiarEstadoPeriodo(
     @Request() req: { user: JwtPayload },
     @Param('id') id: string,
@@ -133,6 +187,7 @@ export class AcademicoController {
   @Get('asignaciones/:asignacionId/categorias')
   @Auth()
   @ApiOperation({ summary: 'Listar categorías de evaluación de una asignación docente' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: CATEGORIA_EXAMPLE } } })
   async listarCategorias(@Param('asignacionId') asignacionId: string) {
     const result = await this.listarCategoriasUseCase.execute(asignacionId);
     if (!result.ok) throw result.error;
@@ -143,6 +198,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear categoría de evaluación (docente define peso)' })
+  @ApiCreatedResponse({ schema: { example: CATEGORIA_EXAMPLE } })
   async crearCategoria(
     @Request() req: { user: JwtPayload },
     @Body() dto: CrearCategoriaDto,
@@ -156,6 +212,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Actualizar categoría' })
+  @ApiOkResponse({ schema: { example: CATEGORIA_EXAMPLE } })
   async actualizarCategoria(
     @Param('id') id: string,
     @Body() dto: ActualizarCategoriaDto,
@@ -169,6 +226,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Eliminar categoría (solo si no tiene actividades)' })
+  @ApiNoContentResponse({ description: 'Categoría eliminada' })
   async eliminarCategoria(@Param('id') id: string) {
     const result = await this.eliminarCategoriaUseCase.execute(id);
     if (!result.ok) throw result.error;
@@ -179,6 +237,8 @@ export class AcademicoController {
   @Get('asignaciones/:asignacionId/actividades')
   @Auth()
   @ApiOperation({ summary: 'Listar actividades de una asignación docente' })
+  @ApiQuery({ name: 'periodoId', required: false })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ACTIVIDAD_EXAMPLE } } })
   async listarActividades(
     @Param('asignacionId') asignacionId: string,
     @Query('periodoId') periodoId?: string,
@@ -192,6 +252,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear actividad (tarea/examen/práctica)' })
+  @ApiCreatedResponse({ schema: { example: ACTIVIDAD_EXAMPLE } })
   async crearActividad(@Body() dto: CrearActividadDto) {
     const result = await this.crearActividadUseCase.execute({
       docenteAsignacionId: dto.docenteAsignacionId,
@@ -211,6 +272,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Actualizar actividad' })
+  @ApiOkResponse({ schema: { example: ACTIVIDAD_EXAMPLE } })
   async actualizarActividad(
     @Param('id') id: string,
     @Body() dto: ActualizarActividadDto,
@@ -230,6 +292,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Eliminar actividad (solo si no tiene notas)' })
+  @ApiNoContentResponse({ description: 'Actividad eliminada' })
   async eliminarActividad(@Param('id') id: string) {
     const result = await this.eliminarActividadUseCase.execute(id);
     if (!result.ok) throw result.error;
@@ -240,6 +303,7 @@ export class AcademicoController {
   @Get('actividades/:id/notas')
   @Auth()
   @ApiOperation({ summary: 'Listar notas de una actividad' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: NOTA_EXAMPLE } } })
   async listarNotasActividad(@Param('id') id: string) {
     const result = await this.listarNotasActividadUseCase.execute(id);
     if (!result.ok) throw result.error;
@@ -250,6 +314,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Registrar o actualizar nota de un alumno' })
+  @ApiOkResponse({ schema: { example: NOTA_EXAMPLE } })
   async registrarNota(
     @Request() req: { user: JwtPayload },
     @Param('id') actividadId: string,
@@ -268,6 +333,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Registrar notas de toda la clase en una actividad' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: NOTA_EXAMPLE } } })
   async registrarNotasBulk(
     @Request() req: { user: JwtPayload },
     @Param('id') actividadId: string,
@@ -285,6 +351,8 @@ export class AcademicoController {
   @Get('alumnos/:alumnoId/notas')
   @Auth()
   @ApiOperation({ summary: 'Listar notas del alumno por asignación docente' })
+  @ApiQuery({ name: 'docenteAsignacionId', required: true })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: NOTA_EXAMPLE } } })
   async listarNotasAlumno(
     @Param('alumnoId') alumnoId: string,
     @Query('docenteAsignacionId') docenteAsignacionId: string,
@@ -300,6 +368,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Registrar asistencia de toda la clase' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ASISTENCIA_EXAMPLE } } })
   async registrarAsistenciaClase(
     @Request() req: { user: JwtPayload },
     @Body() dto: RegistrarAsistenciaClaseDto,
@@ -322,6 +391,7 @@ export class AcademicoController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Corregir asistencia de un alumno' })
+  @ApiOkResponse({ schema: { example: ASISTENCIA_EXAMPLE } })
   async corregirAsistencia(
     @Request() req: { user: JwtPayload },
     @Param('docenteAsignacionId') docenteAsignacionId: string,
@@ -344,6 +414,9 @@ export class AcademicoController {
   @Get('asistencias/clase')
   @Auth()
   @ApiOperation({ summary: 'Listar asistencias de una clase en una fecha' })
+  @ApiQuery({ name: 'docenteAsignacionId', required: true })
+  @ApiQuery({ name: 'fecha', required: true, example: '2026-03-15' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ASISTENCIA_EXAMPLE } } })
   async listarAsistenciasClase(
     @Query('docenteAsignacionId') docenteAsignacionId: string,
     @Query('fecha') fecha: string,
@@ -356,6 +429,8 @@ export class AcademicoController {
   @Get('asistencias/alumno/:alumnoId')
   @Auth()
   @ApiOperation({ summary: 'Historial de asistencia de un alumno por asignación' })
+  @ApiQuery({ name: 'docenteAsignacionId', required: true })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ASISTENCIA_EXAMPLE } } })
   async listarAsistenciasAlumno(
     @Param('alumnoId') alumnoId: string,
     @Query('docenteAsignacionId') docenteAsignacionId: string,

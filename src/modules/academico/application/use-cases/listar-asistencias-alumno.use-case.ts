@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ok, Result } from '@shared/domain/result';
+import { ok, fail, Result, ValidationError } from '@shared/domain/result';
 import {
   ASISTENCIA_REPOSITORY,
   type AsistenciaRepository,
@@ -13,7 +13,8 @@ export class ListarAsistenciasAlumnoUseCase {
     private readonly repo: AsistenciaRepository,
   ) {}
 
-  async execute(alumnoId: string, docenteAsignacionId: string): Promise<Result<Asistencia[], never>> {
+  async execute(alumnoId: string, docenteAsignacionId: string): Promise<Result<Asistencia[], ValidationError>> {
+    if (!docenteAsignacionId) return fail(new ValidationError('El parámetro docenteAsignacionId es requerido'));
     return ok(await this.repo.listarPorAlumnoYAsignacion(alumnoId, docenteAsignacionId));
   }
 }

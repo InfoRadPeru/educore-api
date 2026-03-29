@@ -29,7 +29,8 @@ function buildAsignacion(): DocenteAsignacion {
 }
 
 const mockDocenteRepo: jest.Mocked<DocenteRepository> = {
-  crearConPersona: jest.fn(), buscarPorId: jest.fn(), buscarPorDni: jest.fn(),
+  crearConPersona: jest.fn(), crearAsignacionUsuario: jest.fn(),
+  buscarPorId: jest.fn(), buscarPorDni: jest.fn(),
   listarPorColegio: jest.fn(), actualizar: jest.fn(), cambiarEstado: jest.fn(),
   asignarSeccion: jest.fn(), removerAsignacion: jest.fn(), buscarAsignacion: jest.fn(),
   listarAsignaciones: jest.fn(), existeAsignacion: jest.fn(),

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ok, fail, Result, NotFoundError, ConflictError } from '@shared/domain/result';
+import { ok, fail, Result, NotFoundError, ConflictError, ValidationError } from '@shared/domain/result';
 import {
   HORARIO_REPOSITORY,
   type HorarioRepository,
@@ -20,7 +20,8 @@ export class AgregarBloqueUseCase {
     franjaHorariaId: string,
     diaSemana: DiaSemana,
     aula?: string,
-  ): Promise<Result<HorarioBloque, NotFoundError | ConflictError>> {
+  ): Promise<Result<HorarioBloque, NotFoundError | ConflictError | ValidationError>> {
+    if (!añoAcademico || isNaN(añoAcademico)) return fail(new ValidationError('El parámetro año es requerido'));
     const horario = await this.repo.buscarHorarioPorSeccion(seccionId, añoAcademico);
     if (!horario) {
       return fail(new NotFoundError('HorarioSeccion', `${seccionId}-${añoAcademico}`));

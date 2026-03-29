@@ -11,7 +11,31 @@ import {
   Query,
   Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+
+const ASIGNATURA_MAESTRA_EXAMPLE = {
+  id:          'uuid-asig-maestra',
+  nombre:      'Matemáticas',
+  descripcion: 'Aritmética, álgebra y geometría',
+  activo:      true,
+};
+
+const COLEGIO_ASIGNATURA_EXAMPLE = {
+  id:                   'uuid-colegio-asig',
+  colegioId:            'uuid-colegio',
+  asignaturaMaestraId:  'uuid-asig-maestra',
+  nombrePersonalizado:  null,
+  nombre:               'Matemáticas',
+  activo:               true,
+};
+
+const GRADO_ASIGNATURA_EXAMPLE = {
+  id:                  'uuid-grado-asig',
+  colegioGradoId:      'uuid-colegio-grado',
+  colegioAsignaturaId: 'uuid-colegio-asig',
+  asignaturaNombre:    'Matemáticas',
+  horasSemanales:      5,
+};
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 
@@ -52,6 +76,8 @@ export class AsignaturasController {
   @Get('maestras')
   @Auth()
   @ApiOperation({ summary: 'Listar catálogo global de asignaturas maestras' })
+  @ApiQuery({ name: 'soloActivas', required: false, type: Boolean })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ASIGNATURA_MAESTRA_EXAMPLE } } })
   async listarMaestras(@Query('soloActivas') soloActivas?: string) {
     const result = await this.listarMaestrasUseCase.execute(soloActivas === 'true');
     if (!result.ok) throw result.error;
@@ -63,6 +89,8 @@ export class AsignaturasController {
   @Get()
   @Auth()
   @ApiOperation({ summary: 'Listar asignaturas activadas en el colegio' })
+  @ApiQuery({ name: 'soloActivas', required: false, type: Boolean })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: COLEGIO_ASIGNATURA_EXAMPLE } } })
   async listarColegio(
     @Request() req: { user: JwtPayload },
     @Query('soloActivas') soloActivas?: string,
@@ -76,6 +104,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar asignatura maestra en el colegio' })
+  @ApiOkResponse({ schema: { example: COLEGIO_ASIGNATURA_EXAMPLE } })
   async activar(
     @Request() req: { user: JwtPayload },
     @Body() dto: ActivarAsignaturaColegioDto,
@@ -89,6 +118,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Desactivar asignatura del colegio' })
+  @ApiOkResponse({ schema: { example: { ...COLEGIO_ASIGNATURA_EXAMPLE, activo: false } } })
   async desactivar(
     @Request() req: { user: JwtPayload },
     @Param('id') id: string,
@@ -102,6 +132,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Renombrar asignatura en el colegio (null restaura nombre maestro)' })
+  @ApiOkResponse({ schema: { example: { ...COLEGIO_ASIGNATURA_EXAMPLE, nombrePersonalizado: 'Matemáticas Avanzadas', nombre: 'Matemáticas Avanzadas' } } })
   async renombrar(
     @Request() req: { user: JwtPayload },
     @Param('id') id: string,
@@ -117,6 +148,7 @@ export class AsignaturasController {
   @Get('grados/:colegioGradoId')
   @Auth()
   @ApiOperation({ summary: 'Listar asignaturas asignadas a un grado' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: GRADO_ASIGNATURA_EXAMPLE } } })
   async listarGrado(@Param('colegioGradoId') colegioGradoId: string) {
     const result = await this.listarGradoUseCase.execute(colegioGradoId);
     if (!result.ok) throw result.error;
@@ -127,6 +159,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Asignar asignatura a un grado' })
+  @ApiCreatedResponse({ schema: { example: GRADO_ASIGNATURA_EXAMPLE } })
   async asignarGrado(
     @Param('colegioGradoId') colegioGradoId: string,
     @Body() dto: AsignarAsignaturaGradoDto,
@@ -144,6 +177,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Actualizar horas semanales de una asignatura en el grado' })
+  @ApiOkResponse({ schema: { example: GRADO_ASIGNATURA_EXAMPLE } })
   async actualizarHoras(
     @Param('id') id: string,
     @Body() dto: ActualizarHorasGradoDto,
@@ -157,6 +191,7 @@ export class AsignaturasController {
   @Auth()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Remover asignatura de un grado' })
+  @ApiNoContentResponse({ description: 'Asignatura removida del grado' })
   async removerGrado(@Param('id') id: string) {
     const result = await this.removerGradoUseCase.execute(id);
     if (!result.ok) throw result.error;

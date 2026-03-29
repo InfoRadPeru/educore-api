@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ok, fail, Result, NotFoundError, ForbiddenError } from '@shared/domain/result';
+import { ok, fail, Result, NotFoundError, ForbiddenError, ValidationError } from '@shared/domain/result';
 import { BoletinQueryService } from '../boletin-query.service';
 import { BoletinResponseDto } from '../dtos/boletin.dto';
 import { PrismaService } from '@shared/infrastructure/prisma/prisma.service';
@@ -15,7 +15,8 @@ export class ObtenerBoletinApoderadoUseCase {
     apoderadoUserId: string,
     alumnoId: string,
     año: number,
-  ): Promise<Result<BoletinResponseDto, NotFoundError | ForbiddenError>> {
+  ): Promise<Result<BoletinResponseDto, NotFoundError | ForbiddenError | ValidationError>> {
+    if (!año || isNaN(año)) return fail(new ValidationError('El parámetro año es requerido'));
     // Buscar el perfil de apoderado vinculado al usuario
     const apoderado = await this.prisma.perfilApoderado.findFirst({
       where: { persona: { usuario: { id: apoderadoUserId } } },

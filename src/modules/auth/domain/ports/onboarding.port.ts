@@ -29,20 +29,30 @@ import { Asignacion } from '../entities/asignacion.entity';
 // Token de inyección — string único, sin colisión posible
 export const ONBOARDING_PORT = 'OnboardingPort';
 
-// Props que Auth necesita enviar para crear el colegio inicial
-// Solo los datos mínimos — Auth no conoce el modelo completo de Colegio
+// Props que Auth necesita enviar para crear el colegio inicial + usuario admin
+// Todo en una sola transacción atómica
 export interface CrearColegioInicialProps {
+  // Datos del colegio
   nombre:    string;
   ruc:       string;
   direccion: string;
   email:     string;
-  usuarioId: string;
+  // Datos del usuario SUPER_ADMIN
+  usuarioEmail:     string;
+  usuarioPassword:  string;
+  usuarioNombres:   string;
+  usuarioApellidos: string;
+  usuarioDni:       string;
+  usuarioTelefono?: string;
 }
 
 // Resultado que Auth necesita recibir para generar el JWT
-// Solo lo estrictamente necesario — no toda la entidad Colegio
 export interface ColegioInicialCreadoResult {
   colegioId:  string;
+  usuarioId:  string;
+  email:      string;
+  nombres:    string;
+  apellidos:  string;
   asignacion: Asignacion;
 }
 

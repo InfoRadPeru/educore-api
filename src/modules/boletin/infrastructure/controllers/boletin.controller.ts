@@ -1,8 +1,36 @@
 import {
-  Controller, Delete, Get, HttpCode, HttpStatus,
+  BadRequestException, Controller, Delete, Get, HttpCode, HttpStatus,
   Param, Post, Query, Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+
+const PUBLICACION_EXAMPLE = {
+  id:             'uuid-publicacion',
+  periodoId:      'uuid-periodo',
+  seccionId:      'uuid-seccion',
+  publicadoEn:    '2026-03-28T10:00:00.000Z',
+  publicadoPorId: 'uuid-usuario',
+};
+
+const BOLETIN_EXAMPLE = {
+  alumnoId:     'uuid-alumno',
+  alumnoNombre: 'Carlos Pérez García',
+  año:          2026,
+  periodos: [
+    {
+      periodoId:    'uuid-periodo',
+      periodoNombre:'Bimestre 1',
+      publicado:    true,
+      asignaturas: [
+        {
+          asignatura:  'Matemáticas',
+          promedio:    17.5,
+          categorias: [{ nombre: 'Exámenes', peso: 60, promedio: 18 }],
+        },
+      ],
+    },
+  ],
+};
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 import { AppError } from '@shared/domain/result';
@@ -32,6 +60,7 @@ export class BoletinController {
   @Auth()
   @ApiOperation({ summary: 'Obtener boletín completo de un alumno' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { example: BOLETIN_EXAMPLE } })
   async obtenerBoletinAlumno(
     @Param('alumnoId') alumnoId: string,
     @Query('año') año: string,
@@ -52,6 +81,7 @@ export class BoletinController {
   @Post('publicar')
   @Auth()
   @ApiOperation({ summary: 'Publicar boletín de una sección para un periodo' })
+  @ApiOkResponse({ schema: { example: PUBLICACION_EXAMPLE } })
   async publicarBoletin(
     @Body() dto: PublicarBoletinDto,
     @Request() req: { user: JwtPayload },
@@ -77,6 +107,7 @@ export class BoletinController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Auth()
   @ApiOperation({ summary: 'Retirar publicación del boletín' })
+  @ApiNoContentResponse({ description: 'Publicación retirada' })
   async despublicarBoletin(
     @Param('periodoId') periodoId: string,
     @Param('seccionId') seccionId: string,
@@ -91,7 +122,9 @@ export class BoletinController {
   @Auth()
   @ApiOperation({ summary: 'Listar publicaciones de boletín por sección' })
   @ApiQuery({ name: 'seccionId', type: String })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: PUBLICACION_EXAMPLE } } })
   async listarPublicaciones(@Query('seccionId') seccionId: string) {
+    if (!seccionId) throw new BadRequestException('El parámetro seccionId es requerido');
     const publicaciones = await this.listarPublicacionesUseCase.execute(seccionId);
     return publicaciones.map(p => ({
       id:            p.id,
@@ -108,6 +141,7 @@ export class BoletinController {
   @Auth()
   @ApiOperation({ summary: 'Obtener boletín de mi hijo (solo periodos publicados)' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { example: BOLETIN_EXAMPLE } })
   async obtenerBoletinApoderado(
     @Param('alumnoId') alumnoId: string,
     @Query('año') año: string,

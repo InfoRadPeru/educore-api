@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Request } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { IsBoolean, IsDateString, IsEnum, IsNotEmpty, IsOptional, IsString, ValidateIf } from 'class-validator';
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 
@@ -11,18 +12,37 @@ import { DesvincularAlumnoUseCase }  from '../../application/use-cases/desvincul
 import type { TipoParentesco }       from '../../domain/entities/apoderado.entity';
 
 export class RegistrarApoderadoBodyDto {
-  dni:          string;
-  nombres:      string;
-  apellidos:    string;
-  fechaNac:     string;
-  genero:       'MASCULINO' | 'FEMENINO' | 'OTRO';
-  telefono?:    string;
-  crearAcceso:  boolean;
-  password?:    string;
+  @IsString() @IsNotEmpty()
+  dni: string;
+
+  @IsString() @IsNotEmpty()
+  nombres: string;
+
+  @IsString() @IsNotEmpty()
+  apellidos: string;
+
+  @IsDateString()
+  fechaNac: string;
+
+  @IsEnum(['MASCULINO', 'FEMENINO', 'OTRO'])
+  genero: 'MASCULINO' | 'FEMENINO' | 'OTRO';
+
+  @IsString() @IsOptional()
+  telefono?: string;
+
+  @IsBoolean()
+  crearAcceso: boolean;
+
+  @IsString()
+  @ValidateIf(o => o.crearAcceso === true)
+  password?: string;
 }
 
 export class AsignarAlumnoBodyDto {
-  alumnoId:   string;
+  @IsString() @IsNotEmpty()
+  alumnoId: string;
+
+  @IsString() @IsNotEmpty()
   parentesco: TipoParentesco;
 }
 
@@ -40,6 +60,20 @@ export class ApoderadosController {
   @Get()
   @Auth()
   @ApiOperation({ summary: 'Listar apoderados del colegio' })
+  @ApiOkResponse({
+    schema: {
+      type: 'array',
+      items: {
+        example: {
+          id: 'uuid-apoderado', personaId: 'uuid-persona', colegioId: 'uuid-colegio',
+          dni: '12345678', nombres: 'María', apellidos: 'López', telefono: '987654321',
+          alumnos: [{ alumnoId: 'uuid-alumno', parentesco: 'MADRE' }],
+          usuarioId: 'uuid-usuario',
+          createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
+        },
+      },
+    },
+  })
   async listar(@Request() req: { user: JwtPayload }) {
     const result = await this.listarApoderadosUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -50,10 +84,25 @@ export class ApoderadosController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Registrar nuevo apoderado' })
-  async registrar(@Body() dto: RegistrarApoderadoBodyDto) {
+  @ApiCreatedResponse({
+    description: 'passwordGenerado es null si ya tenía usuario o se envió password explícito',
+    schema: {
+      example: {
+        apoderado: {
+          id: 'uuid-apoderado', personaId: 'uuid-persona', colegioId: 'uuid-colegio',
+          dni: '12345678', nombres: 'María', apellidos: 'López', telefono: '987654321',
+          usuarioId: 'uuid-usuario',
+          createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
+        },
+        passwordGenerado: 'Temp@1234',
+      },
+    },
+  })
+  async registrar(@Request() req: { user: JwtPayload }, @Body() dto: RegistrarApoderadoBodyDto) {
     const result = await this.registrarApoderadoUseCase.execute({
       ...dto,
-      fechaNac: new Date(dto.fechaNac),
+      colegioId: req.user.colegioId!,
+      fechaNac:  new Date(dto.fechaNac),
     });
     if (!result.ok) throw result.error;
     return result.value;
@@ -62,6 +111,17 @@ export class ApoderadosController {
   @Get(':id')
   @Auth()
   @ApiOperation({ summary: 'Obtener apoderado por ID' })
+  @ApiOkResponse({
+    schema: {
+      example: {
+        id: 'uuid-apoderado', personaId: 'uuid-persona', colegioId: 'uuid-colegio',
+        dni: '12345678', nombres: 'María', apellidos: 'López', telefono: '987654321',
+        alumnos: [{ alumnoId: 'uuid-alumno', parentesco: 'MADRE' }],
+        usuarioId: 'uuid-usuario',
+        createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
+      },
+    },
+  })
   async obtener(@Param('id') id: string) {
     const result = await this.obtenerApoderadoUseCase.execute(id);
     if (!result.ok) throw result.error;
@@ -72,6 +132,9 @@ export class ApoderadosController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Asignar alumno al apoderado' })
+  @ApiCreatedResponse({
+    schema: { example: { id: 'uuid-vinculo', apoderadoId: 'uuid-apoderado', alumnoId: 'uuid-alumno', parentesco: 'MADRE', createdAt: '2026-01-01T00:00:00.000Z' } },
+  })
   async asignarAlumno(
     @Request() req: { user: JwtPayload },
     @Param('id') apoderadoId: string,
@@ -90,6 +153,7 @@ export class ApoderadosController {
   @Auth()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Desvincular alumno del apoderado' })
+  @ApiNoContentResponse({ description: 'Vínculo eliminado' })
   async desvincularAlumno(@Param('id') apoderadoId: string, @Param('alumnoId') alumnoId: string) {
     const result = await this.desvincularAlumnoUseCase.execute(apoderadoId, alumnoId);
     if (!result.ok) throw result.error;

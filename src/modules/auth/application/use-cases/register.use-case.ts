@@ -37,6 +37,7 @@ import { USUARIO_REPOSITORY, type UsuarioRepository } from '@modules/auth/domain
 import { REFRESH_TOKEN_REPOSITORY, type RefreshTokenRepository } from '@modules/auth/domain/repositories/refresh-token.repository';
 import { ONBOARDING_PORT, type OnboardingPort } from '@modules/auth/domain/ports/onboarding.port';
 
+
 import { RegisterDto } from '../dtos/register.dto';
 import { AuthResponseDto } from '../dtos/auth-response.dto';
 import { ConflictError, fail, ok, Result, ValidationError } from '@shared/domain/result';
@@ -82,29 +83,28 @@ export class RegisterUseCase {
       return fail(new ConflictError('Ya existe un colegio registrado con ese RUC'));
     }
 
-    // 4. Crear usuario con contraseña hasheada
+    // 4. Hash de contraseña
     const passwordHash = await bcrypt.hash(dto.password, BCRYPT_SALT_ROUNDS);
-    const usuario = await this.usuarioRepository.crear({
-      email:        emailResult.value,
-      passwordHash,
-      nombres:      dto.nombres,
-      apellidos:    dto.apellidos,
-      telefono:     dto.telefono,
-    });
 
-    // 5. Crear colegio + rol SUPER_ADMIN + asignación (transacción atómica)
-    const { colegioId, asignacion } = await this.onboardingPort.crearColegioConSuperAdmin({
-      nombre:    dto.colegioNombre,
-      ruc:       dto.colegioRuc,
-      direccion: dto.colegioDireccion,
-      email:     dto.colegioEmail,
-      usuarioId: usuario.id,
-    });
+    // 5. Crear persona + usuario + colegio + rol + asignación en una sola transacción atómica
+    const { colegioId, usuarioId, email, nombres, apellidos, asignacion } =
+      await this.onboardingPort.crearColegioConSuperAdmin({
+        nombre:    dto.colegioNombre,
+        ruc:       dto.colegioRuc,
+        direccion: dto.colegioDireccion,
+        email:     dto.colegioEmail,
+        usuarioEmail:     emailResult.value.value,
+        usuarioPassword:  passwordHash,
+        usuarioNombres:   dto.nombres,
+        usuarioApellidos: dto.apellidos,
+        usuarioDni:       dto.dni,
+        usuarioTelefono:  dto.telefono,
+      });
 
     // 6. Generar access token con el contexto del colegio recién creado
     const accessToken = this.jwtService.sign({
-      sub:       usuario.id,
-      email:     usuario.email.value,
+      sub:       usuarioId,
+      email,
       colegioId,
       sedeId:    null,
       rolId:     asignacion.rolId,
@@ -116,19 +116,14 @@ export class RegisterUseCase {
     const refreshToken = crypto.randomBytes(64).toString('hex');
     await this.refreshTokenRepository.create({
       token:     refreshToken,
-      usuarioId: usuario.id,
+      usuarioId,
       expiresAt: new Date(Date.now() + REFRESH_TOKEN_TTL_MS),
     });
 
     return ok({
       accessToken,
       refreshToken,
-      usuario: {
-        id:       usuario.id,
-        email:    usuario.email.value,
-        nombres:  usuario.nombres,
-        apellidos: usuario.apellidos,
-      },
+      usuario: { id: usuarioId, email, nombres, apellidos },
       colegioId,
       sedeId:    null,
       rolId:     asignacion.rolId,

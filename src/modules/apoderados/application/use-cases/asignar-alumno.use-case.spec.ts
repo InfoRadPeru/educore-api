@@ -25,6 +25,7 @@ function buildAlumno(colegioId = 'colegio-1'): Alumno {
 const mockApoderadoRepo: jest.Mocked<ApoderadoRepository> = {
   crear:                     jest.fn(),
   crearConPersona:           jest.fn(),
+  crearConPersonaYAcceso:    jest.fn(),
   buscarPorId:               jest.fn(),
   buscarPorDni:              jest.fn(),
   buscarPorPersonaId:        jest.fn(),
