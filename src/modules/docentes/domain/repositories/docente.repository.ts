@@ -29,6 +29,8 @@ export interface AsignarSeccionProps {
 
 export interface DocenteRepository {
   crearConPersona(props: CrearDocenteConPersonaProps):    Promise<Docente>;
+  // Crea o reutiliza el rol sistema DOCENTE del colegio y genera la UsuarioAsignacion
+  crearAsignacionUsuario(usuarioId: string, colegioId: string): Promise<void>;
   buscarPorId(id: string):                               Promise<Docente | null>;
   buscarPorDni(dni: string, colegioId: string):          Promise<Docente | null>;
   listarPorColegio(colegioId: string, estado?: EstadoDocente): Promise<Docente[]>;

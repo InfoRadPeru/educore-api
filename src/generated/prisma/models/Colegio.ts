@@ -236,6 +236,7 @@ export type ColegioWhereInput = {
   roles?: Prisma.ColegioRolListRelationFilter
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
   perfilesAlumno?: Prisma.PerfilAlumnoListRelationFilter
+  apoderados?: Prisma.PerfilApoderadoListRelationFilter
   postulaciones?: Prisma.PostulacionListRelationFilter
   prematriculas?: Prisma.PrematriculaListRelationFilter
   docentes?: Prisma.PerfilDocenteListRelationFilter
@@ -265,6 +266,7 @@ export type ColegioOrderByWithRelationInput = {
   roles?: Prisma.ColegioRolOrderByRelationAggregateInput
   asignaciones?: Prisma.UsuarioAsignacionOrderByRelationAggregateInput
   perfilesAlumno?: Prisma.PerfilAlumnoOrderByRelationAggregateInput
+  apoderados?: Prisma.PerfilApoderadoOrderByRelationAggregateInput
   postulaciones?: Prisma.PostulacionOrderByRelationAggregateInput
   prematriculas?: Prisma.PrematriculaOrderByRelationAggregateInput
   docentes?: Prisma.PerfilDocenteOrderByRelationAggregateInput
@@ -297,6 +299,7 @@ export type ColegioWhereUniqueInput = Prisma.AtLeast<{
   roles?: Prisma.ColegioRolListRelationFilter
   asignaciones?: Prisma.UsuarioAsignacionListRelationFilter
   perfilesAlumno?: Prisma.PerfilAlumnoListRelationFilter
+  apoderados?: Prisma.PerfilApoderadoListRelationFilter
   postulaciones?: Prisma.PostulacionListRelationFilter
   prematriculas?: Prisma.PrematriculaListRelationFilter
   docentes?: Prisma.PerfilDocenteListRelationFilter
@@ -360,6 +363,7 @@ export type ColegioCreateInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -389,6 +393,7 @@ export type ColegioUncheckedCreateInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -418,6 +423,7 @@ export type ColegioUpdateInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -447,6 +453,7 @@ export type ColegioUncheckedUpdateInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -711,6 +718,20 @@ export type ColegioUpdateOneRequiredWithoutColegioAsignaturasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutColegioAsignaturasInput, Prisma.ColegioUpdateWithoutColegioAsignaturasInput>, Prisma.ColegioUncheckedUpdateWithoutColegioAsignaturasInput>
 }
 
+export type ColegioCreateNestedOneWithoutApoderadosInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutApoderadosInput, Prisma.ColegioUncheckedCreateWithoutApoderadosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutApoderadosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+}
+
+export type ColegioUpdateOneRequiredWithoutApoderadosNestedInput = {
+  create?: Prisma.XOR<Prisma.ColegioCreateWithoutApoderadosInput, Prisma.ColegioUncheckedCreateWithoutApoderadosInput>
+  connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutApoderadosInput
+  upsert?: Prisma.ColegioUpsertWithoutApoderadosInput
+  connect?: Prisma.ColegioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ColegioUpdateToOneWithWhereWithoutApoderadosInput, Prisma.ColegioUpdateWithoutApoderadosInput>, Prisma.ColegioUncheckedUpdateWithoutApoderadosInput>
+}
+
 export type ColegioCreateNestedOneWithoutPeriodosEvaluacionInput = {
   create?: Prisma.XOR<Prisma.ColegioCreateWithoutPeriodosEvaluacionInput, Prisma.ColegioUncheckedCreateWithoutPeriodosEvaluacionInput>
   connectOrCreate?: Prisma.ColegioCreateOrConnectWithoutPeriodosEvaluacionInput
@@ -798,6 +819,7 @@ export type ColegioCreateWithoutConfiguracionInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -826,6 +848,7 @@ export type ColegioUncheckedCreateWithoutConfiguracionInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -870,6 +893,7 @@ export type ColegioUpdateWithoutConfiguracionInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -898,6 +922,7 @@ export type ColegioUncheckedUpdateWithoutConfiguracionInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -926,6 +951,7 @@ export type ColegioCreateWithoutNivelesInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -954,6 +980,7 @@ export type ColegioUncheckedCreateWithoutNivelesInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -998,6 +1025,7 @@ export type ColegioUpdateWithoutNivelesInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -1026,6 +1054,7 @@ export type ColegioUncheckedUpdateWithoutNivelesInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -1054,6 +1083,7 @@ export type ColegioCreateWithoutSedesInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -1082,6 +1112,7 @@ export type ColegioUncheckedCreateWithoutSedesInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -1126,6 +1157,7 @@ export type ColegioUpdateWithoutSedesInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -1154,6 +1186,7 @@ export type ColegioUncheckedUpdateWithoutSedesInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -1183,6 +1216,7 @@ export type ColegioCreateWithoutPostulacionesInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
@@ -1211,6 +1245,7 @@ export type ColegioUncheckedCreateWithoutPostulacionesInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
@@ -1255,6 +1290,7 @@ export type ColegioUpdateWithoutPostulacionesInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
@@ -1283,6 +1319,7 @@ export type ColegioUncheckedUpdateWithoutPostulacionesInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
@@ -1311,6 +1348,7 @@ export type ColegioCreateWithoutPrematriculasInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
@@ -1339,6 +1377,7 @@ export type ColegioUncheckedCreateWithoutPrematriculasInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
@@ -1383,6 +1422,7 @@ export type ColegioUpdateWithoutPrematriculasInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
@@ -1411,6 +1451,7 @@ export type ColegioUncheckedUpdateWithoutPrematriculasInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
@@ -1438,6 +1479,7 @@ export type ColegioCreateWithoutPerfilesAlumnoInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -1466,6 +1508,7 @@ export type ColegioUncheckedCreateWithoutPerfilesAlumnoInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -1510,6 +1553,7 @@ export type ColegioUpdateWithoutPerfilesAlumnoInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -1538,6 +1582,7 @@ export type ColegioUncheckedUpdateWithoutPerfilesAlumnoInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -1566,6 +1611,7 @@ export type ColegioCreateWithoutRolesInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -1594,6 +1640,7 @@ export type ColegioUncheckedCreateWithoutRolesInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -1638,6 +1685,7 @@ export type ColegioUpdateWithoutRolesInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -1666,6 +1714,7 @@ export type ColegioUncheckedUpdateWithoutRolesInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -1694,6 +1743,7 @@ export type ColegioCreateWithoutAsignacionesInput = {
   niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -1722,6 +1772,7 @@ export type ColegioUncheckedCreateWithoutAsignacionesInput = {
   niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -1766,6 +1817,7 @@ export type ColegioUpdateWithoutAsignacionesInput = {
   niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -1794,6 +1846,7 @@ export type ColegioUncheckedUpdateWithoutAsignacionesInput = {
   niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -1823,6 +1876,7 @@ export type ColegioCreateWithoutDocentesInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
@@ -1851,6 +1905,7 @@ export type ColegioUncheckedCreateWithoutDocentesInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
@@ -1895,6 +1950,7 @@ export type ColegioUpdateWithoutDocentesInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
@@ -1923,6 +1979,7 @@ export type ColegioUncheckedUpdateWithoutDocentesInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
@@ -1951,6 +2008,7 @@ export type ColegioCreateWithoutColegioAsignaturasInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -1979,6 +2037,7 @@ export type ColegioUncheckedCreateWithoutColegioAsignaturasInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2023,6 +2082,7 @@ export type ColegioUpdateWithoutColegioAsignaturasInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2051,9 +2111,142 @@ export type ColegioUncheckedUpdateWithoutColegioAsignaturasInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUncheckedUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioCreateWithoutApoderadosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioUncheckedCreateWithoutApoderadosInput = {
+  id?: string
+  nombre: string
+  ruc: string
+  direccion: string
+  telefono?: string | null
+  email: string
+  estado?: $Enums.EstadoColegio
+  plan?: $Enums.PlanColegio
+  planVenceEn?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedCreateNestedOneWithoutColegioInput
+  sedes?: Prisma.SedeUncheckedCreateNestedManyWithoutColegioInput
+  niveles?: Prisma.ColegioNivelUncheckedCreateNestedManyWithoutColegioInput
+  roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
+  prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
+  docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedCreateNestedManyWithoutColegioInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedCreateNestedManyWithoutColegioInput
+  comunicados?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutColegioInput
+  franjasHorarias?: Prisma.FranjaHorariaUncheckedCreateNestedManyWithoutColegioInput
+  conceptosPago?: Prisma.ConceptoPagoUncheckedCreateNestedManyWithoutColegioInput
+  pagos?: Prisma.PagoUncheckedCreateNestedManyWithoutColegioInput
+}
+
+export type ColegioCreateOrConnectWithoutApoderadosInput = {
+  where: Prisma.ColegioWhereUniqueInput
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutApoderadosInput, Prisma.ColegioUncheckedCreateWithoutApoderadosInput>
+}
+
+export type ColegioUpsertWithoutApoderadosInput = {
+  update: Prisma.XOR<Prisma.ColegioUpdateWithoutApoderadosInput, Prisma.ColegioUncheckedUpdateWithoutApoderadosInput>
+  create: Prisma.XOR<Prisma.ColegioCreateWithoutApoderadosInput, Prisma.ColegioUncheckedCreateWithoutApoderadosInput>
+  where?: Prisma.ColegioWhereInput
+}
+
+export type ColegioUpdateToOneWithWhereWithoutApoderadosInput = {
+  where?: Prisma.ColegioWhereInput
+  data: Prisma.XOR<Prisma.ColegioUpdateWithoutApoderadosInput, Prisma.ColegioUncheckedUpdateWithoutApoderadosInput>
+}
+
+export type ColegioUpdateWithoutApoderadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUpdateManyWithoutColegioNestedInput
+  periodosEvaluacion?: Prisma.PeriodoEvaluacionUpdateManyWithoutColegioNestedInput
+  comunicados?: Prisma.ComunicadoUpdateManyWithoutColegioNestedInput
+  franjasHorarias?: Prisma.FranjaHorariaUpdateManyWithoutColegioNestedInput
+  conceptosPago?: Prisma.ConceptoPagoUpdateManyWithoutColegioNestedInput
+  pagos?: Prisma.PagoUpdateManyWithoutColegioNestedInput
+}
+
+export type ColegioUncheckedUpdateWithoutApoderadosInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  ruc?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.StringFieldUpdateOperationsInput | string
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  estado?: Prisma.EnumEstadoColegioFieldUpdateOperationsInput | $Enums.EstadoColegio
+  plan?: Prisma.EnumPlanColegioFieldUpdateOperationsInput | $Enums.PlanColegio
+  planVenceEn?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  configuracion?: Prisma.ColegioConfiguracionUncheckedUpdateOneWithoutColegioNestedInput
+  sedes?: Prisma.SedeUncheckedUpdateManyWithoutColegioNestedInput
+  niveles?: Prisma.ColegioNivelUncheckedUpdateManyWithoutColegioNestedInput
+  roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
+  asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
+  perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
+  prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
+  docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
+  colegioAsignaturas?: Prisma.ColegioAsignaturaUncheckedUpdateManyWithoutColegioNestedInput
   periodosEvaluacion?: Prisma.PeriodoEvaluacionUncheckedUpdateManyWithoutColegioNestedInput
   comunicados?: Prisma.ComunicadoUncheckedUpdateManyWithoutColegioNestedInput
   franjasHorarias?: Prisma.FranjaHorariaUncheckedUpdateManyWithoutColegioNestedInput
@@ -2079,6 +2272,7 @@ export type ColegioCreateWithoutPeriodosEvaluacionInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -2107,6 +2301,7 @@ export type ColegioUncheckedCreateWithoutPeriodosEvaluacionInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2151,6 +2346,7 @@ export type ColegioUpdateWithoutPeriodosEvaluacionInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2179,6 +2375,7 @@ export type ColegioUncheckedUpdateWithoutPeriodosEvaluacionInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -2207,6 +2404,7 @@ export type ColegioCreateWithoutComunicadosInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -2235,6 +2433,7 @@ export type ColegioUncheckedCreateWithoutComunicadosInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2279,6 +2478,7 @@ export type ColegioUpdateWithoutComunicadosInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2307,6 +2507,7 @@ export type ColegioUncheckedUpdateWithoutComunicadosInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -2335,6 +2536,7 @@ export type ColegioCreateWithoutFranjasHorariasInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -2363,6 +2565,7 @@ export type ColegioUncheckedCreateWithoutFranjasHorariasInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2407,6 +2610,7 @@ export type ColegioUpdateWithoutFranjasHorariasInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2435,6 +2639,7 @@ export type ColegioUncheckedUpdateWithoutFranjasHorariasInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -2463,6 +2668,7 @@ export type ColegioCreateWithoutConceptosPagoInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -2491,6 +2697,7 @@ export type ColegioUncheckedCreateWithoutConceptosPagoInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2535,6 +2742,7 @@ export type ColegioUpdateWithoutConceptosPagoInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2563,6 +2771,7 @@ export type ColegioUncheckedUpdateWithoutConceptosPagoInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -2591,6 +2800,7 @@ export type ColegioCreateWithoutPagosInput = {
   roles?: Prisma.ColegioRolCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteCreateNestedManyWithoutColegioInput
@@ -2619,6 +2829,7 @@ export type ColegioUncheckedCreateWithoutPagosInput = {
   roles?: Prisma.ColegioRolUncheckedCreateNestedManyWithoutColegioInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedCreateNestedManyWithoutColegioInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedCreateNestedManyWithoutColegioInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput
   postulaciones?: Prisma.PostulacionUncheckedCreateNestedManyWithoutColegioInput
   prematriculas?: Prisma.PrematriculaUncheckedCreateNestedManyWithoutColegioInput
   docentes?: Prisma.PerfilDocenteUncheckedCreateNestedManyWithoutColegioInput
@@ -2663,6 +2874,7 @@ export type ColegioUpdateWithoutPagosInput = {
   roles?: Prisma.ColegioRolUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUpdateManyWithoutColegioNestedInput
@@ -2691,6 +2903,7 @@ export type ColegioUncheckedUpdateWithoutPagosInput = {
   roles?: Prisma.ColegioRolUncheckedUpdateManyWithoutColegioNestedInput
   asignaciones?: Prisma.UsuarioAsignacionUncheckedUpdateManyWithoutColegioNestedInput
   perfilesAlumno?: Prisma.PerfilAlumnoUncheckedUpdateManyWithoutColegioNestedInput
+  apoderados?: Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput
   postulaciones?: Prisma.PostulacionUncheckedUpdateManyWithoutColegioNestedInput
   prematriculas?: Prisma.PrematriculaUncheckedUpdateManyWithoutColegioNestedInput
   docentes?: Prisma.PerfilDocenteUncheckedUpdateManyWithoutColegioNestedInput
@@ -2712,6 +2925,7 @@ export type ColegioCountOutputType = {
   roles: number
   asignaciones: number
   perfilesAlumno: number
+  apoderados: number
   postulaciones: number
   prematriculas: number
   docentes: number
@@ -2729,6 +2943,7 @@ export type ColegioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extension
   roles?: boolean | ColegioCountOutputTypeCountRolesArgs
   asignaciones?: boolean | ColegioCountOutputTypeCountAsignacionesArgs
   perfilesAlumno?: boolean | ColegioCountOutputTypeCountPerfilesAlumnoArgs
+  apoderados?: boolean | ColegioCountOutputTypeCountApoderadosArgs
   postulaciones?: boolean | ColegioCountOutputTypeCountPostulacionesArgs
   prematriculas?: boolean | ColegioCountOutputTypeCountPrematriculasArgs
   docentes?: boolean | ColegioCountOutputTypeCountDocentesArgs
@@ -2783,6 +2998,13 @@ export type ColegioCountOutputTypeCountAsignacionesArgs<ExtArgs extends runtime.
  */
 export type ColegioCountOutputTypeCountPerfilesAlumnoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PerfilAlumnoWhereInput
+}
+
+/**
+ * ColegioCountOutputType without action
+ */
+export type ColegioCountOutputTypeCountApoderadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PerfilApoderadoWhereInput
 }
 
 /**
@@ -2867,6 +3089,7 @@ export type ColegioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   roles?: boolean | Prisma.Colegio$rolesArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Colegio$asignacionesArgs<ExtArgs>
   perfilesAlumno?: boolean | Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>
+  apoderados?: boolean | Prisma.Colegio$apoderadosArgs<ExtArgs>
   postulaciones?: boolean | Prisma.Colegio$postulacionesArgs<ExtArgs>
   prematriculas?: boolean | Prisma.Colegio$prematriculasArgs<ExtArgs>
   docentes?: boolean | Prisma.Colegio$docentesArgs<ExtArgs>
@@ -2929,6 +3152,7 @@ export type ColegioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   roles?: boolean | Prisma.Colegio$rolesArgs<ExtArgs>
   asignaciones?: boolean | Prisma.Colegio$asignacionesArgs<ExtArgs>
   perfilesAlumno?: boolean | Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>
+  apoderados?: boolean | Prisma.Colegio$apoderadosArgs<ExtArgs>
   postulaciones?: boolean | Prisma.Colegio$postulacionesArgs<ExtArgs>
   prematriculas?: boolean | Prisma.Colegio$prematriculasArgs<ExtArgs>
   docentes?: boolean | Prisma.Colegio$docentesArgs<ExtArgs>
@@ -2952,6 +3176,7 @@ export type $ColegioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     roles: Prisma.$ColegioRolPayload<ExtArgs>[]
     asignaciones: Prisma.$UsuarioAsignacionPayload<ExtArgs>[]
     perfilesAlumno: Prisma.$PerfilAlumnoPayload<ExtArgs>[]
+    apoderados: Prisma.$PerfilApoderadoPayload<ExtArgs>[]
     postulaciones: Prisma.$PostulacionPayload<ExtArgs>[]
     prematriculas: Prisma.$PrematriculaPayload<ExtArgs>[]
     docentes: Prisma.$PerfilDocentePayload<ExtArgs>[]
@@ -3374,6 +3599,7 @@ export interface Prisma__ColegioClient<T, Null = never, ExtArgs extends runtime.
   roles<T extends Prisma.Colegio$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$rolesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ColegioRolPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   asignaciones<T extends Prisma.Colegio$asignacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$asignacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UsuarioAsignacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   perfilesAlumno<T extends Prisma.Colegio$perfilesAlumnoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$perfilesAlumnoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilAlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  apoderados<T extends Prisma.Colegio$apoderadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$apoderadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilApoderadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   postulaciones<T extends Prisma.Colegio$postulacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$postulacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostulacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prematriculas<T extends Prisma.Colegio$prematriculasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$prematriculasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrematriculaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   docentes<T extends Prisma.Colegio$docentesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Colegio$docentesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PerfilDocentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3947,6 +4173,30 @@ export type Colegio$perfilesAlumnoArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.PerfilAlumnoScalarFieldEnum | Prisma.PerfilAlumnoScalarFieldEnum[]
+}
+
+/**
+ * Colegio.apoderados
+ */
+export type Colegio$apoderadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PerfilApoderado
+   */
+  select?: Prisma.PerfilApoderadoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PerfilApoderado
+   */
+  omit?: Prisma.PerfilApoderadoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PerfilApoderadoInclude<ExtArgs> | null
+  where?: Prisma.PerfilApoderadoWhereInput
+  orderBy?: Prisma.PerfilApoderadoOrderByWithRelationInput | Prisma.PerfilApoderadoOrderByWithRelationInput[]
+  cursor?: Prisma.PerfilApoderadoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PerfilApoderadoScalarFieldEnum | Prisma.PerfilApoderadoScalarFieldEnum[]
 }
 
 /**

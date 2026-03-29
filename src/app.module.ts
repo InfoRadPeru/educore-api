@@ -13,6 +13,7 @@ import { ComunicadosModule }   from '@modules/comunicados/comunicados.module';
 import { HorariosModule }      from '@modules/horarios/horarios.module';
 import { TesoreriaModule }      from '@modules/tesoreria/tesoreria.module';
 import { NotificacionesModule } from '@modules/notificaciones/notificaciones.module';
+import { PersonasModule }       from '@modules/personas/personas.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
@@ -38,6 +39,7 @@ import { PrismaModule } from '@shared/infrastructure/prisma/prisma.module';
     HorariosModule,
     TesoreriaModule,
     NotificacionesModule,
+    PersonasModule,
   ],
   providers: [
     {

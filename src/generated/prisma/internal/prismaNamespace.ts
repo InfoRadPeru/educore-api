@@ -4347,6 +4347,7 @@ export type GradoAsignaturaScalarFieldEnum = (typeof GradoAsignaturaScalarFieldE
 export const PerfilApoderadoScalarFieldEnum = {
   id: 'id',
   personaId: 'personaId',
+  colegioId: 'colegioId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

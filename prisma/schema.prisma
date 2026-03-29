@@ -177,6 +177,7 @@ model Colegio {
   roles               ColegioRol[]
   asignaciones        UsuarioAsignacion[]
   perfilesAlumno      PerfilAlumno[]
+  apoderados          PerfilApoderado[]
   postulaciones       Postulacion[]
   prematriculas       Prematricula[]
   docentes            PerfilDocente[]
@@ -689,10 +690,12 @@ model GradoAsignatura {
 model PerfilApoderado {
   id        String   @id @default(cuid())
   personaId String   @unique @map("persona_id")
+  colegioId String   @map("colegio_id")
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   persona                  Persona             @relation(fields: [personaId], references: [id], onDelete: Cascade)
+  colegio                  Colegio             @relation(fields: [colegioId], references: [id], onDelete: Cascade)
   alumnos                  ApoderadoAlumno[]
   comunicadosDestinatario  Comunicado[]        @relation("ComunicadoDestinatario")
   lecturasComunicado       ComunicadoLectura[]

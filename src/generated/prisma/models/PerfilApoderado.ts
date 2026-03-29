@@ -27,6 +27,7 @@ export type AggregatePerfilApoderado = {
 export type PerfilApoderadoMinAggregateOutputType = {
   id: string | null
   personaId: string | null
+  colegioId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -34,6 +35,7 @@ export type PerfilApoderadoMinAggregateOutputType = {
 export type PerfilApoderadoMaxAggregateOutputType = {
   id: string | null
   personaId: string | null
+  colegioId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -41,6 +43,7 @@ export type PerfilApoderadoMaxAggregateOutputType = {
 export type PerfilApoderadoCountAggregateOutputType = {
   id: number
   personaId: number
+  colegioId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -50,6 +53,7 @@ export type PerfilApoderadoCountAggregateOutputType = {
 export type PerfilApoderadoMinAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -57,6 +61,7 @@ export type PerfilApoderadoMinAggregateInputType = {
 export type PerfilApoderadoMaxAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -64,6 +69,7 @@ export type PerfilApoderadoMaxAggregateInputType = {
 export type PerfilApoderadoCountAggregateInputType = {
   id?: true
   personaId?: true
+  colegioId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -144,6 +150,7 @@ export type PerfilApoderadoGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 export type PerfilApoderadoGroupByOutputType = {
   id: string
   personaId: string
+  colegioId: string
   createdAt: Date
   updatedAt: Date
   _count: PerfilApoderadoCountAggregateOutputType | null
@@ -172,9 +179,11 @@ export type PerfilApoderadoWhereInput = {
   NOT?: Prisma.PerfilApoderadoWhereInput | Prisma.PerfilApoderadoWhereInput[]
   id?: Prisma.StringFilter<"PerfilApoderado"> | string
   personaId?: Prisma.StringFilter<"PerfilApoderado"> | string
+  colegioId?: Prisma.StringFilter<"PerfilApoderado"> | string
   createdAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
   persona?: Prisma.XOR<Prisma.PersonaScalarRelationFilter, Prisma.PersonaWhereInput>
+  colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
   alumnos?: Prisma.ApoderadoAlumnoListRelationFilter
   comunicadosDestinatario?: Prisma.ComunicadoListRelationFilter
   lecturasComunicado?: Prisma.ComunicadoLecturaListRelationFilter
@@ -183,9 +192,11 @@ export type PerfilApoderadoWhereInput = {
 export type PerfilApoderadoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   persona?: Prisma.PersonaOrderByWithRelationInput
+  colegio?: Prisma.ColegioOrderByWithRelationInput
   alumnos?: Prisma.ApoderadoAlumnoOrderByRelationAggregateInput
   comunicadosDestinatario?: Prisma.ComunicadoOrderByRelationAggregateInput
   lecturasComunicado?: Prisma.ComunicadoLecturaOrderByRelationAggregateInput
@@ -197,9 +208,11 @@ export type PerfilApoderadoWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.PerfilApoderadoWhereInput | Prisma.PerfilApoderadoWhereInput[]
   OR?: Prisma.PerfilApoderadoWhereInput[]
   NOT?: Prisma.PerfilApoderadoWhereInput | Prisma.PerfilApoderadoWhereInput[]
+  colegioId?: Prisma.StringFilter<"PerfilApoderado"> | string
   createdAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
   persona?: Prisma.XOR<Prisma.PersonaScalarRelationFilter, Prisma.PersonaWhereInput>
+  colegio?: Prisma.XOR<Prisma.ColegioScalarRelationFilter, Prisma.ColegioWhereInput>
   alumnos?: Prisma.ApoderadoAlumnoListRelationFilter
   comunicadosDestinatario?: Prisma.ComunicadoListRelationFilter
   lecturasComunicado?: Prisma.ComunicadoLecturaListRelationFilter
@@ -208,6 +221,7 @@ export type PerfilApoderadoWhereUniqueInput = Prisma.AtLeast<{
 export type PerfilApoderadoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.PerfilApoderadoCountOrderByAggregateInput
@@ -221,6 +235,7 @@ export type PerfilApoderadoScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PerfilApoderadoScalarWhereWithAggregatesInput | Prisma.PerfilApoderadoScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PerfilApoderado"> | string
   personaId?: Prisma.StringWithAggregatesFilter<"PerfilApoderado"> | string
+  colegioId?: Prisma.StringWithAggregatesFilter<"PerfilApoderado"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PerfilApoderado"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PerfilApoderado"> | Date | string
 }
@@ -230,6 +245,7 @@ export type PerfilApoderadoCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   persona: Prisma.PersonaCreateNestedOneWithoutPerfilApoderadoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutApoderadosInput
   alumnos?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutApoderadoInput
   comunicadosDestinatario?: Prisma.ComunicadoCreateNestedManyWithoutDestinatarioInput
   lecturasComunicado?: Prisma.ComunicadoLecturaCreateNestedManyWithoutApoderadoInput
@@ -238,6 +254,7 @@ export type PerfilApoderadoCreateInput = {
 export type PerfilApoderadoUncheckedCreateInput = {
   id?: string
   personaId: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutApoderadoInput
@@ -250,6 +267,7 @@ export type PerfilApoderadoUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutApoderadosNestedInput
   alumnos?: Prisma.ApoderadoAlumnoUpdateManyWithoutApoderadoNestedInput
   comunicadosDestinatario?: Prisma.ComunicadoUpdateManyWithoutDestinatarioNestedInput
   lecturasComunicado?: Prisma.ComunicadoLecturaUpdateManyWithoutApoderadoNestedInput
@@ -258,6 +276,7 @@ export type PerfilApoderadoUpdateInput = {
 export type PerfilApoderadoUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutApoderadoNestedInput
@@ -268,6 +287,7 @@ export type PerfilApoderadoUncheckedUpdateInput = {
 export type PerfilApoderadoCreateManyInput = {
   id?: string
   personaId: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -281,8 +301,19 @@ export type PerfilApoderadoUpdateManyMutationInput = {
 export type PerfilApoderadoUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type PerfilApoderadoListRelationFilter = {
+  every?: Prisma.PerfilApoderadoWhereInput
+  some?: Prisma.PerfilApoderadoWhereInput
+  none?: Prisma.PerfilApoderadoWhereInput
+}
+
+export type PerfilApoderadoOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type PerfilApoderadoNullableScalarRelationFilter = {
@@ -293,6 +324,7 @@ export type PerfilApoderadoNullableScalarRelationFilter = {
 export type PerfilApoderadoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -300,6 +332,7 @@ export type PerfilApoderadoCountOrderByAggregateInput = {
 export type PerfilApoderadoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -307,6 +340,7 @@ export type PerfilApoderadoMaxOrderByAggregateInput = {
 export type PerfilApoderadoMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   personaId?: Prisma.SortOrder
+  colegioId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -314,6 +348,48 @@ export type PerfilApoderadoMinOrderByAggregateInput = {
 export type PerfilApoderadoScalarRelationFilter = {
   is?: Prisma.PerfilApoderadoWhereInput
   isNot?: Prisma.PerfilApoderadoWhereInput
+}
+
+export type PerfilApoderadoCreateNestedManyWithoutColegioInput = {
+  create?: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput> | Prisma.PerfilApoderadoCreateWithoutColegioInput[] | Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput | Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput[]
+  createMany?: Prisma.PerfilApoderadoCreateManyColegioInputEnvelope
+  connect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+}
+
+export type PerfilApoderadoUncheckedCreateNestedManyWithoutColegioInput = {
+  create?: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput> | Prisma.PerfilApoderadoCreateWithoutColegioInput[] | Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput | Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput[]
+  createMany?: Prisma.PerfilApoderadoCreateManyColegioInputEnvelope
+  connect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+}
+
+export type PerfilApoderadoUpdateManyWithoutColegioNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput> | Prisma.PerfilApoderadoCreateWithoutColegioInput[] | Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput | Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput[]
+  upsert?: Prisma.PerfilApoderadoUpsertWithWhereUniqueWithoutColegioInput | Prisma.PerfilApoderadoUpsertWithWhereUniqueWithoutColegioInput[]
+  createMany?: Prisma.PerfilApoderadoCreateManyColegioInputEnvelope
+  set?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  disconnect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  delete?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  connect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  update?: Prisma.PerfilApoderadoUpdateWithWhereUniqueWithoutColegioInput | Prisma.PerfilApoderadoUpdateWithWhereUniqueWithoutColegioInput[]
+  updateMany?: Prisma.PerfilApoderadoUpdateManyWithWhereWithoutColegioInput | Prisma.PerfilApoderadoUpdateManyWithWhereWithoutColegioInput[]
+  deleteMany?: Prisma.PerfilApoderadoScalarWhereInput | Prisma.PerfilApoderadoScalarWhereInput[]
+}
+
+export type PerfilApoderadoUncheckedUpdateManyWithoutColegioNestedInput = {
+  create?: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput> | Prisma.PerfilApoderadoCreateWithoutColegioInput[] | Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput[]
+  connectOrCreate?: Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput | Prisma.PerfilApoderadoCreateOrConnectWithoutColegioInput[]
+  upsert?: Prisma.PerfilApoderadoUpsertWithWhereUniqueWithoutColegioInput | Prisma.PerfilApoderadoUpsertWithWhereUniqueWithoutColegioInput[]
+  createMany?: Prisma.PerfilApoderadoCreateManyColegioInputEnvelope
+  set?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  disconnect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  delete?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  connect?: Prisma.PerfilApoderadoWhereUniqueInput | Prisma.PerfilApoderadoWhereUniqueInput[]
+  update?: Prisma.PerfilApoderadoUpdateWithWhereUniqueWithoutColegioInput | Prisma.PerfilApoderadoUpdateWithWhereUniqueWithoutColegioInput[]
+  updateMany?: Prisma.PerfilApoderadoUpdateManyWithWhereWithoutColegioInput | Prisma.PerfilApoderadoUpdateManyWithWhereWithoutColegioInput[]
+  deleteMany?: Prisma.PerfilApoderadoScalarWhereInput | Prisma.PerfilApoderadoScalarWhereInput[]
 }
 
 export type PerfilApoderadoCreateNestedOneWithoutPersonaInput = {
@@ -392,10 +468,68 @@ export type PerfilApoderadoUpdateOneRequiredWithoutLecturasComunicadoNestedInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.PerfilApoderadoUpdateToOneWithWhereWithoutLecturasComunicadoInput, Prisma.PerfilApoderadoUpdateWithoutLecturasComunicadoInput>, Prisma.PerfilApoderadoUncheckedUpdateWithoutLecturasComunicadoInput>
 }
 
+export type PerfilApoderadoCreateWithoutColegioInput = {
+  id?: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  persona: Prisma.PersonaCreateNestedOneWithoutPerfilApoderadoInput
+  alumnos?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutApoderadoInput
+  comunicadosDestinatario?: Prisma.ComunicadoCreateNestedManyWithoutDestinatarioInput
+  lecturasComunicado?: Prisma.ComunicadoLecturaCreateNestedManyWithoutApoderadoInput
+}
+
+export type PerfilApoderadoUncheckedCreateWithoutColegioInput = {
+  id?: string
+  personaId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  alumnos?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutApoderadoInput
+  comunicadosDestinatario?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutDestinatarioInput
+  lecturasComunicado?: Prisma.ComunicadoLecturaUncheckedCreateNestedManyWithoutApoderadoInput
+}
+
+export type PerfilApoderadoCreateOrConnectWithoutColegioInput = {
+  where: Prisma.PerfilApoderadoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput>
+}
+
+export type PerfilApoderadoCreateManyColegioInputEnvelope = {
+  data: Prisma.PerfilApoderadoCreateManyColegioInput | Prisma.PerfilApoderadoCreateManyColegioInput[]
+  skipDuplicates?: boolean
+}
+
+export type PerfilApoderadoUpsertWithWhereUniqueWithoutColegioInput = {
+  where: Prisma.PerfilApoderadoWhereUniqueInput
+  update: Prisma.XOR<Prisma.PerfilApoderadoUpdateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedUpdateWithoutColegioInput>
+  create: Prisma.XOR<Prisma.PerfilApoderadoCreateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedCreateWithoutColegioInput>
+}
+
+export type PerfilApoderadoUpdateWithWhereUniqueWithoutColegioInput = {
+  where: Prisma.PerfilApoderadoWhereUniqueInput
+  data: Prisma.XOR<Prisma.PerfilApoderadoUpdateWithoutColegioInput, Prisma.PerfilApoderadoUncheckedUpdateWithoutColegioInput>
+}
+
+export type PerfilApoderadoUpdateManyWithWhereWithoutColegioInput = {
+  where: Prisma.PerfilApoderadoScalarWhereInput
+  data: Prisma.XOR<Prisma.PerfilApoderadoUpdateManyMutationInput, Prisma.PerfilApoderadoUncheckedUpdateManyWithoutColegioInput>
+}
+
+export type PerfilApoderadoScalarWhereInput = {
+  AND?: Prisma.PerfilApoderadoScalarWhereInput | Prisma.PerfilApoderadoScalarWhereInput[]
+  OR?: Prisma.PerfilApoderadoScalarWhereInput[]
+  NOT?: Prisma.PerfilApoderadoScalarWhereInput | Prisma.PerfilApoderadoScalarWhereInput[]
+  id?: Prisma.StringFilter<"PerfilApoderado"> | string
+  personaId?: Prisma.StringFilter<"PerfilApoderado"> | string
+  colegioId?: Prisma.StringFilter<"PerfilApoderado"> | string
+  createdAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"PerfilApoderado"> | Date | string
+}
+
 export type PerfilApoderadoCreateWithoutPersonaInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  colegio: Prisma.ColegioCreateNestedOneWithoutApoderadosInput
   alumnos?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutApoderadoInput
   comunicadosDestinatario?: Prisma.ComunicadoCreateNestedManyWithoutDestinatarioInput
   lecturasComunicado?: Prisma.ComunicadoLecturaCreateNestedManyWithoutApoderadoInput
@@ -403,6 +537,7 @@ export type PerfilApoderadoCreateWithoutPersonaInput = {
 
 export type PerfilApoderadoUncheckedCreateWithoutPersonaInput = {
   id?: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutApoderadoInput
@@ -430,6 +565,7 @@ export type PerfilApoderadoUpdateWithoutPersonaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutApoderadosNestedInput
   alumnos?: Prisma.ApoderadoAlumnoUpdateManyWithoutApoderadoNestedInput
   comunicadosDestinatario?: Prisma.ComunicadoUpdateManyWithoutDestinatarioNestedInput
   lecturasComunicado?: Prisma.ComunicadoLecturaUpdateManyWithoutApoderadoNestedInput
@@ -437,6 +573,7 @@ export type PerfilApoderadoUpdateWithoutPersonaInput = {
 
 export type PerfilApoderadoUncheckedUpdateWithoutPersonaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutApoderadoNestedInput
@@ -449,6 +586,7 @@ export type PerfilApoderadoCreateWithoutAlumnosInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   persona: Prisma.PersonaCreateNestedOneWithoutPerfilApoderadoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutApoderadosInput
   comunicadosDestinatario?: Prisma.ComunicadoCreateNestedManyWithoutDestinatarioInput
   lecturasComunicado?: Prisma.ComunicadoLecturaCreateNestedManyWithoutApoderadoInput
 }
@@ -456,6 +594,7 @@ export type PerfilApoderadoCreateWithoutAlumnosInput = {
 export type PerfilApoderadoUncheckedCreateWithoutAlumnosInput = {
   id?: string
   personaId: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   comunicadosDestinatario?: Prisma.ComunicadoUncheckedCreateNestedManyWithoutDestinatarioInput
@@ -483,6 +622,7 @@ export type PerfilApoderadoUpdateWithoutAlumnosInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutApoderadosNestedInput
   comunicadosDestinatario?: Prisma.ComunicadoUpdateManyWithoutDestinatarioNestedInput
   lecturasComunicado?: Prisma.ComunicadoLecturaUpdateManyWithoutApoderadoNestedInput
 }
@@ -490,6 +630,7 @@ export type PerfilApoderadoUpdateWithoutAlumnosInput = {
 export type PerfilApoderadoUncheckedUpdateWithoutAlumnosInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   comunicadosDestinatario?: Prisma.ComunicadoUncheckedUpdateManyWithoutDestinatarioNestedInput
@@ -501,6 +642,7 @@ export type PerfilApoderadoCreateWithoutComunicadosDestinatarioInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   persona: Prisma.PersonaCreateNestedOneWithoutPerfilApoderadoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutApoderadosInput
   alumnos?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutApoderadoInput
   lecturasComunicado?: Prisma.ComunicadoLecturaCreateNestedManyWithoutApoderadoInput
 }
@@ -508,6 +650,7 @@ export type PerfilApoderadoCreateWithoutComunicadosDestinatarioInput = {
 export type PerfilApoderadoUncheckedCreateWithoutComunicadosDestinatarioInput = {
   id?: string
   personaId: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutApoderadoInput
@@ -535,6 +678,7 @@ export type PerfilApoderadoUpdateWithoutComunicadosDestinatarioInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutApoderadosNestedInput
   alumnos?: Prisma.ApoderadoAlumnoUpdateManyWithoutApoderadoNestedInput
   lecturasComunicado?: Prisma.ComunicadoLecturaUpdateManyWithoutApoderadoNestedInput
 }
@@ -542,6 +686,7 @@ export type PerfilApoderadoUpdateWithoutComunicadosDestinatarioInput = {
 export type PerfilApoderadoUncheckedUpdateWithoutComunicadosDestinatarioInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutApoderadoNestedInput
@@ -553,6 +698,7 @@ export type PerfilApoderadoCreateWithoutLecturasComunicadoInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   persona: Prisma.PersonaCreateNestedOneWithoutPerfilApoderadoInput
+  colegio: Prisma.ColegioCreateNestedOneWithoutApoderadosInput
   alumnos?: Prisma.ApoderadoAlumnoCreateNestedManyWithoutApoderadoInput
   comunicadosDestinatario?: Prisma.ComunicadoCreateNestedManyWithoutDestinatarioInput
 }
@@ -560,6 +706,7 @@ export type PerfilApoderadoCreateWithoutLecturasComunicadoInput = {
 export type PerfilApoderadoUncheckedCreateWithoutLecturasComunicadoInput = {
   id?: string
   personaId: string
+  colegioId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedCreateNestedManyWithoutApoderadoInput
@@ -587,6 +734,7 @@ export type PerfilApoderadoUpdateWithoutLecturasComunicadoInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput
+  colegio?: Prisma.ColegioUpdateOneRequiredWithoutApoderadosNestedInput
   alumnos?: Prisma.ApoderadoAlumnoUpdateManyWithoutApoderadoNestedInput
   comunicadosDestinatario?: Prisma.ComunicadoUpdateManyWithoutDestinatarioNestedInput
 }
@@ -594,10 +742,45 @@ export type PerfilApoderadoUpdateWithoutLecturasComunicadoInput = {
 export type PerfilApoderadoUncheckedUpdateWithoutLecturasComunicadoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  colegioId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   alumnos?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutApoderadoNestedInput
   comunicadosDestinatario?: Prisma.ComunicadoUncheckedUpdateManyWithoutDestinatarioNestedInput
+}
+
+export type PerfilApoderadoCreateManyColegioInput = {
+  id?: string
+  personaId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PerfilApoderadoUpdateWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  persona?: Prisma.PersonaUpdateOneRequiredWithoutPerfilApoderadoNestedInput
+  alumnos?: Prisma.ApoderadoAlumnoUpdateManyWithoutApoderadoNestedInput
+  comunicadosDestinatario?: Prisma.ComunicadoUpdateManyWithoutDestinatarioNestedInput
+  lecturasComunicado?: Prisma.ComunicadoLecturaUpdateManyWithoutApoderadoNestedInput
+}
+
+export type PerfilApoderadoUncheckedUpdateWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  alumnos?: Prisma.ApoderadoAlumnoUncheckedUpdateManyWithoutApoderadoNestedInput
+  comunicadosDestinatario?: Prisma.ComunicadoUncheckedUpdateManyWithoutDestinatarioNestedInput
+  lecturasComunicado?: Prisma.ComunicadoLecturaUncheckedUpdateManyWithoutApoderadoNestedInput
+}
+
+export type PerfilApoderadoUncheckedUpdateManyWithoutColegioInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  personaId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -652,9 +835,11 @@ export type PerfilApoderadoCountOutputTypeCountLecturasComunicadoArgs<ExtArgs ex
 export type PerfilApoderadoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
   alumnos?: boolean | Prisma.PerfilApoderado$alumnosArgs<ExtArgs>
   comunicadosDestinatario?: boolean | Prisma.PerfilApoderado$comunicadosDestinatarioArgs<ExtArgs>
   lecturasComunicado?: boolean | Prisma.PerfilApoderado$lecturasComunicadoArgs<ExtArgs>
@@ -664,29 +849,35 @@ export type PerfilApoderadoSelect<ExtArgs extends runtime.Types.Extensions.Inter
 export type PerfilApoderadoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["perfilApoderado"]>
 
 export type PerfilApoderadoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["perfilApoderado"]>
 
 export type PerfilApoderadoSelectScalar = {
   id?: boolean
   personaId?: boolean
+  colegioId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PerfilApoderadoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "personaId" | "createdAt" | "updatedAt", ExtArgs["result"]["perfilApoderado"]>
+export type PerfilApoderadoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "personaId" | "colegioId" | "createdAt" | "updatedAt", ExtArgs["result"]["perfilApoderado"]>
 export type PerfilApoderadoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
   alumnos?: boolean | Prisma.PerfilApoderado$alumnosArgs<ExtArgs>
   comunicadosDestinatario?: boolean | Prisma.PerfilApoderado$comunicadosDestinatarioArgs<ExtArgs>
   lecturasComunicado?: boolean | Prisma.PerfilApoderado$lecturasComunicadoArgs<ExtArgs>
@@ -694,15 +885,18 @@ export type PerfilApoderadoInclude<ExtArgs extends runtime.Types.Extensions.Inte
 }
 export type PerfilApoderadoIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }
 export type PerfilApoderadoIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   persona?: boolean | Prisma.PersonaDefaultArgs<ExtArgs>
+  colegio?: boolean | Prisma.ColegioDefaultArgs<ExtArgs>
 }
 
 export type $PerfilApoderadoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PerfilApoderado"
   objects: {
     persona: Prisma.$PersonaPayload<ExtArgs>
+    colegio: Prisma.$ColegioPayload<ExtArgs>
     alumnos: Prisma.$ApoderadoAlumnoPayload<ExtArgs>[]
     comunicadosDestinatario: Prisma.$ComunicadoPayload<ExtArgs>[]
     lecturasComunicado: Prisma.$ComunicadoLecturaPayload<ExtArgs>[]
@@ -710,6 +904,7 @@ export type $PerfilApoderadoPayload<ExtArgs extends runtime.Types.Extensions.Int
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     personaId: string
+    colegioId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["perfilApoderado"]>
@@ -1107,6 +1302,7 @@ readonly fields: PerfilApoderadoFieldRefs;
 export interface Prisma__PerfilApoderadoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   persona<T extends Prisma.PersonaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PersonaDefaultArgs<ExtArgs>>): Prisma.Prisma__PersonaClient<runtime.Types.Result.GetResult<Prisma.$PersonaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  colegio<T extends Prisma.ColegioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ColegioDefaultArgs<ExtArgs>>): Prisma.Prisma__ColegioClient<runtime.Types.Result.GetResult<Prisma.$ColegioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   alumnos<T extends Prisma.PerfilApoderado$alumnosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilApoderado$alumnosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ApoderadoAlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comunicadosDestinatario<T extends Prisma.PerfilApoderado$comunicadosDestinatarioArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilApoderado$comunicadosDestinatarioArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   lecturasComunicado<T extends Prisma.PerfilApoderado$lecturasComunicadoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PerfilApoderado$lecturasComunicadoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComunicadoLecturaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1141,6 +1337,7 @@ export interface Prisma__PerfilApoderadoClient<T, Null = never, ExtArgs extends 
 export interface PerfilApoderadoFieldRefs {
   readonly id: Prisma.FieldRef<"PerfilApoderado", 'String'>
   readonly personaId: Prisma.FieldRef<"PerfilApoderado", 'String'>
+  readonly colegioId: Prisma.FieldRef<"PerfilApoderado", 'String'>
   readonly createdAt: Prisma.FieldRef<"PerfilApoderado", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PerfilApoderado", 'DateTime'>
 }

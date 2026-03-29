@@ -30,7 +30,20 @@ import {
   Param,
   Patch,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+
+const COLEGIO_ADMIN_EXAMPLE = {
+  id:          'uuid-colegio',
+  nombre:      'Colegio San Martín SAC',
+  ruc:         '20123456789',
+  direccion:   'Av. Educación 456, Lima',
+  email:       'admin@colegio.edu.pe',
+  estado:      'ACTIVO',
+  plan:        'PREMIUM',
+  planVenceEn: '2027-01-01T00:00:00.000Z',
+  createdAt:   '2026-01-01T00:00:00.000Z',
+  updatedAt:   '2026-01-01T00:00:00.000Z',
+};
 
 import { SoloPlatformAdmin } from '@modules/auth/infrastructure/guards/auth.guard';
 
@@ -53,6 +66,7 @@ export class AdminColegiosController {
   @Get()
   @SoloPlatformAdmin()
   @ApiOperation({ summary: 'Listar todos los colegios del sistema' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: COLEGIO_ADMIN_EXAMPLE } } })
   async listarColegios() {
     const result = await this.listarColegiosUseCase.execute();
     if (!result.ok) throw result.error;
@@ -63,6 +77,7 @@ export class AdminColegiosController {
   @SoloPlatformAdmin()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Cambiar plan de un colegio' })
+  @ApiOkResponse({ schema: { example: COLEGIO_ADMIN_EXAMPLE } })
   async cambiarPlan(
     @Param('id') colegioId: string,
     @Body() dto: CambiarPlanDto,
@@ -76,6 +91,7 @@ export class AdminColegiosController {
   @SoloPlatformAdmin()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar, suspender o desactivar un colegio' })
+  @ApiOkResponse({ schema: { example: COLEGIO_ADMIN_EXAMPLE } })
   async cambiarEstado(
     @Param('id') colegioId: string,
     @Body() dto: CambiarEstadoColegioDto,

@@ -72,7 +72,7 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
             apellidos: props.apellidos,
             telefono:  props.telefono ?? null,
             // dni, fechaNac, genero son requeridos en el schema — necesitamos valores default para el registro inicial
-            dni:       `PENDIENTE-${Date.now()}`, // el usuario completará su perfil después
+            dni:       props.dni,
             fechaNac:  new Date('2000-01-01'),
             genero:    'OTRO',
           },

@@ -15,9 +15,8 @@
 //   comunica la intención del código.
 //
 // TRANSACCIÓN:
-//   $transaction garantiza atomicidad: colegio + rol + asignación
+//   $transaction garantiza atomicidad: persona + usuario + colegio + rol + asignación
 //   se crean todos o no se crea ninguno.
-//   Si falla el paso 2 (rol), el colegio creado en el paso 1 se revierte.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 import { Injectable } from '@nestjs/common';
@@ -28,6 +27,7 @@ import {
   CrearColegioInicialProps,
   OnboardingPort,
 } from '@modules/auth/domain/ports/onboarding.port';
+import { ConflictError } from '@shared/domain/result';
 
 @Injectable()
 export class OnboardingAdapter implements OnboardingPort {
@@ -43,58 +43,95 @@ export class OnboardingAdapter implements OnboardingPort {
     props: CrearColegioInicialProps,
   ): Promise<ColegioInicialCreadoResult> {
 
-    const resultado = await this.prisma.$transaction(async (tx) => {
+    try {
+      const resultado = await this.prisma.$transaction(async (tx) => {
 
-      // Paso 1: Crear el colegio
-      const colegio = await tx.colegio.create({
-        data: {
-          nombre:    props.nombre,
-          ruc:       props.ruc,
-          direccion: props.direccion,
-          email:     props.email,
-        },
+        // Paso 1: Crear persona + usuario del SUPER_ADMIN
+        const usuario = await tx.usuario.create({
+          data: {
+            email:        props.usuarioEmail,
+            passwordHash: props.usuarioPassword,
+            persona: {
+              create: {
+                dni:       props.usuarioDni,
+                nombres:   props.usuarioNombres,
+                apellidos: props.usuarioApellidos,
+                telefono:  props.usuarioTelefono ?? null,
+                fechaNac:  new Date('2000-01-01'),
+                genero:    'OTRO',
+              },
+            },
+          },
+          include: { persona: { select: { nombres: true, apellidos: true } } },
+        });
+
+        // Paso 2: Crear el colegio
+        const colegio = await tx.colegio.create({
+          data: {
+            nombre:    props.nombre,
+            ruc:       props.ruc,
+            direccion: props.direccion,
+            email:     props.email,
+          },
+        });
+
+        // Paso 3: Crear el rol SUPER_ADMIN del colegio
+        const rol = await tx.colegioRol.create({
+          data: {
+            colegioId:   colegio.id,
+            nombre:      'SUPER_ADMIN',
+            descripcion: 'Administrador general del colegio',
+            esSistema:   true,
+          },
+        });
+
+        // Paso 4: Crear la asignación usuario → colegio → rol
+        const asignacion = await tx.usuarioAsignacion.create({
+          data: {
+            usuarioId: usuario.id,
+            colegioId: colegio.id,
+            sedeId:    null,
+            rolId:     rol.id,
+          },
+        });
+
+        return { usuario, colegio, rol, asignacion };
       });
 
-      // Paso 2: Crear el rol SUPER_ADMIN del colegio
-      // esSistema = true → acceso total sin permisos individuales
-      // Los permisos granulares los configura el SUPER_ADMIN después
-      const rol = await tx.colegioRol.create({
-        data: {
-          colegioId:   colegio.id,
-          nombre:      'SUPER_ADMIN',
-          descripcion: 'Administrador general del colegio',
-          esSistema:   true,
-        },
-      });
-
-      // Paso 3: Crear la asignación usuario → colegio → rol
-      const asignacion = await tx.usuarioAsignacion.create({
-        data: {
-          usuarioId: props.usuarioId,
-          colegioId: colegio.id,
-          sedeId:    null,
-          rolId:     rol.id,
-        },
-      });
-
-      return { colegio, rol, asignacion };
-    });
-
-    return {
-      colegioId: resultado.colegio.id,
-      asignacion: Asignacion.reconstitute({
-        id:            resultado.asignacion.id,
-        usuarioId:     resultado.asignacion.usuarioId,
-        colegioId:     resultado.colegio.id,
-        colegioNombre: resultado.colegio.nombre,
-        sedeId:        null,
-        sedeNombre:    null,
-        rolId:         resultado.rol.id,
-        rolNombre:     'SUPER_ADMIN',
-        esSistema:     true,
-        permisos:      [],
-        activo:        true,
-      }),
-    };
+      return {
+        colegioId:  resultado.colegio.id,
+        usuarioId:  resultado.usuario.id,
+        email:      resultado.usuario.email,
+        nombres:    resultado.usuario.persona!.nombres,
+        apellidos:  resultado.usuario.persona!.apellidos,
+        asignacion: Asignacion.reconstitute({
+          id:            resultado.asignacion.id,
+          usuarioId:     resultado.usuario.id,
+          colegioId:     resultado.colegio.id,
+          colegioNombre: resultado.colegio.nombre,
+          sedeId:        null,
+          sedeNombre:    null,
+          rolId:         resultado.rol.id,
+          rolNombre:     'SUPER_ADMIN',
+          esSistema:     true,
+          permisos:      [],
+          activo:        true,
+        }),
+      };
+    } catch (error) {
+      if (isPrismaUniqueConstraintError(error)) {
+        throw new ConflictError('Ya existe un registro con esos datos (email, DNI o RUC duplicado)');
+      }
+      throw error;
+    }
   }
+}
+
+function isPrismaUniqueConstraintError(error: unknown): boolean {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'code' in error &&
+    (error as { code: unknown }).code === 'P2002'
+  );
 }

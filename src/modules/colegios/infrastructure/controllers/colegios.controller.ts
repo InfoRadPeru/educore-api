@@ -1,15 +1,5 @@
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// QUÉ ES:
-//   Controller de SUPER_ADMIN — gestión del propio colegio.
-//
-// CAMBIO vs versión anterior:
-//   Las rutas de PLATFORM_ADMIN (GET /, PATCH /:id/plan, PATCH /:id/estado)
-//   se movieron a AdminColegiosController.
-//   Este controller ya solo conoce un actor: SUPER_ADMIN.
-//   El colegioId siempre viene del JWT — nunca del path.
-//
-// PRINCIPIO SOLID: Single Responsibility.
-//   Un controller, un actor, una fuente de identidad (el JWT).
+// Controller de SUPER_ADMIN — gestión del propio colegio.
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 import {
@@ -25,7 +15,13 @@ import {
   Put,
   Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiNoContentResponse,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 
@@ -58,6 +54,84 @@ import { CrearRolDto }                from '../../application/dtos/crear-rol.dto
 import { ActualizarRolDto }           from '../../application/dtos/actualizar-rol.dto';
 import { AsignarPermisoDto, ActualizarPermisosDto } from '../../application/dtos/asignar-permiso.dto';
 
+// ─── Ejemplos de respuesta ────────────────────────────────────────────────────
+
+const COLEGIO_EXAMPLE = {
+  id: 'uuid-colegio',
+  nombre: 'Colegio Ejemplo SAC',
+  ruc: '20123456789',
+  direccion: 'Av. Educación 456, Lima',
+  telefono: '01-234567',
+  email: 'admin@colegio.edu.pe',
+  estado: 'ACTIVO',
+  plan: 'PREMIUM',
+  planVenceEn: '2027-01-01T00:00:00.000Z',
+  createdAt: '2026-01-01T00:00:00.000Z',
+  updatedAt: '2026-01-01T00:00:00.000Z',
+};
+
+const SEDE_EXAMPLE = {
+  id: 'uuid-sede',
+  colegioId: 'uuid-colegio',
+  nombre: 'Sede Central',
+  direccion: 'Av. Principal 123, Lima',
+  telefono: '01-234567',
+  email: 'sede@colegio.edu.pe',
+  activo: true,
+  createdAt: '2026-01-01T00:00:00.000Z',
+  updatedAt: '2026-01-01T00:00:00.000Z',
+};
+
+const NIVEL_ACTIVADO_EXAMPLE = {
+  tipo: 'activado',
+  id: 'uuid-nivel',
+  nivelMaestroId: 'uuid-nivel-maestro',
+  nombre: 'Primaria',
+  orden: 2,
+  activo: true,
+  turnos: ['MAÑANA', 'TARDE'],
+};
+
+const NIVEL_DISPONIBLE_EXAMPLE = {
+  tipo: 'disponible',
+  nivelMaestroId: 'uuid-nivel-maestro',
+  nombre: 'Inicial',
+  orden: 1,
+};
+
+const ROL_EXAMPLE = {
+  id: 'uuid-rol',
+  colegioId: 'uuid-colegio',
+  nombre: 'COORDINADOR',
+  descripcion: 'Coordinador académico',
+  esSistema: false,
+  permisos: ['ALUMNOS_VER', 'NOTAS_VER'],
+  createdAt: '2026-01-01T00:00:00.000Z',
+  updatedAt: '2026-01-01T00:00:00.000Z',
+};
+
+const CONFIGURACION_EXAMPLE = {
+  colegioId: 'uuid-colegio',
+  añoAcademicoActual: 2026,
+  logoUrl: 'https://cdn.example.com/logo.png',
+  colorPrimario: '#1a73e8',
+};
+
+const PLAN_EXAMPLE = {
+  plan: 'PREMIUM',
+  planVenceEn: '2027-01-01T00:00:00.000Z',
+  limites: {
+    alumnos: 500,
+    docentes: 50,
+    sedes: 3,
+  },
+  uso: {
+    alumnos: 120,
+    docentes: 18,
+    sedes: 1,
+  },
+};
+
 @ApiTags('Colegios')
 @Controller('colegios')
 export class ColegiosController {
@@ -88,6 +162,7 @@ export class ColegiosController {
   @Get('mi-colegio')
   @Auth()
   @ApiOperation({ summary: 'Ver datos del propio colegio' })
+  @ApiOkResponse({ schema: { example: COLEGIO_EXAMPLE } })
   async miColegio(@Request() req: { user: JwtPayload }) {
     const result = await this.obtenerMiColegioUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -98,6 +173,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Editar datos del propio colegio (sin nombre ni RUC)' })
+  @ApiOkResponse({ schema: { example: COLEGIO_EXAMPLE } })
   async actualizarMiColegio(
     @Request() req: { user: JwtPayload },
     @Body() dto: ActualizarColegioDto,
@@ -110,6 +186,7 @@ export class ColegiosController {
   @Get('mi-colegio/configuracion')
   @Auth()
   @ApiOperation({ summary: 'Ver configuración del colegio' })
+  @ApiOkResponse({ schema: { example: CONFIGURACION_EXAMPLE } })
   async configuracion(@Request() req: { user: JwtPayload }) {
     const result = await this.obtenerConfiguracionUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -120,6 +197,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Editar configuración del colegio' })
+  @ApiOkResponse({ schema: { example: CONFIGURACION_EXAMPLE } })
   async actualizarConfiguracion(
     @Request() req: { user: JwtPayload },
     @Body() dto: ActualizarConfiguracionDto,
@@ -132,6 +210,7 @@ export class ColegiosController {
   @Get('mi-colegio/plan')
   @Auth()
   @ApiOperation({ summary: 'Ver plan actual con límites y uso real' })
+  @ApiOkResponse({ schema: { example: PLAN_EXAMPLE } })
   async plan(@Request() req: { user: JwtPayload }) {
     const result = await this.obtenerPlanUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -143,6 +222,7 @@ export class ColegiosController {
   @Get('mi-colegio/sedes')
   @Auth()
   @ApiOperation({ summary: 'Listar sedes del colegio' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: SEDE_EXAMPLE } } })
   async listarSedes(@Request() req: { user: JwtPayload }) {
     const result = await this.listarSedesUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -153,6 +233,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear sede (valida límite de plan)' })
+  @ApiCreatedResponse({ schema: { example: SEDE_EXAMPLE } })
   async crearSede(
     @Request() req: { user: JwtPayload },
     @Body() dto: CrearSedeDto,
@@ -166,6 +247,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Editar sede' })
+  @ApiOkResponse({ schema: { example: SEDE_EXAMPLE } })
   async actualizarSede(
     @Request() req: { user: JwtPayload },
     @Param('id') sedeId: string,
@@ -180,6 +262,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar o desactivar sede' })
+  @ApiOkResponse({ schema: { example: SEDE_EXAMPLE } })
   async cambiarEstadoSede(
     @Request() req: { user: JwtPayload },
     @Param('id') sedeId: string,
@@ -195,6 +278,18 @@ export class ColegiosController {
   @Get('mi-colegio/niveles')
   @Auth()
   @ApiOperation({ summary: 'Listar niveles con estado de activación' })
+  @ApiOkResponse({
+    description: 'Cada nivel puede ser "disponible" (sin activar) o "activado".',
+    schema: {
+      type: 'array',
+      items: {
+        oneOf: [
+          { example: NIVEL_DISPONIBLE_EXAMPLE },
+          { example: NIVEL_ACTIVADO_EXAMPLE },
+        ],
+      },
+    },
+  })
   async listarNiveles(@Request() req: { user: JwtPayload }) {
     const result = await this.listarNivelesUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -205,6 +300,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar o desactivar nivel' })
+  @ApiOkResponse({ schema: { example: NIVEL_ACTIVADO_EXAMPLE } })
   async cambiarEstadoNivel(
     @Request() req: { user: JwtPayload },
     @Param('nivelMaestroId') nivelMaestroId: string,
@@ -220,6 +316,7 @@ export class ColegiosController {
   @Get('mi-colegio/roles')
   @Auth()
   @ApiOperation({ summary: 'Listar roles del colegio' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ROL_EXAMPLE } } })
   async listarRoles(@Request() req: { user: JwtPayload }) {
     const result = await this.listarRolesUseCase.execute(req.user.colegioId!);
     if (!result.ok) throw result.error;
@@ -230,6 +327,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear rol personalizado' })
+  @ApiCreatedResponse({ schema: { example: ROL_EXAMPLE } })
   async crearRol(
     @Request() req: { user: JwtPayload },
     @Body() dto: CrearRolDto,
@@ -243,6 +341,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Editar nombre o descripción de un rol' })
+  @ApiOkResponse({ schema: { example: ROL_EXAMPLE } })
   async actualizarRol(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,
@@ -257,6 +356,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({ summary: 'Eliminar rol (no aplica a roles de sistema)' })
+  @ApiNoContentResponse({ description: 'Rol eliminado' })
   async eliminarRol(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,
@@ -270,6 +370,10 @@ export class ColegiosController {
   @Get('mi-colegio/roles/:id/permisos')
   @Auth()
   @ApiOperation({ summary: 'Listar permisos de un rol' })
+  @ApiOkResponse({
+    description: 'Lista de strings con los permisos asignados',
+    schema: { example: ['ALUMNOS_VER', 'ALUMNOS_EDITAR', 'NOTAS_VER'] },
+  })
   async listarPermisosRol(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,
@@ -283,6 +387,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Agregar un permiso al rol' })
+  @ApiOkResponse({ schema: { example: ROL_EXAMPLE } })
   async asignarPermiso(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,
@@ -297,6 +402,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Reemplazar todos los permisos de un rol' })
+  @ApiOkResponse({ schema: { example: ROL_EXAMPLE } })
   async actualizarPermisos(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,
@@ -311,6 +417,7 @@ export class ColegiosController {
   @Auth()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Quitar un permiso del rol' })
+  @ApiOkResponse({ schema: { example: ROL_EXAMPLE } })
   async eliminarPermiso(
     @Request() req: { user: JwtPayload },
     @Param('id') rolId: string,

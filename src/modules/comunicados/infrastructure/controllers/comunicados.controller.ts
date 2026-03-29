@@ -2,7 +2,23 @@ import {
   Body, Controller, Delete, Get, HttpCode, HttpStatus,
   Param, Patch, Post, Query, Request,
 } from '@nestjs/common';
-import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiNoContentResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+
+const COMUNICADO_EXAMPLE = {
+  id:             'uuid-comunicado',
+  titulo:         'Reunión de padres de familia',
+  contenido:      'Se les convoca a la reunión del viernes 4 de abril a las 6pm.',
+  estado:         'PUBLICADO',
+  audiencia:      'COLEGIO',
+  colegioNivelId: null,
+  colegioGradoId: null,
+  seccionId:      null,
+  destinatarioId: null,
+  añoAcademico:   2026,
+  publicadoEn:    '2026-03-28T10:00:00.000Z',
+  createdAt:      '2026-03-28T09:00:00.000Z',
+  updatedAt:      '2026-03-28T10:00:00.000Z',
+};
 import { Auth } from '@modules/auth/infrastructure/guards/auth.guard';
 import { JwtPayload } from '@modules/auth/infrastructure/strategies/jwt.strategy';
 
@@ -57,6 +73,7 @@ export class ComunicadosController {
   @Auth()
   @ApiOperation({ summary: 'Listar mis comunicados (apoderado, solo publicados)' })
   @ApiQuery({ name: 'año', type: Number, example: 2026 })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: COMUNICADO_EXAMPLE } } })
   async listarMisComunicados(
     @Request() req: { user: JwtPayload },
     @Query('año') año: string,
@@ -74,6 +91,7 @@ export class ComunicadosController {
   @Post()
   @Auth()
   @ApiOperation({ summary: 'Crear comunicado (queda en BORRADOR)' })
+  @ApiCreatedResponse({ schema: { example: { ...COMUNICADO_EXAMPLE, estado: 'BORRADOR', publicadoEn: null } } })
   async crear(
     @Body() dto: CrearComunicadoDto,
     @Request() req: { user: JwtPayload },
@@ -98,6 +116,7 @@ export class ComunicadosController {
   @Auth()
   @ApiOperation({ summary: 'Listar comunicados del colegio' })
   @ApiQuery({ name: 'año', type: Number, required: false })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: COMUNICADO_EXAMPLE } } })
   async listar(
     @Request() req: { user: JwtPayload },
     @Query('año') año?: string,
@@ -112,6 +131,7 @@ export class ComunicadosController {
   @Get(':id')
   @Auth()
   @ApiOperation({ summary: 'Obtener comunicado por id' })
+  @ApiOkResponse({ schema: { example: COMUNICADO_EXAMPLE } })
   async obtener(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },
@@ -124,6 +144,7 @@ export class ComunicadosController {
   @Patch(':id')
   @Auth()
   @ApiOperation({ summary: 'Actualizar comunicado (solo BORRADOR)' })
+  @ApiOkResponse({ schema: { example: COMUNICADO_EXAMPLE } })
   async actualizar(
     @Param('id') id: string,
     @Body() dto: ActualizarComunicadoDto,
@@ -149,6 +170,7 @@ export class ComunicadosController {
   @Post(':id/publicar')
   @Auth()
   @ApiOperation({ summary: 'Publicar comunicado' })
+  @ApiOkResponse({ schema: { example: COMUNICADO_EXAMPLE } })
   async publicar(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },
@@ -161,6 +183,7 @@ export class ComunicadosController {
   @Post(':id/archivar')
   @Auth()
   @ApiOperation({ summary: 'Archivar comunicado publicado' })
+  @ApiOkResponse({ schema: { example: { ...COMUNICADO_EXAMPLE, estado: 'ARCHIVADO' } } })
   async archivar(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },
@@ -173,6 +196,7 @@ export class ComunicadosController {
   @Post(':id/leido')
   @Auth()
   @ApiOperation({ summary: 'Marcar comunicado como leído (apoderado)' })
+  @ApiOkResponse({ schema: { example: { id: 'uuid-lectura', comunicadoId: 'uuid-comunicado', apoderadoId: 'uuid-apoderado', leidoEn: '2026-03-28T12:00:00.000Z' } } })
   async marcarLeido(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },
@@ -191,6 +215,7 @@ export class ComunicadosController {
   @HttpCode(HttpStatus.NO_CONTENT)
   @Auth()
   @ApiOperation({ summary: 'Eliminar comunicado (solo BORRADOR)' })
+  @ApiNoContentResponse({ description: 'Comunicado eliminado' })
   async eliminar(
     @Param('id') id: string,
     @Request() req: { user: JwtPayload },

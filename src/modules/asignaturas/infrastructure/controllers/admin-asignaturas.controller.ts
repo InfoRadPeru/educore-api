@@ -9,7 +9,14 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+
+const ASIGNATURA_MAESTRA_ADMIN_EXAMPLE = {
+  id:          'uuid-asig-maestra',
+  nombre:      'Matemáticas',
+  descripcion: 'Aritmética, álgebra y geometría',
+  activo:      true,
+};
 import { SoloPlatformAdmin } from '@modules/auth/infrastructure/guards/auth.guard';
 
 import { ListarAsignaturasMaestrasUseCase }        from '../../application/use-cases/listar-asignaturas-maestras.use-case';
@@ -36,6 +43,7 @@ export class AdminAsignaturasController {
   @Get()
   @SoloPlatformAdmin()
   @ApiOperation({ summary: 'Listar catálogo global de asignaturas' })
+  @ApiOkResponse({ schema: { type: 'array', items: { example: ASIGNATURA_MAESTRA_ADMIN_EXAMPLE } } })
   async listar(@Query('soloActivas') soloActivas?: string) {
     const result = await this.listarMaestrasUseCase.execute(soloActivas === 'true');
     if (!result.ok) throw result.error;
@@ -46,6 +54,7 @@ export class AdminAsignaturasController {
   @SoloPlatformAdmin()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({ summary: 'Crear asignatura en el catálogo global' })
+  @ApiCreatedResponse({ schema: { example: ASIGNATURA_MAESTRA_ADMIN_EXAMPLE } })
   async crear(@Body() dto: CrearAsignaturaMaestraDto) {
     const result = await this.crearMaestraUseCase.execute(dto);
     if (!result.ok) throw result.error;
@@ -56,6 +65,7 @@ export class AdminAsignaturasController {
   @SoloPlatformAdmin()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Editar nombre o descripción de una asignatura maestra' })
+  @ApiOkResponse({ schema: { example: ASIGNATURA_MAESTRA_ADMIN_EXAMPLE } })
   async actualizar(
     @Param('id') id: string,
     @Body() dto: ActualizarAsignaturaMaestraDto,
@@ -69,6 +79,7 @@ export class AdminAsignaturasController {
   @SoloPlatformAdmin()
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Activar o desactivar asignatura maestra' })
+  @ApiOkResponse({ schema: { example: ASIGNATURA_MAESTRA_ADMIN_EXAMPLE } })
   async cambiarEstado(
     @Param('id') id: string,
     @Body() dto: CambiarEstadoAsignaturaDto,

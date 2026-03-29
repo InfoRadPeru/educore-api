@@ -57,6 +57,33 @@ export class PrismaDocenteRepository implements DocenteRepository {
     return DocenteMapper.toDomain(raw);
   }
 
+  async crearAsignacionUsuario(usuarioId: string, colegioId: string): Promise<void> {
+    // Buscar o crear el rol sistema DOCENTE del colegio
+    let rol = await this.prisma.colegioRol.findFirst({
+      where: { colegioId, nombre: 'DOCENTE', esSistema: true },
+    });
+    if (!rol) {
+      rol = await this.prisma.colegioRol.create({
+        data: {
+          colegioId,
+          nombre:      'DOCENTE',
+          descripcion: 'Docente del colegio',
+          esSistema:   true,
+        },
+      });
+    }
+
+    // Evitar duplicados — solo crear si no existe ya esta asignacion
+    const existe = await this.prisma.usuarioAsignacion.findFirst({
+      where: { usuarioId, colegioId, rolId: rol.id },
+    });
+    if (!existe) {
+      await this.prisma.usuarioAsignacion.create({
+        data: { usuarioId, colegioId, sedeId: null, rolId: rol.id },
+      });
+    }
+  }
+
   async buscarPorId(id: string): Promise<Docente | null> {
     const raw = await this.prisma.perfilDocente.findUnique({
       where:   { id },

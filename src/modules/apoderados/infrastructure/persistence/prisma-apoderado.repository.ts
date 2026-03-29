@@ -2,8 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@shared/infrastructure/prisma/prisma.service';
 import {
   ApoderadoRepository,
+  CrearApoderadoConAccesoProps,
   CrearApoderadoConPersonaProps,
   CrearApoderadoProps,
+  CrearApoderadoResult,
 } from '../../domain/repositories/apoderado.repository';
 import { Apoderado, TipoParentesco, VinculoAlumno } from '../../domain/entities/apoderado.entity';
 import { ApoderadoMapper } from './apoderado.mapper';
@@ -23,7 +25,7 @@ export class PrismaApoderadoRepository implements ApoderadoRepository {
 
   async crear(props: CrearApoderadoProps): Promise<Apoderado> {
     const raw = await this.prisma.perfilApoderado.create({
-      data:    { personaId: props.personaId },
+      data:    { personaId: props.personaId, colegioId: props.colegioId },
       include: INCLUDE_PERSONA,
     });
     return ApoderadoMapper.toDomain(raw);
@@ -32,6 +34,8 @@ export class PrismaApoderadoRepository implements ApoderadoRepository {
   async crearConPersona(props: CrearApoderadoConPersonaProps): Promise<Apoderado> {
     const raw = await this.prisma.perfilApoderado.create({
       data: {
+        // Usar forma de relación (no FK directa) para poder combinar con persona.connectOrCreate
+        colegio: { connect: { id: props.colegioId } },
         persona: {
           connectOrCreate: {
             where:  { dni: props.dni },
@@ -49,6 +53,48 @@ export class PrismaApoderadoRepository implements ApoderadoRepository {
       include: INCLUDE_PERSONA,
     });
     return ApoderadoMapper.toDomain(raw);
+  }
+
+  async crearConPersonaYAcceso(props: CrearApoderadoConAccesoProps): Promise<CrearApoderadoResult> {
+    return this.prisma.$transaction(async (tx) => {
+      // Paso 1: Obtener o crear Persona
+      let persona = await tx.persona.findUnique({ where: { dni: props.dni } });
+      if (!persona) {
+        persona = await tx.persona.create({
+          data: {
+            dni:       props.dni,
+            nombres:   props.nombres,
+            apellidos: props.apellidos,
+            fechaNac:  props.fechaNac,
+            genero:    props.genero,
+            telefono:  props.telefono ?? null,
+          },
+        });
+      }
+
+      // Paso 2: Crear PerfilApoderado vinculado a la Persona y al Colegio
+      const raw = await tx.perfilApoderado.create({
+        data:    { personaId: persona.id, colegioId: props.colegioId },
+        include: INCLUDE_PERSONA,
+      });
+
+      // Paso 3: Crear Usuario solo si la Persona aún no tiene uno
+      const usuarioExistente = await tx.usuario.findUnique({ where: { personaId: persona.id } });
+      let usuarioCreado = false;
+      if (!usuarioExistente) {
+        await tx.usuario.create({
+          data: {
+            personaId:    persona.id,
+            email:        `${props.dni}@apoderado.local`,
+            username:     props.dni,
+            passwordHash: props.passwordHash,
+          },
+        });
+        usuarioCreado = true;
+      }
+
+      return { apoderado: ApoderadoMapper.toDomain(raw), usuarioCreado };
+    });
   }
 
   async buscarPorDni(dni: string): Promise<Apoderado | null> {
@@ -87,15 +133,10 @@ export class PrismaApoderadoRepository implements ApoderadoRepository {
   }
 
   async listarPorColegio(colegioId: string): Promise<Apoderado[]> {
-    // Apoderados vinculados a alumnos de ese colegio (distinct)
     const rows = await this.prisma.perfilApoderado.findMany({
-      where: {
-        alumnos: {
-          some: { alumno: { colegioId } },
-        },
-      },
-      include:  INCLUDE_PERSONA,
-      distinct: ['id'],
+      where:   { colegioId },
+      include: INCLUDE_PERSONA,
+      orderBy: { createdAt: 'desc' },
     });
     return rows.map(ApoderadoMapper.toDomain);
   }
